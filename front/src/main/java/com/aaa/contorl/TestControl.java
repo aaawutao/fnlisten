@@ -10,6 +10,6 @@ public class TestControl {
     @RequestMapping("test")
     @ResponseBody
     public String show(){
-        return "你好12455465";
+        return "你好12455465453245345";
     }
 }
