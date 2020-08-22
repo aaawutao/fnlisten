@@ -1,0 +1,20 @@
+server:
+  port: 8082  # 端口号
+  servlet:
+    context-path: '/front'  #项目访问路径
+
+spring:
+  datasource: # 数据源
+    url: jdbc:mysql://localhost:3306/test5?useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123@qwe
+  jackson:
+      date-format: 'yyyy-MM-dd' # 格式化json
+
+pagehelper: #分页配置
+  helper-dialect: mysql
+  params:
+    count: countSql
+  reasonable: false
+  support-methods-arguments: true
