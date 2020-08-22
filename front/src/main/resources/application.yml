@@ -5,7 +5,7 @@ server:
 
 spring:
   datasource: # 数据源
-    url: jdbc:mysql://localhost:3306/test5?useSSL=false
+    url: jdbc:mysql://localhost:3306/goods?useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 123@qwe
