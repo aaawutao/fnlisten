@@ -1,3 +1,6 @@
+prop:
+  filepath: E:/listenfile/
+
 server:
   port: 8081  # 端口号
   servlet:
@@ -18,3 +21,4 @@ pagehelper: #分页配置
     count: countSql
   reasonable: false
   support-methods-arguments: true
+
