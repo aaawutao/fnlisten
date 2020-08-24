@@ -6,13 +6,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 @Component
-public class FileServerConfig  implements WebMvcConfigurer {
-
-
+public class FileServerConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-
-        registry.addResourceHandler("/file/**").addResourceLocations("file:E:/listenfile/");
+        registry.addResourceHandler("/staticfile/**").addResourceLocations("file:/E:/listenfile/");
         WebMvcConfigurer.super.addResourceHandlers(registry);
     }
 

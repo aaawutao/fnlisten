@@ -22,7 +22,6 @@ public class AccessErrorHandle implements AccessDeniedHandler {
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("code","403");
         map.put("message","权限不足");
-
         // 把map转成json
         httpServletResponse.setCharacterEncoding("UTF-8");
         httpServletResponse.setContentType("application/json");
