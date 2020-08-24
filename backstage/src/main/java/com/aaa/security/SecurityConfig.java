@@ -76,7 +76,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
                 //让Spring security放行所有preflight request
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 //不做拦截
-                .antMatchers("/test")
+                .antMatchers("/findAll")
                 .permitAll()
                 // 任意请求
                 .anyRequest()
