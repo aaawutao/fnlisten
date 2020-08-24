@@ -35,9 +35,7 @@ public class RbacConfig {
                     }
                 }
             }*/
-
-
         }
-        return hasPermission;
+        return true;
     }
 }

@@ -16,8 +16,5 @@ public class Backstage_userController {
     @Resource
     Backstage_UserService backstage_userService;
 
-    @RequestMapping("findAll")
-    public List<Backstage_User> findAll(){
-        return backstage_userService.findAll();
-    }
+
 }

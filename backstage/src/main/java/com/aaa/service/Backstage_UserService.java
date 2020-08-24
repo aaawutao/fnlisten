@@ -12,11 +12,19 @@ public class Backstage_UserService  {
     @Resource
     Backstage_UserDao backstage_userDao;
 
-    public List<Backstage_User> findAll(){
-        return backstage_userDao.selectAll();
+    /**
+     * 校验用户名
+     *
+     */
+    public Backstage_User checkUserName(String name){
+         Backstage_User user=new Backstage_User();
+         user.setBackstage_uname(name);
+        return backstage_userDao.selectOne(user);
     }
 
-    public boolean findCheck(String backstage_uname,String backstage_upwd){
-        return  backstage_userDao.findCheckUserPwd(backstage_uname,backstage_upwd);
-    }
+
+
+
+
+
 }
