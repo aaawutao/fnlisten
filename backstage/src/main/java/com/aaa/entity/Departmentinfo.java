@@ -1,7 +1,14 @@
 package com.aaa.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Table(name = "Departmentinfo")
 public class Departmentinfo {
+    @Id
     private Integer did;
+    @Column
     private String dname;
 
     public Integer getDid() {
@@ -17,6 +24,11 @@ public class Departmentinfo {
     }
 
     public void setDname(String dname) {
+        this.dname = dname;
+    }
+
+    public Departmentinfo(Integer did, String dname) {
+        this.did = did;
         this.dname = dname;
     }
 
