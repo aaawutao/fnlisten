@@ -18,11 +18,6 @@ public class Backstage_userController {
     @Resource
     Backstage_UserService backstage_userService;
 
-    @RequestMapping("test")
-    public String test(){
-        System.out.println("1111111111111111");
-        return "ok";
-    }
     @RequestMapping("findAll")
     public  PageInfo<Backstage_User> findAll(Integer currentPage,Integer pageSize){
         /*System.out.println(map);
@@ -31,5 +26,8 @@ public class Backstage_userController {
         System.out.println(currentPage);
         return backstage_userService.findAll(currentPage,pageSize);
     }
+
+
+
 
 }

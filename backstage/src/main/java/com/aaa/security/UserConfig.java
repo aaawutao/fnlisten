@@ -3,6 +3,7 @@ package com.aaa.security;
 
 import com.aaa.entity.Backstage_User;
 import com.aaa.service.Backstage_UserService;
+import com.aaa.service.MenuInfoService;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,6 +17,9 @@ import java.util.Collection;
 public class UserConfig implements UserDetailsService {
     @Resource
     Backstage_UserService backstage_userService;
+
+    @Resource
+    MenuInfoService menuInfoService;
     /**
      * 根据用户名获取用户信息
      *
@@ -31,8 +35,12 @@ public class UserConfig implements UserDetailsService {
             throw new UsernameNotFoundException("用户名不存在");
         }else{
             //设置登录用户所管理的路径,如果用户所拥有的全部后台路径
+            if(user.getEmpid()==0){
+                user.setUrls(menuInfoService.all());
+            }else{
+                user.setUrls(menuInfoService.usermune(user.getBackstage_userid()));
+            }
         }
-
         return user;
     }
 

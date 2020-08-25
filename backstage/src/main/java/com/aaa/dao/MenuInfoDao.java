@@ -31,10 +31,10 @@ public interface MenuInfoDao extends tk.mybatis.mapper.common.Mapper<Menuinfo> {
         public String getcommonSql(@Param("pid")Integer pid,@Param("menutype") Integer menutype){
             StringBuffer sql=new StringBuffer("select menuid,menuname,menuurl from menuinfo where 1=1 ");
             if(menutype!=null){
-                sql.append(" menutype=#{menutype}");
+                sql.append(" and menutype="+menutype);
             }
             if(pid!=null){
-                sql.append(" menuparentid=#{pid}");
+                sql.append(" and menuparentid="+pid);
             }
             return sql.toString();
         }
@@ -52,13 +52,13 @@ public interface MenuInfoDao extends tk.mybatis.mapper.common.Mapper<Menuinfo> {
                     "left join backstage_user bu\n" +
                     "on bu.empid=e.empid where 1=1 ");
             if(userid!=null){
-                sql.append(" bu.backstage_userid=#{userid}");
+                sql.append(" and bu.backstage_userid=#{userid}");
             }
             if(pid!=null){
-                sql.append(" m.menuparentid=#{pid}");
+                sql.append(" and m.menuparentid=#{pid}");
             }
             if(menutype!=null){
-                sql.append(" m.menutype=#{menutype}");
+                sql.append(" and m.menutype=#{menutype}");
             }
             return sql.toString();
         }
