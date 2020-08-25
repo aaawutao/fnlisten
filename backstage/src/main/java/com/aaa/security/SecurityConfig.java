@@ -81,9 +81,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
                 // 任意请求
                 .anyRequest()
                 // 验证
-                .authenticated()
+                //.authenticated()
                 //使用自定义的权限表达式
-                //.access("@rbacConfig.hasPermission(request,authentication)")
+                .access("@rbacConfig.hasPermission(request,authentication)")
                 .and()
                 // 支持跨域请求
                 .cors()

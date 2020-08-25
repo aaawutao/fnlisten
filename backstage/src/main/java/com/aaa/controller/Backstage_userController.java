@@ -24,11 +24,12 @@ public class Backstage_userController {
         return "ok";
     }
     @RequestMapping("findAll")
-    public  PageInfo<Backstage_User> findAll(@RequestBody  Map<Integer,Integer> map){
-        System.out.println(map);
+    public  PageInfo<Backstage_User> findAll(Integer currentPage,Integer pageSize){
+        /*System.out.println(map);
         Integer pageNum = (Integer) map.get("currentPage");
-        Integer pageSize = (Integer) map.get("pageSize");
-        return backstage_userService.findAll(pageNum,pageSize);
+        Integer pageSize = (Integer) map.get("pageSize");*/
+        System.out.println(currentPage);
+        return backstage_userService.findAll(currentPage,pageSize);
     }
 
 }
