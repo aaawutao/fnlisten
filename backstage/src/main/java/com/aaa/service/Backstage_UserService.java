@@ -2,6 +2,8 @@ package com.aaa.service;
 
 import com.aaa.dao.Backstage_UserDao;
 import com.aaa.entity.Backstage_User;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,7 +25,15 @@ public class Backstage_UserService  {
     }
 
 
-
+    /**
+     * 查询用户信息
+     */
+    public PageInfo<Backstage_User> findAll(Integer currentPage, Integer pageSize){
+        PageHelper.startPage(currentPage,pageSize);
+        List<Backstage_User> userall = backstage_userDao.selectAll();
+        PageInfo<Backstage_User> pageInfo = new PageInfo<>(userall);
+        return pageInfo;
+    }
 
 
 

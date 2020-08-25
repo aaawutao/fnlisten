@@ -24,14 +24,14 @@ public class Backstage_User implements UserDetails {
     private String  backstage_js;//介绍
 
     private String  backstage_photo;//头像
-    //ISEXPIRED 过期
-    private Integer isexpired;
-    //ISLOCKED 锁
-    private Integer islocked;
-    //认证是否过期
-    private Integer iscreexpired;
-    //是否禁用
-    private Integer isenable;
+
+    private Integer isexpired;//ISEXPIRED 过期
+
+    private Integer islocked; //ISLOCKED 锁
+
+    private Integer iscreexpired;//认证是否过期
+
+    private Integer isenable;//是否禁用
 
     //用户所拥有的路径
     List<Map<String,Object>> urls;
@@ -99,9 +99,6 @@ public class Backstage_User implements UserDetails {
     public void setBackstage_upwd(String backstage_upwd) {
         this.backstage_upwd = backstage_upwd;
     }
-
-
-
 
 
     public Integer getEmpid() {
