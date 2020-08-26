@@ -19,7 +19,6 @@ public class DepartmentinfoController {
     @ResponseBody
     @RequestMapping("departmentinfoAll")
     public List<Departmentinfo>DepartmentinfoAll(){
-        System.out.println("DepartmentinfoAll");
         return departmentinfoService.DepartmentinfoAll();
     }
     @RequestMapping(value="add",method = RequestMethod.POST)

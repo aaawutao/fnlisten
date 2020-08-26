@@ -23,8 +23,9 @@ public interface MenuInfoDao extends tk.mybatis.mapper.common.Mapper<Menuinfo> {
     @SelectProvider(type = SqlMenu.class,method = "getcommonSql")
     List<Map<String,Object>> getcommonmune(@Param("pid")Integer pid,@Param("menutype") Integer menutype);
 
-
-
+    //部门所拥有的权限
+    @Select("select menuid from department_menu where bid=#{bid}")
+    List<Map<String,Object>> getdeptmune(@Param("did") Integer did);
 
     //sql
     class SqlMenu{

@@ -14,8 +14,14 @@ import java.util.List;
 public class MenuinfoControl {
     @Resource
     MenuInfoService menuInfoService;
+
     @RequestMapping("menushow")
     public List<Map<String,Object>> menushow(){
         return menuInfoService.all();
     }
+    @RequestMapping("getids")
+    public Integer[] getids(Integer did){
+        return  menuInfoService.deptmune(did);
+    }
+
 }

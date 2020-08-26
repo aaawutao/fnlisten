@@ -16,9 +16,6 @@ public class MenuInfoService {
     public List<Map<String,Object>> test(){
         return menuInfoDao.getcommonmune(null,0);
     }
-    //
-
-
     //全部查询菜单
     public List<Map<String,Object>> all(){
         List<Map<String,Object>> mune=menuInfoDao.getcommonmune(null,0);
@@ -27,9 +24,9 @@ public class MenuInfoService {
             List<Map<String,Object>> zimune=menuInfoDao.getcommonmune(Integer.parseInt(one.get("menuid").toString()),1);
             for(Map<String,Object> btns:zimune){
                 //设置第第三层菜单
-                btns.put("btns",menuInfoDao.getcommonmune(Integer.parseInt(btns.get("menuid").toString()),2));
+                btns.put("children",menuInfoDao.getcommonmune(Integer.parseInt(btns.get("menuid").toString()),2));
             }
-            one.put("zi",zimune);
+            one.put("children",zimune);
         }
         return mune;
     }
@@ -40,11 +37,19 @@ public class MenuInfoService {
             List<Map<String,Object>> zimune=menuInfoDao.getmune(userid,Integer.parseInt(one.get("menuid").toString()),1);
             for(Map<String,Object> btns:zimune){
                 //设置第第三层菜单
-                btns.put("btns",menuInfoDao.getmune(userid,Integer.parseInt(btns.get("menuid").toString()),2));
+                btns.put("children",menuInfoDao.getmune(userid,Integer.parseInt(btns.get("menuid").toString()),2));
             }
-            one.put("zi",zimune);
+            one.put("children",zimune);
         }
         return mune;
+    }
+    public Integer[] deptmune(Integer did){
+        List<Map<String,Object>> deptmune=menuInfoDao.getdeptmune(did);
+        Integer[] ids=new Integer[deptmune.size()-1];
+        for(int i=0;i<deptmune.size();i++){
+            ids[i]=Integer.parseInt(deptmune.get(i).get("muneid").toString());
+        }
+        return ids;
     }
 
 

@@ -1,6 +1,7 @@
 package com.aaa.security;
 
 
+import com.aaa.entity.Backstage_User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -21,21 +22,11 @@ public class RbacConfig {
         Object principal = authentication.getPrincipal();
         // 核心就是判断当前的用户所拥有的URL是否和当前访问的URL是否匹配。
         if(principal instanceof UserDetails){
-           /* Usertest usertest = (Usertest) principal;
+            Backstage_User usertest =(Backstage_User) principal;
             // 获取请求路径
             String uri = request.getRequestURI();
-
+            System.out.println(uri);
             // 从数据库中查询可以访问的路径有哪些,判断 hasPermission=true;
-
-            List<Map<String,Object>> list=usertest.getUrls();
-            if(list.get(0)!=null){
-                for(Map<String,Object> map:list){
-                    if(map.get("MURL").equals(uri)){
-                        hasPermission=true;
-                        break;
-                    }
-                }
-            }*/
         }
         return true;
     }
