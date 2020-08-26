@@ -21,15 +21,15 @@ public class DepartmentinfoController {
     public List<Departmentinfo>DepartmentinfoAll(){
         return departmentinfoService.DepartmentinfoAll();
     }
-    @RequestMapping(value="add",method = RequestMethod.POST)
+    @RequestMapping("add")
     @ResponseBody
-    public int add(@RequestBody Departmentinfo departmentinfo){
+    public int add(Departmentinfo departmentinfo){
         System.out.println(departmentinfo);
         return departmentinfoService.add(departmentinfo);
     }
     @RequestMapping("update")
     @ResponseBody
-    public int update(@RequestBody Departmentinfo departmentinfo){
+    public int update(Departmentinfo departmentinfo){
         return departmentinfoService.update(departmentinfo);
     }
 }

@@ -26,12 +26,12 @@ public class EmpinfoController {
     }
     @ResponseBody
     @RequestMapping("add")
-    public int add(@RequestBody Empinfo empinfo){
+    public int add(Empinfo empinfo){
         return empinfoService.add(empinfo);
     }
     @RequestMapping("update")
     @ResponseBody
-    public int update(@RequestBody Empinfo empinfo){
+    public int update(Empinfo empinfo){
         return empinfoService.update(empinfo);
     }
 }
