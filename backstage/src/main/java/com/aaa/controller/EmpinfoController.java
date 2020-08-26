@@ -2,6 +2,7 @@ package com.aaa.controller;
 
 import com.aaa.entity.Empinfo;
 import com.aaa.service.EmpinfoService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,16 +14,15 @@ import java.util.List;
 
 @CrossOrigin
 @Controller
-@RequestMapping("Empinfo")
+@RequestMapping("empinfo")
 public class EmpinfoController {
     @Resource
     EmpinfoService empinfoService;
 
     @ResponseBody
-    @RequestMapping("EmpinfoAll")
-    public List<Empinfo> EmpinfoAll(){
-        System.out.println("EmpinfoAll");
-        return empinfoService.EmpinfoAll();
+    @RequestMapping("empinfoAll")
+    public PageInfo<Empinfo> EmpinfoAll(Integer currentPage, Integer pageSize){
+        return empinfoService.EmpinfoAll(currentPage,pageSize);
     }
     @ResponseBody
     @RequestMapping("add")

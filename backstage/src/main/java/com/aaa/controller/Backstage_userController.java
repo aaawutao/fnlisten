@@ -20,10 +20,6 @@ public class Backstage_userController {
 
     @RequestMapping("findAll")
     public  PageInfo<Backstage_User> findAll(Integer currentPage,Integer pageSize){
-        /*System.out.println(map);
-        Integer pageNum = (Integer) map.get("currentPage");
-        Integer pageSize = (Integer) map.get("pageSize");*/
-        System.out.println(currentPage);
         return backstage_userService.findAll(currentPage,pageSize);
     }
 

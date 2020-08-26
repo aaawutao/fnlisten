@@ -2,6 +2,7 @@ package com.aaa.controller;
 
 import com.aaa.entity.Topupsetinfo;
 import com.aaa.service.TopupsetinfoService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,15 +14,14 @@ import java.util.List;
 
 @CrossOrigin
 @Controller
-@RequestMapping("Topupsetinfo")
+@RequestMapping("topupsetinfo")
 public class TopupsetinfoController {
     @Resource
     TopupsetinfoService topupsetinfoService;
     @ResponseBody
-    @RequestMapping("TopupsetinfoAll")
-    public List<Topupsetinfo> TopupsetinfoAll(){
-        System.out.println("TopupsetinfoAll");
-        return topupsetinfoService.TopupsetinfoAll();
+    @RequestMapping("topupsetinfoAll")
+    public PageInfo<Topupsetinfo> TopupsetinfoAll(Integer currentPage, Integer pageSize){
+        return topupsetinfoService.TopupsetinfoAll(currentPage,pageSize);
     }
     @RequestMapping("add")
     @ResponseBody

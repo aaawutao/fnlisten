@@ -13,8 +13,6 @@ public class Empinfo {
     @Column
     private String empname;
     @Column
-    private String empsex;
-    @Column
     private String empbirth;
     @Column
     private String empphone;
@@ -43,14 +41,6 @@ public class Empinfo {
 
     public void setEmpname(String empname) {
         this.empname = empname;
-    }
-
-    public String getEmpsex() {
-        return empsex;
-    }
-
-    public void setEmpsex(String empsex) {
-        this.empsex = empsex;
     }
 
     public String getEmpbirth() {
@@ -114,7 +104,6 @@ public class Empinfo {
         return "Empinfo{" +
                 "empid=" + empid +
                 ", empname='" + empname + '\'' +
-                ", empsex='" + empsex + '\'' +
                 ", empbirth='" + empbirth + '\'' +
                 ", empphone='" + empphone + '\'' +
                 ", empidentity='" + empidentity + '\'' +

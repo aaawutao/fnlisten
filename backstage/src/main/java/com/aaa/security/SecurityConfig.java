@@ -78,6 +78,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
                 //不做拦截
                 .antMatchers("/staticfile/*")
                 .permitAll()
+
+//                .antMatchers("departmentinfo/add")
+//                .permitAll()
                 // 任意请求
                 .anyRequest()
                 // 验证

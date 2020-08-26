@@ -14,12 +14,12 @@ public interface DepartmentinfoDao extends Mapper<Departmentinfo> {
     //查询部门
     @Select("select did,dname from departmentinfo")
     List<Departmentinfo> DepartmentinfoAll();
-
-    //添加
-    @Insert("insert into departmentinfo (did,dname) values (#{did},#{dname})")
-    int add(Departmentinfo departmentinfo);
-
-    //修改
-    @Update("update departmentinfo set dname=#{dname} where did=#{did}")
-    int update(Departmentinfo departmentinfo);
+//
+//    //添加
+//    @Insert("insert into departmentinfo (dname) values (#{did},#{dname})")
+//    int add(Departmentinfo departmentinfo);
+//
+//    //修改
+//    @Update("update departmentinfo set dname=#{dname} where did=#{did}")
+//    int update(Departmentinfo departmentinfo);
 }

@@ -2,6 +2,8 @@ package com.aaa.service;
 
 import com.aaa.dao.TopupsetinfoDao;
 import com.aaa.entity.Topupsetinfo;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,8 +14,11 @@ public class TopupsetinfoService {
     @Resource
     TopupsetinfoDao topupsetinfoDao;
     //充值设置
-    public List<Topupsetinfo> TopupsetinfoAll(){
-        return topupsetinfoDao.TopupsetinfoAll();
+    public PageInfo<Topupsetinfo> TopupsetinfoAll(Integer currentPage, Integer pageSize){
+        PageHelper.startPage(currentPage,pageSize);
+        List<Topupsetinfo> userall = topupsetinfoDao.selectAll();
+        PageInfo<Topupsetinfo> pageInfo = new PageInfo<>(userall);
+        return pageInfo;
     }
     //添加
     public int add(Topupsetinfo topupsetinfo){
