@@ -3,6 +3,7 @@ package com.aaa.entity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Collection;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Map;
 @Table(name="backstage_user")
 public class Backstage_User implements UserDetails {
 
+    @Id
     private Integer backstage_userid; //账号编号
 
     private String backstage_uname;//账号用户名
@@ -32,6 +34,16 @@ public class Backstage_User implements UserDetails {
     private Integer iscreexpired;//认证是否过期
 
     private Integer isenable;//是否禁用
+
+    private  Integer flag;
+
+    public Integer getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag = flag;
+    }
 
     //用户所拥有的路径
     List<Map<String,Object>> urls;
@@ -180,6 +192,7 @@ public class Backstage_User implements UserDetails {
     public boolean isEnabled() {
         return this.isenable==0;
     }
+
     @Override
     public String toString() {
         return "Backstage_User{" +
@@ -194,6 +207,7 @@ public class Backstage_User implements UserDetails {
                 ", islocked=" + islocked +
                 ", iscreexpired=" + iscreexpired +
                 ", isenable=" + isenable +
+                ", flag=" + flag +
                 ", urls=" + urls +
                 '}';
     }

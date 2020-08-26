@@ -27,4 +27,9 @@ public class EmpinfoService {
     public  int update(Empinfo empinfo){
         return empinfoDao.updateByPrimaryKey(empinfo);
     }
+
+    //查询没有分配账号的用户
+    public List<Empinfo> queryByDid(){
+        return empinfoDao.queryByDid();
+    }
 }

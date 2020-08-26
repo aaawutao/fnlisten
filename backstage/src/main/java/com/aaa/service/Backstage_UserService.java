@@ -24,7 +24,6 @@ public class Backstage_UserService  {
         return backstage_userDao.selectOne(user);
     }
 
-
     /**
      * 查询用户信息
      */
@@ -35,6 +34,11 @@ public class Backstage_UserService  {
         return pageInfo;
     }
 
-
+    /**
+     * 启用禁用用户
+     */
+    public int updateFlag(Integer isenable,Integer backstage_userid){
+        return  backstage_userDao.updateFlag(isenable,backstage_userid);
+    }
 
 }

@@ -26,12 +26,21 @@ public class EmpinfoController {
     }
     @ResponseBody
     @RequestMapping("add")
-    public int add(Empinfo empinfo){
+    public int add(@RequestBody Empinfo empinfo){
         return empinfoService.add(empinfo);
     }
+
     @RequestMapping("update")
     @ResponseBody
-    public int update(Empinfo empinfo){
+    public int update(@RequestBody Empinfo empinfo){
         return empinfoService.update(empinfo);
     }
+
+    //查询没有分配账号的用户
+    @RequestMapping("queryByDid")
+    public List<Empinfo> queryByDid(){
+        return empinfoService.queryByDid();
+    }
+
+
 }

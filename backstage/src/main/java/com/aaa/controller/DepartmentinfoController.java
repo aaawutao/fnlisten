@@ -18,7 +18,7 @@ public class DepartmentinfoController {
 
     @ResponseBody
     @RequestMapping("departmentinfoAll")
-    public List<Departmentinfo>DepartmentinfoAll(){
+    public List<Departmentinfo> DepartmentinfoAll(){
         return departmentinfoService.DepartmentinfoAll();
     }
     @RequestMapping("add")
