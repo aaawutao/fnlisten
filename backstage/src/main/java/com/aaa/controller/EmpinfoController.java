@@ -4,34 +4,28 @@ import com.aaa.entity.Empinfo;
 import com.aaa.service.EmpinfoService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @CrossOrigin
-@Controller
+@RestController
 @RequestMapping("empinfo")
 public class EmpinfoController {
     @Resource
     EmpinfoService empinfoService;
 
-    @ResponseBody
     @RequestMapping("empinfoAll")
     public PageInfo<Empinfo> EmpinfoAll(Integer currentPage, Integer pageSize){
         return empinfoService.EmpinfoAll(currentPage,pageSize);
     }
-    @ResponseBody
     @RequestMapping("add")
     public int add(@RequestBody Empinfo empinfo){
         return empinfoService.add(empinfo);
     }
 
     @RequestMapping("update")
-    @ResponseBody
     public int update(@RequestBody Empinfo empinfo){
         return empinfoService.update(empinfo);
     }

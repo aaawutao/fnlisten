@@ -16,4 +16,6 @@ public interface EmpinfoDao extends tk.mybatis.mapper.common.Mapper<Empinfo> {
     @Select("select * from empinfo where did=0 or did is null")
     List<Empinfo> queryByDid();
 
+
+
 }
