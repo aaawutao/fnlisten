@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.List;
+
 
 @CrossOrigin
 @RestController
@@ -26,12 +26,19 @@ public class programtypeiController {
     }
     @RequestMapping("addprotype")
     public int addprotype(Programtypeinfo programtypeinfo){
-        return  programtypeService.addprotype(programtypeinfo);
+        Integer ptid = programtypeinfo.getPtid();
+        if(ptid==null){
+            return programtypeService.addprotype(programtypeinfo);
+        }else{
+            return programtypeService.updateprotype(programtypeinfo);
+        }
+
     }
 
     @RequestMapping("deleteprotype")
     public int deleteprotype(Integer ptid){
-        System.out.println(ptid);
         return programtypeService.deleteprotype(ptid);
     }
+
+
 }

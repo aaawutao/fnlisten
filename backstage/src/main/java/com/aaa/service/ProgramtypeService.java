@@ -31,4 +31,9 @@ public class ProgramtypeService {
     public int deleteprotype(Integer ptid){
         return  programtypeinfoDao.deleteByPrimaryKey(ptid);
     }
+
+    //修改类型
+    public int updateprotype(Programtypeinfo programtypeinfo){
+        return  programtypeinfoDao.updateByPrimaryKey(programtypeinfo);
+    }
 }
