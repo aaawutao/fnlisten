@@ -52,6 +52,14 @@ public class MenuInfoService {
         return menuInfoDao.getdeptmune(did);
     }
 
+    //权限修改
+    public void editPermission(Integer did,Integer[] ids){
+        menuInfoDao.delPermission(did);
+        for(int i=0;i<ids.length;i++){
+            menuInfoDao.addPermisssion(did,ids[i]);
+        }
+    }
+
 
 
 

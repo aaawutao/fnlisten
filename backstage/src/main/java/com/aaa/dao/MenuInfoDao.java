@@ -1,10 +1,7 @@
 package com.aaa.dao;
 
 import com.aaa.entity.Menuinfo;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.*;
 import org.hibernate.annotations.ListIndexBase;
 
 import java.util.List;
@@ -24,8 +21,24 @@ public interface MenuInfoDao extends tk.mybatis.mapper.common.Mapper<Menuinfo> {
     List<Map<String,Object>> getcommonmune(@Param("pid")Integer pid,@Param("menutype") Integer menutype);
 
     //部门所拥有的权限
-    @Select("select menuid from department_menu where bid=#{did}")
-    List<Map<String,Object>> getdeptmune(@Param("did") Integer did);
+    @Select("select menuid from department_menu where bid=#{bid}")
+    List<Map<String,Object>> getdeptmune(@Param("bid") Integer did);
+
+
+    //权限分配
+    //删除已有权限
+    @Delete("delete from department_menu where bid=#{bid}")
+    Integer delPermission(@Param("bid") Integer did);
+
+    //添加现有权限
+    @Insert("insert into department_menu values (#{bid},#{menuid})")
+    Integer addPermisssion(@Param("bid") Integer did,@Param("menuid") Integer menuid);
+
+
+
+
+
+
 
     //sql
     class SqlMenu{

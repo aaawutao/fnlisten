@@ -26,4 +26,15 @@ public class MenuinfoControl {
         return  menuInfoService.deptmune(did);
     }
 
+    @RequestMapping("edit")
+    public Integer edit(Integer did,Integer[] ids){
+        try {
+            menuInfoService.editPermission(did,ids);
+            return 1;
+        }catch (Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
 }
