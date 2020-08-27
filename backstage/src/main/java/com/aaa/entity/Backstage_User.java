@@ -34,6 +34,14 @@ public class Backstage_User implements UserDetails {
     private Integer iscreexpired;//认证是否过期
 
     private Integer isenable;//是否禁用
+    private Integer flag;
+
+    public Integer getFlag() {
+        return flag;
+    }
+    public void setFlag(Integer flag) {
+        this.flag = flag;
+    }
 
     private  Integer flag;
 

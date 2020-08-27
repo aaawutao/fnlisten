@@ -14,7 +14,7 @@ public class FileRule {
 
     String[] photoformat={"bmp","jpg","png","tif","gif","pcx","tga","exif","fpx","svg","psd","cdr","pcd","dxf","ufo","eps","ai","raw","WMF","webp"};
     //返回提交的路径
-    public String fileupload(MultipartFile file,String username,String flag) throws IOException {
+    public  String fileupload(MultipartFile file,String username,String flag) throws IOException {
         //username :用户名
         //staticurl:配置的本地磁盘
         String uploadstr="";
@@ -62,5 +62,8 @@ public class FileRule {
             }
         }
         return uploadstr;
+    }
+    public String test(){
+        return "1";
     }
 }

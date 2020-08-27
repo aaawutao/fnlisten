@@ -14,6 +14,13 @@ import java.util.List;
 public class Backstage_UserService  {
     @Resource
     Backstage_UserDao backstage_userDao;
+    /**
+     * 头像做修改
+     */
+    public Integer editPhoto(String userid,String photo){
+        return backstage_userDao.photoupload(userid,photo);
+    }
+
 
     /**
      * 校验用户名

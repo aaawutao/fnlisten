@@ -1,6 +1,9 @@
 package com.aaa.dao;
 
 import com.aaa.entity.Backstage_User;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.*;
 import tk.mybatis.mapper.common.Mapper;
 
@@ -26,4 +29,8 @@ public interface Backstage_UserDao extends Mapper<Backstage_User> {
     //添加区分员工和主播
     /*@Insert("insert into anchorinfo (actype,dfid) values (#{actype},#{dfid})")
     int addanchorinfo(@Param("actype") Integer actype,@Param("dfid") Integer dfid);*/
+    //用户图片修改
+    @Update("update backstage_user  set backstage_photo=#{photo} where backstage_userid=#{userid}")
+    Integer photoupload(@Param("userid") String userid,@Param("photo") String backstage_photo);
+
 }
