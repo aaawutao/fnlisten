@@ -9,24 +9,23 @@ import java.util.Date;
 public class Empinfo {
     @Id
     @Column
-    private Integer empid;
+    private Integer empid;//员工编号
     @Column
-    private String empname;
+    private String empname;//名字
     @Column
-    private String empbirth;
+    private String empbirth;//出生年月
     @Column
-    private String empphone;
+    private String empphone;//电话
     @Column
-    private String empidentity;
+    private String empidentity;//身份证
     @Column
-    private Integer did;
+    private Integer did;//部门
     @Column
-    private String xueli;
+    private String xueli;//学历
     @Column
-    private Date empentrydate;
+    private String empentrydate;//入职
     @Column
-    private Date empdimissiondate;
-
+    private String empdimissiondate;//离职
     public Integer getEmpid() {
         return empid;
     }
@@ -83,19 +82,20 @@ public class Empinfo {
         this.xueli = xueli;
     }
 
-    public Date getEmpentrydate() {
+
+    public String getEmpentrydate() {
         return empentrydate;
     }
 
-    public void setEmpentrydate(Date empentrydate) {
+    public void setEmpentrydate(String empentrydate) {
         this.empentrydate = empentrydate;
     }
 
-    public Date getEmpdimissiondate() {
+    public String getEmpdimissiondate() {
         return empdimissiondate;
     }
 
-    public void setEmpdimissiondate(Date empdimissiondate) {
+    public void setEmpdimissiondate(String empdimissiondate) {
         this.empdimissiondate = empdimissiondate;
     }
 
