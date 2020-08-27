@@ -1,8 +1,11 @@
 package com.aaa.controller;
 
 import com.aaa.service.MenuInfoService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -14,13 +17,12 @@ import java.util.List;
 public class MenuinfoControl {
     @Resource
     MenuInfoService menuInfoService;
-
     @RequestMapping("menushow")
     public List<Map<String,Object>> menushow(){
         return menuInfoService.all();
     }
     @RequestMapping("getids")
-    public Integer[] getids(Integer did){
+    public List<Map<String,Object>> getids(Integer did){
         return  menuInfoService.deptmune(did);
     }
 

@@ -6,10 +6,10 @@ import java.util.List;
 
 @Table(name = "menuinfo")
 public class Menuinfo  {
-    private Integer menuid;
+    private Integer id;
     private String menuname;
     private String menuurl;
-    private String menuparentid;
+    private String parentId;
 
     private List<Menuinfo> ziList;
 
@@ -22,11 +22,11 @@ public class Menuinfo  {
     }
 
     public Integer getMenuid() {
-        return menuid;
+        return id;
     }
 
     public void setMenuid(Integer menuid) {
-        this.menuid = menuid;
+        this.id = menuid;
     }
 
     public String getMenuname() {
@@ -46,20 +46,20 @@ public class Menuinfo  {
     }
 
     public String getMenuparentid() {
-        return menuparentid;
+        return parentId;
     }
 
     public void setMenuparentid(String menuparentid) {
-        this.menuparentid = menuparentid;
+        this.parentId = menuparentid;
     }
 
     @Override
     public String toString() {
         return "Menuinfo{" +
-                "menuid=" + menuid +
+                "menuid=" + id +
                 ", menuname='" + menuname + '\'' +
                 ", menuurl='" + menuurl + '\'' +
-                ", menuparentid='" + menuparentid + '\'' +
+                ", menuparentid='" + parentId + '\'' +
                 ", ziList=" + ziList +
                 '}';
     }

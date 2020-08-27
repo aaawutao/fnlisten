@@ -24,18 +24,18 @@ public interface MenuInfoDao extends tk.mybatis.mapper.common.Mapper<Menuinfo> {
     List<Map<String,Object>> getcommonmune(@Param("pid")Integer pid,@Param("menutype") Integer menutype);
 
     //部门所拥有的权限
-    @Select("select menuid from department_menu where bid=#{bid}")
+    @Select("select menuid from department_menu where bid=#{did}")
     List<Map<String,Object>> getdeptmune(@Param("did") Integer did);
 
     //sql
     class SqlMenu{
         public String getcommonSql(@Param("pid")Integer pid,@Param("menutype") Integer menutype){
-            StringBuffer sql=new StringBuffer("select menuid,menuname,menuurl from menuinfo where 1=1 ");
+            StringBuffer sql=new StringBuffer("select id,menuname,menuurl,parentId from menuinfo where 1=1 ");
             if(menutype!=null){
                 sql.append(" and menutype="+menutype);
             }
             if(pid!=null){
-                sql.append(" and menuparentid="+pid);
+                sql.append(" and parentId="+pid);
             }
             return sql.toString();
         }
@@ -43,9 +43,9 @@ public interface MenuInfoDao extends tk.mybatis.mapper.common.Mapper<Menuinfo> {
 
 
         public String  getmuneSql(@Param("userid") Integer userid,@Param("pid") Integer pid,@Param("menutype") Integer menutype){
-            StringBuffer sql = new StringBuffer("select m.menuid,m.menuname,m.menuurl from department_menu dm\n" +
+            StringBuffer sql = new StringBuffer("select m.id,m.menuname,m.menuurl,m.parentId from department_menu dm\n" +
                     "left join menuinfo m\n" +
-                    "on m.menuid=dm.menuid\n" +
+                    "on m.id=dm.menuid\n" +
                     "left join departmentinfo  d\n" +
                     "on dm.bid=d.did\n" +
                     "left join empinfo e\n" +
@@ -56,7 +56,7 @@ public interface MenuInfoDao extends tk.mybatis.mapper.common.Mapper<Menuinfo> {
                 sql.append(" and bu.backstage_userid=#{userid}");
             }
             if(pid!=null){
-                sql.append(" and m.menuparentid=#{pid}");
+                sql.append(" and m.parentId=#{pid}");
             }
             if(menutype!=null){
                 sql.append(" and m.menutype=#{menutype}");

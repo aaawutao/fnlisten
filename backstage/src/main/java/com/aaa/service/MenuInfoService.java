@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;
 
@@ -21,10 +22,14 @@ public class MenuInfoService {
         List<Map<String,Object>> mune=menuInfoDao.getcommonmune(null,0);
         for(Map<String,Object> one:mune){
 
-            List<Map<String,Object>> zimune=menuInfoDao.getcommonmune(Integer.parseInt(one.get("menuid").toString()),1);
+            List<Map<String,Object>> zimune=menuInfoDao.getcommonmune(Integer.parseInt(one.get("id").toString()),1);
             for(Map<String,Object> btns:zimune){
                 //设置第第三层菜单
-                btns.put("children",menuInfoDao.getcommonmune(Integer.parseInt(btns.get("menuid").toString()),2));
+                List<Map<String,Object>> sanlist=menuInfoDao.getcommonmune(Integer.parseInt(btns.get("id").toString()),2);
+                for(Map<String,Object> san:sanlist){
+                    san.put("children",new ArrayList<Map<String,Object>>());
+                }
+                btns.put("children",sanlist);
             }
             one.put("children",zimune);
         }
@@ -34,22 +39,17 @@ public class MenuInfoService {
     public List<Map<String,Object>> usermune(Integer userid){
         List<Map<String,Object>> mune=menuInfoDao.getmune(userid,null,0);
         for(Map<String,Object> one:mune){
-            List<Map<String,Object>> zimune=menuInfoDao.getmune(userid,Integer.parseInt(one.get("menuid").toString()),1);
+            List<Map<String,Object>> zimune=menuInfoDao.getmune(userid,Integer.parseInt(one.get("id").toString()),1);
             for(Map<String,Object> btns:zimune){
                 //设置第第三层菜单
-                btns.put("children",menuInfoDao.getmune(userid,Integer.parseInt(btns.get("menuid").toString()),2));
+                btns.put("children",menuInfoDao.getmune(userid,Integer.parseInt(btns.get("id").toString()),2));
             }
             one.put("children",zimune);
         }
         return mune;
     }
-    public Integer[] deptmune(Integer did){
-        List<Map<String,Object>> deptmune=menuInfoDao.getdeptmune(did);
-        Integer[] ids=new Integer[deptmune.size()-1];
-        for(int i=0;i<deptmune.size();i++){
-            ids[i]=Integer.parseInt(deptmune.get(i).get("muneid").toString());
-        }
-        return ids;
+    public List<Map<String,Object>> deptmune(Integer did){
+        return menuInfoDao.getdeptmune(did);
     }
 
 
