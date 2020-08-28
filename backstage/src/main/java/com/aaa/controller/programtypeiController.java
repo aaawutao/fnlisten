@@ -21,7 +21,6 @@ public class programtypeiController {
 
     @RequestMapping("selectType")
     public PageInfo<Programtypeinfo> findAll(Integer currentPage, Integer pageSize){
-        System.out.println(currentPage+"   "+pageSize);
         return programtypeService.findAll(currentPage,pageSize);
     }
     @RequestMapping("addprotype")
