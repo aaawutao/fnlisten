@@ -5,26 +5,26 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
-@Table(name = "empinfo")
+//@Table(name = "empinfo")
 public class Empinfo {
     @Id
-    @Column
+    //@Column
     private Integer empid;//员工编号
-    @Column
+    //@Column
     private String empname;//名字
-    @Column
+    //@Column
     private String empbirth;//出生年月
-    @Column
+    //@Column
     private String empphone;//电话
-    @Column
+    //@Column
     private String empidentity;//身份证
-    @Column
+    //@Column
     private Integer did;//部门
-    @Column
+    //@Column
     private String xueli;//学历
-    @Column
+    //@Column
     private String empentrydate;//入职
-    @Column
+    //@Column
     private String empdimissiondate;//离职
     public Integer getEmpid() {
         return empid;

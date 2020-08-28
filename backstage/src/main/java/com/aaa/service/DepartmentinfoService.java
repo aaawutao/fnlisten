@@ -2,6 +2,8 @@ package com.aaa.service;
 
 import com.aaa.dao.DepartmentinfoDao;
 import com.aaa.entity.Departmentinfo;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -11,16 +13,26 @@ import java.util.List;
 public class DepartmentinfoService {
     @Resource
     DepartmentinfoDao departmentinfoDao;
-    //部门显示
-    public List<Departmentinfo>DepartmentinfoAll(){
-        return departmentinfoDao.DepartmentinfoAll();
+    //分页查询数据
+    public PageInfo<Departmentinfo> findAll(Integer currentPage, Integer pageSize){
+        PageHelper.startPage(currentPage,pageSize);
+        List<Departmentinfo> type = departmentinfoDao.selectAll();
+        PageInfo<Departmentinfo> pageInfo = new PageInfo<>(type);
+        return pageInfo;
     }
-    //部门添加
-    public int add(Departmentinfo departmentinfo){
-        return departmentinfoDao.insert(departmentinfo);
+
+    //添加类型
+    public int addprotype(Departmentinfo departmentinfo){
+        return  departmentinfoDao.insert(departmentinfo);
     }
-    //部门修改
-    public int update(Departmentinfo departmentinfo){
-        return departmentinfoDao.updateByPrimaryKey(departmentinfo);
+
+    //删除类型
+    public int deleteprotype(Integer did){
+        return  departmentinfoDao.deleteByPrimaryKey(did);
+    }
+
+    //修改类型
+    public int updateprotype(Departmentinfo departmentinfo){
+        return  departmentinfoDao.updateByPrimaryKey(departmentinfo);
     }
 }

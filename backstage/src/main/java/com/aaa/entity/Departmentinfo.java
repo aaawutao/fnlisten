@@ -1,15 +1,13 @@
 package com.aaa.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Table(name = "departmentinfo")
+import javax.persistence.Id;
+
 public class Departmentinfo {
     @Id
     private Integer did;
-    @Column
     private String dname;
+
 
     public Integer getDid() {
         return did;
