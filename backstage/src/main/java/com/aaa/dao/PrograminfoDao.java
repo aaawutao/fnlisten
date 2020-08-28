@@ -12,7 +12,6 @@ import java.util.Map;
 @org.apache.ibatis.annotations.Mapper
 public interface PrograminfoDao extends Mapper<Programinfo> {
 
-
     @SelectProvider(type = SqlPrograminfo.class,method = "getSql")
     List<Map<String,Object>> queryAll(@Param("pid") Integer pid);
 
@@ -22,7 +21,7 @@ public interface PrograminfoDao extends Mapper<Programinfo> {
                     "left join programtypeinfo pgt \n" +
                     "on pgi.ptid=pgt.ptid \n" +
                     "left join anchorinfo ari \n" +
-                    "on pgi.anchortid=ari.acid  where 1=1 and pstatus=0 ");
+                    "on pgi.anchortid=ari.acid  where 1=1  ");
             if(pid !=null){
                 sql.append(" and pid=#{pid}");
             }
