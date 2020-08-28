@@ -22,4 +22,11 @@ public class PrograminfoService {
         PageInfo<List<Map<String, Object>>> pageInfo = new PageInfo(maps);
         return pageInfo;
     }
+
+    //修改状态是否展示
+
+    public int updateppstatus(Integer pstatus,Integer pid){
+        return programinfoDao.updateppstatus(pstatus,pid);
+    }
+
 }

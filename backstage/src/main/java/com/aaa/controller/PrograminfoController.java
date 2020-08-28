@@ -26,5 +26,10 @@ public class PrograminfoController {
         return programinfoService.queryAll(currentPage,pageSize,pid);
     }
 
+    //修改状态是否展示
+    @RequestMapping("updateppstatus")
+    public int updateppstatus(Integer pstatus,Integer pid){
+        return programinfoService.updateppstatus(pstatus,pid);
+    }
 
 }
