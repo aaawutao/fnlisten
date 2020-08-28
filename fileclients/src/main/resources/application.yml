@@ -1,0 +1,8 @@
+prop:
+  filepath: E:/listenfile/
+
+server:
+  port: 9999  # 端口号
+  servlet:
+    context-path: '/fileclient'  #项目访问路径
+
