@@ -12,24 +12,35 @@ import javax.annotation.Resource;
 public class EmpinfoService {
     @Resource
     EmpinfoDao empinfoDao;
-    //员工显示
-    public PageInfo<Empinfo> EmpinfoAll(Integer currentPage, Integer pageSize){
-        PageHelper.startPage(currentPage,pageSize);
-        List<Empinfo> userall = empinfoDao.selectAll();
-        PageInfo<Empinfo> pageInfo = new PageInfo<>(userall);
+    public List<Empinfo> EmpinfoAll() {
+        return empinfoDao.findAll();
+    }
+
+    public PageInfo<Empinfo> findAll() {
+        PageHelper.startPage(1, 5);
+        List<Empinfo> list = empinfoDao.findAll();
+        PageInfo<Empinfo> pageInfo = new PageInfo<Empinfo>(list);
         return pageInfo;
     }
-    //员工添加
-    public int add(Empinfo empinfo){
+
+    public List<Empinfo> listAll() {
+        return empinfoDao.findAll();
+    }
+
+    public int save(Empinfo empinfo) {
         return empinfoDao.insert(empinfo);
     }
-    //员工修改
-    public  int update(Empinfo empinfo){
+
+    public int update(Empinfo empinfo) {
         return empinfoDao.updateByPrimaryKey(empinfo);
     }
+
 
     //查询没有分配账号的用户
     public List<Empinfo> queryByDid(){
         return empinfoDao.queryByDid();
     }
+
+
+
 }
