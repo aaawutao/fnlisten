@@ -14,7 +14,10 @@ spring:
     password: 123@qwe
   jackson:
       date-format: 'yyyy-MM-dd' # 格式化json
-
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 30MB
 pagehelper: #分页配置
   helper-dialect: mysql
   params:

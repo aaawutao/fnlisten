@@ -40,7 +40,7 @@ public class FileRule {
                 }
                 //设置上传文件的名称
                 String photo=new Date().getTime()+filesuf;
-                uploadstr="http://localhost:8081/backstage"+flag+"/"+username+"/photo/"+photo;
+                uploadstr="http://localhost:9999/fileclient/staticfile/"+flag+"/"+username+"/photo/"+photo;
                 File newfile = new File(staticurl+flag+"/"+username+"/photo/"+photo);
                 //文件做提交
                 file.transferTo(newfile);
@@ -56,7 +56,7 @@ public class FileRule {
                 //上传文件
                 //设置上传文件的名称
                 String audio=new Date().getTime()+filesuf;
-                uploadstr="http://localhost:8081/backstage"+flag+"/"+username+"/audio/"+audio;
+                uploadstr="http://localhost:9999/fileclient/staticfile/"+flag+"/"+username+"/audio/"+audio;
                 File newfile = new File(staticurl+flag+"/"+username+"/audio/"+audio);
                 //文件做提交
                 file.transferTo(newfile);
