@@ -10,6 +10,13 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
 
+/**
+ * 做文件上传时要运行fileclients 文件服务器
+ * http://localhost:9999/fileclient
+ * 虚拟路径 staticfile
+ * E:\listenfile
+ *
+ */
 public class FileRule {
 
     String[] photoformat={".bmp",".jpg",".png",".tif",".gif",".pcx",".tga",".exif",".fpx",".svg",".psd",".cdr",".pcd",".dxf",".ufo",".eps",".ai",".raw",".WMF",".webp"};
