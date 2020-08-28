@@ -17,7 +17,6 @@ public class ChapterinfoService {
     @Resource
     ChapterinfoDao chapterinfoDao;
 
-
     public PageInfo<Chapterinfo> findAll(Integer currentPage, Integer pageSize,Integer pid){
         PageHelper.startPage(currentPage,pageSize);
         List<Chapterinfo> userall = chapterinfoDao.queryAll(pid);
