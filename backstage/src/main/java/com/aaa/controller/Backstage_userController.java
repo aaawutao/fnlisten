@@ -6,9 +6,10 @@ import com.aaa.service.AnchorinfoService;
 import com.aaa.service.Backstage_UserService;
 import com.aaa.util.FileRule;
 import com.github.pagehelper.PageInfo;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 
 import javax.annotation.Resource;
 import java.io.IOException;
@@ -17,6 +18,9 @@ import java.util.Map;
 @CrossOrigin
 @RestController
 public class Backstage_userController {
+    //上传路径
+    @Value("${prop.filepath}")
+    String staticurl;
 
     @Resource
     Backstage_UserService backstage_userService;
@@ -27,12 +31,14 @@ public class Backstage_userController {
 
 
     @RequestMapping("upload")
-    public Integer  upload(String userid,String username,String flag,@RequestParam("photo") MultipartFile photo) throws IOException {
-        System.out.println(userid);
-        System.out.println(username);
-        System.out.println(flag);
-        String photourl=fileRule.fileupload(photo,username,flag);
-        System.out.println(photourl);
+    public Integer  upload(@RequestParam("file") MultipartFile file,@RequestParam("userid") Integer userid,@RequestParam("username") String username,@RequestParam("flag") String flag){
+        try{
+            System.out.println(staticurl);
+            String photourl=fileRule.fileupload(staticurl,file,username,flag);
+            System.out.println(photourl);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return 1;
     }
 

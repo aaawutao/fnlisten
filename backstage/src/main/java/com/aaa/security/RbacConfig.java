@@ -18,8 +18,8 @@ public class RbacConfig {
      * @return
      */
     public boolean hasPermission(HttpServletRequest request, Authentication authentication){
-        boolean hasPermission = false;
-        Object principal = authentication.getPrincipal();
+        //boolean hasPermission = false;
+        /*Object principal = authentication.getPrincipal();
         // 核心就是判断当前的用户所拥有的URL是否和当前访问的URL是否匹配。
         if(principal instanceof UserDetails){
             Backstage_User usertest =(Backstage_User) principal;
@@ -27,7 +27,7 @@ public class RbacConfig {
             String uri = request.getRequestURI();
             System.out.println(uri);
             // 从数据库中查询可以访问的路径有哪些,判断 hasPermission=true;
-        }
+        }*/
         return true;
     }
 }

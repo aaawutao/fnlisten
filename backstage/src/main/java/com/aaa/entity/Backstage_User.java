@@ -36,14 +36,6 @@ public class Backstage_User implements UserDetails {
     private Integer isenable;//是否禁用
     private Integer flag;
 
-    public Integer getFlag() {
-        return flag;
-    }
-    public void setFlag(Integer flag) {
-        this.flag = flag;
-    }
-
-    private  Integer flag;
 
     public Integer getFlag() {
         return flag;
