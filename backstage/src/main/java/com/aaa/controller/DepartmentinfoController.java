@@ -19,7 +19,7 @@ public class DepartmentinfoController {
 
     @RequestMapping("departmentinfoAll")
     public PageInfo<Departmentinfo> findAll(Integer currentPage, Integer pageSize){
-        System.out.println(currentPage+"   "+pageSize);
+
         return departmentinfoService.findAll(currentPage,pageSize);
     }
     @RequestMapping("add")
