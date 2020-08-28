@@ -16,5 +16,4 @@ public class FileServerConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/staticfile/**").addResourceLocations("file:/"+staticurl);
         WebMvcConfigurer.super.addResourceHandlers(registry);// http:/backstage/staticfile/图片
     }
-
 }
