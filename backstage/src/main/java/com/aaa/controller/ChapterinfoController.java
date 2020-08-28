@@ -20,6 +20,7 @@ public class ChapterinfoController {
 
     @RequestMapping("chapterinfoQuery")
     public PageInfo<Chapterinfo> findAll(Integer currentPage, Integer pageSize,Integer pid){
+        System.out.println();
         return chapterinfoService.findAll(currentPage,pageSize,pid);
     }
 }
