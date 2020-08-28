@@ -33,7 +33,7 @@ public class Backstage_userController {
     @RequestMapping("upload")
     public Integer  upload(@RequestParam("file") MultipartFile file,@RequestParam("userid") Integer userid,@RequestParam("username") String username,@RequestParam("flag") String flag){
         try{
-            System.out.println(staticurl);
+
             String photourl=fileRule.fileupload(staticurl,file,username,flag);
             System.out.println(photourl);
         }catch (Exception e){
