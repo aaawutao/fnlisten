@@ -24,8 +24,6 @@ public class EmpinfoController {
         @RequestMapping("findAll")
         public String findAll (Model model){
             PageInfo<Empinfo> list = empinfoService.findAll();
-            System.out.println(list.getList());
-            System.out.println(list.getList().get(0));
             model.addAttribute("list", list.getList());
             return "empinfo";
         }
