@@ -3,6 +3,7 @@ package com.aaa.entity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Collection;
@@ -14,9 +15,9 @@ public class Backstage_User implements UserDetails {
 
     @Id
     private Integer backstage_userid; //账号编号
-
+    @Column(name = "backstage_uname")
     private String backstage_uname;//账号用户名
-
+    @Column(name = "backstage_upwd")
     private String  backstage_upwd;//账号密码
 
     private Integer empid;//员工编号
@@ -152,12 +153,12 @@ public class Backstage_User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.backstage_uname;
+        return this.backstage_upwd;
     }
 
     @Override
     public String getUsername() {
-        return this.backstage_upwd;
+        return this.backstage_uname;
     }
 
     /**
