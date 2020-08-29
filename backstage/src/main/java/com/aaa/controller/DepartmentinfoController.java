@@ -17,6 +17,12 @@ public class DepartmentinfoController {
     @Resource
     DepartmentinfoService departmentinfoService;
 
+    @RequestMapping("depfindAll")
+    public List<Departmentinfo> depfindAll(){
+
+        return departmentinfoService.depfindAll();
+    }
+
     @RequestMapping("departmentinfoAll")
     public PageInfo<Departmentinfo> findAll(Integer currentPage, Integer pageSize){
 

@@ -15,10 +15,14 @@ public class DepartmentinfoService {
     DepartmentinfoDao departmentinfoDao;
     //分页查询数据
     public PageInfo<Departmentinfo> findAll(Integer currentPage, Integer pageSize){
-        PageHelper.startPage(currentPage,pageSize);
-        List<Departmentinfo> type = departmentinfoDao.selectAll();
-        PageInfo<Departmentinfo> pageInfo = new PageInfo<>(type);
-        return pageInfo;
+            PageHelper.startPage(currentPage,pageSize);
+            List<Departmentinfo> type = departmentinfoDao.selectAll();
+            PageInfo<Departmentinfo> pageInfo = new PageInfo<>(type);
+            return pageInfo;
+    }
+
+    public List<Departmentinfo> depfindAll(){
+        return  departmentinfoDao.selectAll();
     }
 
     //添加类型
