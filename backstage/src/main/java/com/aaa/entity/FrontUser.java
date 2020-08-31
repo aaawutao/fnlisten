@@ -1,7 +1,7 @@
 package com.aaa.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import oracle.jdbc.driver.DatabaseError;
+//import oracle.jdbc.driver.DatabaseError;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Id;

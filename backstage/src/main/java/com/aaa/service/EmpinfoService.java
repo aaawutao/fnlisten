@@ -28,7 +28,7 @@ public class EmpinfoService {
     }
 
     public int save(Empinfo empinfo) {
-        return empinfoDao.insert(empinfo);
+        return empinfoDao.insertSelective(empinfo);
     }
 
     public int update(Empinfo empinfo) {
