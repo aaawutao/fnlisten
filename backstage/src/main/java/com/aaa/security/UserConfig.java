@@ -36,6 +36,7 @@ public class UserConfig implements UserDetailsService {
         }else{
             //设置登录用户所管理的路径,如果用户所拥有的全部后台路径
             if(user.getEmpid()==0){
+
                 user.setUrls(menuInfoService.all());
             }else{
                 user.setUrls(menuInfoService.usermune(user.getBackstage_userid()));

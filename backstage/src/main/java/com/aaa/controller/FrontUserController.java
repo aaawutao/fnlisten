@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -20,4 +21,6 @@ public class FrontUserController {
     public PageInfo<FrontUser> frontUserfindAll(Integer currentPage, Integer pageSize){
         return frontUserService.findAll(currentPage, pageSize);
     }
+
+
 }

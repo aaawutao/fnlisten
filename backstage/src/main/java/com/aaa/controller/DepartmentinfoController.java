@@ -19,7 +19,6 @@ public class DepartmentinfoController {
 
     @RequestMapping("depfindAll")
     public List<Departmentinfo> depfindAll(){
-
         return departmentinfoService.depfindAll();
     }
 
