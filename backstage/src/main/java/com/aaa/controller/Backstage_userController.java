@@ -47,6 +47,7 @@ public class Backstage_userController {
     public  PageInfo<Backstage_User> findAll(Integer currentPage,Integer pageSize){
         return backstage_userService.findAll(currentPage,pageSize);
     }
+
     @RequestMapping("updateFlag")
     public int updateFlag(Integer isenable,Integer backstage_userid){
         return backstage_userService.updateFlag(isenable,backstage_userid);

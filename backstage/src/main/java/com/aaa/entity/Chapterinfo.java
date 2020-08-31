@@ -10,7 +10,7 @@ public class Chapterinfo {
 
     private String title;
     private String artist;
-    private String src;
+    private String mp3;
     private Integer state;
     private  String virtualcurrency;
     private Date createdate;
@@ -33,13 +33,12 @@ public class Chapterinfo {
     }
 
 
-
-    public String getSrc() {
-        return src;
+    public String getMp3() {
+        return mp3;
     }
 
-    public void setSrc(String src) {
-        this.src = src;
+    public void setMp3(String mp3) {
+        this.mp3 = mp3;
     }
 
     public Integer getState() {
@@ -88,7 +87,7 @@ public class Chapterinfo {
                 "ctid=" + ctid +
                 ", title='" + title + '\'' +
                 ", artist='" + artist + '\'' +
-                ", src='" + src + '\'' +
+                ", mp3='" + mp3 + '\'' +
                 ", state=" + state +
                 ", virtualcurrency='" + virtualcurrency + '\'' +
                 ", createdate=" + createdate +

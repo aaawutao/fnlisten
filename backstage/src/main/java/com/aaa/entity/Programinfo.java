@@ -8,7 +8,7 @@ public class Programinfo {
     @Id
     private Integer pid;
     private String pname;
-    private String pic;
+    private String poster;
     private String pintroduction;
     private Integer ptid;
     private String psource;
@@ -36,12 +36,12 @@ public class Programinfo {
         this.pname = pname;
     }
 
-    public String getPic() {
-        return pic;
+    public String getPoster() {
+        return poster;
     }
 
-    public void setPic(String pic) {
-        this.pic = pic;
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
 
     public String getPintroduction() {
@@ -129,7 +129,7 @@ public class Programinfo {
         return "Programinfo{" +
                 "pid=" + pid +
                 ", pname='" + pname + '\'' +
-                ", pic='" + pic + '\'' +
+                ", poster='" + poster + '\'' +
                 ", pintroduction='" + pintroduction + '\'' +
                 ", ptid=" + ptid +
                 ", psource='" + psource + '\'' +

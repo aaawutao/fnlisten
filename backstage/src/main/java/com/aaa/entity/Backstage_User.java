@@ -152,12 +152,12 @@ public class Backstage_User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.backstage_uname;
+        return this.backstage_upwd;
     }
 
     @Override
     public String getUsername() {
-        return this.backstage_upwd;
+        return backstage_uname;
     }
 
     /**
