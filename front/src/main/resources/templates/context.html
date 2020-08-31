@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<
 <div class="wrapper h-wrapper">
     <div class="h-column-l">
         <!--导航菜单-->
@@ -79,11 +80,11 @@
                 <ul class="clearfix">
                     <li class="book-item">
                         <div class="book-item-photo pr">
-                            <a href="/book/68292855"><img alt="故事会精选（中国老牌刊物）-卡尔博学-播音王悦" src="https://bookpic.lrts.me/40aeda2a873c4b5288660b832b35de53.jpeg"><span
+                            <a href="javascript:void(0)"  th:onclick="plays(1)" ><img alt="故事会精选（中国老牌刊物）-卡尔博学-播音王悦" src="https://bookpic.lrts.me/40aeda2a873c4b5288660b832b35de53.jpeg"><span
                                     class="play-w"><i class="icon-play"></i></span></a>
                         </div>
                         <div class="book-item-r">
-                            <a href="/book/68292855" class="book-item-name">故事会精选（中国老牌刊物）</a>
+                            <a href="/book/68292855" class="book-item-name">test（中国老牌刊物）</a>
                             <div class="book-item-star">
 
                                 <i class="icon-star-s"></i>
@@ -183,8 +184,8 @@
                     <li>
                         <div class="fl"><i class="icon-n-01"></i></div>
                         <div class="ranking-ol-r">
-                            <a href="/book/71931128" class="icon-recent-play fr"></a>
-                            <a class="f14" href="/book/71931128">上门龙婿|至尊龙婿叶辰（会员免费）</a>
+                            <a href="" class="icon-recent-play fr"></a>
+                            <a class="f14" href="/book/71931128">test（会员免费）</a>
                             <div><a class="author">叶公子</a><span class="weaken">著</span><a class="g-user" href="/user/150065893">任京浩</a>
                                 <span class="weaken">播</span></div>
                         </div>
@@ -419,6 +420,24 @@
         </div>
     </div>
     <div class="clear"></div>
+
+</div>
+<div>
+    <a class="jp-play"><i class="icon-control-play i-2x"></i></a>
+    <a class="jp-pause hid"><i class="icon-control-pause i-2x"></i></a>
 </div>
 </body>
+
+<script>
+    function plays(id) {
+        //window.parent.frames["otherFrame"].document.location.reload();
+        //window.top.play.getdata(id);
+        //parent.play.getdata(id);
+        //window.play.getdata(id);
+        window.getdata(id);
+        console.info(window);
+        //等级
+        //window.top.play.getdata(id);
+    }
+</script>
 </html>

@@ -1,7 +1,5 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<html
-	  xmlns:th="http://www.thymeleaf.org">
-<html lang="zh-CN">
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>听书网</title>
 		<meta charset="utf-8">
@@ -29,6 +27,7 @@
 		<script type="text/javascript" th:src="@{/listen/js/freshline/animadrag.js}"></script>
 	</head>
 	<body>
+	<section>
 	<header>
 		<!--登录区-->
 		<div class="g-top">
@@ -184,15 +183,18 @@
 
 	<!--播放器-->
 	<footer class="footer bg-success dker" style="position: fixed;bottom:0">
-	<iframe th:replace="play.html" frameborder="0"></iframe>
+		<iframe th:replace="play.html" frameborder="0" name="play" id="play"></iframe>
 	</footer>
+	</section>
 	</body>
 	<!--播放控件-->
+<!--	<script th:src="@{/listen/js/example.js}"></script>-->
 	<script th:src="@{/listen/js/bootstrap.js}"></script>
 	<script th:src="@{/listen/js/app.js}"></script>
 	<script th:src="@{/listen/js/app.plugin.js}"></script>
 	<script type="text/javascript" th:src="@{/listen/js/jPlayer/jquery.jplayer.min.js}"></script>
 	<script type="text/javascript" th:src="@{/listen/js/jPlayer/add-on/jplayer.playlist.min.js}"></script>
+
 	<!--<script src="/static/js/jquery.min.js?v=36"></script>
 	<script src="/static/js/jquery.flexslider-min.js?v=36"></script>
 	<script src="/static/js/jquery.dialog.js?v=36"></script>

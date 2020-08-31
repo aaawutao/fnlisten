@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainControl {
 
 
-    @RequestMapping("/")
+    @RequestMapping("/main")
     public String show(){
         return "main.html";
     }
+
+    @RequestMapping("/test")
+    public String show2(){ return "listen.html";}
 }

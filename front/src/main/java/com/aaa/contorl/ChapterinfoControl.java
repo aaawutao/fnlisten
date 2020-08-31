@@ -5,8 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("chapter")
@@ -15,9 +18,9 @@ public class ChapterinfoControl {
     ChapterinfoService chapterinfoService;
 
     @RequestMapping("querypid")
-    public String queryid(ModelMap map,@RequestParam("pid") Integer pid){
-        map.addAttribute("chapters",chapterinfoService.queryChapter(pid));
-        return "play.html";
+    @ResponseBody
+    public List<Map<String,Object>> queryid(ModelMap map, @RequestParam("pid") Integer pid){
+        return chapterinfoService.queryChapter(pid);
     }
 
 
