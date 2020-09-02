@@ -22,6 +22,11 @@ public class ChapterinfoControl {
     public List<Map<String,Object>> queryid(ModelMap map, @RequestParam("pid") Integer pid){
         return chapterinfoService.queryChapter(pid);
     }
+    @RequestMapping("xiangqi")
+    public String queryid(@RequestParam("pid") Integer pid){
+        System.out.println("携带参数"+pid);
+        return "xianqing.html";
+    }
 
 
 }

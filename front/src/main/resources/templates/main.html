@@ -6,10 +6,10 @@
 		<link rel="stylesheet" th:href="@{'css/base.css?v=36'}" media="all">
 		<link rel="stylesheet" th:href="@{'css/layout.css?v=36'}" media="all">
 		<link rel="stylesheet" th:href="@{'css/style.css?v=36'}" media="all">
-
+		<!--<link rel="stylesheet" th:href="@{'css/styles.css?v=36'}" media="all">-->
 		<!--<link rel="stylesheet" href="/css/base.css?v=36" />
-		<link rel="stylesheet" href="/css/layout.css?v=36" />
-		<link rel="stylesheet" href="/css/style.css?v=36" />-->
+        <link rel="stylesheet" href="/css/layout.css?v=36" />
+        <link rel="stylesheet" href="/css/style.css?v=36" />-->
 		<link rel="shortcut icon" th:href="@{/listen/images/logo/favicon.ico}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/listen/css/bootstrap.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/listen/css/animate.css}" />
@@ -27,7 +27,6 @@
 		<script type="text/javascript" th:src="@{/listen/js/freshline/animadrag.js}"></script>
 	</head>
 	<body>
-	<section>
 	<header>
 		<!--登录区-->
 		<div class="g-top">
@@ -179,22 +178,21 @@
 		</script>
 	</header>
 
-	<iframe th:replace="context.html" width="100%" height="100%" frameborder="0" name="iframe_a"></iframe>
+	<iframe th:fragment="context" name="iframe_a" id="iframe_a"  width="100%" height="100%" frameborder="0" ></iframe>
 
 	<!--播放器-->
 	<footer class="footer bg-success dker" style="position: fixed;bottom:0">
 		<iframe th:replace="play.html" frameborder="0" name="play" id="play"></iframe>
 	</footer>
-	</section>
 	</body>
 	<!--播放控件-->
-<!--	<script th:src="@{/listen/js/example.js}"></script>-->
+<!--	<script th:src="@{/listen/js/example.js}"></script>-->;
 	<script th:src="@{/listen/js/bootstrap.js}"></script>
 	<script th:src="@{/listen/js/app.js}"></script>
 	<script th:src="@{/listen/js/app.plugin.js}"></script>
 	<script type="text/javascript" th:src="@{/listen/js/jPlayer/jquery.jplayer.min.js}"></script>
 	<script type="text/javascript" th:src="@{/listen/js/jPlayer/add-on/jplayer.playlist.min.js}"></script>
-
+	<!--<script type="text/javascript" th:src="@{listen/js/jPlayer/demo.js}"></script>-->
 	<!--<script src="/static/js/jquery.min.js?v=36"></script>
 	<script src="/static/js/jquery.flexslider-min.js?v=36"></script>
 	<script src="/static/js/jquery.dialog.js?v=36"></script>

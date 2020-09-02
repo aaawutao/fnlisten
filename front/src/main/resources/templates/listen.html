@@ -1,320 +1,321 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"  class="app">
+<!DOCTYPE html>
+<html lang="en" class="app" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
   <title>Musik | Web Application</title>
- 
-  <link rel="shortcut icon" th:href="@{/listen/images/logo/favicon.ico}" />
-  <link rel="stylesheet" type="text/css" th:href="@{/listen/css/bootstrap.css}" />
-  <link rel="stylesheet" type="text/css" th:href="@{/listen/css/animate.css}" />
-  <link rel="stylesheet" type="text/css" th:href="@{/listen/css/app.css}" />
-  <link rel="stylesheet" type="text/css" th:href="@{/listen/css/font-awesome.min.css}" />
-  <link rel="stylesheet" type="text/css" th:href="@{/listen/css/simple-line-icons.css}" />
-  <link rel="stylesheet" type="text/css" th:href="@{/listen/js/jPlayer/jplayer.flat.css}" />
-  <link rel="stylesheet" type="text/css" th:href="@{/listen/css/beforeafter-content.css}" media="screen" />
-  <link rel="stylesheet" type="text/css" th:href="@{/listen/css/style.css}" media="screen" />
-  <link rel="stylesheet" type="text/css" th:href="@{/listen/css/beforeafter-settings.css}" media="screen" />
+  <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <script type="text/javascript" th:src="@{/listen/js/jquery.js}"></script>
-  <script type="text/javascript" th:src="@{/listen/js/freshline/jquery.freshline.beforeafter.js}"></script>
-  <script type="text/javascript" th:src="@{/listen/js/freshline/animadrag.js}"></script>
+  <link rel="shortcut icon" th:href="@{listen/images/logo/favicon.ico}" />
+  <link rel="stylesheet" type="text/css" th:href="@{listen/css/bootstrap.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{listen/css/animate.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{listen/css/app.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{listen/css/font-awesome.min.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{listen/css/simple-line-icons.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{listen/js/jPlayer/jplayer.flat.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{listen/css/beforeafter-content.css}" media="screen" />
+  <link rel="stylesheet" type="text/css" th:href="@{listen/css/style.css}" media="screen" />
+  <link rel="stylesheet" type="text/css" th:href="@{listen/css/beforeafter-settings.css}" media="screen" />
 
+  <script type="text/javascript" th:src="@{listen/js/jquery.js}"></script>
+  <script type="text/javascript" th:src="@{listen/js/freshline/jquery.freshline.beforeafter.js}"></script>
+  <script type="text/javascript" th:src="@{listen/js/freshline/animadrag.js}"></script>
+  <!--[if lt IE 9]>
+  <![endif]-->
 </head>
 
 <body>
-  <section class="vbox">
-    <section>
-      <section class="hbox stretch">
-        <section id="content">
-          <section class="vbox">
-            <section class="w-f-md">
-              <section class="hbox stretch bg-black dker">
-                <!-- side content -->
-                <aside class="col-sm-5 no-padder" id="sidebar">
-                  <section class="vbox animated fadeInUp">
-                    <section class="scrollable">
-					  <!--展示列表-->
-                      <ul class=" list-group list-group-lg radius no-border no-bg m-t-n-xxs m-b-none auto" id="latest">
-                        <li class="list-group-item">
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
-							<i class="icon-control-play text"></i>
-							<i class="icon-control-pause text-active"></i>
-						  </a>
-                          <div id="hoveraudio" class=" clear text-ellipsis">
-                            <span>The wheel of fortune</span>
-                            <span class="text-muted"> -- 03:30</span>
-                          </div>
-                          <div class="music-jump"></div>
-                        </li>
-                        <li class="list-group-item">
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
+<section class="vbox">
+  <section>
+    <section class="hbox stretch">
+      <section id="content">
+        <section class="vbox">
+          <section class="w-f-md">
+            <section class="hbox stretch bg-black dker">
+              <!-- side content -->
+              <aside class="col-sm-5 no-padder" id="sidebar">
+                <section class="vbox animated fadeInUp">
+                  <section class="scrollable">
+                    <!--展示列表-->
+                    <ul class=" list-group list-group-lg radius no-border no-bg m-t-n-xxs m-b-none auto" id="latest">
+                      <li class="list-group-item">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
                           <i class="icon-control-play text"></i>
                           <i class="icon-control-pause text-active"></i>
                         </a>
-                          <div class="clear text-ellipsis">
-                            <span>you are my king</span>
-                            <span class="text-muted"> -- 02:37</span>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
+                        <div id="hoveraudio" class=" clear text-ellipsis">
+                          <span>The wheel of fortune</span>
+                          <span class="text-muted"> -- 03:30</span>
+                        </div>
+                        <div class="music-jump"></div>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
                           <i class="icon-control-play text"></i>
                           <i class="icon-control-pause text-active"></i>
                         </a>
-                          <div class="clear text-ellipsis">
-                            <span>初恋的小美好</span>
-                            <span class="text-muted"> -- 03:59</span>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
+                        <div class="clear text-ellipsis">
+                          <span>you are my king</span>
+                          <span class="text-muted"> -- 02:37</span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
                           <i class="icon-control-play text"></i>
                           <i class="icon-control-pause text-active"></i>
                         </a>
-                          <div class="clear text-ellipsis">
-                            <span>Lilac</span>
-                            <span class="text-muted"> -- 04:38</span>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
+                        <div class="clear text-ellipsis">
+                          <span>初恋的小美好</span>
+                          <span class="text-muted"> -- 03:59</span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
                           <i class="icon-control-play text"></i>
                           <i class="icon-control-pause text-active"></i>
                         </a>
-                          <div class="clear text-ellipsis">
-                            <span> 一人静</span>
-                            <span class="text-muted"> -- 04:38</span>
-                          </div>
-                        </li>
+                        <div class="clear text-ellipsis">
+                          <span>Lilac</span>
+                          <span class="text-muted"> -- 04:38</span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
+                          <i class="icon-control-play text"></i>
+                          <i class="icon-control-pause text-active"></i>
+                        </a>
+                        <div class="clear text-ellipsis">
+                          <span> 一人静</span>
+                          <span class="text-muted"> -- 04:38</span>
+                        </div>
+                      </li>
 
-                        <li class="list-group-item">
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
+                      <li class="list-group-item">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
                           <i class="icon-control-play text"></i>
                           <i class="icon-control-pause text-active"></i>
                         </a>
-                          <div class="clear text-ellipsis">
-                            <span>Through My Blood</span>
-                            <span class="text-muted"> -- 04:04</span>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
+                        <div class="clear text-ellipsis">
+                          <span>Through My Blood</span>
+                          <span class="text-muted"> -- 04:04</span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
                           <i class="icon-control-play text"></i>
                           <i class="icon-control-pause text-active"></i>
                         </a>
-                          <div class="clear text-ellipsis">
-                            <span>Too Late To Say</span>
-                            <span class="text-muted"> -- 05:15</span>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
+                        <div class="clear text-ellipsis">
+                          <span>Too Late To Say</span>
+                          <span class="text-muted"> -- 05:15</span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
                           <i class="icon-control-play text"></i>
                           <i class="icon-control-pause text-active"></i>
                         </a>
-                          <div class="clear text-ellipsis">
-                            <span>琥珀色の海へ</span>
-                            <span class="text-muted"> -- 03:21</span>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
+                        <div class="clear text-ellipsis">
+                          <span>琥珀色の海へ</span>
+                          <span class="text-muted"> -- 03:21</span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
                           <i class="icon-control-play text"></i>
                           <i class="icon-control-pause text-active"></i>
                         </a>
-                          <div class="clear text-ellipsis">
-                            <span>からくりピエロ (instrumental)</span>
-                            <span class="text-muted"> -- 04:52</span>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
+                        <div class="clear text-ellipsis">
+                          <span>からくりピエロ (instrumental)</span>
+                          <span class="text-muted"> -- 04:52</span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
                           <i class="icon-control-play text"></i>
                           <i class="icon-control-pause text-active"></i>
                         </a>
-                          <div class="clear text-ellipsis">
-                            <span>M04</span>
-                            <span class="text-muted"> -- 02:21</span>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
+                        <div class="clear text-ellipsis">
+                          <span>M04</span>
+                          <span class="text-muted"> -- 02:21</span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
                           <i class="icon-control-play text"></i>
                           <i class="icon-control-pause text-active"></i>
                         </a>
-                          <div class="clear text-ellipsis">
-                            <span>M35</span>
-                            <span class="text-muted"> -- 01:35</span>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
+                        <div class="clear text-ellipsis">
+                          <span>M35</span>
+                          <span class="text-muted"> -- 01:35</span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
                           <i class="icon-control-play text"></i>
                           <i class="icon-control-pause text-active"></i>
                         </a>
-                          <div class="clear text-ellipsis">
-                            <span>哈尔的移动城堡</span>
-                            <span class="text-muted"> -- 02:22</span>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
+                        <div class="clear text-ellipsis">
+                          <span>哈尔的移动城堡</span>
+                          <span class="text-muted"> -- 02:22</span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
                           <i class="icon-control-play text"></i>
                           <i class="icon-control-pause text-active"></i>
                         </a>
-                          <div class="clear text-ellipsis">
-                            <span>流れ星</span>
-                            <span class="text-muted"> -- 01:37</span>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
+                        <div class="clear text-ellipsis">
+                          <span>流れ星</span>
+                          <span class="text-muted"> -- 01:37</span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
                           <i class="icon-control-play text"></i>
                           <i class="icon-control-pause text-active"></i>
                         </a>
-                          <div class="clear text-ellipsis">
-                            <span>Memories</span>
-                            <span class="text-muted"> -- 05:15</span>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
+                        <div class="clear text-ellipsis">
+                          <span>Memories</span>
+                          <span class="text-muted"> -- 05:15</span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
                           <i class="icon-control-play text"></i>
                           <i class="icon-control-pause text-active"></i>
                         </a>
-                          <div class="clear text-ellipsis">
-                            <span>それがあなたの幸せとしても</span>
-                            <span class="text-muted"> -- 04:29</span>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
+                        <div class="clear text-ellipsis">
+                          <span>それがあなたの幸せとしても</span>
+                          <span class="text-muted"> -- 04:29</span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
                           <i class="icon-control-play text"></i>
                           <i class="icon-control-pause text-active"></i>
                         </a>
-                          <div class="clear text-ellipsis">
-                            <span>Angel</span>
-                            <span class="text-muted"> -- 04:35</span>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
+                        <div class="clear text-ellipsis">
+                          <span>Angel</span>
+                          <span class="text-muted"> -- 04:35</span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
 
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
                           <i class="icon-control-play text"></i>
                           <i class="icon-control-pause text-active"></i>
                         </a>
-                          <div class="clear text-ellipsis">
-                            <span>兰若词</span>
-                            <span class="text-muted"> -- 04:35</span>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
-                          <a href="#" class="jp-play-me m-r-sm pull-left">
+                        <div class="clear text-ellipsis">
+                          <span>兰若词</span>
+                          <span class="text-muted"> -- 04:35</span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#" class="jp-play-me m-r-sm pull-left">
                           <i class="icon-control-play text"></i>
                           <i class="icon-control-pause text-active"></i>
                         </a>
-                          <div class="clear text-ellipsis">
-                            <span>Pieces Of My Words-言の花-</span>
-                            <span class="text-muted"> -- 03:54</span>
-                          </div>
-                        </li>
-                      </ul>
-                    </section>
+                        <div class="clear text-ellipsis">
+                          <span>Pieces Of My Words-言の花-</span>
+                          <span class="text-muted"> -- 03:54</span>
+                        </div>
+                      </li>
+                    </ul>
                   </section>
-                </aside>
-              </section>
+                </section>
+              </aside>
             </section>
-			
-            <footer class="footer bg-success dker">
+          </section>
 
-              <div id="jp_container_N">
-                <div class="jp-type-playlist">
-                  <div id="jplayer_N" class="jp-jplayer hide"></div>
-                  <div class="jp-gui">
-                    <div class="jp-video-play hide">
-                      <a class="jp-video-play-icon">play</a>
-                    </div>
-					
-                    <div class="jp-interface">
-                      <div class="jp-controls">
-                        <div><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a></div>
-                        <div>
-                          <a class="jp-play"><i class="icon-control-play i-2x"></i></a>
-                          <a class="jp-pause hid"><i class="icon-control-pause i-2x"></i></a>
-                        </div>
-                        <div><a class="jp-next"><i class="icon-control-forward i-lg"></i></a></div>
-                        <div class="hide"><a class="jp-stop"><i class="fa fa-stop"></i></a></div>
-                       
-                        <div><img id="poster-ty" class="poster-img" src="images/a10.png"></div>
-                        <div class="jp-progress hidden-xs">
-                          <div class="jp-seek-bar dk">
-                            <div class="jp-play-bar bg">
+          <footer class="footer bg-success dker">
+            <div id="jp_container_N">
+              <div class="jp-type-playlist">
+                <div id="jplayer_N" class="jp-jplayer hide"></div>
+                <div class="jp-gui">
+                  <div class="jp-video-play hide">
+                    <a class="jp-video-play-icon">play</a>
+                  </div>
 
-                            </div>
-                            <div class="jp-title text-lt">
-                              <ul>
-                                <li></li>
-                              </ul>
-                            </div>
+                  <div class="jp-interface">
+                    <div class="jp-controls">
+                      <div><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a></div>
+                      <div>
+                        <a class="jp-play"><i class="icon-control-play i-2x"></i></a>
+                        <a class="jp-pause hid"><i class="icon-control-pause i-2x"></i></a>
+                      </div>
+                      <div><a class="jp-next"><i class="icon-control-forward i-lg"></i></a></div>
+                      <div class="hide"><a class="jp-stop"><i class="fa fa-stop"></i></a></div>
+
+                      <div><img id="poster-ty" class="poster-img" src="images/a10.png"></div>
+                      <div class="jp-progress hidden-xs">
+                        <div class="jp-seek-bar dk">
+                          <div class="jp-play-bar bg">
+
+                          </div>
+                          <div class="jp-title text-lt">
+                            <ul>
+                              <li></li>
+                            </ul>
                           </div>
                         </div>
-                        <div class="hidden-xs hidden-sm jp-current-time text-xs text-muted"></div>
-                        <div class="hidden-xs hidden-sm jp-duration text-xs text-muted"></div>
-                        <div class="hidden-xs hidden-sm">
-                          <a class="jp-mute" title="mute"><i class="icon-volume-2"></i></a>
-                          <a class="jp-unmute hid" title="unmute"><i class="icon-volume-off"></i></a>
+                      </div>
+                      <div class="hidden-xs hidden-sm jp-current-time text-xs text-muted"></div>
+                      <div class="hidden-xs hidden-sm jp-duration text-xs text-muted"></div>
+                      <div class="hidden-xs hidden-sm">
+                        <a class="jp-mute" title="mute"><i class="icon-volume-2"></i></a>
+                        <a class="jp-unmute hid" title="unmute"><i class="icon-volume-off"></i></a>
+                      </div>
+                      <div class="hidden-xs hidden-sm jp-volume">
+                        <div class="jp-volume-bar dk volume-bor">
+                          <div class="jp-volume-bar-value lter "></div>
                         </div>
-                        <div class="hidden-xs hidden-sm jp-volume">
-                          <div class="jp-volume-bar dk volume-bor">
-                            <div class="jp-volume-bar-value lter "></div>
-                          </div>
-                        </div>
-                        <div>
-                          <a class="jp-shuffle" title="shuffle"><i class="icon-shuffle text-muted"></i></a>
-                          <a class="jp-shuffle-off hid" title="shuffle off"><i class="icon-shuffle text-lt"></i></a>
-                        </div>
-                        <div>
-                          <a class="jp-repeat" title="repeat"><i class="icon-loop text-muted"></i></a>
-                          <a class="jp-repeat-off hid" title="repeat off"><i class="icon-loop text-lt"></i></a>
-                        </div>
-                        <div class="hide">
-                          <a class="jp-full-screen" title="full screen"><i class="fa fa-expand"></i></a>
-                          <a class="jp-restore-screen" title="restore screen"><i class="fa fa-compress text-lt"></i></a>
-                        </div>
-						<div>
-							<!--播放列表按钮-->
-						  <a class="" data-toggle="dropdown" data-target="#playlist">
-						    <i class="icon-playlist"></i></a>
-						</div>
+                      </div>
+                      <div>
+                        <a class="jp-shuffle" title="shuffle"><i class="icon-shuffle text-muted"></i></a>
+                        <a class="jp-shuffle-off hid" title="shuffle off"><i class="icon-shuffle text-lt"></i></a>
+                      </div>
+                      <div>
+                        <a class="jp-repeat" title="repeat"><i class="icon-loop text-muted"></i></a>
+                        <a class="jp-repeat-off hid" title="repeat off"><i class="icon-loop text-lt"></i></a>
+                      </div>
+                      <div class="hide">
+                        <a class="jp-full-screen" title="full screen"><i class="fa fa-expand"></i></a>
+                        <a class="jp-restore-screen" title="restore screen"><i class="fa fa-compress text-lt"></i></a>
+                      </div>
+                      <div>
+                        <!--播放列表按钮-->
+                        <a class="" data-toggle="dropdown" data-target="#playlist">
+                          <i class="icon-playlist"></i></a>
                       </div>
                     </div>
                   </div>
-				  <!--播放列表-->
-                  <div class="jp-playlist dropup" id="playlist">
-                    <ul class="dropdown-menu aside-xl dker">
-                      <!-- The method Playlist.displayPlaylist() uses this unordered list -->
-                      <li class="list-group-item"></li>
-                    </ul>
-                  </div>
-                 
                 </div>
-              </div>
-            </footer>
+                <!--播放列表-->
+                <div class="jp-playlist dropup" id="playlist">
+                  <ul class="dropdown-menu aside-xl dker">
+                    <!-- The method Playlist.displayPlaylist() uses this unordered list -->
+                    <li class="list-group-item"></li>
+                  </ul>
+                </div>
 
-          </section>
-          <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+              </div>
+            </div>
+          </footer>
+
         </section>
+        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
       </section>
     </section>
   </section>
+</section>
 
-  <script th:src="@{/listen/js/bootstrap.js}"></script>
-  <script type="text/javascript" th:src="@{/listen/js/example.js}"></script>
-  <script th:src="@{/listen/js/app.js}"></script>
-  <script th:src="@{/listen/js/app.plugin.js}"></script>
-  <script type="text/javascript" th:src="@{/listen/js/jPlayer/jquery.jplayer.min.js}"></script>
-  <script type="text/javascript" th:src="@{/listen/js/jPlayer/add-on/jplayer.playlist.min.js}"></script>
-  <script type="text/javascript" th:src="@{/listen/js/jPlayer/demo.js}"></script>
+<script th:src="@{listen/js/bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{listen/js/example.js}"></script>
+<script th:src="@{listen/js/app.js}"></script>
+<script th:src="@{listen/js/app.plugin.js}"></script>
+<script type="text/javascript" th:src="@{listen/js/jPlayer/jquery.jplayer.min.js}"></script>
+<script type="text/javascript" th:src="@{listen/js/jPlayer/add-on/jplayer.playlist.min.js}"></script>
+<script type="text/javascript" th:src="@{listen/js/jPlayer/demo.js}"></script>
 </body>
 </html>

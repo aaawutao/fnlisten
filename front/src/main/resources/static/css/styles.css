@@ -1,0 +1,472 @@
+/*
+.class2{
+  @extend .class1;
+  @include radius;
+  @include shadow(unquote("1px 1px 1px rgba(0,0,0,0.1),1px 1px 1px rgba(0,0,0,0.1)"));
+  @include tranistion;
+  @include linear(unquote("#eee 0%,#ddd 100%"));
+  @include flexbox;
+  @include flex(1);
+  color : $blue;
+  @include opacity(0.2);
+  @include box;
+}
+.btn5{
+  @include shadow(unquote("1px 1px 1px rgba(0,0,0,0.1),1px 1px 1px rgba(0,0,0,0.1)"));
+  @include linear(unquote("#eee 0%,#ddd 100%"));
+  border:1px solid #ccc;
+}*/
+.column-l {
+    border-right: 0px;
+    background: #fff;
+    width: 880px;
+    min-height: 1365px; }
+
+.column-l section {
+    margin-left: 20px;
+    margin-right: 20px; }
+
+.column-r {
+    width: 302px; }
+
+.column-r .container {
+    margin-bottom: 20px; }
+
+.d-info {
+    margin-top: 49px;
+    padding-top: 1px; }
+
+.d-cover {
+    float: left; }
+
+.d-cover img {
+    width: 180px;
+    height: 180px; }
+
+.d-r {
+    margin-left: 208px;
+    height: 185px; }
+
+.d-r h1 {
+    font-size: 22px;
+    font-weight: normal;
+    padding: 3px 0px;
+    margin-top: -8px;
+    width: 580px; }
+
+.report {
+    float: right;
+    margin-top: 3px;
+    color: #878787; }
+
+.d-star {
+    padding: 6px 0px; }
+
+.d-grid {
+    height: 21px;
+    margin: 4px 0; }
+
+.d-grid li {
+    padding-right: 20px;
+    display: inline; }
+
+.d-status {
+    background: url("../../images/main.png") no-repeat -191px -1019px;
+    display: inline-block;
+    height: 30px;
+    vertical-align: middle;
+    width: 30px;
+    font-size: 12px;
+    color: #fff;
+    line-height: 28px;
+    text-align: center;
+    margin-left: 5px; }
+
+.d-status02 {
+    background-position: -240px -1019px; }
+
+a.d-p {
+    float: left;
+    height: 64px;
+    width: 170px;
+    background: url("../../images/main.png") no-repeat -7px -995px;
+    color: white !important;
+    position: relative; }
+
+a.d-p:hover {
+    background-position: -9px -1067px; }
+
+a.d-p:active {
+    background-position: -8px -1139px; }
+
+a.d-p__audio {
+    float: left;
+    height: 61px;
+    width: 126px;
+    background: url("../../images/audio-page/play_button_default.png");
+    color: white !important;
+    position: relative;
+}
+
+a.d-p__audio:hover {
+    background: url("../../images/audio-page/play_button_hover.png");
+}
+
+a.d-p__audio:active {
+    background: url("../../images/audio-page/play_button_active.png");
+}
+
+a.d-p__audio span {
+    width: 60px;
+}
+
+.d-play {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 60px;
+    height: 65px; }
+
+.d-p span {
+    float: left;
+    margin-left: 58px;
+    margin-top: 22px;
+    text-align: center;
+    width: 94px; }
+
+.d-p em {
+    font-size: 18px;
+    position: relative;
+    top: 2px; }
+
+.d-o .fr {
+    margin-top: 44px; }
+
+.d-o a {
+    margin-right: 16px; }
+
+.d-o i {
+    margin-right: 3px; }
+
+.d-o {
+    margin-top: 10px; }
+
+.d-tab {
+    background: #ECEEF1;
+    height: 40px;
+    margin-top: 30px; }
+
+.d-tab span {
+    background: #fff;
+    border-top: 3px solid #fc6520;
+    float: left;
+    font-size: 16px;
+    line-height: 37px;
+    text-align: center;
+    width: 154px;
+    margin-left: 10px; }
+
+.d-desc p {
+    padding: 10px;
+    margin-top: 5px; }
+
+.d-desc-c {
+    float: right;
+    margin-right: 10px;
+    margin-top: -2px; }
+
+.d-section {
+    margin-top: 36px;
+    font-size: 14px; }
+
+.d-section li {
+    padding: 15px 0;
+    border-bottom: 1px dotted #ccc; }
+
+.d-section li time {
+    float: right;
+    font-size: 12px; }
+
+.d-section li span {
+    float: left;
+    width: 35px;
+    text-indent: 10px; }
+
+.d-section .pager {
+    text-align: center; }
+
+.d-comments .d-tab {
+    margin-top: 50px; }
+
+.d-editor {
+    padding: 30px 0; }
+
+.d-editor-r {
+    margin-left: 80px; }
+
+.d-editor-r textarea, .d-comments-editor textarea {
+    border: 1px solid #dddddd;
+    padding: 5px 10px;
+    height: 70px;
+    width: 740px;
+    resize: none;
+    font-size: 14px; }
+
+.d-editor-r textarea {
+    height: 22px;
+    padding: 13px 10px; }
+
+.d-editor-r textarea.active {
+    padding: 5px 10px;
+    height: 70px; }
+
+.d-editor-unlogin {
+    float: left;
+    line-height: 32px; }
+
+.d-editor-o {
+    margin-top: 10px;
+    margin-bottom: 15px; }
+
+.d-editor-o-r {
+    float: right; }
+
+.d-editor-o-l {
+    margin-top: 3px;
+    float: left; }
+
+.d-editor-o-l input {
+    border: 1px solid #ddd;
+    width: 65px;
+    padding: 4px 5px;
+    margin: 0px 5px; }
+
+.d-editor-o-l img {
+    height: 26px;
+    margin-right: 10px; }
+
+.d-editor-o-l span {
+    margin-right: 10px; }
+
+.d-editor-o-l i {
+    cursor: pointer; }
+
+.d-editor-tr {
+    text-align: right; }
+
+.d-editor-tr span {
+    top: 2px;
+    position: relative; }
+
+.d-editor .btn-special {
+    margin-left: 20px;
+    line-height: 28px;
+    width: 80px;
+    padding: 0; }
+
+.d-comments-o a {
+    float: right; }
+
+.d-comments-item .photo-s50-r {
+    margin-left: 80px; }
+
+.d-comments-editor {
+    margin: 10px 0; }
+
+.d-comments-editor textarea {
+    padding: 5px 10px; }
+
+.d-comments-editor .btn-special {
+    margin-left: 10px; }
+
+.d-comments-editor textarea {
+    margin-bottom: 10px;
+    height: 60px; }
+
+.d-comments-item {
+    padding: 20px 0;
+    border-bottom: 1px dotted #ccc; }
+
+.d-comments-item:last-child {
+    border-bottom: 0px; }
+
+.d-comments-item p {
+    font-size: 14px;
+    line-height: 22px;
+    margin: 5px 0; }
+
+.d-comments-list .btn-load-more {
+    margin-top: 31px;
+    margin-bottom: 56px; }
+
+.d-comments-list > ul {
+    margin-bottom: -1px; }
+
+.d-comments-star {
+    margin-left: 5px; }
+
+.d-user {
+    padding: 44px 15px 15px 15px; }
+
+.d-user ul {
+    margin-top: 3px; }
+
+.d-user li {
+    display: inline;
+    margin-right: 4px; }
+
+.d-user p {
+    margin-top: 3px; }
+
+.sub-album, .sub-users-round {
+    margin-top: 0;
+    margin-bottom: 32px;
+    padding: 21px 15px 0px 15px; }
+
+.sub-users-round {
+    margin-bottom: 16px; }
+
+.sub-users-round li {
+    float: left;
+    margin: 7px 13px 15px 0; }
+
+.sub-users-round img {
+    width: 52px;
+    height: 52px; }
+
+.share {
+    padding: 20px 30px; }
+
+.share textarea {
+    width: 492px;
+    height: 145px;
+    padding: 5px 10px;
+    border: 1px solid #dddddd;
+    resize: none; }
+
+.share textarea:focus {
+    border-color: #fc6520; }
+
+.share h4 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-top: -2px; }
+
+.share-item a {
+    margin: 0px 10px; }
+
+.share-item {
+    margin: 18px 0px 13px 0px; }
+
+.share .btn-primary {
+    width: 114px;
+    line-height: 42px;
+    font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 24px; }
+
+.share-o span {
+    margin-top: 28px; }
+
+.album-f-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 25px 0px -10px 0px; }
+
+.album-f-item-r {
+    padding-top: 4px; }
+
+.d-section .pager span, .d-section .pager a {
+    margin-right: 4px; }
+
+.d-section a {
+    text-decoration: none !important; }
+
+.sub-book {
+    margin-top: 0;
+    margin-bottom: 17px;
+    padding: 21px 15px 0px 15px; }
+
+.book-item {
+    padding: 10px 0; }
+
+.book-item-r {
+    margin-left: 72px;
+    height: 86px; }
+
+.book-item-photo img {
+    width: 62px;
+    height: 86px; }
+
+.d-book-info h1 {
+    margin-top: -4px;
+    width: 580px; }
+
+.d-book-cover img {
+    height: 256px; }
+
+.d-book-o {
+    margin-top: 44px; }
+
+.icon-comments-empty {
+    background-position: -102px -1281px;
+    width: 42px;
+    height: 35px;
+    margin-right: 10px; }
+
+.comments-empty {
+    border: 0px;
+    background-color: transparent;
+    padding-bottom: 30px; }
+
+.download-dialog {
+    position: relative;
+    padding: 18px 27px;
+    width: 520px;
+    height: 327px; }
+
+.download-dialog h4 {
+    font-size: 16px;
+    font-weight: bold; }
+
+.download-dialog p {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: #6f6f6f; }
+
+.download-dialog div {
+    margin-top: 14px; }
+
+.download-dialog span {
+    margin-left: 76px; }
+
+.btn-iphone {
+    height: 72px;
+    left: 246px;
+    position: absolute;
+    top: 118px;
+    width: 220px;
+    background: url("../../images/client/pic_download_iphone.png") no-repeat center;
+}
+
+.btn-android {
+    height: 72px;
+    left: 246px;
+    position: absolute;
+    top: 200px;
+    width: 220px;
+    background: url("../../images/client/pic_download_android.png") no-repeat center;
+}
+
+.d-comments-remove {
+    display: none;
+    margin-right: 10px; }
+
+.d-comments-item:hover .d-comments-remove {
+    display: inline; }
+
+.d-comments-reply {
+    padding-right: 16px; }
+
+.d-comments-reply.active {
+    background: url("../../images/d_reply.png") no-repeat right 4px; }

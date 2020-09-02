@@ -5,7 +5,6 @@
     <title>Title</title>
 </head>
 <body>
-<
 <div class="wrapper h-wrapper">
     <div class="h-column-l">
         <!--导航菜单-->
@@ -56,23 +55,20 @@
                 </li>
                 <li>
                     <a class="category-item" href="/book/category/9049">历史<i class="icon-collapse"></i></a>
-
                 </li>
                 <li>
                     <a class="category-item" href="/book/category/26">精品课<i class="icon-collapse"></i></a>
-
                 </li>
             </ol>
         </div>
         <div class="b-banner">
             <div class="b-silder">
                 <ul class="slides">
-                    <li class="hide"><a href="/book/73143448"><img src="http://localhost:9999/fileclient/staticfile/1598580948773.gif"
+                    <li class="hide"><a href="/book/73143448"><img src=""
                                                                    alt="" /></a></li>
-                    <li class="hide"><a href="/book/38403"><img src="http://localhost:9999/fileclient/staticfile/1598580948773.gif"
+                    <li class="hide"><a href="/book/38403"><img src=""
                                                                 alt="" /></a></li>
-                    <li class="hide"><a href="/book/59375658"><img src="http://localhost:9999/fileclient/staticfile/1598580948773.gif"
-                                                                   alt="" /></a></li>
+                    <li class="hide"><a href="/book/59375658"><img src="" alt="" /></a></li>
                 </ul>
             </div>
             <div class="b-recommend container">
@@ -80,7 +76,7 @@
                 <ul class="clearfix">
                     <li class="book-item">
                         <div class="book-item-photo pr">
-                            <a href="javascript:void(0)"  th:onclick="plays(1)" ><img alt="故事会精选（中国老牌刊物）-卡尔博学-播音王悦" src="https://bookpic.lrts.me/40aeda2a873c4b5288660b832b35de53.jpeg"><span
+                            <a href="javascript:plays(1)"  ><img alt="故事会精选（中国老牌刊物）-卡尔博学-播音王悦" src="https://bookpic.lrts.me/40aeda2a873c4b5288660b832b35de53.jpeg"><span
                                     class="play-w"><i class="icon-play"></i></span></a>
                         </div>
                         <div class="book-item-r">
@@ -103,7 +99,7 @@
                     </li>
                     <li class="book-item">
                         <div class="book-item-photo pr">
-                            <a href="/book/91143441"><img alt="重生西游之万界妖尊（上部）-会魔法的小猪-调频文化" src="https://bookpic.lrts.me/f3c8u97khv7rj1238zggsqs5ccaeqcmg.jpeg"><span
+                            <a href="javascript:iframechange(1)"  ><img alt="重生西游之万界妖尊（上部）-会魔法的小猪-调频文化" src="https://bookpic.lrts.me/f3c8u97khv7rj1238zggsqs5ccaeqcmg.jpeg"><span
                                     class="play-w"><i class="icon-play"></i></span></a>
                         </div>
                         <div class="book-item-r">
@@ -420,24 +416,21 @@
         </div>
     </div>
     <div class="clear"></div>
-
-</div>
-<div>
-    <a class="jp-play"><i class="icon-control-play i-2x"></i></a>
-    <a class="jp-pause hid"><i class="icon-control-pause i-2x"></i></a>
 </div>
 </body>
 
 <script>
     function plays(id) {
-        //window.parent.frames["otherFrame"].document.location.reload();
-        //window.top.play.getdata(id);
-        //parent.play.getdata(id);
-        //window.play.getdata(id);
         window.getdata(id);
-        console.info(window);
-        //等级
-        //window.top.play.getdata(id);
+    }
+    function close(){
+
+    }
+    //设置修改自己的iframe src路径
+    function iframechange(obj){
+        console.info("test");
+        $('#iframe_a').load("/xianqing");
+        //$('#iframe_a').load("xianqing");
     }
 </script>
 </html>

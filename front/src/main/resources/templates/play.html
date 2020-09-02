@@ -12,7 +12,6 @@
     <div class="jp-type-playlist">
         <div id="jplayer_N" class="jp-jplayer hide"></div>
         <div class="jp-gui">
-
             <div class="jp-interface">
                 <div class="jp-controls">
                     <div><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a></div>
@@ -73,23 +72,12 @@
     </div>
 </div>
 </body>
-
 <script>
-
-
-    /*
-    * { title: "you are my king", artist: "梶浦由記", mp3: "http://music.163.com/song/media/outer/url?id=22731459.mp3", poster: "http://p1.music.126.net/Xy8iaLLLVT21Mr9wDDJBNQ==/792747883650465.jpg?param=130y130" },
-
-    *
-    *
-    *
-    * */
-    let latest=[];
-     $(document).ready(function (latest) {
-        let myPlaylist = new jPlayerPlaylist({
+    $(document).ready(function () {
+        window.myplay=new jPlayerPlaylist({
                 jPlayer: "#jplayer_N",
                 cssSelectorAncestor: "#jp_container_N"
-            }, latest,
+            },[],
             {
                 playlistOptions: {
                     enableRemoveControls: true,
@@ -102,55 +90,33 @@
                 smoothPlayBar: true,
                 keyEnabled: true,
                 audioFullScreen: false
-            }
-        );
-        myPlaylist.play(0);
-        $(document).on($.jPlayer.event.pause, myPlaylist.cssSelector.jPlayer, function () {//$(document).on('click','要选择的元素',function(){})  on方法包含很多事件，点击，双击等等事件。
-            $('.musicbar').removeClass('animate'); //look this class and remove it
-            $('.jp-play-me').removeClass('active');
-            $('.jp-play-me').parent('li').removeClass('active');
-        });
+            });
 
-        $(document).on($.jPlayer.event.play, myPlaylist.cssSelector.jPlayer, function () {
-            $('.musicbar').addClass('animate');// when the player add a animate
-        });
-        $("#before,#after").addClass("set_imd");
-        $(document).on('click', '.jp-play-me', function (e) {
-            e && e.preventDefault();
-            var $this = $(e.target);
-            if (!$this.is('a')) $this = $this.closest('a');//closest() 方法获得匹配选择器的第一个祖先元素，从当前元素开始沿 DOM 树向上。
-            $('.jp-play-me').not($this).removeClass('active');
-            $('.jp-play-me').parent('li').not($this.parent('li')).removeClass('active');
-            $this.toggleClass('active');
-            $this.parent('li').toggleClass('active');
-            if (!$this.hasClass('active')) {
-                myPlaylist.pause();
-            } else {
-                //添加
-                var k = $(this).parent("li").index();
-                $(".poster-img").attr("src", latest[k].poster);//此方法返回一个函数改变src   $('a.cover1').html('<img src="' + latest[k].poster );
-                $(".musicbar").addClass("animate").index();
-                myPlaylist.add({
-                    title: latest[k].title,
-                    artist: latest[k].artist,
-                    mp3: latest[k].mp3,
-                    poster: latest[k].poster
-                });
-                myPlaylist.play(-1);
-            }
-        });
     });
-    function getdata(pid){
+    //节目选择
+    function getdata(id){
         $.ajax({
             type:"post",
             url:"chapter/querypid",
-            data:{pid:pid},
-            dataType:"json",
+            data:{pid:id},
             success:(data)=>{
-                latest=data;
+
+                //清空数据
+                window.myplay.setPlaylist([]);
+                //添加数据
+                for(var i=0;i<data.length;i++){
+                    window.myplay.add({
+                        title: data[i].title,
+                        artist: data[i].artist,
+                        mp3: data[i].mp3,
+                        poster: data[i].poster
+                    })
+                }
+                //cookie获取节目章节索引默认0 播放
+                window.myplay.play(0);
             }
         });
-
     }
+
 </script>
 </html>
