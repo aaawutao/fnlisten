@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MainControl {
@@ -19,10 +20,12 @@ public class MainControl {
 
     @RequestMapping("/xianqing")
     public String xinqing(){
-        return "xianqing.html::iframe_a";
+        return "xianqing::iframe_a";
     }
+
     @RequestMapping("/context")
     public String context(){
-        return "context.html::iframe_a";
+        System.out.println("局部刷新");
+        return "login::div1";
     }
 }
