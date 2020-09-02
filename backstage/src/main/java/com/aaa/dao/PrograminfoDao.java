@@ -17,12 +17,12 @@ public interface PrograminfoDao extends Mapper<Programinfo> {
     @Update("update programinfo set pstatus=#{pstatus} where pid=#{pid}")
     int updateppstatus(@Param("pstatus") Integer pstatus,@Param("pid") Integer pid);
 
-
     @SelectProvider(type = SqlPrograminfo.class,method = "getSql")
-    List<Map<String,Object>> queryAll(@Param("pid") Integer pid);
+    List<Map<String,Object>> queryAll(@Param("pid") Integer pid,@Param("bfid") Integer bfid);
+
 
     class SqlPrograminfo {
-        public String getSql(@Param("pid") Integer pid) {
+        public String getSql(@Param("pid") Integer pid,@Param("bfid") Integer bfid) {
             StringBuffer sql = new StringBuffer("select * from programinfo pgi \n" +
                     "left join programtypeinfo pgt \n" +
                     "on pgi.ptid=pgt.ptid \n" +
@@ -30,7 +30,10 @@ public interface PrograminfoDao extends Mapper<Programinfo> {
                     "on pgi.anchortid=ari.acid  where 1=1  ");
             if(pid !=null){
                 sql.append(" and pid=#{pid}");
+            }if(bfid !=null){
+                sql.append(" and bfid=#{bfid}");
             }
+
             return sql.toString();
         }
     }

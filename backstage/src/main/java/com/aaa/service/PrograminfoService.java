@@ -16,17 +16,21 @@ public class PrograminfoService {
     PrograminfoDao programinfoDao;
 
     //分页查询节目
-    public PageInfo<List<Map<String, Object>>> queryAll(Integer currentPage, Integer pageSize,Integer pid){
+    public PageInfo<List<Map<String, Object>>> queryAll(Integer currentPage, Integer pageSize,Integer pid, Integer bfid){
         PageHelper.startPage(currentPage,pageSize);
-        List<Map<String, Object>> maps = programinfoDao.queryAll(pid);
+        List<Map<String, Object>> maps = programinfoDao.queryAll(pid,bfid);
         PageInfo<List<Map<String, Object>>> pageInfo = new PageInfo(maps);
         return pageInfo;
     }
 
     //修改状态是否展示
-
     public int updateppstatus(Integer pstatus,Integer pid){
         return programinfoDao.updateppstatus(pstatus,pid);
+    }
+
+    //添加数据
+    public int insertprograminfo(Programinfo programinfo){
+        return programinfoDao.insert(programinfo);
     }
 
 }

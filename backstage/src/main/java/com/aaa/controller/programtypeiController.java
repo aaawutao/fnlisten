@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 @CrossOrigin
@@ -23,6 +24,13 @@ public class programtypeiController {
     public PageInfo<Programtypeinfo> findAll(Integer currentPage, Integer pageSize){
         return programtypeService.findAll(currentPage,pageSize);
     }
+    //查询出所有节目类型
+    @RequestMapping("queryAllProtype")
+    public List<Programtypeinfo> queryAllProtype(){
+        return programtypeService.queryAllProtype();
+    }
+
+
     @RequestMapping("addprotype")
     public int addprotype(Programtypeinfo programtypeinfo){
         Integer ptid = programtypeinfo.getPtid();
@@ -33,7 +41,6 @@ public class programtypeiController {
         }
 
     }
-
     @RequestMapping("deleteprotype")
     public int deleteprotype(Integer ptid){
         return programtypeService.deleteprotype(ptid);

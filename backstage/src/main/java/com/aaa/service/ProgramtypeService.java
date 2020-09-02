@@ -21,6 +21,10 @@ public class ProgramtypeService {
         PageInfo<Programtypeinfo> pageInfo = new PageInfo<>(type);
         return pageInfo;
     }
+    //查询出所有节目类型
+    public List<Programtypeinfo> queryAllProtype(){
+        return programtypeinfoDao.selectAll();
+    }
 
     //添加类型
     public int addprotype(Programtypeinfo programtypeinfo){

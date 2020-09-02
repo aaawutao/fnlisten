@@ -6,6 +6,7 @@ import com.aaa.entity.Anchorinfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class AnchorinfoService {
@@ -15,5 +16,9 @@ public class AnchorinfoService {
 
     public int addAnchorinfo(Anchorinfo anchorinfo){
         return  anchorinfoDao.insert(anchorinfo);
+    }
+
+    public List<Anchorinfo> queryAllByacid(Integer bfid){
+        return  anchorinfoDao.queryAllByacid(bfid);
     }
 }
