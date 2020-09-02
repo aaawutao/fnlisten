@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>懒人听书官方网站-知名有声阅读平台，身边的有声图书馆</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" th:href="@{'css/base.css?v=36'}" >
+    <link rel="stylesheet" th:href="@{'css/layout.css?v=36'}">
+    <link rel="stylesheet" th:href="@{'css/style.css?v=36'}">
+    <link rel="stylesheet" th:href="@{'css/login.css?v=36'}">
+    <link rel="stylesheet" th:href="@{'css/loginstyle.css?v=36'}">
+</head>
+<body>
+<header>
+    <div class="header-simple">
+        <div class="wrapper">
+            <div class="fr">
+                <a class="blink" href="/help/feedback">意见反馈</a><span class="split blink">|</span><a href="/help/index.html" class="blink">帮助中心</a>
+            </div>
+            <a href="/index" id="logo-wrap"><img alt="懒人听书" src="https://assets.lrts.me/yyting/images/logo.png"></a>
+        </div>
+        <script type="text/template" class="hide" id="login-template">
+            <div class="g-login fieldset">
+                <div class="g-login-l">
+                    <h4 class="f16">登录懒人账户</h4>
+                    <p>加入懒人听书，交流关注的书籍和主播</p>
+                    <ul>
+                        <li class="hide"><span class="field-error">登录邮箱或登录密码错误!</span></li>
+                        <li><input type="text" placeholder="用户名/邮箱" /></li>
+                        <li><input type="password" placeholder="密码"/></li>
+                        <li class="tr">
+                            <span class="fl"><input type="checkbox" checked="checked" id="reme"/><label for="reme">下次自动登录</label></span>
+                            <a href="/findPassword">忘记密码？</a>
+                        </li>
+                        <li><button type="button" class="btn-primary">登录</button></li>
+                    </ul>
+                </div>
+                <div class="g-login-r">
+                    <p>
+                        <span>还没有懒人听书帐号？</span><br />
+                        <a href="/signupByPhone" class="btn">免费注册账号></a>
+                    </p>
+                    <span>或使用合作账号登录：</span><br />
+                    <div>
+                        <a login="/sinaLogin.dosl" class="btn" id="thirdLogin"><i class="icon-l-wb-sina"></i>新浪微博账号登录</a>
+                        <a login="/qqLogin.dosl" class="btn" id="thirdLogin"><i class="icon-l-wb-qq"></i>QQ账号登录</a>
+                        <a login="/xiaomiLogin.dosl" class="btn" id="thirdLogin"><i class="icon-l-wb-xm"></i>小米账号登录</a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </script>
+    </div>	</header>
+<div class="wrapper login-page container">
+    <div class="p-title">登录懒人听书</div>
+    <div class="login-sub">
+        <p>>还没有懒人听书账号？<a href="/signupByPhone" class="link">立即注册</a></p>
+        <div class="login-auth">
+            >或使用合作网站登录<br />
+            <!--第三方登录-->
+            <a href="/sinaLogin.dosl" class="login-auth-wbsina"></a>
+            <a href="/qqLogin.dosl" class="login-auth-qq"></a>
+            <a href="/xiaomiLogin.dosl" class="login-auth-xm"></a>
+        </div>
+    </div>
+    <div class="login-w">
+        <div id="errMsg" class=""></div>
+        <ul class="fieldset">
+            <li>
+                <label class="field-name">账号：</label>
+                <div class="field-r">
+                    <input  id="accountName"  type="text" placeholder="邮箱/手机号"/>
+                </div>
+            </li>
+            <li>
+                <label class="field-name">密码：</label>
+                <div class="field-r"><input type="password" id="password"/></div>
+            </li>
+            <li id="login-code-li" class="login-code" style="display: none">
+                <label class="field-name">验证码：</label>
+                <div class="field-r">
+                    <input id="validateCode" type="text">
+                    <div class="weaken">清输入下图中的字符，不区分大小写</div>
+                    <img id="validationCode" src="" alt="" onclick="refreshCode(this)"><a onclick="refreshCode()" class="blink">看不清，换一张</a>
+                </div>
+            </li>
+            <li>
+                <div class="field-r f14"><input type="checkbox" id="autoLogin" checked="checked" value="1"/><label for="autologin">下次自动登录</label><a href="/findPassword" class="find-pwd blink">忘记密码？</a></div>
+            </li>
+            <li>
+                <div class="field-r"><button type="button" class="btn-primary">登录</button></div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body></html>

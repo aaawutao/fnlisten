@@ -1,0 +1,83 @@
+/*
+.class2{
+  @extend .class1;
+  @include radius;
+  @include shadow(unquote("1px 1px 1px rgba(0,0,0,0.1),1px 1px 1px rgba(0,0,0,0.1)"));
+  @include tranistion;
+  @include linear(unquote("#eee 0%,#ddd 100%"));
+  @include flexbox;
+  @include flex(1);
+  color : $blue;
+  @include opacity(0.2);
+  @include box;
+}
+.btn5{
+  @include shadow(unquote("1px 1px 1px rgba(0,0,0,0.1),1px 1px 1px rgba(0,0,0,0.1)"));
+  @include linear(unquote("#eee 0%,#ddd 100%"));
+  border:1px solid #ccc;
+}*/
+.login-page {
+    padding-bottom: 25px;
+    padding-left: 42px;
+    padding-top: 10px; }
+
+.login-w li {
+    margin: 25px 0; }
+
+.find-pwd {
+    margin-left: 124px; }
+
+.bound-page {
+    font-size: 14px;
+    height: 750px;
+    padding-top: 129px;
+    padding-left: 429px;
+    background: url("../../images/bound_lock.png") no-repeat 459px -8px white; }
+
+.bound-page input {
+    margin-left: 10px; }
+
+.bound-page h2 {
+    font-size: 20px;
+    font-weight: normal;
+    text-indent: 114px;
+    padding-bottom: 7px; }
+
+.bound-page li {
+    margin: 25px 0; }
+
+.bound-page .btn-primary {
+    margin-top: 0px;
+    background: url("../../images/main.png") no-repeat -6px -420px;
+    font-size: 16px;
+    line-height: 36px;
+    width: 180px;
+    border: none;
+    margin-left: 102px; }
+
+.bound-page .btn-skip {
+    margin-top: 12px;
+    background: url("../../images/bound_button.png") no-repeat 0px 0px;
+    color: #1f1f1f; }
+
+.bound-page .btn-skip:hover {
+    background-position: 0px -42px;
+    color: #1f1f1f !important; }
+
+.login-code img {
+    width: 108px;
+    height: 42px;
+    vertical-align: bottom;
+    margin-right: 10px;
+    margin-top: 4px; }
+
+.login-code {
+    margin-bottom: -10px !important; }
+
+.login-code .weaken {
+    margin-top: 4px; }
+
+.login-w .field-error {
+    background-image: none;
+    padding-left: 40px;
+    margin-bottom: -15px; }

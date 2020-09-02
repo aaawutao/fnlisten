@@ -15,7 +15,7 @@ public class MainControl {
     }
 
     @RequestMapping("/test")
-    public String show2(){ return "listen.html";}
+    public String show2(){ return "login.html";}
 
     @RequestMapping("/xianqing")
     public String xinqing(){
