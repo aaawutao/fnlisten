@@ -29,6 +29,13 @@ public class Backstage_userController {
 
     FileRule fileRule=new FileRule();
 
+    //修改密码
+    @RequestMapping("upwd")
+    public int upwd(@RequestParam("map") Map<Object,Object> map){
+        int userid = (int) map.get("id");
+        String upwd = (String) map.get("pwd");
+        return backstage_userService.updatepwd(upwd, userid);
+    }
 
     @RequestMapping("upload")
     public Integer  upload(@RequestParam("file") MultipartFile file,@RequestParam("userid") Integer userid,@RequestParam("username") String username,@RequestParam("flag") String flag){

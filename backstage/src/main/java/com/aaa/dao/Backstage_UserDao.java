@@ -33,4 +33,7 @@ public interface Backstage_UserDao extends Mapper<Backstage_User> {
     @Update("update backstage_user  set backstage_photo=#{photo} where backstage_userid=#{userid}")
     Integer photoupload(@Param("userid") String userid,@Param("photo") String backstage_photo);
 
+    @Update("update backstage_user set backstage_upwd=#{upwd} where backstage_userid=#{userid} ")
+    public int updatepwd(String upwd,int userid);
+
 }

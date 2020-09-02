@@ -63,6 +63,12 @@ public class Backstage_UserService  {
     }
 
 
-
-
+    /**
+     * 修改用户密码
+     * @param backstage_user
+     * @return
+     */
+    public int updatepwd(String upwd,int userid){
+        return backstage_userDao.updatepwd(upwd, userid);
+    }
 }
