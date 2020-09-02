@@ -36,7 +36,6 @@ public class EmpinfoController {
 
         @RequestMapping("save")
         public int save (Empinfo empinfo){
-            System.out.println("save:" + empinfo);
             return empinfoService.save(empinfo);
 
         }
