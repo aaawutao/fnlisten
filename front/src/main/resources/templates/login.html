@@ -1,62 +1,56 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>懒人听书官方网站-知名有声阅读平台，身边的有声图书馆</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" th:href="@{'css/base.css?v=36'}" >
+    <link rel="stylesheet" th:href="@{'css/base.css?v=36'}">
     <link rel="stylesheet" th:href="@{'css/layout.css?v=36'}">
     <link rel="stylesheet" th:href="@{'css/style.css?v=36'}">
     <link rel="stylesheet" th:href="@{'css/login.css?v=36'}">
     <link rel="stylesheet" th:href="@{'css/loginstyle.css?v=36'}">
 </head>
 <body>
-<header>
-    <div class="header-simple">
-        <div class="wrapper">
-            <div class="fr">
-                <a class="blink" href="/help/feedback">意见反馈</a><span class="split blink">|</span><a href="/help/index.html" class="blink">帮助中心</a>
+
+<button id="btndddd">ddddd</button>
+    <div class="wrapper login-page container" id="login" >
+        <div class="p-title">登陆懒人听书</div>
+        <div class="login-sub">
+            <p>>注册懒人听书账号！<a href="#" id="registerbtn" class="link">立即注册</a></p>
+            <div class="login-auth">
+                >或使用合作网站登录<br />
+                <!--第三方登录-->
+                <a href="/sinaLogin.dosl" class="login-auth-wbsina"></a>
+                <a href="/qqLogin.dosl" class="login-auth-qq"></a>
+                <a href="/xiaomiLogin.dosl" class="login-auth-xm"></a>
             </div>
-            <a href="/index" id="logo-wrap"><img alt="懒人听书" src="https://assets.lrts.me/yyting/images/logo.png"></a>
         </div>
-        <script type="text/template" class="hide" id="login-template">
-            <div class="g-login fieldset">
-                <div class="g-login-l">
-                    <h4 class="f16">登录懒人账户</h4>
-                    <p>加入懒人听书，交流关注的书籍和主播</p>
-                    <ul>
-                        <li class="hide">
-                            <span class="field-error">登录邮箱或登录密码错误!</span>
-                        </li>
-                        <li><input type="text" placeholder="用户名/邮箱" /></li>
-                       <!-- <li><input type="password" placeholder="密码"/></li>-->
-                        <li class="tr">
-                            <span class="fl"><input type="checkbox" checked="checked" id="reme"/><label for="reme">下次自动登录</label></span>
-                            <a href="/findPassword">忘记密码？12313
-                            </a>
-                        </li>
-                        <li><button type="button" class="btn-primary">登录</button></li>
-                    </ul>
-                </div>
-                <div class="g-login-r">
-                    <p>
-                        <span>还没有懒人听书帐号？</span><br />
-                        <a href="/signupByPhone" class="btn">免费注册账号></a>
-                    </p>
-                    <span>或使用合作账号登录：</span><br />
-                    <div>
-                        <a login="/sinaLogin.dosl" class="btn" id="thirdLogin"><i class="icon-l-wb-sina"></i>新浪微博账号登录</a>
-                        <a login="/qqLogin.dosl" class="btn" id="thirdLogin"><i class="icon-l-wb-qq"></i>QQ账号登录</a>
-                        <a login="/xiaomiLogin.dosl" class="btn" id="thirdLogin"><i class="icon-l-wb-xm"></i>小米账号登录</a>
+        <div class="login-w" >
+            <ul class="fieldset">
+                <li>
+                    <label class="field-name">账号：</label>
+                    <div class="field-r">
+                        <input id="frontuserPhone" name="frontuserPhone" type="text"  placeholder="手机号" />
+                        <p id="checkfrontuserPhone"></p>
                     </div>
-                </div>
-                <div class="clear"></div>
-            </div>
-        </script>
-    </div>	</header>
-<div class="wrapper login-page container">
+                </li>
+                <li>
+                    <label class="field-name">密码：</label>
+                    <div class="field-r">
+                        <input id="password" name="password" type="password" placeholder="密码" />
+                        <input type="hidden" name="code" id="coded">
+                        <p id="checkpassword"></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="field-r"><button type="button" class="ant-btn-primary" onclick="subm()">登录</button></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+<div class="wrapper login-page container" id="reg">
     <div class="p-title">注册懒人听书</div>
     <div class="login-sub">
-        <p>>还没有懒人听书账号？<a href="/signupByPhone" class="link">立即注册</a></p>
+        <p>>登陆懒人听书账号！<a id="logbtn" class="link">立即登陆</a></p>
         <div class="login-auth">
             >或使用合作网站登录<br />
             <!--第三方登录-->
@@ -65,21 +59,20 @@
             <a href="/xiaomiLogin.dosl" class="login-auth-xm"></a>
         </div>
     </div>
-  <div class="login-w">
-        <div id="errMsg" class=""></div>
+    <div class="login-w">
         <ul class="fieldset">
             <li>
                 <label class="field-name">账号：</label>
                 <div class="field-r">
-                    <input  id="phone"  name="phone" type="text"  onblur="checkZH()" onfocus="this.className='txt'" placeholder="手机号"/>
+                    <input id="phone" name="phone" type="text" onblur="checkZH()" onfocus="this.className='txt'" placeholder="手机号" />
                     <p id="checkphone"></p>
                 </div>
 
             </li>
             <li>
-                <label class="field-name">账号：</label>
+                <label class="field-name">密码：</label>
                 <div class="field-r">
-                    <input  id="pwd"  name="pwd" type="password" onblur="checkPwd()" onfocus="this.className='txt'"   placeholder="密码"/>
+                    <input id="pwd" name="pwd" type="password" onblur="checkPwd()" onfocus="this.className='txt'" placeholder="密码" />
                     <input type="hidden" name="code" id="code">
                     <p id="checkpwd"></p>
                 </div>
@@ -87,13 +80,14 @@
             <li>
                 <label class="field-name">验证码：</label>
                 <div class="field-r">
-                    <input type="text"  name="codeResult" id="codeResult" onblur="checkcr()" onfocus="this.className='txt'" placeholder="验证码" />
+                    <input type="text" name="codeResult" id="codeResult" onblur="checkcr()" onfocus="this.className='txt'"
+                           placeholder="验证码" />
                     <span><button type="button" class="ant-btn-primary" onclick="coarse()">获取验证码</button></span>
                     <p id="checkcodeResult"></p>
                 </div>
             </li>
             <li>
-               <div class="field-r"><button type="button" class="ant-btn-primary" onclick="subm()"  >登录</button></div>
+                <div class="field-r"><button type="button" class="ant-btn-primary" onclick="subm()">登录</button></div>
             </li>
         </ul>
     </div>
@@ -102,31 +96,33 @@
 </body>
 <script th:src="@{'/js/jquery.min.js?v=36'}"></script>
 <script type="text/javascript">
-    function checkZH(){
+    function checkZH() {
         var phone = $("#phone").val();
-        if(phone==""){
+        if (phone == "") {
             $("#checkphone").html("请输入手机号！")
             return false;
         }
-        if(!(/^1[3456789]\d{9}$/.test(phone))){
+        if (!(/^1[3456789]\d{9}$/.test(phone))) {
             $("#checkphone").html("手机号格式有误")
             return false;
         }
         $("#checkphone").html("")
         return true;
     }
+
     function checkcr() {
         var codeResult = $("#codeResult").val();
-        if(codeResult==""){
+        if (codeResult == "") {
             $("#checkcodeResult").html("请输入验证码")
             return false;
         }
         $("#checkcodeResult").html("")
         return true;
     }
+
     function checkPwd() {
-        var pwd=$("#pwd").val();
-        if(pwd==""){
+        var pwd = $("#pwd").val();
+        if (pwd == "") {
             $("#checkpwd").html("请输入密码");
             return false;
         }
@@ -134,46 +130,79 @@
         return true;
     }
     function coarse() {
-       if(checkZH()) {
-           var phone = $("#phone").val();
+        if (checkZH()) {
+            var phone = $("#phone").val();
             $.ajax({
-                type:"post",
-                url:"http://localhost:8082/front/userlogin/phoneCheck",
-                data:{"phone":phone},
-                success:function (data) {
+                type: "post",
+                url: "http://localhost:8082/front/userlogin/phoneCheck",
+                data: {
+                    "phone": phone
+                },
+                success: function(data) {
                     $("#code").val(data.codeResult)
                 }
             })
-       }
-    }
-    function subm() {
-        var code=$("#code").val();
-        if(checkZH() && checkcr() && checkPwd){
-            var coderesult=$("#codeResult").val();
-            if(code==coderesult){
-                console.log("开始提交数据");
-            }else{
-                console.log("错误");
-            }
         }
     }
 
+    function subm() {
+        var code = $("#code").val();
+        if (checkZH() && checkcr() && checkPwd) {
+            var coderesult = $("#codeResult").val();
+            if (code == coderesult) {
+                var front_userphone = $("#phone").val();
+                var front_userpwd = $("#pwd").val();
+                $.ajax({
+                    type: "post",
+                    url: "http://localhost:8082/front/userlogin/addFrontuser",
+                    data: {
+                        "front_userphone": front_userphone,
+                        "front_userpwd": front_userpwd
+                    },
+                    success: function(data) {
+                        front_userphone.val("");
+                        front_userpwd.val("");
+                        coderesult.val("");
+                        console.log("注册成功，跳转登陆页面")
+                    }
+                })
+            } else {
+                $("#checkcodeResult").html("验证码有误")
+            }
+        }
+    }
+    $(function () {
+        $("#btndddd").click(function () {
+            alert("111")
+            $("#reg").style.display = "block";
+            alert("22")
+        })
+        /*$("#registerbtn").click(function () {
+            $("#register").style.display = "black";
+
+        })*/
+    })
 </script>
 <style type="text/css">
-    ul p
-    {
-        color:red;
-        font-size:12px;
+    ul p {
+        color: red;
+        font-size: 12px;
     }
     .ant-btn-primary {
         color: #fff;
         background-color: #1890ff;
         border-color: #1890ff;
-        text-shadow: 0 -1px 0 rgba(0,0,0,0.12);
-        -webkit-box-shadow: 0 2px 0 rgba(0,0,0,0.045);
-        box-shadow: 0 2px 0 rgba(0,0,0,0.045);
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
         height: 35px;
         width: 90px;
+    }
+    #login{
+        display: block;
+    }
+    #reg{
+        display: block;
     }
 </style>
 </html>

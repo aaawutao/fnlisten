@@ -23,6 +23,10 @@ public class MainControl {
     public String show(){
         return "main.html";
     }
+    @RequestMapping("/test")
+    public String test(){
+        return "login.html";
+    }
 
     //详情
     @RequestMapping("/xianqing")
