@@ -1,5 +1,7 @@
 package com.aaa.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -23,9 +25,12 @@ public class Empinfo {
     //@Column
     private String xueli;//学历
     //@Column
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private String empentrydate;//入职
     //@Column
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private String empdimissiondate;//离职
+
     public Integer getEmpid() {
         return empid;
     }

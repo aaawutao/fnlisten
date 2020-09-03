@@ -8,6 +8,7 @@ public class Anchorinfo {
     private Integer acid;
     private Integer actype;
     private Integer bfid;
+    private String petname;
 
     public Integer getAcid() {
         return acid;
@@ -33,12 +34,21 @@ public class Anchorinfo {
         this.bfid = bfid;
     }
 
+    public String getPetname() {
+        return petname;
+    }
+
+    public void setPetname(String petname) {
+        this.petname = petname;
+    }
+
     @Override
     public String toString() {
         return "Anchorinfo{" +
                 "acid=" + acid +
                 ", actype=" + actype +
                 ", bfid=" + bfid +
+                ", petname='" + petname + '\'' +
                 '}';
     }
 }

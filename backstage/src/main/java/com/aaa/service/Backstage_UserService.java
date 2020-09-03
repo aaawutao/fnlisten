@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class Backstage_UserService  {
@@ -37,7 +38,7 @@ public class Backstage_UserService  {
      */
     public PageInfo<Backstage_User> findAll(Integer currentPage, Integer pageSize){
         PageHelper.startPage(currentPage,pageSize);
-        List<Backstage_User> userall = backstage_userDao.selectAll();
+        List<Backstage_User> userall = backstage_userDao.queryAll();
         PageInfo<Backstage_User> pageInfo = new PageInfo<>(userall);
         return pageInfo;
     }
@@ -65,10 +66,21 @@ public class Backstage_UserService  {
 
     /**
      * 修改用户密码
-     * @param backstage_user
+     * @param
      * @return
      */
     public int updatepwd(String upwd,int userid){
         return backstage_userDao.updatepwd(upwd, userid);
+    }
+
+    //查询出账号下的用户详细信息
+    public List<Map<String,Object>> queryBydetails(Integer backstage_userid){
+
+        return  backstage_userDao.queryByUserdetails(backstage_userid);
+    }
+
+    //查询出主播表的actype是否是0
+    public Anchorinfo queryByZb(Integer bfid){
+          return   backstage_userDao.queryByZb(bfid);
     }
 }

@@ -13,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @CrossOrigin
@@ -21,14 +23,11 @@ public class Backstage_userController {
     //上传路径
     @Value("${prop.filepath}")
     String staticurl;
-
     @Resource
     Backstage_UserService backstage_userService;
     @Resource
     AnchorinfoService anchorinfoService;
-
     FileRule fileRule=new FileRule();
-
     //修改密码
     @RequestMapping("upwd")
     public int upwd(@RequestParam("map") Map<Object,Object> map){
@@ -36,7 +35,6 @@ public class Backstage_userController {
         String upwd = (String) map.get("pwd");
         return backstage_userService.updatepwd(upwd, userid);
     }
-
     @RequestMapping("upload")
     public Integer  upload(@RequestParam("file") MultipartFile file,@RequestParam("userid") Integer userid,@RequestParam("username") String username,@RequestParam("flag") String flag){
         try{
@@ -48,8 +46,7 @@ public class Backstage_userController {
         }
         return 1;
     }
-
-
+    //分页查询
     @RequestMapping("findAll")
     public  PageInfo<Backstage_User> findAll(Integer currentPage,Integer pageSize){
         return backstage_userService.findAll(currentPage,pageSize);
@@ -81,8 +78,19 @@ public class Backstage_userController {
         }catch (Exception err){
             return 0;
         }
-
-
     }
+
+
+    //查询出账号下的用户详细信息
+    @RequestMapping("queryByUserdetails")
+    public List<Map<String,Object>> queryByUserdetails(Integer backstage_userid){
+        return backstage_userService.queryBydetails(backstage_userid);
+    }
+
+    @RequestMapping("queryBz")
+    public Anchorinfo queryBz(Integer bfid){
+        return backstage_userService.queryByZb(bfid);
+    }
+
 
 }
