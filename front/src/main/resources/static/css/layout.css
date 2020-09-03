@@ -264,7 +264,7 @@ img {
   min-width: 0;
   width: 210px !important;
   height: 90px;
-  background: url("../images/main.png") no-repeat -12px -564px;
+  background: url("http://localhost:9999/fileclient/staticfile/main.png") no-repeat -12px -564px;
   color: #fff; }
 
 .dialog-r-c .dialog-close {
@@ -484,7 +484,7 @@ header {
 .g-top-umenu li .g-user-i,
 .g-top-umenu li .g-notify,
 .g-top-umenu li .g-member {
-  background: url("../images/main.png") no-repeat 38px -353px transparent; }
+  background: url("http://localhost:9999/fileclient/staticfile/main.png") no-repeat 38px -353px transparent; }
 
 .g-top-umenu li .g-notify,
 .g-top-umenu li .g-member {

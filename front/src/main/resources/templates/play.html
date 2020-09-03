@@ -91,7 +91,19 @@
                 keyEnabled: true,
                 audioFullScreen: false
             });
-
+        jQuery('#example3').beforeAfter_slider(
+            {
+                left:1,
+                top:1,
+                width: 570,
+                height: 264,
+                start_from: 'left',
+                start_pos: 447,
+                follow: false,
+                //播放列表控制事件
+                timer: 15000
+            }
+        )
     });
     //节目选择
     function getdata(id){
@@ -100,7 +112,6 @@
             url:"chapter/querypid",
             data:{pid:id},
             success:(data)=>{
-
                 //清空数据
                 window.myplay.setPlaylist([]);
                 //添加数据
@@ -116,6 +127,17 @@
                 window.myplay.play(0);
             }
         });
+    }
+    function  setOne(k){
+        //添加音频，并播放
+        window.myplay.add({
+            title: k.title,
+            artist: k.artist,
+            mp3: k.mp3,
+            poster: k.poster
+        });
+        //播放
+        window.myplay.play(-1);
     }
 
 </script>

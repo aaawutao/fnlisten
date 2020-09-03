@@ -48,7 +48,7 @@
 
 .bound-page .btn-primary {
     margin-top: 0px;
-    background: url("../../images/main.png") no-repeat -6px -420px;
+    background: url("http://localhost:9999/fileclient/staticfile/main.png") no-repeat -6px -420px;
     font-size: 16px;
     line-height: 36px;
     width: 180px;

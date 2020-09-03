@@ -3,30 +3,16 @@
 	<head>
 		<title>听书网</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" th:href="@{'css/base.css?v=36'}" media="all">
-		<link rel="stylesheet" th:href="@{'css/layout.css?v=36'}" media="all">
-		<link rel="stylesheet" th:href="@{'css/style.css?v=36'}" media="all">
 		<!--<link rel="stylesheet" th:href="@{'css/styles.css?v=36'}" media="all">-->
 		<!--<link rel="stylesheet" href="/css/base.css?v=36" />
         <link rel="stylesheet" href="/css/layout.css?v=36" />
         <link rel="stylesheet" href="/css/style.css?v=36" />-->
-		<link rel="shortcut icon" th:href="@{/listen/images/logo/favicon.ico}" />
-		<link rel="stylesheet" type="text/css" th:href="@{/listen/css/bootstrap.css}" />
-		<link rel="stylesheet" type="text/css" th:href="@{/listen/css/animate.css}" />
-		<link rel="stylesheet" type="text/css" th:href="@{/listen/css/app.css}"/>
-		<link rel="stylesheet" type="text/css" th:href="@{/listen/css/font-awesome.min.css}" />
-		<link rel="stylesheet" type="text/css" th:href="@{/listen/css/simple-line-icons.css}" />
-		<link rel="stylesheet" type="text/css" th:href="@{/listen/js/jPlayer/jplayer.flat.css}" />
-		<link rel="stylesheet" type="text/css" th:href="@{/listen/css/beforeafter-content.css}" media="screen" />
-		<link rel="stylesheet" type="text/css" th:href="@{/listen/css/style.css}" media="screen" />
-		<link rel="stylesheet" type="text/css" th:href="@{/listen/css/beforeafter-settings.css}" media="screen" />
 
-
-		<script type="text/javascript" th:src="@{/listen/js/jquery.js}"></script>
-		<script type="text/javascript" th:src="@{/listen/js/freshline/jquery.freshline.beforeafter.js}"></script>
-		<script type="text/javascript" th:src="@{/listen/js/freshline/animadrag.js}"></script>
+		<iframe th:replace="css.html"></iframe>
+		<iframe th:replace="listencss.html"></iframe>
 	</head>
 	<body>
+
 	<header>
 		<!--登录区-->
 		<div class="g-top">
@@ -177,47 +163,27 @@
 			</div>
 		</script>
 	</header>
-	<div id="div1" th:fragment="div1">
-		你好
-	</div>
-	<button th:onclick="dian()">点击</button>
-	<iframe th:fragment="" name="iframe_a" id="iframe_a"  width="100%" height="100%" frameborder="0" ></iframe>
-
+	<iframe th:src="context" name="iframe_a" id="iframe_a"  width="100%" height="100%" frameborder="0" ></iframe>
 	<!--播放器-->
 	<footer class="footer bg-success dker" style="position: fixed;bottom:0">
 		<iframe th:replace="play.html" frameborder="0" name="play" id="play"></iframe>
 	</footer>
 	</body>
-	<!--播放控件-->
-<!--	<script th:src="@{/listen/js/example.js}"></script>-->;
-	<script th:src="@{/listen/js/bootstrap.js}"></script>
-	<script th:src="@{/listen/js/app.js}"></script>
-	<script th:src="@{/listen/js/app.plugin.js}"></script>
-	<script type="text/javascript" th:src="@{/listen/js/jPlayer/jquery.jplayer.min.js}"></script>
-	<script type="text/javascript" th:src="@{/listen/js/jPlayer/add-on/jplayer.playlist.min.js}"></script>
-	<!--<script type="text/javascript" th:src="@{listen/js/jPlayer/demo.js}"></script>-->
-	<!--<script src="/static/js/jquery.min.js?v=36"></script>
-	<script src="/static/js/jquery.flexslider-min.js?v=36"></script>
-	<script src="/static/js/jquery.dialog.js?v=36"></script>
-	<script src="/static/js/common.js?v=36"></script>-->
-	<script th:src="@{'/js/jquery.min.js?v=36'}"></script>
-	<script th:src="@{'/js/jquery.flexslider-min.js?v=36'}"></script>
-	<script th:src="@{'/js/jquery.dialog.js?v=36'}"></script>
-	<script th:src="@{'/js/common.js?v=36'}"></script>
+
 
 	<script type="text/javascript">
-		$(function() {
-			$('.b-silder').flexslider({
-				animation: "slide",
-				directionNav: false,
-				slideshowSpeed: 4000,
-				slideshow: true,
-				pauseOnHover: true,
-				startAt: 0
-			});
-		});
-		function dian(){
-			$('#div1').load("/front/context");
+		//根据ID获取iframe对象
+		var ifr = $("#iframe_a")[0];
+		ifr.onload = function() {
+			//解决滚动条不收缩
+			ifr.style.height = 0+'px';
+			var iDoc = ifr.contentDocument || ifr.contentWindow.document;
+			var height = iDoc.documentElement.clientHeight || iDoc.body.clientHeight;
+			ifr.style.height = (height+80)+ 'px';
+		};
+		//修改路径
+		function eidtsrc(id,aid){
+			$("#iframe_a").attr("src","/front/xianqing?pid="+id+"&anchortid="+aid);
 		}
 	</script>
 </html>

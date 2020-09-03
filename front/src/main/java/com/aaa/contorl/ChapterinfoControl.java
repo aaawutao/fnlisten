@@ -16,15 +16,17 @@ import java.util.Map;
 public class ChapterinfoControl {
     @Resource
     ChapterinfoService chapterinfoService;
-
+    //获取章节
     @RequestMapping("querypid")
     @ResponseBody
     public List<Map<String,Object>> queryid(ModelMap map, @RequestParam("pid") Integer pid){
         return chapterinfoService.queryChapter(pid);
     }
+    //设置详情页面
     @RequestMapping("xiangqi")
     public String queryid(@RequestParam("pid") Integer pid){
-        System.out.println("携带参数"+pid);
+        //获取详情信息
+        //获取节目章节
         return "xianqing.html";
     }
 

@@ -17,7 +17,7 @@
   border:1px solid #ccc;
 }*/
 .login-bg {
-    background: url("../../images/login_bg.png") repeat-x #f3f3f3; }
+    background: url("../img/login_bg.png") repeat-x #f3f3f3; }
 
 article.settings-main {
     min-height: 774px;
@@ -100,7 +100,7 @@ article.settings-main {
     padding-top: 1px; }
 /*图片*/
 .login-auth-wbsina, .login-auth-qq, .login-auth-xm {
-    background: url("../../images/main.png") no-repeat -5px -258px;
+    background: url("../img/main.png") no-repeat -5px -258px;
     display: block;
     height: 40px;
     width: 204px;
@@ -125,7 +125,7 @@ article.settings-main {
     padding: 20px 20px 15px 20px; }
 
 .login-w .btn-primary {
-    background: url("../../images/main.png") no-repeat -7px -420px white;
+    background: url("../img/main.png") no-repeat -7px -420px white;
     border: medium none;
     font-size: 16px;
     line-height: 36px;

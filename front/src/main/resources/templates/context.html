@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <iframe th:replace="css.html"></iframe>
 </head>
 <body>
+
 <div class="wrapper h-wrapper">
     <div class="h-column-l">
         <!--导航菜单-->
@@ -76,11 +78,11 @@
                 <ul class="clearfix">
                     <li class="book-item">
                         <div class="book-item-photo pr">
-                            <a href="javascript:plays(1)"  ><img alt="故事会精选（中国老牌刊物）-卡尔博学-播音王悦" src="https://bookpic.lrts.me/40aeda2a873c4b5288660b832b35de53.jpeg"><span
+                            <a href="javascript:plays(2)"  ><img alt="故事会精选（中国老牌刊物）-卡尔博学-播音王悦" src="https://bookpic.lrts.me/40aeda2a873c4b5288660b832b35de53.jpeg"><span
                                     class="play-w"><i class="icon-play"></i></span></a>
                         </div>
                         <div class="book-item-r">
-                            <a href="/book/68292855" class="book-item-name">test（中国老牌刊物）</a>
+                            <a href="javascript:showxq(2,1)" class="book-item-name">test（中国老牌刊物）</a>
                             <div class="book-item-star">
 
                                 <i class="icon-star-s"></i>
@@ -99,7 +101,7 @@
                     </li>
                     <li class="book-item">
                         <div class="book-item-photo pr">
-                            <a href="javascript:iframechange(1)"  ><img alt="重生西游之万界妖尊（上部）-会魔法的小猪-调频文化" src="https://bookpic.lrts.me/f3c8u97khv7rj1238zggsqs5ccaeqcmg.jpeg"><span
+                            <a href="javascript:"  ><img alt="重生西游之万界妖尊（上部）-会魔法的小猪-调频文化" src="https://bookpic.lrts.me/f3c8u97khv7rj1238zggsqs5ccaeqcmg.jpeg"><span
                                     class="play-w"><i class="icon-play"></i></span></a>
                         </div>
                         <div class="book-item-r">
@@ -420,16 +422,22 @@
 </body>
 
 <script>
+    $(function() {
+        $('.b-silder').flexslider({
+            animation: "slide",
+            directionNav: false,
+            slideshowSpeed: 4000,
+            slideshow: true,
+            pauseOnHover: true,
+            startAt: 0
+        });
+    });
     function plays(id) {
-        window.getdata(id);
+       //$("#iframe_a")[0].contentWindow.getdata(id)
+        window.parent.getdata(id);
     }
-    function close(){
-
-    }
-    //设置修改自己的iframe src路径
-    function iframechange(obj){
-        console.info("test");
-        $('#iframe_a').load("/xianqing");
+    function showxq(id,aid){
+        window.parent.eidtsrc(id,aid);
     }
 </script>
 </html>

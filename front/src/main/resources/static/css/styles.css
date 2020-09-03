@@ -71,7 +71,7 @@
     display: inline; }
 
 .d-status {
-    background: url("../../images/main.png") no-repeat -191px -1019px;
+    background: url("http://localhost:9999/fileclient/staticfile/main.png") no-repeat -191px -1019px;
     display: inline-block;
     height: 30px;
     vertical-align: middle;
@@ -89,12 +89,13 @@ a.d-p {
     float: left;
     height: 64px;
     width: 170px;
-    background: url("../../images/main.png") no-repeat -7px -995px;
+    background: url("http://localhost:9999/fileclient/staticfile/main.png") no-repeat -7px -995px;
     color: white !important;
     position: relative; }
 
 a.d-p:hover {
-    background-position: -9px -1067px; }
+    background-position: -9px -1067px;
+}
 
 a.d-p:active {
     background-position: -8px -1139px; }

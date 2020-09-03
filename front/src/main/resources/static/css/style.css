@@ -239,13 +239,13 @@
   text-indent: -9999px; }
 
 .h-slider .flex-prev {
-  background: url("../../images/main.png") no-repeat -352px -612px;
+  background: url("http://localhost:9999/fileclient/staticfile/main.png") no-repeat -352px -612px;
   height: 22px;
   width: 22px;
   margin-right: 1px; }
 
 .h-slider .flex-next {
-  background: url("../../images/main.png") no-repeat -375px -612px;
+  background: url("http://localhost:9999/fileclient/staticfile/main.png") no-repeat -375px -612px;
   height: 22px;
   width: 22px; }
 
@@ -261,7 +261,7 @@
 
 .h-slider .flex-control-nav li a {
   display: block;
-  background: url("../../images/main.png") no-repeat -379px -586px;
+  background: url("http://localhost:9999/fileclient/staticfile/main.png") no-repeat -379px -586px;
   width: 14px;
   text-indent: -9999px; }
 
@@ -340,7 +340,7 @@
 
 .h-android-d, .h-iphone-d {
   display: block;
-  background: url("../../images/main.png") no-repeat -209px -1145px;
+  background: url("http://localhost:9999/fileclient/staticfile/main.png") no-repeat -209px -1145px;
   height: 38px; }
 
 .h-iphone-d {
@@ -360,7 +360,7 @@
 .h-login button {
   line-height: 36px;
   width: 84px;
-  background: url("../../images/main.png") no-repeat -376px -1088px;
+  background: url("http://localhost:9999/fileclient/staticfile/main.png") no-repeat -376px -1088px;
   border: none;
   font-size: 16px;
   color: #fff;
@@ -624,7 +624,7 @@
   margin-left: 10px; }
 
 .b-silder .flex-control-nav li a {
-  background: url("../../images/main.png") no-repeat -434px -1002px;
+  background: url("http://localhost:9999/fileclient/staticfile/main.png") no-repeat -434px -1002px;
   color: #fff;
   display: block;
   font-family: arial;
