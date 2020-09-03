@@ -25,9 +25,7 @@
                     <li><span class="weaken">类型：</span><span th:text="${programinfo.ptname}"></span></li>
                 </ul>
                 <div class="d-o d-book-o">
-                    <a class="d-p player-trigger " >
-                        <input type="hidden" value="120" />
-                    </a>
+                    <a class="d-p " href='javascript:;' th:onclick="allplay([[${programinfo.pid}]])"></a>
                     <div class="fr">
                         <a class="d-download"><i class="icon-d-download"></i>下载</a>
                         <a class="d-collection" id="addCollection" entityId="5237" entityType="3"><i class="icon-d-collection"></i><span
@@ -72,13 +70,13 @@
                 <ul th:each="it:${pros}">
                     <li class="book-item">
                         <div class="fl book-item-photo pr">
-                            <a href="">
+                            <a href='javascript:;' th:onclick="allplay([[${it.pid}]])">
                                 <img th:src="${it.poster}"  />
                                 <span class="play-w"><i class="icon-play-s"></i></span>
                             </a>
                         </div>
                         <div class="book-item-r">
-                            <a href="" class="book-item-name" th:text="${it.pname}"></a>
+                            <a href='javascript:;' th:onclick="showxq([[${it.pid}]],[[${it.anchortid}]])" class="book-item-name" th:text="${it.pname}"></a>
                             <div class="nowrap weaken">类型：<em th:text="${it.ptname}"></em></div>
                             <div class="nowrap weaken">主播：<em th:text="${it.petname}"></em></div>
                         </div>
@@ -93,6 +91,15 @@
 </body>
 
 <script type="text/javascript">
+    //全部播放
+    function allplay(id){
+        window.parent.getdata(id);
+    }
+    //显示详情
+    function showxq(id,aid){
+        window.parent.eidtsrc(id,aid);
+    }
+
     $(document).ready(function () {
         $("#before,#after").addClass("set_imd");
         $(document).on('click', '.jp-play-me', function (e) {
@@ -105,7 +112,7 @@
             $this.parent('li').toggleClass('active');
             if (!$this.hasClass('active')) {
                 //获取当前元素
-                window.window.myplay.pause();
+                window.parent.pause();
             } else {
                 //播放列表里面设置章节
                 var k = $(this).parent("li")[0].getAttribute("mytest");
