@@ -31,9 +31,9 @@ public class EmpinfoService {
         return empinfoDao.insertSelective(empinfo);
     }
 
-    public int update(Empinfo empinfo) {
-        return empinfoDao.updateByPrimaryKey(empinfo);
-    }
+//    public Integer update(Empinfo empinfo) {
+//        return empinfoDao.updateByPrimaryKey(empinfo);
+//    }
 
 
     //查询没有分配账号的用户

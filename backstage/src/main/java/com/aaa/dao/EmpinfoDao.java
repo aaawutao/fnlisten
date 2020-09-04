@@ -18,7 +18,7 @@ public interface EmpinfoDao extends tk.mybatis.mapper.common.Mapper<Empinfo> {
 
 
 
-    @Select("select empid,empname,empbirth,empphone,empidentity,did,xueli,empentrydate,empdimissiondate from empinfo")
+    @Select("select empid,empname,empphone,empidentity,did,xueli,empentrydate,empdimissiondate from empinfo")
     List<Empinfo>findAll();
 
 }

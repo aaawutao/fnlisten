@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin
@@ -36,6 +37,9 @@ public class EmpinfoController {
 
         @RequestMapping("save")
         public int save (Empinfo empinfo){
+            System.out.println("save:" + empinfo);
+            //获取当前时间
+           empinfo.setEmpentrydate(new Date());
             return empinfoService.save(empinfo);
 
         }

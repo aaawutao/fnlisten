@@ -1,7 +1,5 @@
 package com.aaa.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -24,13 +22,11 @@ public class Empinfo {
     private Integer did;//部门
     //@Column
     private String xueli;//学历
-    //@Column
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private String empentrydate;//入职
-    //@Column
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private String empdimissiondate;//离职
 
+   @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    private Date empentrydate;//入职
+   @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    private Date empdimissiondate;//离职
     public Integer getEmpid() {
         return empid;
     }
@@ -47,13 +43,13 @@ public class Empinfo {
         this.empname = empname;
     }
 
-    public String getEmpbirth() {
-        return empbirth;
-    }
+//    public String getEmpbirth() {
+//        return empbirth;
+//    }
 
-    public void setEmpbirth(String empbirth) {
-        this.empbirth = empbirth;
-    }
+//    public void setEmpbirth(String empbirth) {
+//        this.empbirth = empbirth;
+//    }
 
     public String getEmpphone() {
         return empphone;
@@ -87,20 +83,19 @@ public class Empinfo {
         this.xueli = xueli;
     }
 
-
-    public String getEmpentrydate() {
+    public Date getEmpentrydate() {
         return empentrydate;
     }
 
-    public void setEmpentrydate(String empentrydate) {
+    public void setEmpentrydate(Date empentrydate) {
         this.empentrydate = empentrydate;
     }
 
-    public String getEmpdimissiondate() {
+    public Date getEmpdimissiondate() {
         return empdimissiondate;
     }
 
-    public void setEmpdimissiondate(String empdimissiondate) {
+    public void setEmpdimissiondate(Date empdimissiondate) {
         this.empdimissiondate = empdimissiondate;
     }
 
