@@ -69,9 +69,6 @@ public class Backstage_UserService  {
      * @param
      * @return
      */
-    public int updatepwd(String upwd,int userid){
-        return backstage_userDao.updatepwd(upwd, userid);
-    }
 
     //查询出账号下的用户详细信息
     public List<Map<String,Object>> queryBydetails(Integer backstage_userid){
@@ -82,5 +79,15 @@ public class Backstage_UserService  {
     //查询出主播表的actype是否是0
     public Anchorinfo queryByZb(Integer bfid){
           return   backstage_userDao.queryByZb(bfid);
+    }
+
+    //修改图片
+   public int  updatephoto(String backstage_photo,Integer backstage_userid){
+        return  backstage_userDao.updatephoto(backstage_photo,backstage_userid);
+    }
+    //修改密码
+    public int updatepwd(String backstage_upwd,Integer backstage_userid){
+
+        return backstage_userDao.updatepwd(backstage_upwd,backstage_userid);
     }
 }

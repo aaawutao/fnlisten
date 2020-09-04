@@ -1,5 +1,7 @@
 package com.aaa.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -8,19 +10,17 @@ import java.util.Date;
 //@Table(name = "empinfo")
 public class Empinfo {
     @Id
-    //@Column
+
     private Integer empid;//员工编号
-    //@Column
+
     private String empname;//名字
-    //@Column
-    private String empbirth;//出生年月
-    //@Column
+
     private String empphone;//电话
-    //@Column
+
     private String empidentity;//身份证
-    //@Column
+
     private Integer did;//部门
-    //@Column
+
     private String xueli;//学历
 
    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
@@ -43,13 +43,7 @@ public class Empinfo {
         this.empname = empname;
     }
 
-//    public String getEmpbirth() {
-//        return empbirth;
-//    }
 
-//    public void setEmpbirth(String empbirth) {
-//        this.empbirth = empbirth;
-//    }
 
     public String getEmpphone() {
         return empphone;
@@ -104,7 +98,6 @@ public class Empinfo {
         return "Empinfo{" +
                 "empid=" + empid +
                 ", empname='" + empname + '\'' +
-                ", empbirth='" + empbirth + '\'' +
                 ", empphone='" + empphone + '\'' +
                 ", empidentity='" + empidentity + '\'' +
                 ", did=" + did +

@@ -28,17 +28,16 @@ public class Backstage_userController {
     @Resource
     AnchorinfoService anchorinfoService;
     FileRule fileRule=new FileRule();
-    //修改密码
+    /*//修改密码
     @RequestMapping("upwd")
     public int upwd(@RequestParam("map") Map<Object,Object> map){
         int userid = (int) map.get("id");
         String upwd = (String) map.get("pwd");
         return backstage_userService.updatepwd(upwd, userid);
-    }
+    }*/
     @RequestMapping("upload")
     public Integer  upload(@RequestParam("file") MultipartFile file,@RequestParam("userid") Integer userid,@RequestParam("username") String username,@RequestParam("flag") String flag){
         try{
-
             String photourl=fileRule.fileupload(staticurl,file,username,flag);
             System.out.println(photourl);
         }catch (Exception e){
@@ -92,5 +91,24 @@ public class Backstage_userController {
         return backstage_userService.queryByZb(bfid);
     }
 
+    //修改图片路径
+    @RequestMapping("updatephoto")
+    public int  updatephoto(@RequestParam("file") MultipartFile file,Integer backstage_userid,Integer flag,String backstage_uname){
+
+        String flag1 = flag.toString();
+        String photourl="";
+        try{
+            photourl=fileRule.fileupload(staticurl,file,backstage_uname,flag1);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return  backstage_userService.updatephoto(photourl,backstage_userid);
+    }
+    //修改密码
+    @RequestMapping("updatepwd")
+    public int updatepwd(String backstage_upwd,Integer backstage_userid){
+
+        return backstage_userService.updatepwd(backstage_upwd,backstage_userid);
+    }
 
 }

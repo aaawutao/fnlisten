@@ -6,6 +6,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Resource;
 
 @Service
@@ -31,10 +32,6 @@ public class EmpinfoService {
         return empinfoDao.insertSelective(empinfo);
     }
 
-//    public Integer update(Empinfo empinfo) {
-//        return empinfoDao.updateByPrimaryKey(empinfo);
-//    }
-
 
     //查询没有分配账号的用户
     public List<Empinfo> queryByDid(){
@@ -42,5 +39,11 @@ public class EmpinfoService {
     }
 
 
+    public Map<String,Object> queryByempid(Integer empid){
+        return  empinfoDao.queryByempid(empid);
+    }
 
+    public int updatephone(String empphone,Integer empid){
+        return  empinfoDao.updatephone(empphone,empid);
+    }
 }

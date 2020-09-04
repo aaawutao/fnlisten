@@ -21,4 +21,8 @@ public class AnchorinfoService {
     public List<Anchorinfo> queryAllByacid(Integer bfid){
         return  anchorinfoDao.queryAllByacid(bfid);
     }
+
+    public int updatepetname(String petname, Integer acid){
+        return anchorinfoDao.updatepetname(petname,acid);
+    }
 }
