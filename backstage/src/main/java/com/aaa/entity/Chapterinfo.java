@@ -1,5 +1,7 @@
 package com.aaa.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Id;
 import java.util.Date;
 
@@ -12,7 +14,8 @@ public class Chapterinfo {
     private String artist;
     private String mp3;
     private Integer state;
-    private  String virtualcurrency;
+    private  Integer virtualcurrency;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createdate;
     private Integer pid;
 
@@ -49,11 +52,11 @@ public class Chapterinfo {
         this.state = state;
     }
 
-    public String getVirtualcurrency() {
+    public Integer getVirtualcurrency() {
         return virtualcurrency;
     }
 
-    public void setVirtualcurrency(String virtualcurrency) {
+    public void setVirtualcurrency(Integer virtualcurrency) {
         this.virtualcurrency = virtualcurrency;
     }
 

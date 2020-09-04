@@ -11,6 +11,6 @@ import java.util.List;
 public interface ChapterinfoDao extends Mapper<Chapterinfo> {
 
     @Select("select * from chapterinfo where pid=#{pid} \n" +
-            "group by createdate desc")
+            "order by createdate desc")
     List<Chapterinfo> queryAll(@Param("pid") Integer pid);
 }

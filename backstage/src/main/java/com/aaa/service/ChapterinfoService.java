@@ -24,4 +24,9 @@ public class ChapterinfoService {
         return pageInfo;
     }
 
+    //添加
+    public int addchapter(Chapterinfo chapterinfo){
+        return  chapterinfoDao.insert(chapterinfo);
+    }
+
 }
