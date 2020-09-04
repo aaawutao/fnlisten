@@ -43,11 +43,11 @@ public class EmpinfoController {
             return empinfoService.save(empinfo);
 
         }
-    @RequestMapping("update")
-    public int update (Empinfo empinfo){
-        System.out.println("card:" + empinfo.getEmpidentity());
-        return empinfoService.update(empinfo);
-    }
+//    @RequestMapping("update")
+//    public int update (Empinfo empinfo){
+//        System.out.println("card:" + empinfo.getEmpidentity());
+//        return empinfoService.update(empinfo);
+//    }
 
         //查询没有分配账号的用户
         @RequestMapping("queryByDid")
