@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class FileConfig implements WebMvcConfigurer {
     //上传路径
     @Value("${prop.filepath}")
-String staticurl;
+    String staticurl;
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(("/staticfile/**")).addResourceLocations("file:"+staticurl);

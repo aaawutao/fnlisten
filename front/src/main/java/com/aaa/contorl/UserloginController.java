@@ -33,6 +33,7 @@ public class UserloginController {
     public int addFrontuser(FrontUser frontuser){
         frontuser.setFront_usercreatedate(new Date());
         frontuser.setFront_userstate(0);
+        frontuser.setFront_userflag(1);
         frontuser.setFlag(1);
         return frontUserService.addFrontuser(frontuser);
     }

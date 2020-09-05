@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
 </head>
 <body>
 <div th:if="${session?.user?.front_userflag}!=1">
@@ -42,31 +43,11 @@
                 <div data-v-e7ce8334="" class="ivu-form-item ivu-form-item-required"><label class="ivu-form-item-label" style="width: 140px;">证件类型</label>
                     <div class="ivu-form-item-content" style="margin-left: 140px;">
                         <div data-v-e7ce8334="" class="w_230 ivu-select ivu-select-single ivu-select-large">
-                            <div tabindex="0" class="ivu-select-selection"><input type="hidden" value="0">
-                                <div> <span class="ivu-select-selected-value">二代身份证</span>
-                                    <!---->
-                                    <!----> <i class="ivu-icon ivu-icon-ios-arrow-down ivu-select-arrow"></i></div>
-                            </div>
-                            <div class="ivu-select-dropdown" style="display: none; min-width: 270px; position: absolute; will-change: top, left; transform-origin: center top 0px; top: 36px; left: 0px;"
-                                 x-placement="bottom-start">
-                                <ul class="ivu-select-not-found" style="display: none;">
-                                    <li>无匹配数据</li>
-                                </ul>
-                                <ul class="ivu-select-dropdown-list">
-                                    <li data-v-e7ce8334="" class="ivu-select-item ivu-select-item-selected">
-                                        二代身份证
-                                    </li>
-                                    <li data-v-e7ce8334="" class="ivu-select-item">
-                                        护照
-                                    </li>
-                                    <li data-v-e7ce8334="" class="ivu-select-item">
-                                        港澳居民来往大陆通行证
-                                    </li>
-                                    <li data-v-e7ce8334="" class="ivu-select-item">
-                                        台湾居民来往大陆通行证
-                                    </li>
-                                </ul>
-                                <ul class="ivu-select-loading" style="display: none;">加载中</ul>
+                            <div tabindex="0" class="ivu-select-selection">
+                                <select style="width: 100%;height: 100%;">
+                                    <option>1</option>
+                                </select>
+
                             </div>
                         </div>
                         <!---->
@@ -81,69 +62,43 @@
                             <input autocomplete="off" spellcheck="false" type="text" placeholder="请输入证件号码" class="ivu-input ivu-input-lr40">
                             <!---->
                         </div>
-                        <!---->
-                        <!---->
                     </div>
                 </div>
-                <div data-v-e7ce8334="" class="ivu-form-item ivu-form-item-required"><label class="ivu-form-item-label" style="width: 140px;">手持证件照片</label>
+
+                <div data-v-e7ce8334="" class="ivu-form-item ivu-form-item-required">
+                    <label class="ivu-form-item-label" style="width: 140px;">证件反面</label>
                     <div class="ivu-form-item-content" style="margin-left: 140px;">
-                        <div data-v-c4b17aae="" data-v-e7ce8334=""><button data-v-c4b17aae="" type="button" class="upload_btn ivu-btn ivu-btn-default">
-                            <!----> <i class="ivu-icon iconfont iconfont iconicon_upload"></i> <span>
-											上传
-										</span></button> <span data-v-e7ce8334="" data-v-c4b17aae="" class="tip">图片需上传手持证件，格式支持PNG、BMP、JPG或GIF，照片少于5M，需要确保人像、身份证姓名、身份证号码清晰</span>
+                        <div data-v-c4b17aae="" data-v-e7ce8334="">
+                            <input  type="file" id="fs" class="upload_btn ivu-btn ivu-btn-default"></input>
+                            <span data-v-e7ce8334="" data-v-c4b17aae="" class="tip">格式支持PNG、BMP、JPG或GIF，照片少于5M</span>
                             <div data-v-c4b17aae="" class="upload_wrap">
                                 <div data-v-c4b17aae="" class="upload_area">
-                                    <div data-v-c4b17aae="" class="real real_hover"><i data-v-c4b17aae="" class="iconfont iconicon_add_img"></i>
-                                        <span data-v-c4b17aae="" class="text">上传手持证件照</span></div>
-                                    <!---->
+                                    <div data-v-c4b17aae="" class="real real_hover">
+                                        <img id="ims" src="" style="width: 100%;height: 100%;"/>
+                                    </div>
                                 </div>
-                                <div data-v-e7ce8334="" data-v-c4b17aae="" class="demo2"><span data-v-e7ce8334="" data-v-c4b17aae="" class="demo_text">示例</span></div>
-                            </div> <input data-v-c4b17aae="" type="file" class="input">
+                            </div>
                         </div>
-                        <!---->
-                        <!---->
-                        <!---->
                     </div>
                 </div>
-                <div data-v-e7ce8334="" class="ivu-form-item ivu-form-item-required"><label class="ivu-form-item-label" style="width: 140px;">证件正面</label>
+                <div data-v-e7ce8334="" class="ivu-form-item ivu-form-item-required">
+                    <label class="ivu-form-item-label" style="width: 140px;">证件正面</label>
                     <div class="ivu-form-item-content" style="margin-left: 140px;">
-                        <div data-v-c4b17aae="" data-v-e7ce8334=""><button data-v-c4b17aae="" type="button" class="upload_btn ivu-btn ivu-btn-default">
-                            <!----> <i class="ivu-icon iconfont iconfont iconicon_upload"></i> <span>
-											上传
-										</span></button> <span data-v-e7ce8334="" data-v-c4b17aae="" class="tip">格式支持PNG、BMP、JPG或GIF，照片少于5M</span>
+                        <div data-v-c4b17aae="" data-v-e7ce8334="">
+                            <input  type="file" id="f" class="upload_btn ivu-btn ivu-btn-default"></input>
+                            <span data-v-e7ce8334="" data-v-c4b17aae="" class="tip">格式支持PNG、BMP、JPG或GIF，照片少于5M</span>
                             <div data-v-c4b17aae="" class="upload_wrap">
                                 <div data-v-c4b17aae="" class="upload_area">
-                                    <div data-v-c4b17aae="" class="real real_hover"><i data-v-c4b17aae="" class="iconfont iconicon_add_img"></i>
-                                        <span data-v-c4b17aae="" class="text">选择正面照片</span></div>
-                                    <!---->
+                                    <div data-v-c4b17aae="" class="real real_hover">
+                                      <img id="im" src="" style="width: 100%;height: 100%;"/>
+                                    </div>
                                 </div>
-                            </div> <input data-v-c4b17aae="" type="file" class="input">
+                            </div>
                         </div>
-                        <!---->
-                        <!---->
-                        <!---->
                     </div>
                 </div>
-                <div data-v-e7ce8334="" class="ivu-form-item ivu-form-item-required"><label class="ivu-form-item-label" style="width: 140px;">证件反面</label>
-                    <div class="ivu-form-item-content" style="margin-left: 140px;">
-                        <div data-v-c4b17aae="" data-v-e7ce8334=""><button data-v-c4b17aae="" type="button" class="upload_btn ivu-btn ivu-btn-default">
-                            <!----> <i class="ivu-icon iconfont iconfont iconicon_upload"></i> <span>
-											上传
-										</span></button> <span data-v-e7ce8334="" data-v-c4b17aae="" class="tip">格式支持PNG、BMP、JPG或GIF，照片少于5M</span>
-                            <div data-v-c4b17aae="" class="upload_wrap">
-                                <div data-v-c4b17aae="" class="upload_area">
-                                    <div data-v-c4b17aae="" class="real real_hover"><i data-v-c4b17aae="" class="iconfont iconicon_add_img"></i>
-                                        <span data-v-c4b17aae="" class="text">选择反面照片</span></div>
-                                    <!---->
-                                </div>
-                            </div> <input data-v-c4b17aae="" type="file" class="input">
-                        </div>
-                        <!---->
-                        <!---->
-                        <!---->
-                    </div>
-                </div>
-            </div>
+
+
             <div data-v-e7ce8334="" class="ivu-form-item">
                 <!---->
                 <div class="ivu-form-item-content" style="margin-left: 140px;"><button data-v-e7ce8334="" type="button" class="submit lr_btn_solid ivu-btn ivu-btn-default">
@@ -153,8 +108,40 @@
                 </div>
             </div>
         </form>
+
+
+
     </div>
     <!---->
 </div>
 </body>
+<script th:src="@{'/js/jquery.min.js?v=36'}"></script>
+<script>
+    var regexImageFiler;
+    regexImageFiler = /^(?:image\/bmp|image\/png|image\/jpeg|image\/jpg|image\/gif)$/i;
+    var imgReaderl = new FileReader();
+    var imgReader2 = new FileReader();
+    imgReaderl.onload = function(evt) {
+        $("#im").attr("src", evt.target.result);
+    };
+    imgReader2.onload = function(evt) {
+        $("#ims").attr("src", evt.target.result);
+    };
+
+    $("#f").change(function() {
+        var imgfFile = $("#f").prop("files")[0];
+        if(!regexImageFiler.test(imgfFile.type)) {
+            alert("选择有效图片");
+        }
+        imgReaderl.readAsDataURL(imgfFile);
+    });
+
+    $("#fs").change(function() {
+        var imgfFile = $("#fs").prop("files")[0];
+        if(!regexImageFiler.test(imgfFile.type)) {
+            alert("选择有效图片");
+        }
+        imgReader2.readAsDataURL(imgfFile);
+    })
+</script>
 </html>
