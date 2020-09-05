@@ -22,7 +22,7 @@
                     <div><a class="jp-next"><i class="icon-control-forward i-lg"></i></a></div>
                     <div class="hide"><a class="jp-stop"><i class="fa fa-stop"></i></a></div>
 
-                    <div><img id="poster-ty" class="poster-img" src="images/a10.png"></div>
+                    <div><img id="poster-ty" class="poster-img" src=""></div>
                     <div class="jp-progress hidden-xs">
                         <div class="jp-seek-bar dk">
                             <div class="jp-play-bar bg">
@@ -125,6 +125,7 @@
                 }
                 //cookie获取节目章节索引默认0 播放
                 window.myplay.play(0);
+                $(".poster-img").attr("src", data[0].poster);
             }
         });
     }
@@ -139,6 +140,7 @@
             obj[arr2[0].trim()] = arr2[1].trim();
         }
         //添加音频，并播放
+        $(".poster-img").attr("src", obj["poster"]);
         window.myplay.add({
             title: obj["title"],
             artist: obj["artist"],

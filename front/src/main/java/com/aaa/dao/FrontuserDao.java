@@ -13,4 +13,6 @@ public interface FrontuserDao  extends Mapper<FrontUser> {
             "values " +
             "(#{phone},#{front_userpwd},")
     int addFrontuser(@Param("phone") String phone,@Param("front_userpwd") String front_userpwd);*/
+
+
 }

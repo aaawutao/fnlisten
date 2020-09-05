@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div data-v-b39d6196="">
+    <div data-v-32f781fc="" class="type">
+        <div data-v-32f781fc="" class="left">
+            <div data-v-32f781fc="" class="item active">
+                <p data-v-32f781fc="" class="title"><span th:onclick="hidden1()">上传节目声音</span></p>
+            </div>
+            <div data-v-32f781fc="" class="item">
+                <p data-v-32f781fc="" class="title"><span th:onclick="hidden2()">创建节目专辑</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div data-v-b39d6196="" >
+        <div data-v-46b96043="" data-v-76b5fe84="" class="createAlbum" id="program">
+            <div data-v-46b96043="" class="form">
+                <div data-v-46b96043="" >
+                    <div data-v-46b96043="" class="img"><img data-v-46b96043="" src="//assets.lrts.me/fed-lrts-studio/img/950cd75.png"
+                                                             alt="">
+                        <!---->
+                        <p data-v-46b96043="" class="text">
+                            上传封面
+                        </p>
+                        <!----> <input data-v-46b96043="" type="file"  class="input">
+                    </div>
+                    <div data-v-46b96043="" class="refer">
+                        <p data-v-46b96043="">参考尺寸：600×600</p>
+                        <p data-v-46b96043="">参考大小：3M以内</p>
+                    </div>
+                </div>
+                <form data-v-46b96043="" autocomplete="off" class="ivu-form ivu-form-label-left" style="width: 500px">
+                    <div data-v-46b96043="" class="ivu-form-item ivu-form-item-required"><label class="ivu-form-item-label">节目名称</label>
+                        <div class="ivu-form-item-content" style="">
+                            <div data-v-46b96043="" class="input ivu-input-wrapper ivu-input-wrapper-lr40 ivu-input-type-text">
+                                <!---->
+                                <!----> <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
+                                <input autocomplete="off" spellcheck="false" type="text" placeholder="请输入" maxlength="20" class="ivu-input ivu-input-lr40">
+                                <!---->
+                            </div>
+                            <!---->
+                            <!---->
+                        </div>
+                    </div>
+                    <div data-v-46b96043="" class="ivu-form-item ivu-form-item-required"><label class="ivu-form-item-label" >节目介绍</label>
+                        <div class="ivu-form-item-content" style="">
+                            <div data-v-46b96043="" class="textarea ivu-input-wrapper ivu-input-wrapper-large ivu-input-type-textarea"><textarea
+                                    autocomplete="off" spellcheck="false" placeholder="请输入" rows="2" maxlength="500" class="ivu-input" wrap="soft"></textarea>
+                                <span class="ivu-input-word-count">0/500</span></div>
+                            <!---->
+                            <!---->
+                        </div>
+                    </div>
+                    <div data-v-46b96043="" class="ivu-form-item ivu-form-item-required"><label class="ivu-form-item-label" >节目分类</label>
+                        <div class="ivu-form-item-content" style="">
+                            <div data-v-46b96043="" class="ivu-select ivu-select-single ivu-select-large" style="width: 170px; margin-right: 20px;">
+                                <div tabindex="0" class="ivu-select-selection"><input type="hidden">
+                                    <div> <span class="ivu-select-placeholder">请选择</span>
+                                        <!---->
+                                        <!----> <i class="ivu-icon ivu-icon-ios-arrow-down ivu-select-arrow"></i></div>
+                                </div>
+                                <div class="ivu-select-dropdown" style="display: none; min-width: 170px; position: absolute; will-change: top, left; transform-origin: center bottom 0px; top: 0px; left: 0px;"
+                                     x-placement="top-start">
+                                    <ul class="ivu-select-dropdown-list">
+                                        <li data-v-46b96043="" class="ivu-select-item">
+                                            情感
+                                        </li>
+                                        <li data-v-46b96043="" class="ivu-select-item">
+                                            脱口秀
+                                        </li>
+                                        <li data-v-46b96043="" class="ivu-select-item">
+                                            广播剧
+                                        </li>
+                                        <li data-v-46b96043="" class="ivu-select-item">
+                                            亲子
+                                        </li>
+                                        <li data-v-46b96043="" class="ivu-select-item">
+                                            音乐
+                                        </li>
+                                        <li data-v-46b96043="" class="ivu-select-item">
+                                            人文历史
+                                        </li>
+                                        <li data-v-46b96043="" class="ivu-select-item">
+                                            娱乐
+                                        </li>
+                                        <li data-v-46b96043="" class="ivu-select-item">
+                                            财经科技
+                                        </li>
+                                        <li data-v-46b96043="" class="ivu-select-item">
+                                            汽车
+                                        </li>
+                                        <li data-v-46b96043="" class="ivu-select-item">
+                                            动漫
+                                        </li>
+                                        <li data-v-46b96043="" class="ivu-select-item">
+                                            健康生活
+                                        </li>
+                                        <li data-v-46b96043="" class="ivu-select-item">
+                                            其他类别
+                                        </li>
+                                        <li data-v-46b96043="" class="ivu-select-item">
+                                            有声读物
+                                        </li>
+                                        <li data-v-46b96043="" class="ivu-select-item">
+                                            精品课
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!---->
+                            <!---->
+                        </div>
+                    </div>
+                    <div data-v-46b96043="" class="ivu-form-item ivu-form-item-required"><label class="ivu-form-item-label" >内容来源</label>
+                        <div class="ivu-form-item-content" >
+                            <div data-v-46b96043="" class="ivu-select ivu-select-single ivu-select-large" style="width: 170px; margin-right: 20px;">
+                                <div tabindex="0" class="ivu-select-selection"><input type="hidden">
+                                    <div> <span class="ivu-select-placeholder">请选择</span>
+                                        <!---->
+                                        <!----> <i class="ivu-icon ivu-icon-ios-arrow-down ivu-select-arrow"></i></div>
+                                </div>
+                                <div class="ivu-select-dropdown" style="display: none; min-width: 170px; position: absolute; will-change: top, left; transform-origin: center bottom 0px; top: 0px; left: 0px;"
+                                     x-placement="top-start">
+                                    <ul class="ivu-select-not-found" style="display: none;">
+                                        <li>无匹配数据</li>
+                                    </ul>
+                                    <ul class="ivu-select-dropdown-list">
+                                        <li data-v-46b96043="" class="ivu-select-item">
+                                            原创
+                                        </li>
+                                        <li data-v-46b96043="" class="ivu-select-item">
+                                            采集
+                                        </li>
+                                    </ul>
+                                    <ul class="ivu-select-loading" style="display: none;">加载中</ul>
+                                </div>
+                            </div>
+                            <!---->
+                            <!---->
+                        </div>
+                    </div>
+                    <div data-v-46b96043="" class="ivu-form-item ivu-form-item-required"><label class="ivu-form-item-label" >展示顺序</label>
+                        <div class="ivu-form-item-content" style="">
+                            <div data-v-46b96043="" class="ivu-select ivu-select-single ivu-select-large" style="width: 170px; margin-right: 20px;">
+                                <div tabindex="0" class="ivu-select-selection"><input type="hidden" value="1">
+                                    <div> <span class="ivu-select-selected-value">倒序</span>
+                                        <!---->
+                                        <!----> <i class="ivu-icon ivu-icon-ios-arrow-down ivu-select-arrow"></i></div>
+                                </div>
+                                <div class="ivu-select-dropdown" style="display: none; min-width: 170px; position: absolute; will-change: top, left; transform-origin: center bottom 0px; top: 0px; left: 0px;"
+                                     x-placement="top-start">
+                                    <ul class="ivu-select-not-found" style="display: none;">
+                                        <li>无匹配数据</li>
+                                    </ul>
+                                    <ul class="ivu-select-dropdown-list">
+                                        <li data-v-46b96043="" class="ivu-select-item">
+                                            正序
+                                        </li>
+                                        <li data-v-46b96043="" class="ivu-select-item ivu-select-item-selected">
+                                            倒序
+                                        </li>
+                                    </ul>
+                                    <ul class="ivu-select-loading" style="display: none;">加载中</ul>
+                                </div>
+                            </div>
+                            <!---->
+                            <!---->
+                        </div>
+                    </div>
+                    <div data-v-46b96043="" class="ivu-form-item"><label class="ivu-form-item-label" >声音主播</label>
+                        <div class="ivu-form-item-content" style="">
+                            <div data-v-46b96043="" class="input ivu-input-wrapper ivu-input-wrapper-lr40 ivu-input-type-text">
+                                <!---->
+                                <!----> <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
+                                <input autocomplete="off" spellcheck="false" type="text" placeholder="请输入" class="ivu-input ivu-input-lr40">
+                                <!---->
+                            </div>
+                            <!---->
+                            <!---->
+                        </div>
+                    </div>
+                    <div data-v-46b96043="" class="ivu-form-item">
+                        <!---->
+                        <div class="ivu-form-item-content" style=""><button data-v-46b96043="" type="button" class="ivu-btn ivu-btn-default submit lr_btn_solid">
+                            <!---->
+                            <!----> <span>
+									提 交
+								</span></button>
+                            <!---->
+                            <!---->
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div data-v-ed797558="" data-v-46b96043="" class="lr-modal">
+                <div data-v-ed797558="" class="mask" style="display: none;"></div>
+                <div data-v-ed797558="" class="content" style="width: 562px; display: none;">
+                    <div data-v-ed797558="" class="close"><i data-v-ed797558="" class="ivu-icon iconfont iconicon_classtify_delete"
+                                                             style="font-size: 24px;"></i></div>
+                    <div data-v-ed797558="" class="header">
+                        <div data-v-46b96043="" class="header">
+                            <p data-v-46b96043="" class="title">
+                                选择标签
+                            </p> <span data-v-46b96043="" class="span">选择和内容匹配的标签，最多可选择10个</span>
+                        </div>
+                    </div>
+                    <div data-v-ed797558="" class="body">
+                        <div data-v-46b96043="" class="selectLabel"></div>
+                    </div>
+                    <div data-v-ed797558="" class="footer one">
+                        <!----> <button data-v-ed797558="" class="ok">
+                        添加
+                    </button></div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div data-v-cb2fe0aa="" class="album" id="yingping" >
+            <div data-v-cb2fe0aa="" class="title stpe1"><span data-v-cb2fe0aa="">第一步</span> <span data-v-cb2fe0aa="">选择节目专辑</span></div>
+            <div data-v-cb2fe0aa="" class="select">
+                <div data-v-cb2fe0aa="" class="ivu-select ivu-select-single ivu-select-large" style="width: 368px;">
+                    <div tabindex="0" class="ivu-select-selection"><input type="hidden">
+                        <div> <span class="ivu-select-placeholder">请选择节目</span>
+                            <!---->
+                            <!----> <i class="ivu-icon ivu-icon-ios-arrow-down ivu-select-arrow"></i></div>
+                    </div>
+                    <div class="ivu-select-dropdown" style="display: none;">
+                        <ul class="ivu-select-not-found">
+                            <li>无匹配数据</li>
+                        </ul>
+                        <ul class="ivu-select-dropdown-list"></ul>
+                        <ul class="ivu-select-loading" style="display: none;">加载中</ul>
+                    </div>
+                </div>
+                <!---->
+            </div>
+            <div data-v-cb2fe0aa="" class="title stpe2"><span data-v-cb2fe0aa="">展示顺序</span></div>
+            <div data-v-cb2fe0aa="" class="select">
+                <div data-v-cb2fe0aa="" class="ivu-select ivu-select-single ivu-select-large" style="width: 368px;">
+                    <div tabindex="0" class="ivu-select-selection"><input type="hidden" value="1">
+                        <div> <span class="ivu-select-selected-value">倒序</span>
+                            <!---->
+                            <!----> <i class="ivu-icon ivu-icon-ios-arrow-down ivu-select-arrow"></i></div>
+                    </div>
+                    <div class="ivu-select-dropdown" style="display: none; min-width: 368px; position: absolute; will-change: top, left; transform-origin: center bottom 0px; top: 314px; left: 460px;"
+                         x-placement="top-start">
+                        <ul class="ivu-select-not-found" style="display: none;">
+                            <li>无匹配数据</li>
+                        </ul>
+                        <ul class="ivu-select-dropdown-list">
+                            <li data-v-cb2fe0aa="" class="ivu-select-item">
+                                正序
+                            </li>
+                            <li data-v-cb2fe0aa="" class="ivu-select-item ivu-select-item-selected">
+                                倒序
+                            </li>
+                        </ul>
+                        <ul class="ivu-select-loading" style="display: none;">加载中</ul>
+                    </div>
+                </div>
+            </div>
+            <div data-v-cb2fe0aa="" class="title stpe3"><span data-v-cb2fe0aa="">第二步</span> <span data-v-cb2fe0aa="">上传节目声音</span></div>
+            <div data-v-6daecee4="" data-v-cb2fe0aa="">
+                <div data-v-6daecee4="" class="con" style="padding-top: 40px;">
+                    <div data-v-6daecee4="" class="select-file">
+                        <div data-v-7f0c7470="" data-v-6daecee4="" class="upload-item">
+                            <div data-v-7f0c7470="" class="upload-select"><input data-v-7f0c7470="" multiple="multiple" type="file" accept="audio/mpeg,audio/wav,audio/x-wav,audio/x-pn-wav,audio/mp4a-latm,video/x-ms-wma"
+                                                                                 class="input">
+                                <div data-v-7f0c7470=""><button data-v-6daecee4="" type="button" class="lrts-primary-upload ivu-btn ivu-btn-default ivu-btn-circle"
+                                                                data-v-7f0c7470="">
+                                    <!----> <i class="ivu-icon iconfont icon-icon_upload_button" style="font-size: 40px;"></i> <span>
+													上传文件
+												</span></button></div>
+                            </div>
+                            <!---->
+                            <div data-v-7f0c7470="">
+                                <p data-v-7f0c7470=""></p>
+                            </div>
+                        </div>
+                        <div data-v-6daecee4="" class="checked">
+                            <div data-v-6daecee4="" class="text">
+                                <p data-v-6daecee4="">可同时选择多个文件</p>
+                            </div> <label data-v-6daecee4="" class="protocol ivu-checkbox-wrapper ivu-checkbox-default"><span class="ivu-checkbox"><span
+                                class="ivu-checkbox-inner"></span> <input type="checkbox" class="ivu-checkbox-input"></span>
+                            我已阅读并同意<a data-v-6daecee4=""  target="_blank">《懒人听书音频内容发布协议》</a></label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script th:src="@{'/js/jquery.min.js?v=36'}"></script>
+<script>
+    function hidden2(){
+        $("#program").show();
+        $("#yingping").hide();
+
+    }
+    function hidden1() {
+        $("#yingping").show();
+        $("#program").hide();
+    }
+    $(function () {
+        $("#program").hide();
+    })
+
+</script>
+</html>

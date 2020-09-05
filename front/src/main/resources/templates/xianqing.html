@@ -24,6 +24,12 @@
                 <ul class="d-grid">
                     <li><span class="weaken">类型：</span><span th:text="${programinfo.ptname}"></span></li>
                 </ul>
+                <ul class="d-grid">
+                    <li><span class="weaken">状态：</span><td th:switch="${programinfo.pstate}">
+                        <span th:case="0">连载</span>
+                        <span th:case="1">完本</span>
+                    </td></li>
+                </ul>
                 <div class="d-o d-book-o">
                     <a class="d-p " href='javascript:;' th:onclick="allplay([[${programinfo.pid}]])"></a>
                     <div class="fr">
@@ -117,8 +123,9 @@
                 //播放列表里面设置章节
                 var k = $(this).parent("li")[0].getAttribute("mytest");
                 //添加
-                $(".poster-img").attr("src", k.poster);//此方法返回一个函数改变src   $('a.cover1').html('<img src="' + latest[k].poster );
-                $(".musicbar").addClass("animate").index();
+                console.info(k.poster);
+               //此方法返回一个函数改变src   $('a.cover1').html('<img src="' + latest[k].poster );
+               // $(".musicbar").addClass("animate").index();
                 //往播放列表中追加音频
                 window.parent.setOne(k);
             }

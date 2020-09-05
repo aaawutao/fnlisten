@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>懒人听书官方网站-知名有声阅读平台，身边的有声图书馆</title>
+    <title>登录</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" th:href="@{'css/base.css?v=36'}">
-    <link rel="stylesheet" th:href="@{'css/layout.css?v=36'}">
-    <link rel="stylesheet" th:href="@{'css/style.css?v=36'}">
+
+    <iframe th:replace="css.html"></iframe>
     <link rel="stylesheet" th:href="@{'css/login.css?v=36'}">
     <link rel="stylesheet" th:href="@{'css/loginstyle.css?v=36'}">
 </head>
 <body>
-
-<button id="btndddd">ddddd</button>
+    <!--登录-->
     <div class="wrapper login-page container" id="login" >
         <div class="p-title">登陆懒人听书</div>
         <div class="login-sub">
@@ -19,34 +17,40 @@
             <div class="login-auth">
                 >或使用合作网站登录<br />
                 <!--第三方登录-->
-                <a href="/sinaLogin.dosl" class="login-auth-wbsina"></a>
                 <a href="/qqLogin.dosl" class="login-auth-qq"></a>
-                <a href="/xiaomiLogin.dosl" class="login-auth-xm"></a>
             </div>
         </div>
+
         <div class="login-w" >
+            <div id="errMsg" class="field-error"></div>
             <ul class="fieldset">
                 <li>
                     <label class="field-name">账号：</label>
                     <div class="field-r">
-                        <input id="frontuserPhone" name="frontuserPhone" type="text"  placeholder="手机号" />
+                        <input id="frontuserPhone"  type="text"  placeholder="手机号" onblur="checkname()" onfocus="this.className='txt'" />
                         <p id="checkfrontuserPhone"></p>
                     </div>
                 </li>
                 <li>
                     <label class="field-name">密码：</label>
                     <div class="field-r">
-                        <input id="password" name="password" type="password" placeholder="密码" />
-                        <input type="hidden" name="code" id="coded">
+                        <input id="password" name="password" type="password" placeholder="密码" onblur="checkpwd()" onfocus="this.className='txt'" />
                         <p id="checkpassword"></p>
                     </div>
                 </li>
                 <li>
-                    <div class="field-r"><button type="button" class="ant-btn-primary" onclick="subm()">登录</button></div>
+                    <div class="field-r f14">
+                        <input type="checkbox" id="autoLogin" checked="checked" value="1">
+                        <label for="autologin">下次自动登录</label>
+                    </div>
+                </li>
+                <li>
+                    <div class="field-r"><button type="button" class="ant-btn-primary" onclick="login()">登录</button></div>
                 </li>
             </ul>
         </div>
     </div>
+
 <div class="wrapper login-page container" id="reg">
     <div class="p-title">注册懒人听书</div>
     <div class="login-sub">
@@ -54,9 +58,7 @@
         <div class="login-auth">
             >或使用合作网站登录<br />
             <!--第三方登录-->
-            <a href="/sinaLogin.dosl" class="login-auth-wbsina"></a>
             <a href="/qqLogin.dosl" class="login-auth-qq"></a>
-            <a href="/xiaomiLogin.dosl" class="login-auth-xm"></a>
         </div>
     </div>
     <div class="login-w">
@@ -67,7 +69,6 @@
                     <input id="phone" name="phone" type="text" onblur="checkZH()" onfocus="this.className='txt'" placeholder="手机号" />
                     <p id="checkphone"></p>
                 </div>
-
             </li>
             <li>
                 <label class="field-name">密码：</label>
@@ -87,7 +88,7 @@
                 </div>
             </li>
             <li>
-                <div class="field-r"><button type="button" class="ant-btn-primary" onclick="subm()">登录</button></div>
+                <div class="field-r"><button type="button" class="ant-btn-primary" onclick="subm()">注册</button></div>
             </li>
         </ul>
     </div>
@@ -95,18 +96,20 @@
 
 </body>
 <script th:src="@{'/js/jquery.min.js?v=36'}"></script>
-<script type="text/javascript">
+<script type="text/javascript" th:inline="javascript">
+
+
     function checkZH() {
         var phone = $("#phone").val();
         if (phone == "") {
-            $("#checkphone").html("请输入手机号！")
+            $("#checkphone").html("请输入手机号！");
             return false;
         }
         if (!(/^1[3456789]\d{9}$/.test(phone))) {
-            $("#checkphone").html("手机号格式有误")
+            $("#checkphone").html("手机号格式有误");
             return false;
         }
-        $("#checkphone").html("")
+        $("#checkphone").html("");
         return true;
     }
 
@@ -116,17 +119,17 @@
             $("#checkcodeResult").html("请输入验证码")
             return false;
         }
-        $("#checkcodeResult").html("")
+        $("#checkcodeResult").html("");
         return true;
     }
 
     function checkPwd() {
-        var pwd = $("#pwd").val();
+        var pwd = $("#password").val();
         if (pwd == "") {
-            $("#checkpwd").html("请输入密码");
+            $("#checkpassword").html("请输入密码");
             return false;
         }
-        $("#checkpwd").html("");
+        $("#checkpassword").html("");
         return true;
     }
     function coarse() {
@@ -147,6 +150,7 @@
 
     function subm() {
         var code = $("#code").val();
+
         if (checkZH() && checkcr() && checkPwd) {
             var coderesult = $("#codeResult").val();
             if (code == coderesult) {
@@ -160,10 +164,9 @@
                         "front_userpwd": front_userpwd
                     },
                     success: function(data) {
-                        front_userphone.val("");
-                        front_userpwd.val("");
-                        coderesult.val("");
-                        console.log("注册成功，跳转登陆页面")
+                        console.log("注册成功，跳转登陆页面");
+                        $("#reg").hide();
+                        $("#login").show();
                     }
                 })
             } else {
@@ -171,16 +174,89 @@
             }
         }
     }
-    $(function () {
-        $("#btndddd").click(function () {
-            alert("111")
-            $("#reg").style.display = "block";
-            alert("22")
-        })
-        /*$("#registerbtn").click(function () {
-            $("#register").style.display = "black";
+    function checkname(){
+        var phone =$("#frontuserPhone").val();
+        if (phone == "") {
+            $("#checkfrontuserPhone").html("请输入手机号！");
+            return false;
+        }
+        $("#checkfrontuserPhone").html("");
+        return true;
+    }
 
-        })*/
+    function checkpwd(){
+        var pwd=$("#password").val();
+        if (pwd == "") {
+            $("#checkpassword").html("请输入密码！");
+            return false;
+        }
+        $("#checkpassword").html("");
+        return true;
+    }
+    function login(){
+        if(checkname() && checkPwd()){
+            var phone =$("#frontuserPhone").val();
+            var pwd=$("#password").val();
+            $.ajax({
+                type: "post",
+                url: "http://localhost:8082/front/userlogin/login",
+                data: {
+                    "phone": phone,
+                    "pwd": pwd
+                },
+                success: function (data) {
+                    if(data!=''){
+                        if($("#autoLogin").prop("checked")){
+                            localStorage.setItem("phone",phone);
+                            localStorage.setItem("pwd",pwd);
+                        }else{
+                            localStorage.removeItem("phone");
+                            localStorage.removeItem("pwd");
+                        }
+                       /* $('#toplog', parent.document).hide();
+                        $('#topmune',parent.document).show();*/
+                        //$("header",parent.document).load();
+                        $("#errMsg").html("");
+                        window.parent.location.reload();
+                        if(window.parent.myplay.playlist.length!=0){
+                            localStorage.setItem("playlist",JSON.stringify(window.parent.myplay.playlist));
+                        }
+
+
+
+                    }else{
+                        $("#errMsg").html("用户和密码错误");
+                    }
+                }
+            });
+        }
+
+    }
+    //页面加载事件
+    $(function () {
+        //设置
+
+        var flag=[[${flag}]];
+        if(flag==0){
+            $("#reg").hide();
+            $("#login").show();
+        }else{
+            $("#login").hide();
+            $("#reg").show();
+        }
+        $("#frontuserPhone").val(localStorage.getItem("phone"));
+        $("#password").val(localStorage.getItem("pwd"));
+
+        //registerbtn
+        $("#logbtn").click(function () {
+            $("#reg").hide();
+            $("#login").show();
+        });
+        $("#registerbtn").click(function () {
+            $("#login").hide();
+            $("#reg").show();
+        })
+
     })
 </script>
 <style type="text/css">
@@ -197,12 +273,6 @@
         box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
         height: 35px;
         width: 90px;
-    }
-    #login{
-        display: block;
-    }
-    #reg{
-        display: block;
     }
 </style>
 </html>

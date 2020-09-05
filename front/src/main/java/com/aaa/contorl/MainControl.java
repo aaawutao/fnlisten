@@ -23,8 +23,10 @@ public class MainControl {
     public String show(){
         return "main.html";
     }
-    @RequestMapping("/test")
-    public String test(){
+    //登录
+    @RequestMapping("/login")
+    public String test(@RequestParam("flag") Integer flag,ModelMap modelMap){
+        modelMap.addAttribute("flag",flag);
         return "login.html";
     }
 
@@ -38,7 +40,6 @@ public class MainControl {
         //章节
         modelMap.addAttribute("chapterinfos",chapterinfoService.queryChapter(pid));
         return "xianqing.html";
-
     }
     //内容
     @RequestMapping("/context")
@@ -47,4 +48,37 @@ public class MainControl {
         //节目分类查询
         return "context.html";
     }
+
+    //用户详情
+    @RequestMapping("/gerenxianqing")
+    public String gerenxianqing(ModelMap modelMap,@RequestParam("name") String name){
+        modelMap.addAttribute("name",name);
+        return"personalxianqing.html";
+    }
+
+
+    //账号详情
+    @RequestMapping("/userdetails")
+    public String userdatails(){
+        return "userdetails.html";
+    }
+
+    //认证详情
+    @RequestMapping("/userrenzheng")
+    public String renzheng(){
+        return "userrenzheng.html";
+    }
+
+    //节目详情
+    @RequestMapping("/showinformation")
+    public String showinformation(){
+        return "personalxianqing.html";
+    }
+
+    //创建节目
+    @RequestMapping("/createprogram")
+    public String createprogram(){
+        return "createprogram.html";
+    }
+
 }

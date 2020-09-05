@@ -5,9 +5,13 @@ import com.aaa.service.FrontUserService;
 import com.aaa.util.AddSmsSign;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.support.SessionStatus;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.Map;
 
@@ -31,6 +35,23 @@ public class UserloginController {
         frontuser.setFront_userstate(0);
         frontuser.setFlag(1);
         return frontUserService.addFrontuser(frontuser);
+    }
+
+    @RequestMapping("login")
+    public Integer login(@RequestParam("phone") String phone, @RequestParam("pwd") String pwd, HttpServletRequest request,HttpSession session){
+        request.getSession(true);
+        FrontUser frontUser=frontUserService.login(phone,pwd);
+        if(frontUser!=null){
+            session.setAttribute("user",frontUser);
+            return 1;
+        }
+        return 0;
+    }
+    @RequestMapping("logout")
+    public Integer logout(HttpSession session, SessionStatus sessionStatus){
+        session.invalidate();
+        sessionStatus.setComplete();
+        return 1;
     }
 
 }
