@@ -9,7 +9,6 @@ public class Chapterinfo {
 
     @Id
     private Integer ctid;
-
     private String title;
     private String artist;
     private String mp3;

@@ -16,9 +16,9 @@ public class PrograminfoService {
     PrograminfoDao programinfoDao;
 
     //分页查询节目
-    public PageInfo<List<Map<String, Object>>> queryAll(Integer currentPage, Integer pageSize,Integer pid, Integer bfid){
+    public PageInfo<List<Map<String, Object>>> queryAll(Integer currentPage, Integer pageSize, Integer bfid){
         PageHelper.startPage(currentPage,pageSize);
-        List<Map<String, Object>> maps = programinfoDao.queryAll(pid,bfid);
+        List<Map<String, Object>> maps = programinfoDao.queryAll(bfid);
         PageInfo<List<Map<String, Object>>> pageInfo = new PageInfo(maps);
         return pageInfo;
     }
@@ -31,6 +31,11 @@ public class PrograminfoService {
     //添加数据
     public int insertprograminfo(Programinfo programinfo){
         return programinfoDao.insert(programinfo);
+    }
+
+    //查询详细信息
+    public List<Map<String,Object>> querybypid( Integer pid){
+        return  programinfoDao.querybypid(pid);
     }
 
 }

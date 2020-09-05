@@ -10,7 +10,6 @@ import java.util.List;
 @org.apache.ibatis.annotations.Mapper
 public interface ChapterinfoDao extends Mapper<Chapterinfo> {
 
-    @Select("select * from chapterinfo where pid=#{pid} \n" +
-            "order by createdate desc")
-    List<Chapterinfo> queryAll(@Param("pid") Integer pid);
+    @Select("select * from chapterinfo where pid=#{pid}  order by createdate desc")
+    List<Chapterinfo> querychapBypid(Integer pid);
 }

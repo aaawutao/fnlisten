@@ -26,8 +26,11 @@ public class PrograminfoController {
     PrograminfoService programinfoService;
 
     @RequestMapping("programinfoAll")
-    public PageInfo<List<Map<String, Object>>> findAll(Integer currentPage, Integer pageSize,Integer pid,Integer bfid){
-        return programinfoService.queryAll(currentPage,pageSize,pid,bfid);
+    public PageInfo<List<Map<String, Object>>> findAll(Integer currentPage, Integer pageSize,Integer bfid){
+        System.out.println("bfid:"+bfid);
+        PageInfo<List<Map<String, Object>>> listPageInfo = programinfoService.queryAll(currentPage, pageSize,bfid);
+        System.out.println(listPageInfo.getList());
+        return listPageInfo;
     }
 
     //修改状态是否展示
@@ -71,5 +74,12 @@ public class PrograminfoController {
           programinfo.setAllprice(allprice);
           programinfo.setPstatus(0);
         return programinfoService.insertprograminfo(programinfo);
+    }
+
+    //查询详细信息
+    @RequestMapping("querybypid")
+    public List<Map<String,Object>> querybypid(Integer pid){
+        System.out.println(programinfoService.querybypid(pid));
+        return  programinfoService.querybypid(pid);
     }
 }

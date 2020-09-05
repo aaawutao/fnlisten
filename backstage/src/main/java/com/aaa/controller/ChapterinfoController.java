@@ -22,17 +22,17 @@ public class ChapterinfoController {
 
     @Resource
     ChapterinfoService chapterinfoService;
-
-    @RequestMapping("chapterinfoQuery")
-    public PageInfo<Chapterinfo> findAll(Integer currentPage, Integer pageSize,Integer pid){
-
-        return chapterinfoService.findAll(currentPage,pageSize,pid);
-    }
-
     //上传路径
     @Value("${prop.filepath}")
     String staticurl;
     FileRule fileRule=new FileRule();
+
+
+    @RequestMapping("chapterinfoQuery")
+    public List<Chapterinfo> querychapBypid(Integer pid){
+        return  chapterinfoService.querychapBypid(pid);
+    }
+
     @RequestMapping("addchapter")
     public int addchapter(@RequestParam("file") MultipartFile file ,String title,
                           String artist,Integer state,Integer virtualcurrency,Integer pid,Integer flag,String backstage_uname){
