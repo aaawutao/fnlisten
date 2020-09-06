@@ -4,6 +4,7 @@ import com.aaa.dao.PrograminfoDao;
 import com.aaa.entity.Programinfo;
 import com.aaa.service.ChapterinfoService;
 import com.aaa.service.PrograminfoService;
+import com.aaa.service.ProgramtypeinfoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,9 @@ public class MainControl {
     PrograminfoService programinfoService;
     @Resource
     ChapterinfoService chapterinfoService;
+
+    @Resource
+    ProgramtypeinfoService programtypeinfoService;
     //主页
     @RequestMapping("/main")
     public String show(){
@@ -43,16 +47,24 @@ public class MainControl {
     }
     //内容
     @RequestMapping("/context")
-    public String context(){
-        //种类查询
+    public String context(ModelMap modelMap){
+        //节目类型
+        modelMap.addAttribute("programtype",programtypeinfoService.show());
         //节目分类查询
         return "context.html";
     }
 
     //用户详情
     @RequestMapping("/gerenxianqing")
-    public String gerenxianqing(ModelMap modelMap,@RequestParam("name") String name){
+    public String gerenxianqing(ModelMap modelMap,@RequestParam("name") String name,@RequestParam("acid") Integer acid){
         modelMap.addAttribute("name",name);
+        //如果是创建节目把类型传过期
+        if(name.equals("createprogram")){
+            modelMap.addAttribute("programtype",programtypeinfoService.show());
+            if(acid!=0){
+                modelMap.addAttribute("program",programinfoService.query(null,null,acid,null));
+            }
+        }
         return"personalxianqing.html";
     }
 
@@ -81,10 +93,5 @@ public class MainControl {
         return "createprogram.html";
     }
 
-
-    @RequestMapping("/test")
-    public String test(){
-        return "filecss.html";
-    }
 
 }

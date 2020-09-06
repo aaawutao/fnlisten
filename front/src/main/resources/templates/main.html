@@ -11,7 +11,7 @@
 		<iframe th:replace="css.html"></iframe>
 		<iframe th:replace="listencss.html"></iframe>
 	</head>
-	<body>
+	<body onbeforeunload="changeload()">
 	<!--
 
 	-->
@@ -26,19 +26,19 @@
 
 						<ul>
 							<li>
-								<a href="" class="g-user-i" id="myhomecover">
+								<a class="g-user-i" id="myhomecover">
                                     <!--th:src="${session?.user?.front_userpic}"-->
 									<img src="http://localhost:9999/fileclient/staticfile/default_user_head.png"  />
 								</a>
 								<div class="g-top-menu-l">
 									<a id="myhome" href="javascript:;" th:onclick="personal('userdetails')">我的个人主页</a>
-									<a id="mycollection" href="/my/collect/book">我的收藏</a>
-									<a href="/uservip/vip">成为VIP会员</a>
-									<a href="/userinfo/pay">账户充值</a>
-									<a href="/pay/paid">支付查询</a>
-									<a href="/my/message/inbox">查看私信</a>
-									<a href="/my/message/system">查看系统通知</a>
-									<a id="mysetting" href="/setting"><i class="icon-config"></i><span class="f12">账号设置</span></a>
+									<a id="mycollection" href="javascript:;">我的收藏</a>
+									<a href="javascript:;">成为VIP会员</a>
+									<a href="javascript:;">账户充值</a>
+									<a href="javascript:;">支付查询</a>
+									<a href="javascript:;">查看私信</a>
+									<a href="javascript:;">查看系统通知</a>
+									<a id="mysetting" href="javascript:;"><i class="icon-config"></i><span class="f12">账号设置</span></a>
 									<a class="g-top-logout" href="javascript:;" th:onclick="logout()"><i class="icon-logout"></i><span class="f12">退出登录</span></a>
 								</div>
 							</li>
@@ -51,7 +51,7 @@
 		<!--导航菜单-->
 		<div class="g-main clearfix wrapper">
 			<div class="g-main-l">
-				<a href="">
+				<a href="javascript:;" th:onclick="srcmain()">
 					<img src="http://localhost:9999/fileclient/staticfile/logo.png" alt="懒人听书" />
 				</a>
 			</div>
@@ -71,9 +71,9 @@
 				</div>
 
 				<div class="fl">
-					<a href="/rank" class="g-ranking-icon">榜单</a>
+					<a  class="g-ranking-icon">榜单</a>
 					<span class="split">|</span>
-					<a href="/book/category" class="g-category-icon">分类</a>
+					<a class="g-category-icon">分类</a>
 				</div>
 
 			</div>
@@ -92,10 +92,10 @@
 		<div class="g-nav-c">
 			<ol class="wrapper g-nav-c-active">
 				<li class="active" ><a href="javascript:;" th:onclick="srcmain()">书籍推荐</a><span class="arrow-top"></span></li>
-				<li ><a href="/book/category">分类书籍</a><span class="arrow-top"></span></li>
-				<li ><a href="/org/2725">懒人出品</a><span class="arrow-top"></span></li>
-				<li ><a href="/topic">书籍专题</a><span class="arrow-top"></span></li>
-				<li ><a href="/rank">收听榜单</a><span class="arrow-top"></span></li>
+				<li ><a href="javascript:;">分类书籍</a><span class="arrow-top"></span></li>
+				<li ><a href="javascript:;">懒人出品</a><span class="arrow-top"></span></li>
+				<li ><a href="javascript:;">书籍专题</a><span class="arrow-top"></span></li>
+				<li ><a href="javascript:;">收听榜单</a><span class="arrow-top"></span></li>
 			</ol>
 			<div class="clear"></div>
 		</div>
@@ -106,7 +106,14 @@
 		<iframe th:replace="play.html" frameborder="0" name="play" id="play"></iframe>
 	</footer>
 	</body>
-	<script type="text/javascript">
+	<script type="text/javascript" th:inline="javascript">
+
+		document.body.onbeforeunload = function (event) {
+			if(window.parent.myplay.playlist.length!=0){
+				localStorage.setItem("playlist",JSON.stringify(window.parent.myplay.playlist));
+			}
+		};
+
 		//根据ID获取iframe对象
 		var ifr = $("#iframe_a")[0];
 		ifr.onload = function() {
@@ -117,12 +124,10 @@
 			ifr.style.height = (height+95)+ 'px';
 		};
 		$(function () {
-			$("#topmune").removeAttr("style");
 			//页面
 			$("#iframe_a").attr("src","/front/context");
-			//
+			$("#topmune").removeAttr("style");
 			if(localStorage.getItem("playlist")){
-				console.info();
 				//删除
 				let list=JSON.parse(localStorage.getItem("playlist"));
 				for(let i=0;i<list.length;i++){
@@ -132,9 +137,12 @@
 						mp3: list[i].mp3,
 						poster: list[i].poster
 					})
-				}
+				};
+				window.myplay.play(0);
+				$(".poster-img").attr("src", list[0].poster);
 				localStorage.removeItem("playlist");
 			}
+
 
 		});
 		//主页路径
@@ -151,17 +159,18 @@
 		}
 		//用户详情
 		function personal(name) {
-			$("#iframe_a").attr("src","/front/gerenxianqing?name="+name);
+			//主播编号 &anchortid="+anchortid
+			let acid=[[${session?.user?.get('acid')}]];
+			if(acid==null){
+				acid=0;
+			}
+			$("#iframe_a").attr("src","/front/gerenxianqing?name="+name+"&acid="+acid);
 		}
-
-		//主播认证
-
-
-
 
 
 		//退出登录
 		function logout() {
+			window.myplay.setPlaylist([]);
 			$.ajax({
 				type: "post",
 				url: "http://localhost:8082/front/userlogin/logout",

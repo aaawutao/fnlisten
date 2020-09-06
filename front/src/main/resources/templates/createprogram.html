@@ -5,6 +5,8 @@
     <title>Title</title>
 </head>
 <body>
+
+<div th:text="${programtype}"></div>
 <div data-v-b39d6196="">
     <div data-v-32f781fc="" class="type">
         <div data-v-32f781fc="" class="left">
@@ -21,14 +23,14 @@
         <div data-v-46b96043="" data-v-76b5fe84="" class="createAlbum" id="program">
             <div data-v-46b96043="" class="form">
 
-                <form data-v-46b96043="" action="" type="multipart/form-data" autocomplete="off" class="ivu-form ivu-form-label-left" style="width: 500px" >
+                <form  id="fm" type="multipart/form-data"  class="ivu-form ivu-form-label-left" style="width: 500px" >
                   <div data-v-46b96043="" >
                     <div data-v-46b96043="" class="img">
                         <img data-v-46b96043="" id="im" src="" alt="" width="120" height="120">
                         <p data-v-46b96043="" class="text">
                             上传封面
                         </p>
-                        <input data-v-46b96043="" type="file"  name="photo" id="f">
+                        <input type="file"  name="photo" id="f">
                     </div>
                     <div data-v-46b96043="" class="refer">
                         <p data-v-46b96043="">参考尺寸：600×600</p>
@@ -40,7 +42,8 @@
                         <div class="ivu-form-item-content" style="">
                             <div data-v-46b96043="" class="input ivu-input-wrapper ivu-input-wrapper-lr40 ivu-input-type-text">
                                 <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
-                                <input autocomplete="off" name="" spellcheck="false" type="text" placeholder="请输入" maxlength="20" class="ivu-input ivu-input-lr40">
+                                <!--图片节目-->
+                                <input autocomplete="off" name="pname" spellcheck="false" type="text" placeholder="请输入" maxlength="20" class="ivu-input ivu-input-lr40">
                             </div>
                         </div>
                     </div>
@@ -48,7 +51,7 @@
                         <div class="ivu-form-item-content" style="">
                             <div data-v-46b96043="" class="textarea ivu-input-wrapper ivu-input-wrapper-large ivu-input-type-textarea">
                                 <!--节目介绍-->
-                                <textarea
+                                <textarea name="pintroduction"
                                     autocomplete="off" spellcheck="false" placeholder="请输入" rows="2" maxlength="500" class="ivu-input" wrap="soft"></textarea>
                                 <span class="ivu-input-word-count">0/500</span>
                             </div>
@@ -58,8 +61,10 @@
                         <div class="ivu-form-item-content" style="">
                             <div data-v-46b96043="" class="ivu-select ivu-select-single ivu-select-large" style="width: 170px; margin-right: 20px;">
                                 <div tabindex="0" class="ivu-select-selection"><input type="hidden">
-                                    <select style="width: 100%;height: 100%;">
-                                        <option>请选择</option>
+                                    <!--节目分类-->
+                                    <select style="width: 100%;height: 100%;" name="ptid">
+                                        <option value="">请选择</option>
+                                        <option th:each="it:${programtype}" th:value="${it.ptid}" th:text="${it.ptname}"></option>
                                     </select>
                                 </div>
                             </div>
@@ -67,11 +72,13 @@
                             <!---->
                         </div>
                     </div>
-                    <div data-v-46b96043="" class="ivu-form-item ivu-form-item-required"><label class="ivu-form-item-label" >内容来源</label>
+                    <div data-v-46b96043="" class="ivu-form-item ivu-form-item-required">
+                        <label class="ivu-form-item-label" >内容来源</label>
                         <div class="ivu-form-item-content" >
                             <div data-v-46b96043="" class="ivu-select ivu-select-single ivu-select-large" style="width: 170px; margin-right: 20px;">
                                 <div tabindex="0" class="ivu-select-selection"><input type="hidden">
-                                    <select style="width: 100%;height: 100%;">
+                                    <!--节目来源-->
+                                    <select style="width: 100%;height: 100%;" name="psource">
                                         <option>请选择</option>
                                         <option>原创</option>
                                         <option>采集</option>
@@ -85,16 +92,16 @@
                         <div class="ivu-form-item-content" style="">
                             <div data-v-46b96043="" class="input ivu-input-wrapper ivu-input-wrapper-lr40 ivu-input-type-text">
                                  <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
-                                <input autocomplete="off" spellcheck="false" type="text" placeholder="请输入" class="ivu-input ivu-input-lr40">
+                                <!--session获取当前用户的主播信息-->
+                                <input type="hidden" name="front_userphone" th:value="${session?.user?.get('front_userphone')}"/>
+                                <input type="hidden" name="flag" th:value="${session?.user?.get('flag')}">
+                                <input type="hidden" name="anchortid" th:value="${session?.user?.get('acid')}"/>
+                                <input th:value="${session.user.get('petname')}" readonly type="text" placeholder="请输入" class="ivu-input ivu-input-lr40" />
                             </div>
                         </div>
                     </div>
-                    <div data-v-46b96043="" class="ivu-form-item">
-                        <div class="ivu-form-item-content" style=""><button data-v-46b96043="" type="button" class="ivu-btn ivu-btn-default submit lr_btn_solid">
-                            <span>
-									提 交
-								</span></button>
-                        </div>
+                    <div  class="ivu-form-item">
+                        <div th:onclick="sbt()"  class="ivu-btn ivu-btn-default lr_btn_solid">提交</div>
                     </div>
                 </form>
             </div>
@@ -111,45 +118,109 @@
 
         <!--上传音频-->
         <div data-v-cb2fe0aa="" class="album" id="yingping" >
-            <div data-v-cb2fe0aa="" class="title stpe1"><span data-v-cb2fe0aa="">第一步</span> <span data-v-cb2fe0aa="">选择节目专辑</span></div>
+            <form id="yfm" type="multipart/form-data">
+            <div data-v-cb2fe0aa="" class="title stpe1"><span data-v-cb2fe0aa="">选择节目专辑</span></div>
             <div data-v-cb2fe0aa="" class="select">
                 <div data-v-cb2fe0aa="" class="ivu-select ivu-select-single ivu-select-large" style="width: 368px;">
                     <div tabindex="0" class="ivu-select-selection"><input type="hidden">
-                            <select style="width: 100%; height:100%;">
-                                <option>请选择节目</option>
+                            <select  style="width: 100%; height:100%;" name="pid">
+                                <option value="">请选择节目</option>
+                                <option th:each="it:${program}"th:value="${it.pid}" th:text="${it.pname}"></option>
                             </select>
                     </div>
                 </div>
-        </div>
+            </div>
+            <div data-v-cb2fe0aa="" class="title stpe1"><span data-v-cb2fe0aa="">收费设置</span></div>
+            <div data-v-cb2fe0aa="" class="select">
+                <div data-v-cb2fe0aa="" class="ivu-select ivu-select-single ivu-select-large" style="width: 368px;">
+                    <div tabindex="0" class="ivu-select-selection">
+                        <select style="width: 100%;height: 100%;" name="state" th:onchange="setm(this)">
+                            <option value="0">免费</option>
+                            <option value="1">收费</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+                <div id="setmoney">
+                <div data-v-cb2fe0aa="" class="title stpe1"><span data-v-cb2fe0aa="">虚拟币设置</span></div>
+                <div data-v-cb2fe0aa="" class="select">
+                    <div data-v-cb2fe0aa="" class="ivu-select ivu-select-single ivu-select-large" style="width: 368px;">
+                        <div tabindex="0" class="ivu-select-selection">
 
-            <div data-v-cb2fe0aa="" class="title stpe3"><span data-v-cb2fe0aa="">第二步</span> <span data-v-cb2fe0aa="">上传节目声音</span></div>
-            <div data-v-6daecee4="" data-v-cb2fe0aa="">
-                <div data-v-6daecee4="" class="con" style="padding-top: 40px;">
-                    <div data-v-6daecee4="" class="select-file">
-                        <div data-v-7f0c7470="" data-v-6daecee4="" class="upload-item">
-                            <div data-v-7f0c7470="" class="upload-select"><input data-v-7f0c7470="" multiple="multiple" type="file" accept="audio/mpeg,audio/wav,audio/x-wav,audio/x-pn-wav,audio/mp4a-latm,video/x-ms-wma"
-                                                                                 class="input">
-                                <div data-v-7f0c7470=""><button data-v-6daecee4="" type="button" class="lrts-primary-upload ivu-btn ivu-btn-default ivu-btn-circle"
-                                                                data-v-7f0c7470="">
-                                    <i class="ivu-icon iconfont icon-icon_upload_button" style="font-size: 40px;"></i> <span>
-													上传文件
-												</span></button></div>
-                            </div>
-                            <!---->
-                            <div data-v-7f0c7470="">
-                                <p data-v-7f0c7470=""></p>
-                            </div>
+                            <select style="width: 100%;height: 100%;" name="virtualcurrency">
+                                <option value="0">0</option>
+                                <option value="10">10</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                                <option value="70">70</option>
+                                <option value="100">100</option>
+                            </select>
                         </div>
                     </div>
                 </div>
-
-            </div>
+                </div>
+                <div data-v-cb2fe0aa="" class="title stpe1"><span data-v-cb2fe0aa="">章节名称</span></div>
+                <div data-v-cb2fe0aa="" class="select">
+                    <div data-v-cb2fe0aa="" class="ivu-select ivu-select-single ivu-select-large" style="width: 368px;">
+                        <div tabindex="0" class="ivu-select-selection">
+                            <!--主播名称-->
+                            <input type="hidden" th:value="${session.user.get('petname')}" name="artist"/>
+                            <input type="hidden" name="front_userphone" th:value="${session?.user?.get('front_userphone')}"/>
+                            <input type="hidden" name="flag" th:value="${session?.user?.get('flag')}">
+                            <input type="text" style="width: 100%;height: 100%;" name="title">
+                        </div>
+                    </div>
+                </div>
+                <div data-v-cb2fe0aa="" class="title stpe1"><span data-v-cb2fe0aa="">选择音频</span></div>
+                <div data-v-cb2fe0aa="" class="select">
+                    <div data-v-cb2fe0aa="" class="ivu-select ivu-select-single ivu-select-large" style="width: 368px;">
+                        <div tabindex="0" class="ivu-select-selection">
+                            <input type="file" style="width: 100%;height: 100%;" name="yingping">
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div data-v-cb2fe0aa="" class="select">
+                    <div data-v-cb2fe0aa="" class="ivu-select ivu-select-single ivu-select-large" style="width: 368px;">
+                        <div tabindex="0" class="ivu-select-selection">
+                            <div th:onclick="sbt2()"  class="ivu-btn ivu-btn-default lr_btn_solid">提交</div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 </body>
 <script th:src="@{'/js/jquery.min.js?v=36'}"></script>
 <script>
+    //提交
+    function sbt() {
+        let formdata=new FormData($("#fm")[0]);
+        $.ajax({
+            type:"post",
+            url:"programinfo/add",
+            data:formdata,
+            processData: false, // 告诉jQuery不要去处理发送的数据
+            contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+            success:(data)=>{
+                alert(data);
+            }
+        });
+    }
+    function sbt2() {
+        let formdata=new FormData($("#yfm")[0]);
+        $.ajax({
+            type:"post",
+            url:"chapter/add",
+            data:formdata,
+            processData: false, // 告诉jQuery不要去处理发送的数据
+            contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+            success:(data)=>{
+                alert(data);
+            }
+        });
+    }
     //图片切换
     var regexImageFiler;
     regexImageFiler = /^(?:image\/bmp|image\/png|image\/jpeg|image\/jpg|image\/gif)$/i;
@@ -174,8 +245,16 @@
         $("#yingping").show();
         $("#program").hide();
     }
+    function setm(obj){
+       if($(obj).val()==1){
+           $("#setmoney").show();
+       }else{
+           $("#setmoney").hide();
+       }
+    }
     $(function () {
         $("#program").hide();
+        $("#setmoney").hide();
     })
 
 </script>

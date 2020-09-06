@@ -22,7 +22,6 @@ public class UserloginController {
 
     @Resource
     FrontUserService frontUserService;
-
     @RequestMapping("phoneCheck")
     public Map<String,Object> phoneCheck(String phone){
         Map<String, Object> map = AddSmsSign.contextLoads(phone);
@@ -41,9 +40,9 @@ public class UserloginController {
     @RequestMapping("login")
     public Integer login(@RequestParam("phone") String phone, @RequestParam("pwd") String pwd, HttpServletRequest request,HttpSession session){
         request.getSession(true);
-        FrontUser frontUser=frontUserService.login(phone,pwd);
-        if(frontUser!=null){
-            session.setAttribute("user",frontUser);
+        Map<String,Object> user=frontUserService.login(phone,pwd);
+        if(user!=null){
+            session.setAttribute("user",user);
             return 1;
         }
         return 0;

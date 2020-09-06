@@ -5,6 +5,7 @@ import com.aaa.entity.FrontUser;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 @Service
 public class FrontUserService {
@@ -15,10 +16,8 @@ public class FrontUserService {
     public int addFrontuser(FrontUser frontuser){
         return frontuserDao.insert(frontuser);
     }
-    public FrontUser login(String phone,String pwd){
-        FrontUser frontUser=new FrontUser();
-        frontUser.setFront_userphone(phone);
-        frontUser.setFront_userpwd(pwd);
-        return frontuserDao.selectOne(frontUser);
+    //登录
+    public Map<String, Object> login(String phone, String pwd){
+        return frontuserDao.login(phone,pwd);
     }
 }

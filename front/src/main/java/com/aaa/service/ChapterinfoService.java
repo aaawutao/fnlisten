@@ -1,7 +1,9 @@
 package com.aaa.service;
 
 import com.aaa.dao.ChapterinfoDao;
+import com.aaa.entity.Chapterinfo;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import java.util.Map;
@@ -15,4 +17,9 @@ public class ChapterinfoService {
     public List<Map<String,Object>> queryChapter(Integer pid){
         return  chapterinfoDao.queryChapter(pid);
     }
+
+    public Integer add(Chapterinfo chapterinfo){
+        return chapterinfoDao.insert(chapterinfo);
+    }
+
 }

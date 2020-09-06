@@ -6,11 +6,11 @@
 
 </head>
 <body>
-<div th:if="${session?.user?.front_userflag}!=1">
+<div th:if="${session?.user?.get('front_userflag')}!=1">
     认证成功的信息
 </div>
 
-<div style="" th:if="${session?.user?.front_userflag}==1">
+<div style="" th:if="${session?.user?.get('front_userflag')}==1">
     <div data-v-997dad96="" class="tip notAuth">
         <i data-v-997dad96="" class="preIcon ivu-icon iconfont iconicon_mistake_tips"
                                                    style="font-size: 14px;"></i>

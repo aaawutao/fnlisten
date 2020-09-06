@@ -56,14 +56,14 @@
             <!--章节信息-->
           <ul id="pul" th:each="item:${chapterinfos}" style="padding: 0px 10px;">
                 <li th:mytest="${item}">
-                   <a href="#" class="jp-play-me m-r-sm pull-left">
+                   <a  class="jp-play-me m-r-sm pull-left">
                         <i class="icon-control-play text"></i>
                         <i class="icon-control-pause text-active"></i>
                     </a>
                     <!--
                         <span th:text="${item.title}"></span>/作者:<span th:text="${item.artist}"></span>
                     -->
-                    <a class="player-trigger " th:text="${item.title}"></a>
+                    <a s th:text="${item.title}"></a>
                     <time>更新时间:<em th:text="${item.createdate}"></em></time>
                 </li>
             </ul>

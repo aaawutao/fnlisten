@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+    用户数据
+    <div th:text="${session?.user}"></div>
         <div data-v-8b689e88="" data-v-b39d6196="" class="account_info">
         <div data-v-0ca0411d="" data-v-8b689e88="" class="title">
             <div data-v-0ca0411d="" class="left">
