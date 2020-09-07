@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <link rel="stylesheet" th:href="@{'xtip/css/xtiper.css'}">
+  <!--  <link rel="stylesheet" th:href="${'xtip/css/layout.css'}">-->
+    <!--<link rel="stylesheet" th:href="${'xtip/css/style.css'}">
+    <link rel="stylesheet" th:href="${'xtip/css/xui.css'}">-->
 </head>
 <body>
 
-<div th:text="${programtype}"></div>
 <div data-v-b39d6196="">
     <div data-v-32f781fc="" class="type">
         <div data-v-32f781fc="" class="left">
@@ -22,8 +26,7 @@
     <div data-v-b39d6196="" >
         <div data-v-46b96043="" data-v-76b5fe84="" class="createAlbum" id="program">
             <div data-v-46b96043="" class="form">
-
-                <form  id="fm" type="multipart/form-data"  class="ivu-form ivu-form-label-left" style="width: 500px" >
+                <form  id="fm" action="javascript:sbt()" type="multipart/form-data"  class="ivu-form ivu-form-label-left" style="width: 500px" >
                   <div data-v-46b96043="" >
                     <div data-v-46b96043="" class="img">
                         <img data-v-46b96043="" id="im" src="" alt="" width="120" height="120">
@@ -52,7 +55,7 @@
                             <div data-v-46b96043="" class="textarea ivu-input-wrapper ivu-input-wrapper-large ivu-input-type-textarea">
                                 <!--节目介绍-->
                                 <textarea name="pintroduction"
-                                    autocomplete="off" spellcheck="false" placeholder="请输入" rows="2" maxlength="500" class="ivu-input" wrap="soft"></textarea>
+                                    autocomplete="off" spellcheck="false" placeholder="请输入" rows="2" maxlength="500" class="ivu-input" wrap="soft" required ></textarea>
                                 <span class="ivu-input-word-count">0/500</span>
                             </div>
                         </div>
@@ -101,7 +104,7 @@
                         </div>
                     </div>
                     <div  class="ivu-form-item">
-                        <div th:onclick="sbt()"  class="ivu-btn ivu-btn-default lr_btn_solid">提交</div>
+                        <input type="submit"  class="ivu-btn ivu-btn-default lr_btn_solid" value="提交"/>
                     </div>
                 </form>
             </div>
@@ -118,7 +121,7 @@
 
         <!--上传音频-->
         <div data-v-cb2fe0aa="" class="album" id="yingping" >
-            <form id="yfm" type="multipart/form-data">
+            <form id="yfm" action="javascript:sbt2()" type="multipart/form-data">
             <div data-v-cb2fe0aa="" class="title stpe1"><span data-v-cb2fe0aa="">选择节目专辑</span></div>
             <div data-v-cb2fe0aa="" class="select">
                 <div data-v-cb2fe0aa="" class="ivu-select ivu-select-single ivu-select-large" style="width: 368px;">
@@ -167,7 +170,7 @@
                             <input type="hidden" th:value="${session.user.get('petname')}" name="artist"/>
                             <input type="hidden" name="front_userphone" th:value="${session?.user?.get('front_userphone')}"/>
                             <input type="hidden" name="flag" th:value="${session?.user?.get('flag')}">
-                            <input type="text" style="width: 100%;height: 100%;" name="title">
+                            <input type="text" style="width: 100%;height: 100%;" name="title"  required />
                         </div>
                     </div>
                 </div>
@@ -183,7 +186,7 @@
                 <div data-v-cb2fe0aa="" class="select">
                     <div data-v-cb2fe0aa="" class="ivu-select ivu-select-single ivu-select-large" style="width: 368px;">
                         <div tabindex="0" class="ivu-select-selection">
-                            <div th:onclick="sbt2()"  class="ivu-btn ivu-btn-default lr_btn_solid">提交</div>
+                            <input type="submit" class="ivu-btn ivu-btn-default lr_btn_solid" value="提交"/>
                         </div>
                     </div>
                 </div>
@@ -193,6 +196,8 @@
 </div>
 </body>
 <script th:src="@{'/js/jquery.min.js?v=36'}"></script>
+<script th:src="@{'/xtip/js/xtiper.min.js'}"></script>
+
 <script>
     //提交
     function sbt() {
@@ -204,7 +209,11 @@
             processData: false, // 告诉jQuery不要去处理发送的数据
             contentType: false, // 告诉jQuery不要去设置Content-Type请求头
             success:(data)=>{
-                alert(data);
+                if(data==1){
+                    //刷新页面重新获取数据
+                    xtip.msg('节目录入成功',{icon:'s',type:'w',pos:'t'});
+                    location.reload();
+                }
             }
         });
     }
@@ -217,7 +226,11 @@
             processData: false, // 告诉jQuery不要去处理发送的数据
             contentType: false, // 告诉jQuery不要去设置Content-Type请求头
             success:(data)=>{
-                alert(data);
+                if(data==1){
+                    xtip.msg('章节添加成功请在详情页面查看',{icon:'s',type:'w',pos:'t'});
+                    //清空元素
+                    $("#yfm")[0].reset();
+                }
             }
         });
     }
@@ -231,7 +244,7 @@
     $("#f").change(function() {
         var imgfFile = $("#f").prop("files")[0];
         if(!regexImageFiler.test(imgfFile.type)) {
-            alert("选择有效图片");
+            xtip.msg('选择有效的图片',{type:'w',pos:'t'});
         }
         imgReaderl.readAsDataURL(imgfFile);
     });
@@ -250,6 +263,7 @@
            $("#setmoney").show();
        }else{
            $("#setmoney").hide();
+           $("#setmoney select").val(0);
        }
     }
     $(function () {

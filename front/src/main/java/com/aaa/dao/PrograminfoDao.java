@@ -25,7 +25,7 @@ public interface PrograminfoDao extends tk.mybatis.mapper.common.Mapper<Programi
                     "on p.anchortid=a.acid \n" +
                     "left join programtypeinfo pt\n" +
                     "on p.ptid=pt.ptid\n" +
-                    "where 1=1 ");
+                    "where 1=1 and p.pstatus=0");
             if(pid!=null){
                 sql.append(" and p.pid=#{pid}");
             }

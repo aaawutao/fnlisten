@@ -2,6 +2,7 @@ package com.aaa.contorl;
 
 import com.aaa.dao.PrograminfoDao;
 import com.aaa.entity.Programinfo;
+import com.aaa.service.AnchorinfoService;
 import com.aaa.service.ChapterinfoService;
 import com.aaa.service.PrograminfoService;
 import com.aaa.service.ProgramtypeinfoService;
@@ -22,6 +23,10 @@ public class MainControl {
 
     @Resource
     ProgramtypeinfoService programtypeinfoService;
+    @Resource
+    AnchorinfoService anchorinfoService;
+
+
     //主页
     @RequestMapping("/main")
     public String show(){
@@ -33,6 +38,12 @@ public class MainControl {
         modelMap.addAttribute("flag",flag);
         return "login.html";
     }
+    //显示所有节目
+    @RequestMapping("/programtypedetails")
+    public String programtypedetails(){
+        return "programtypedetails.html";
+    }
+
 
     //详情
     @RequestMapping("/xianqing")
@@ -40,7 +51,7 @@ public class MainControl {
         //节目
         modelMap.addAttribute("programinfo",programinfoService.query(pid,null,null,null).get(0));
         //主播节目
-        modelMap.addAttribute("pros",programinfoService.query(null,null,anchortid,4));;
+        modelMap.addAttribute("pros",programinfoService.query(null,null,anchortid,6));;
         //章节
         modelMap.addAttribute("chapterinfos",chapterinfoService.queryChapter(pid));
         return "xianqing.html";
@@ -50,7 +61,14 @@ public class MainControl {
     public String context(ModelMap modelMap){
         //节目类型
         modelMap.addAttribute("programtype",programtypeinfoService.show());
-        //节目分类查询
+        //小编推荐查询
+        modelMap.addAttribute("tuijian",programinfoService.query(null,null,null,4));
+        //热门
+        modelMap.addAttribute("remeng",programinfoService.query(null,null,null,9));
+        //分类
+        modelMap.addAttribute("yousheng",programinfoService.query(null,3,null,6));
+        //主播
+        modelMap.addAttribute("anchors",anchorinfoService.query(0,4));
         return "context.html";
     }
 
@@ -65,10 +83,12 @@ public class MainControl {
                 modelMap.addAttribute("program",programinfoService.query(null,null,acid,null));
             }
         }
+        if(name.equals("showinformation") && acid!=0){
+            //当前主播的节目
+            modelMap.addAttribute("program",programinfoService.query(null,null,acid,null));
+        }
         return"personalxianqing.html";
     }
-
-
     //账号详情
     @RequestMapping("/userdetails")
     public String userdatails(){

@@ -92,7 +92,7 @@
 		<div class="g-nav-c">
 			<ol class="wrapper g-nav-c-active">
 				<li class="active" ><a href="javascript:;" th:onclick="srcmain()">书籍推荐</a><span class="arrow-top"></span></li>
-				<li ><a href="javascript:;">分类书籍</a><span class="arrow-top"></span></li>
+				<li ><a href="javascript:;" th:onclick="eidtprogram()">分类书籍</a><span class="arrow-top"></span></li>
 				<li ><a href="javascript:;">懒人出品</a><span class="arrow-top"></span></li>
 				<li ><a href="javascript:;">书籍专题</a><span class="arrow-top"></span></li>
 				<li ><a href="javascript:;">收听榜单</a><span class="arrow-top"></span></li>
@@ -138,8 +138,8 @@
 						poster: list[i].poster
 					})
 				};
-				window.myplay.play(0);
 				$(".poster-img").attr("src", list[0].poster);
+				window.myplay.play(0);
 				localStorage.removeItem("playlist");
 			}
 
@@ -153,10 +153,16 @@
 		function eidtsrc(id,aid){
 			$("#iframe_a").attr("src","/front/xianqing?pid="+id+"&anchortid="+aid);
 		}
+		//节目的所有数据
+		function eidtprogram() {
+			$("#iframe_a").attr("src","/front/programtypedetails");
+		}
+
 		//登录注册
 		function login(flag) {
 			$("#iframe_a").attr("src","/front/login?flag="+flag);
 		}
+
 		//用户详情
 		function personal(name) {
 			//主播编号 &anchortid="+anchortid
@@ -171,6 +177,9 @@
 		//退出登录
 		function logout() {
 			window.myplay.setPlaylist([]);
+			if(localStorage.getItem("playlist")){
+				localStorage.removeItem("playlist");
+			}
 			$.ajax({
 				type: "post",
 				url: "http://localhost:8082/front/userlogin/logout",
