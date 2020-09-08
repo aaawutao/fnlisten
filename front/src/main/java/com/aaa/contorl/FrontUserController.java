@@ -4,10 +4,8 @@ package com.aaa.contorl;
 import com.aaa.entity.FrontUser;
 import com.aaa.service.FrontUserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 
@@ -21,10 +19,7 @@ public class FrontUserController {
     //查询出个人信息
     @ResponseBody
     @RequestMapping("queryByuserId")
-    public Object queryByuserId(Model model , Integer front_userid){
-        /*System.out.println(front_userid);
-        FrontUser frontUser = frontUserService.queryByuserId(front_userid);
-        model.addAttribute("list",frontUser);*/
+    public FrontUser queryByuserId(Integer front_userid){
         return  frontUserService.queryByuserId(front_userid);
     }
 }

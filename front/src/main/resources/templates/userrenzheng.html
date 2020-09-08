@@ -144,6 +144,7 @@
     }
 
     $(function () {
+        //ajax查询用户信息是否存在名字，如果不存在昵称则提示未完善个人信息，隐藏表单
         if($("#front_username").val()==""){
             $("#hid").show();
             $("#fm").hide();

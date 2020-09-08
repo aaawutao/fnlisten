@@ -25,7 +25,10 @@
                     听书号名称
                 </div>
                 <div data-v-8b689e88="" class="value">
-                    <input type="text" id="front_userid" name="front_userid" th:value="${session?.user?.get('front_userid')}"/>
+
+                    <input type="hidden" id="front_userid" name="front_userid" th:value="${session?.user?.get('front_userid')}"/>
+
+                    <span id="front_username"></span>
                 </div>
                 <div data-v-8b689e88="" class="operation"><span data-v-8b689e88="" class="can_edit">修改</span></div>
             </div>
@@ -33,21 +36,27 @@
                 <div data-v-8b689e88="" class="label">
                     头像
                 </div>
-                <div data-v-8b689e88="" class="value"><img data-v-8b689e88="" class="cover" style="display: none;"> <img
-                        data-v-8b689e88="" src="%E6%87%92%E4%BA%BA%E5%90%AC%E4%B9%A6%20%E5%90%AC%E4%B9%A6%E5%8F%B7_files/650eef9.svg"
-                        class="cover">
+                <div data-v-8b689e88="" class="value">
+                    <img data-v-8b689e88="" class="cover" style="display: none;">
+
+                    <img data-v-8b689e88="" id="front_userpic" src="" class="cover"/>
+
                     <!--<input type="text" name="front_userpic" th:value="${session?.user?.get('front_userpic')}"/>-->
                 </div>
-                <div data-v-8b689e88="" class="operation"><span data-v-8b689e88="" class="can_edit">更换头像</span></div>
+                <div data-v-8b689e88="" class="operation">
+                    <span data-v-8b689e88="" class="can_edit">更换头像</span></div>
             </div>
             <div data-v-8b689e88="" class="info">
                 <div data-v-8b689e88="" class="label">
                     手机号码
                 </div>
                 <div data-v-8b689e88="" class="value">
-                    <input type="text" name="front_userphone" th:value="${session?.user?.get('front_userphone')}"/>
+
+                    <span id="front_userphone"></span>
                 </div>
-                <div data-v-8b689e88="" class="operation"><span data-v-8b689e88="" class="can_edit">修改</span></div>
+                <div data-v-8b689e88="" class="operation">
+                    <span data-v-8b689e88="" class="can_edit">修改</span>
+                </div>
             </div>
 
             <div data-v-8b689e88="" class="info">
@@ -55,16 +64,18 @@
                     实名认证
                 </div>
                 <div data-v-8b689e88="" class="value">
-                    已认证
+
+                   <span id="front_userflag"></span>
+
                 </div>
-                <div data-v-8b689e88="" class="operation"><span data-v-8b689e88="" class="can_edit">查看认证信息</span></div>
+                <div id="fuserflag" data-v-8b689e88="" class="operation"><span data-v-8b689e88="" class="can_edit">查看认证信息</span></div>
             </div>
             <div data-v-8b689e88="" class="info">
                 <div data-v-8b689e88="" class="label">
                     设置密码
                 </div>
                 <div data-v-8b689e88="" class="value">
-                    已设置
+                    <span id="front_userpwd"></span>
                 </div>
                 <div data-v-8b689e88="" class="operation"><span data-v-8b689e88="" class="can_edit">修改密码</span></div>
             </div>
@@ -132,12 +143,23 @@
 <script>
     $(function () {
         var userid=$("#front_userid").val();
-        console.log(userid)
         $.ajax({
             type:"post",
             url:"frontuser/queryByuserId",
             data:{"front_userid":userid},
             success:function(data){
+                $("#front_username").html(data.front_username);
+                $("#front_userphone").html(data.front_userphone);
+                $("#front_userpic").attr("src",data.front_userpic);
+                if(data.front_userflag==2){
+                    $("#front_userflag").html("已认证");
+                    $("#fuserflag").show();
+                }else{
+                    $("#front_userflag").html("未认证");
+                    $("#fuserflag").hide();
+                }
+                 var s = data.front_userpwd= "*********";
+                $("#front_userpwd").html(s);
 
             }
         })

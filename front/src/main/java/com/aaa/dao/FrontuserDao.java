@@ -66,7 +66,7 @@ public interface FrontuserDao extends Mapper<FrontUser> {
 
 
     //查询出个人信息
-    @Select("select * from front_user where front_userid=8")
+    @Select("select * from front_user where front_userid=#{front_userid}")
     FrontUser queryByuserId(Integer front_userid);
 
 }
