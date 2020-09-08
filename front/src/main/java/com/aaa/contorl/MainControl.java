@@ -4,6 +4,7 @@ import com.aaa.dao.PrograminfoDao;
 import com.aaa.entity.Programinfo;
 import com.aaa.service.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -112,7 +113,8 @@ public class MainControl {
     @RequestMapping("/userdetails")
     public String userdatails(HttpSession session) {
         Object user = session.getAttribute("user");
-        System.out.println(user);
+        System.out.println("22222222222");
+        System.out.println("1111111111111111111111111111111111"+user);
         return "userdetails.html";
     }
 

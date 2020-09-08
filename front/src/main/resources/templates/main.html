@@ -1,155 +1,164 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>听书网</title>
-    <meta charset="utf-8">
-    <!--<link rel="stylesheet" th:href="@{'css/styles.css?v=36'}" media="all">-->
-    <!--<link rel="stylesheet" href="/css/base.css?v=36" />
+	<title>听书网</title>
+	<meta charset="utf-8">
+	<!--<link rel="stylesheet" th:href="@{'css/styles.css?v=36'}" media="all">-->
+	<!--<link rel="stylesheet" href="/css/base.css?v=36" />
     <link rel="stylesheet" href="/css/layout.css?v=36" />
     <link rel="stylesheet" href="/css/style.css?v=36" />-->
 
-    <iframe th:replace="css.html"></iframe>
-    <iframe th:replace="listencss.html"></iframe>
+	<iframe th:replace="css.html"></iframe>
+	<iframe th:replace="listencss.html"></iframe>
 </head>
 <body onbeforeunload="changeload()">
 <!--
 
 -->
 <header>
-    <!--顶部-->
-    <div class="g-top">
-        <div class="wrapper clearfix">
-            <div class="g-top-r" id="top">
+	<!--顶部-->
+	<div class="g-top">
+		<div class="wrapper clearfix">
+			<div class="g-top-r" id="top">
 
-                <div class="g-top-ulogin hide" id="toplog" style="display: block"
-                     th:if="${#strings.isEmpty(session?.user)}"><a href="javascript:;" th:onclick="login(0)">登录</a><span
-                        class="split">|</span><a href="javascript:;" th:onclick="login(1)">注册</a></div>
-                <div class="g-top-umenu " id="topmune" th:if="${not #strings.isEmpty(session?.user)}">
+				<div class="g-top-ulogin hide" id="toplog" style="display: block"
+					 th:if="${#strings.isEmpty(session?.user)}"><a href="javascript:;" th:onclick="login(0)">登录</a><span
+						class="split">|</span><a href="javascript:;" th:onclick="login(1)">注册</a></div>
+				<div class="g-top-umenu " id="topmune" th:if="${not #strings.isEmpty(session?.user)}">
 
-                    <ul>
-                        <li>
-                            <a class="g-user-i" id="myhomecover">
-                                <!--th:src="${session?.user?.front_userpic}"-->
-                                <img src="http://localhost:9999/fileclient/staticfile/default_user_head.png"/>
-                            </a>
-                            <div class="g-top-menu-l">
-                                <a id="myhome" href="javascript:;" th:onclick="personal('userdetails')">我的个人主页</a>
-                                <a id="mycollection" href="javascript:;">我的收藏</a>
-                                <a href="javascript:;" th:onclick="vipchongzhi()">成为VIP会员</a>
-                                <a href="javascript:;" th:onclick="chongzhi()">账户充值</a>
-                                <a href="javascript:;">支付查询</a>
-                                <a href="javascript:;">查看私信</a>
-                                <a href="javascript:;">查看系统通知</a>
-                                <a id="mysetting" href="javascript:;"><i class="icon-config"></i><span
-                                        class="f12">账号设置</span></a>
-                                <a class="g-top-logout" href="javascript:;" th:onclick="logout()"><i
-                                        class="icon-logout"></i><span class="f12">退出登录</span></a>
-                            </div>
-                        </li>
+					<ul>
+						<li>
+							<a class="g-user-i" id="myhomecover">
+								<!--th:src="${session?.user?.front_userpic}"-->
+								<img src="http://localhost:9999/fileclient/staticfile/default_user_head.png"/>
+							</a>
+							<div class="g-top-menu-l">
+								<a id="myhome" href="javascript:;" th:onclick="personal('userdetails')">我的个人主页</a>
+								<a id="mycollection" href="javascript:;">我的收藏</a>
+								<a href="javascript:;" th:onclick="vipchongzhi()">成为VIP会员</a>
+								<a href="javascript:;" th:onclick="chongzhi()">账户充值</a>
+								<a href="javascript:;">支付查询</a>
+								<a href="javascript:;">查看私信</a>
+								<a href="javascript:;">查看系统通知</a>
+								<a id="mysetting" href="javascript:;"><i class="icon-config"></i><span
+										class="f12">账号设置</span></a>
+								<a class="g-top-logout" href="javascript:;" th:onclick="logout()"><i
+										class="icon-logout"></i><span class="f12">退出登录</span></a>
+							</div>
+						</li>
 
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--导航菜单-->
-    <div class="g-main clearfix wrapper">
-        <div class="g-main-l">
-            <a href="javascript:;" th:onclick="srcmain()">
-                <img src="http://localhost:9999/fileclient/staticfile/logo.png" alt="懒人听书"/>
-            </a>
-        </div>
-        <!--搜索栏-->
-        <div class="g-main-m">
-            <div class="g-search">
-                <div class="g-search-b clearfix">
-                    <input type="text" placeholder="搜索书籍、节目、主播" maxlength="20" value=""/><a class="g-search-icon"><i
-                        class="icon-search"></i></a>
-                </div>
-                <div class="g-search-l g-auto-hide">
-                    <ul>
-                        <li class="active"><i class="icon-s-book"></i>搜索"<span></span>"相关的书籍</li>
-                        <li><i class="icon-s-album"></i>搜索"<span></span>"相关的节目</li>
-                        <li><i class="icon-s-user"></i>搜索"<span></span>"相关的主播</li>
-                    </ul>
-                </div>
-            </div>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--导航菜单-->
+	<div class="g-main clearfix wrapper">
+		<div class="g-main-l">
+			<a href="javascript:;" th:onclick="srcmain()">
+				<img src="http://localhost:9999/fileclient/staticfile/logo.png" alt="懒人听书"/>
+			</a>
+		</div>
+		<!--搜索栏-->
+		<div class="g-main-m">
+			<div class="g-search">
+				<div class="g-search-b clearfix">
+					<input type="text" placeholder="搜索书籍、节目、主播" maxlength="20" value=""/><a class="g-search-icon"><i
+						class="icon-search"></i></a>
+				</div>
+				<div class="g-search-l g-auto-hide">
+					<ul>
+						<li class="active"><i class="icon-s-book"></i>搜索"<span></span>"相关的书籍</li>
+						<li><i class="icon-s-album"></i>搜索"<span></span>"相关的节目</li>
+						<li><i class="icon-s-user"></i>搜索"<span></span>"相关的主播</li>
+					</ul>
+				</div>
+			</div>
 
-            <div class="fl">
-                <a class="g-ranking-icon">榜单</a>
-                <span class="split">|</span>
-                <a class="g-category-icon">分类</a>
-            </div>
-        </div>
-        <div class="g-main-r">
-            <ul>
-                <li class="g-main-r-i" th:if="${not #strings.isEmpty(session?.user)}">
-                    <a href="javascript:;" th:onclick="personal('userrenzheng')" class="head-tooltip"><i
-                            class="icon-upload"></i>创作中心(主播认证)
-                        <span class="tooltip-text">已升级为听书号啦，请在听书号上传和管理节目</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="g-nav" style="height: 5px;">
-    </div>
-    <div class="g-nav-c">
-        <ol class="wrapper g-nav-c-active">
-            <li class="active"><a href="javascript:;" th:onclick="srcmain()">书籍推荐</a><span class="arrow-top"></span>
-            </li>
-            <li><a href="javascript:;" th:onclick="eidtprogram()">分类书籍</a><span class="arrow-top"></span></li>
-            <li><a href="javascript:;">懒人出品</a><span class="arrow-top"></span></li>
-            <li><a href="javascript:;">书籍专题</a><span class="arrow-top"></span></li>
-            <li><a href="javascript:;">收听榜单</a><span class="arrow-top"></span></li>
-        </ol>
-        <div class="clear"></div>
-    </div>
+			<div class="fl">
+				<a class="g-ranking-icon">榜单</a>
+				<span class="split">|</span>
+				<a class="g-category-icon">分类</a>
+			</div>
+		</div>
+		<div class="g-main-r">
+			<ul>
+				<li class="g-main-r-i" th:if="${not #strings.isEmpty(session?.user)}">
+					<a href="javascript:;" th:onclick="personal('userrenzheng')" class="head-tooltip"><i
+							class="icon-upload"></i>创作中心(主播认证)
+						<span class="tooltip-text">已升级为听书号啦，请在听书号上传和管理节目</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="g-nav" style="height: 5px;">
+	</div>
+	<div class="g-nav-c">
+		<ol class="wrapper g-nav-c-active">
+			<li class="active"><a href="javascript:;" th:onclick="srcmain()">书籍推荐</a><span class="arrow-top"></span>
+			</li>
+			<li><a href="javascript:;" th:onclick="eidtprogram()">分类书籍</a><span class="arrow-top"></span></li>
+			<li><a href="javascript:;">懒人出品</a><span class="arrow-top"></span></li>
+			<li><a href="javascript:;">书籍专题</a><span class="arrow-top"></span></li>
+			<li><a href="javascript:;">收听榜单</a><span class="arrow-top"></span></li>
+		</ol>
+		<div class="clear"></div>
+	</div>
 </header>
 <iframe th:src="context" name="iframe_a" id="iframe_a" width="100%" height="0px" frameborder="0"></iframe>
 <!--播放器-->
 <footer class="footer bg-success dker" style="position: fixed;bottom:0">
-    <iframe th:replace="play.html" frameborder="0" name="play" id="play"></iframe>
+	<iframe th:replace="play.html" frameborder="0" name="play" id="play"></iframe>
 </footer>
 </body>
 <script type="text/javascript" th:inline="javascript">
 
-    document.body.onbeforeunload = function (event) {
-        if (window.parent.myplay.playlist.length != 0) {
-            localStorage.setItem("playlist", JSON.stringify(window.parent.myplay.playlist));
-        }
-    };
-    //根据ID获取iframe对象
-    var ifr = $("#iframe_a")[0];
-    ifr.onload = function () {
-        //解决滚动条不收缩
-        ifr.style.height = 0 + 'px';
-        var iDoc = ifr.contentDocument || ifr.contentWindow.document;
-        var height = iDoc.documentElement.clientHeight || iDoc.body.clientHeight;
-        ifr.style.height = (height + 95) + 'px';
-    };
-    $(function () {
-        //页面
-        $("#iframe_a").attr("src", "/front/context");
-        $("#topmune").removeAttr("style");
-        if (localStorage.getItem("playlist")) {
-            //删除
-            let list = JSON.parse(localStorage.getItem("playlist"));
-            for (let i = 0; i < list.length; i++) {
-                window.myplay.add({
-                    title: list[i].title,
-                    artist: list[i].artist,
-                    mp3: list[i].mp3,
-                    poster: list[i].poster
-                })
-            }
-            ;
-            $(".poster-img").attr("src", list[0].poster);
-            window.myplay.play(0);
-            localStorage.removeItem("playlist");
-        }
-    });
+	document.body.onbeforeunload = function (event) {
+		if (window.parent.myplay.playlist.length != 0) {
+			localStorage.setItem("playlist", JSON.stringify(window.parent.myplay.playlist));
+		}
+	};
+	//根据ID获取iframe对象
+	var ifr = $("#iframe_a")[0];
+	ifr.onload = function () {
+		//解决滚动条不收缩
+		ifr.style.height = 0 + 'px';
+		var iDoc = ifr.contentDocument || ifr.contentWindow.document;
+		var height = iDoc.documentElement.clientHeight || iDoc.body.clientHeight;
+		ifr.style.height = (height + 95) + 'px';
+	};
+	$(function () {
+		//页面
+		$("#iframe_a").attr("src", "/front/context");
+		$("#topmune").removeAttr("style");
+		if (localStorage.getItem("playlist")) {
+			//删除
+			let list = JSON.parse(localStorage.getItem("playlist"));
+			for (let i = 0; i < list.length; i++) {
+				window.myplay.add({
+					title: list[i].title,
+					artist: list[i].artist,
+					mp3: list[i].mp3,
+					poster: list[i].poster
+				})
+			}
+			;
+			$(".poster-img").attr("src", list[0].poster);
+			window.myplay.play(0);
+			localStorage.removeItem("playlist");
+		}
+	});
 
+	//充值虚拟币路径
+	function chongzhi() {
+		$("#iframe_a").attr("src", "/front/recharges");
+	}
+
+	//充值vip路径
+	function vipchongzhi() {
+		$("#iframe_a").attr("src", "/front/viprecharge");
+	}
     //充值虚拟币路径
     function chongzhi() {
         $("#iframe_a").attr("src", "/front/xunibirecharge");
@@ -159,50 +168,50 @@
         $("#iframe_a").attr("src", "/front/viprecharge");
     }
 
-    //主页路径
-    function srcmain() {
-        $("#iframe_a").attr("src", "/front/context");
-    }
+	//主页路径
+	function srcmain() {
+		$("#iframe_a").attr("src", "/front/context");
+	}
 
-    //详情路径
-    function eidtsrc(id, aid) {
-        $("#iframe_a").attr("src", "/front/xianqing?pid=" + id + "&anchortid=" + aid);
-    }
+	//详情路径
+	function eidtsrc(id, aid) {
+		$("#iframe_a").attr("src", "/front/xianqing?pid=" + id + "&anchortid=" + aid);
+	}
 
-    //节目的所有数据
-    function eidtprogram() {
-        $("#iframe_a").attr("src", "/front/programtypedetails");
-    }
+	//节目的所有数据
+	function eidtprogram() {
+		$("#iframe_a").attr("src", "/front/programtypedetails");
+	}
 
-    //登录注册
-    function login(flag) {
-        $("#iframe_a").attr("src", "/front/login?flag=" + flag);
-    }
+	//登录注册
+	function login(flag) {
+		$("#iframe_a").attr("src", "/front/login?flag=" + flag);
+	}
 
-    //用户详情
-    function personal(name) {
-        //主播编号 &anchortid="+anchortid
-        let acid = [[${session?.user?.get('acid')}]];
-        if (acid == null) {
-            acid = 0;
-        }
-        $("#iframe_a").attr("src", "/front/gerenxianqing?name=" + name + "&acid=" + acid);
-    }
+	//用户详情
+	function personal(name) {
+		//主播编号 &anchortid="+anchortid
+		let acid = [[${session?.user?.get('acid')}]];
+		if (acid == null) {
+			acid = 0;
+		}
+		$("#iframe_a").attr("src", "/front/gerenxianqing?name=" + name + "&acid=" + acid);
+	}
 
 
-    //退出登录
-    function logout() {
-        window.myplay.setPlaylist([]);
-        if (localStorage.getItem("playlist")) {
-            localStorage.removeItem("playlist");
-        }
-        $.ajax({
-            type: "post",
-            url: "http://localhost:8082/front/userlogin/logout",
-            success: (data) => {
-                window.location.reload();
-            }
-        })
-    }
+	//退出登录
+	function logout() {
+		window.myplay.setPlaylist([]);
+		if (localStorage.getItem("playlist")) {
+			localStorage.removeItem("playlist");
+		}
+		$.ajax({
+			type: "post",
+			url: "http://localhost:8082/front/userlogin/logout",
+			success: (data) => {
+			window.location.reload();
+	}
+	})
+	}
 </script>
 </html>

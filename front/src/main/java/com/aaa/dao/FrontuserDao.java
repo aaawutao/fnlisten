@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.UpdateProvider;
 import tk.mybatis.mapper.common.Mapper;
+
 import java.util.List;
 import java.util.Map;
 
@@ -62,5 +63,10 @@ public interface FrontuserDao extends Mapper<FrontUser> {
             }
     }
 
+
+
+    //查询出个人信息
+    @Select("select * from front_user where front_userid=8")
+    FrontUser queryByuserId(Integer front_userid);
 
 }

@@ -23,6 +23,12 @@ public class FrontUserService {
         return frontuserDao.login(phone, pwd);
     }
 
+    //查询出个人信息
+    public FrontUser queryByuserId(Integer front_userid){
+        return  frontuserDao.queryByuserId(front_userid);
+    }
+
+
     //获取虚拟币
     public Integer getxunibi(Integer front_userid){
         return frontuserDao.selectByPrimaryKey(front_userid).getFront_usermoney();

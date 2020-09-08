@@ -44,6 +44,9 @@ public class HttpUtils {
      * @return
      * @throws Exception
      */
+
+
+
     public static HttpResponse doGet(String host, String path, String method,
                                      Map<String, String> headers,
                                      Map<String, String> querys)
