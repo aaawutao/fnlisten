@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class MainControl {
@@ -40,10 +41,10 @@ public class MainControl {
     }
 
     //虚拟币充值
-    @RequestMapping("/recharges")
+    @RequestMapping("/xunibirecharge")
     public String recharge(ModelMap modelMap) {
         modelMap.addAttribute("chongzhi", topupsetinfoService.query(0));
-        return "recharge.html";
+        return "xunibirecharge.html";
     }
 
     //vip充值
@@ -109,7 +110,9 @@ public class MainControl {
 
     //账号详情
     @RequestMapping("/userdetails")
-    public String userdatails() {
+    public String userdatails(HttpSession session) {
+        Object user = session.getAttribute("user");
+        System.out.println(user);
         return "userdetails.html";
     }
 

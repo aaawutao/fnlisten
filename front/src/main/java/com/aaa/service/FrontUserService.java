@@ -22,4 +22,9 @@ public class FrontUserService {
     public Map<String, Object> login(String phone, String pwd) {
         return frontuserDao.login(phone, pwd);
     }
+
+    //获取虚拟币
+    public Integer getxunibi(Integer front_userid){
+        return frontuserDao.selectByPrimaryKey(front_userid).getFront_usermoney();
+    }
 }

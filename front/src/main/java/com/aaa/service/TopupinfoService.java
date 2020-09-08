@@ -7,6 +7,7 @@ import com.aaa.entity.Topupinfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -38,7 +39,7 @@ public class TopupinfoService {
 
         FrontUser frontUser = frontuserDao.selectByPrimaryKey(map.get("front_userid"));
         System.out.println(map);
-        if (map.get("tstype").equals("0")) {
+        if (map.get("tstype").toString().equals("0")) {
             //虚拟币充值
             //用户当前的虚拟币做添加
             Integer zo = frontUser.getFront_usermoney() + Integer.parseInt(map.get("tscustom").toString());
@@ -46,17 +47,50 @@ public class TopupinfoService {
             f2.setFront_userid(frontUser.getFront_userid());
             f2.setFront_usermoney(zo);
             frontuserDao.updates(f2);
-        } else if (map.get("tstype").equals("1")) {
+        } else if (map.get("tstype").toString().equals("1")) {
+            Date newDate=null;
             //会员
             //判断用户的时间，修改用户的会员时间
             if (frontUser.getFront_uservipoutdata() != null) {
                 if (frontUser.getFront_uservipoutdata().compareTo(new Date()) > 0) {
                     //用户vip到期时间大于当前时间
+                   newDate=this.setDate(map.get("tscustom").toString(),frontUser.getFront_uservipoutdata());
+                }else{
+                    newDate=this.setDate(map.get("tscustom").toString(),new Date());
                 }
+            }else{
+                newDate=this.setDate(map.get("tscustom").toString(),new Date());
             }
-            //用户vip到期时间小于当前时间，获取当前字段是null值
-
+            FrontUser f3 = new FrontUser();
+            f3.setFront_userid(frontUser.getFront_userid());
+            f3.setFront_uservipoutdata(newDate);
+            f3.setFront_userstate(2);
+            frontuserDao.updates(f3);
         }
+    }
+
+
+
+
+    //判断时间做处理
+    public Date setDate(String tianshu,Date userDate){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(userDate);
+        switch (tianshu){
+            case "一个月":
+                cal.add(Calendar.MONTH, 1);
+                break;
+            case "三个月":
+                cal.add(Calendar.MONTH, 3);
+                break;
+            case "半年":
+                cal.add(Calendar.MONTH, 6);
+                break;
+            case "一年":
+                cal.add(Calendar.YEAR, 1);
+                break;
+        }
+        return cal.getTime();
     }
 
 }
