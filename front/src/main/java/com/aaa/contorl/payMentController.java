@@ -108,16 +108,16 @@ public class payMentController {
 
             //支付宝交易号
             String trade_no = new String(request.getParameter("trade_no").getBytes("ISO-8859-1"), "UTF-8");
-            System.out.println(trade_no);
             //修改状态,设置支付宝交易号
             topupinfoService.editState(out_trade_no, trade_no);
 
             //判断支付类型
+            topupinfoService.panduan(out_trade_no);
 
 
         } else {//验证失败
+
             System.out.println("失败");
-            //做删除
         }
         return "redirect:/main";
     }

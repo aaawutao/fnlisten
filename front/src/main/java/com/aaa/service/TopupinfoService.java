@@ -25,7 +25,6 @@ public class TopupinfoService {
     }
 
     public Integer add(Topupinfo topupinfo) {
-        System.out.println(topupinfo);
         return topupinfoDao.insert(topupinfo);
     }
 
@@ -38,6 +37,7 @@ public class TopupinfoService {
         Map<String, Object> map = topupinfoDao.show(tpid, null, null).get(0);
 
         FrontUser frontUser = frontuserDao.selectByPrimaryKey(map.get("front_userid"));
+        System.out.println(map);
         if (map.get("tstype").equals("0")) {
             //会员
             //判断用户的时间，修改用户的会员时间
@@ -55,6 +55,7 @@ public class TopupinfoService {
             FrontUser f2 = new FrontUser();
             f2.setFront_userid(frontUser.getFront_userid());
             f2.setFront_usermoney(zo);
+            frontuserDao.updates(f2);
 
         }
     }

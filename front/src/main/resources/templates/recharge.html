@@ -20,7 +20,7 @@
                 <p>选择充值金额：</p>
                 <ul class="recharge-option" th:each="it:${chongzhi}">
 
-                    <li><input type="radio" name="recharge" th:value="${it.tsmoney}" class="rechare-coin"
+                    <li><input type="radio" name="recharge" th:value="${it.tsid}" th:tsmoney="${it.tsmoney}" class="rechare-coin"
                                id="recharge-option1"/><label for="recharge-option1"><span class="digital"
                                                                                           th:text="${it.tsmoney}"></span>元(<span
                             class="digital" th:text="${it.tscustom}"></span>懒人币)</label></li>
@@ -30,19 +30,29 @@
                     <div class="clearfix">
                         <a class="recharge-way-item active" id="alipay"><span class="alipay"></span></a>
                     </div>
-                    <div class="recharge-count">应付金额：<span class="amount payable-coin" id="xianshi">5</span>元</div>
-                    <button class="btn-primary" type="button">立即支付</button>
+                    <div class="recharge-count">应付金额：<span class="amount payable-coin" id="xianshi"></span>元</div>
+                    <form action="payment/pay" method="post">
+                        <input type="hidden" name="front_userid" th:value="${session?.user.get('front_userid')}"/>
+                        <input type="hidden" name="tsid" id="tsid" value="">
+                        <input type="hidden" name="WIDtotal_amount" id="tsr"/>
+                        <input class="btn-primary" type="submit" value="立即支付">
+                    </form>
                 </div>
             </section>
         </div>
     </div>
 </section>
 </body>
-<script>
+<script th:inline="javascript">
     $(function () {
         $("[type='radio']")[0].checked = true;
+        $("#tsid").val([[${chongzhi[0].tsid}]]);
+        $("#tsr").val([[${chongzhi[0].tsmoney}]]);
+        $("#xianshi").val([[${chongzhi[0].tsmoney}]]);
         $("[type='radio']").change(function () {
-            $("#xianshi").html($(this).val());
+            $("#xianshi").html($(this).attr("tsmoney"));
+            $("#tsid").val($(this).attr("value"));
+            $("#tsr").val($(this).attr("tsmoney"));
         })
     });
 </script>
