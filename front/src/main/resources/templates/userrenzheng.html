@@ -33,6 +33,14 @@
                             <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
                             <input autocomplete="off" onblur="checkrname()" id="rname"  spellcheck="false" type="text" name="rname" placeholder="请输入姓名" maxlength="10" class="ivu-input ivu-input-lr40">
                             <p id="checkrname"></p>
+
+
+                            <!--主播名称-->
+                            <!--<input type="text" th:value="${session.user.get('petname')}" name="artist"/>-->
+                            <input type="hidden" id="front_username" name="front_username" th:value="${session?.user?.get('front_username')}"/>
+                            <input type="hidden" id="front_userid" name="front_userid" th:value="${session?.user?.get('front_userid')}"/>
+                            <input type="hidden" name="front_userphone" th:value="${session?.user?.get('front_userphone')}"/>
+                            <input type="hidden" name="flag" th:value="${session?.user?.get('flag')}">
                         </div>
                     </div>
                 </div>
@@ -60,13 +68,7 @@
                     <label class="ivu-form-item-label" style="width: 140px;">证件正面</label>
                     <div class="ivu-form-item-content" style="margin-left: 140px;">
                         <div data-v-c4b17aae="" data-v-e7ce8334="">
-                            <input type="file" id="f" onchange="checkpic(this)" name="ridcardpositivepic" class="upload_btn ivu-btn ivu-btn-default"></input>
-                            <!--主播名称-->
-                            <!--<input type="text" th:value="${session.user.get('petname')}" name="artist"/>-->
-                            <input type="hidden" id="front_username" name="front_username" th:value="${session?.user?.get('front_username')}"/>
-                            <input type="hidden" id="front_userid" name="front_userid" th:value="${session?.user?.get('front_userid')}"/>
-                            <input type="hidden" name="front_userphone" th:value="${session?.user?.get('front_userphone')}"/>
-                            <input type="hidden" name="flag" th:value="${session?.user?.get('flag')}">
+                            <input type="file" id="f"  name="ridcardpositivepic" class="upload_btn ivu-btn ivu-btn-default" ></input>
                             <span data-v-e7ce8334="" data-v-c4b17aae="" class="tip">格式支持PNG、BMP、JPG或GIF，照片少于5M</span>
                             <p id="checkpic"></p>
                             <div data-v-c4b17aae="" class="upload_wrap">
@@ -84,8 +86,9 @@
                         <button data-v-e7ce8334="" id="btn" type="button" class="submit lr_btn_solid ivu-btn ivu-btn-default">
                             <span>提 交</span></button>
                     </div>
-                    <button data-v-e7ce8334="" id="test" type="button" class="submit lr_btn_solid ivu-btn ivu-btn-default">
-                        <span>测试</span></button>
+
+                    <!--<button data-v-e7ce8334="" id="test" type="button" class="submit lr_btn_solid ivu-btn ivu-btn-default">
+                        <span>测试</span></button>-->
                 </div>
 
               <!--  <div data-v-e7ce8334="" class="ivu-form-item ivu-form-item-required">
@@ -141,15 +144,14 @@
         $("#checkridcard").html("");
         return true;
     }
-
-    function checkpic(){
+   /* function checkpic(){
         if($("#f").val()==""){
             $("#checkpic").html("请选择照片")
             return false;
         }
         $("#checkpic").html("")
         return true;
-    }
+    }*/
     $(function () {
         if($("#front_username").val()==""){
             $("#hid").show();
@@ -158,20 +160,22 @@
             $("#hid").hide();
             $("#fm").show();
         }
-       /* $("#test").click(function () {
-            var front_userid=$("#front_userid").val();
+        $("#test").click(function () {
+            var front_userid = $("#front_userid").val();
+            var front_username = $("#front_username").val();
             $.ajax({
                 type:"post",
-                url:"realnameinfo/updatefrontflag",
-                data:{"front_userid":front_userid},
+                url:"anchorinfo/addanchor",
+                data:{"front_userid":front_userid,"petname":front_username},
                 success:function (data) {
-                    console.log(data)
+                    console.log(data);
                 }
             })
-        })*/
+        })
+
 
         $("#btn").click(function () {
-           if(checkrname() && checkridcard() && checkpic()){
+           if(checkrname() && checkridcard() ){
                var formdata=new FormData($("#fm")[0]);
                $.ajax({
                    type:"post",
@@ -181,19 +185,28 @@
                    contentType: false,
                    success:function (data) {
                        if(data==1){
-                           xtip.msg('认证完成',{icon:'s',type:'w',pos:'t'});
                            //修改用户为个人主播
                            var front_userid=$("#front_userid").val();
-                           $.ajax({
-                               type:"post",
-                               url:"realnameinfo/updatefrontflag",
-                               data:{"front_userid":front_userid},
-                               success:function (data) {
+                           $.ajax({type:"post", url:"realnameinfo/updatefrontflag", data:{"front_userid":front_userid}, success:function (data) {
                                    console.log("修改用户状态"+data)
+                                   if(data==1){
+                                       var front_userid = $("#front_userid").val();
+                                       var front_username = $("#front_username").val();
+                                       $.ajax({
+                                           type:"post",
+                                           url:"anchorinfo/addanchor",
+                                           data:{"front_userid":front_userid,"petname":front_username},
+                                           success:function (data) {
+                                              if(data==1){
+                                                  alert("成功")
+                                              }
+                                           }
+                                       })
+                                   }
                                }
                            })
                        }else{
-                           xtip.msg('认证失败，请确认是否输入有误',{icon:'s',type:'w',pos:'t'});
+                           alert("失败")
                        }
                    }
                })

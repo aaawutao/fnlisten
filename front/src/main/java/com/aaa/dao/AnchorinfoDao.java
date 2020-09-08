@@ -1,6 +1,7 @@
 package com.aaa.dao;
 
 import com.aaa.entity.Anchorinfo;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
@@ -10,6 +11,10 @@ import java.util.List;
 
 @Mapper
 public interface AnchorinfoDao extends tk.mybatis.mapper.common.Mapper<Anchorinfo> {
+
+
+    @Insert("insert into anchorinfo (actype,bfid,petname) values (1,#{front_userid},#{petname})")
+    int addanchor(@Param("front_userid") Integer front_userid,@Param("petname") String petname);
 
     //显示
     @SelectProvider(type = AnchorinfoSql.class, method ="querySql")

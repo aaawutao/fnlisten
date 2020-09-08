@@ -16,4 +16,8 @@ public class AnchorinfoService {
         return anchorinfoDao.query(actype,num);
     }
 
+    public int addanchor( Integer front_userid,String petname){
+        return  anchorinfoDao.addanchor(front_userid,petname);
+    }
+
 }
