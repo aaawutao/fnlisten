@@ -39,6 +39,14 @@ public class TopupinfoService {
         FrontUser frontUser = frontuserDao.selectByPrimaryKey(map.get("front_userid"));
         System.out.println(map);
         if (map.get("tstype").equals("0")) {
+            //虚拟币充值
+            //用户当前的虚拟币做添加
+            Integer zo = frontUser.getFront_usermoney() + Integer.parseInt(map.get("tscustom").toString());
+            FrontUser f2 = new FrontUser();
+            f2.setFront_userid(frontUser.getFront_userid());
+            f2.setFront_usermoney(zo);
+            frontuserDao.updates(f2);
+        } else if (map.get("tstype").equals("1")) {
             //会员
             //判断用户的时间，修改用户的会员时间
             if (frontUser.getFront_uservipoutdata() != null) {
@@ -48,18 +56,7 @@ public class TopupinfoService {
             }
             //用户vip到期时间小于当前时间，获取当前字段是null值
 
-        } else if (map.get("tstype").equals("1")) {
-            //虚拟币充值
-            //用户当前的虚拟币做添加
-            Integer zo = frontUser.getFront_usermoney() + Integer.parseInt(map.get("tscustom").toString());
-            FrontUser f2 = new FrontUser();
-            f2.setFront_userid(frontUser.getFront_userid());
-            f2.setFront_usermoney(zo);
-            frontuserDao.updates(f2);
-
         }
     }
-
-    ;
 
 }

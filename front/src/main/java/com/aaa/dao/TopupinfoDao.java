@@ -24,7 +24,7 @@ public interface TopupinfoDao extends tk.mybatis.mapper.common.Mapper<Topupinfo>
         public String showSql(@Param("tpid") String tpid, @Param("front_userid") Integer front_userid, @Param("order") Integer order) {
             StringBuffer sql = new StringBuffer("select t.*,ts.* from topupinfo t\n" +
                     "left join topupsetinfo ts\n" +
-                    "on t.tpid=ts.tsid where 1=1 and t.state=1 ");
+                    "on t.tsid=ts.tsid where 1=1 and t.state=1 ");
             if (tpid != null) {
                 sql.append(" and t.tpid=#{tpid}");
             }
