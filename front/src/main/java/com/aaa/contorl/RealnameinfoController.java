@@ -30,7 +30,7 @@ public class RealnameinfoController {
     RealnameinfoService realnameinfoService;
 
 
-    //图片认证
+    //身份证认证
     @RequestMapping("addrealnameinfo")
     @ResponseBody
     public int addrealnameinfo(@RequestParam("ridcardpositivepic") MultipartFile ridcardpositivepic

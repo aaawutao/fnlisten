@@ -144,14 +144,14 @@
         $("#checkridcard").html("");
         return true;
     }
-   /* function checkpic(){
-        if($("#f").val()==""){
+    function checkpic(){
+        if($("[name='ridcardpositivepic']").val()==""){
             $("#checkpic").html("请选择照片")
             return false;
         }
         $("#checkpic").html("")
         return true;
-    }*/
+    }
     $(function () {
         if($("#front_username").val()==""){
             $("#hid").show();
