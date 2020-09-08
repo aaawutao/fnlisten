@@ -68,14 +68,13 @@
                     <label class="ivu-form-item-label" style="width: 140px;">证件正面</label>
                     <div class="ivu-form-item-content" style="margin-left: 140px;">
                         <div data-v-c4b17aae="" data-v-e7ce8334="">
-                            <input type="file" id="chooseImage"   name="ridcardpositivepic" class="upload_btn ivu-btn ivu-btn-default" ></input>
-                            <span data-v-e7ce8334="" data-v-c4b17aae="" class="tip">格式支持PNG、JPG或JPEG，照片少于5M</span>
+                            <input type="file" id="f"  name="ridcardpositivepic" class="upload_btn ivu-btn ivu-btn-default" ></input>
+                            <span data-v-e7ce8334="" data-v-c4b17aae="" class="tip">格式支持PNG、BMP、JPG或GIF，照片少于5M</span>
                             <p id="checkpic"></p>
                             <div data-v-c4b17aae="" class="upload_wrap">
                                 <div data-v-c4b17aae="" class="upload_area">
                                     <div data-v-c4b17aae="" class="real real_hover">
-                                       <!-- <img id="cropedBigImg" src="" style="width: 100%;height: 100%;" />-->
-                                        <img id="cropedBigImg" style="width: 100%;height: 100%;" value='custom'  data-address='' title="自定义背景"/>
+                                        <img id="im" src="" style="width: 100%;height: 100%;" />
                                     </div>
                                 </div>
                             </div>
@@ -87,6 +86,9 @@
                         <button data-v-e7ce8334="" id="btn" type="button" class="submit lr_btn_solid ivu-btn ivu-btn-default">
                             <span>提 交</span></button>
                     </div>
+
+                    <!--<button data-v-e7ce8334="" id="test" type="button" class="submit lr_btn_solid ivu-btn ivu-btn-default">
+                        <span>测试</span></button>-->
                 </div>
 
               <!--  <div data-v-e7ce8334="" class="ivu-form-item ivu-form-item-required">
@@ -111,6 +113,8 @@
 </body>
 <script th:src="@{'/js/jquery.min.js?v=36'}"></script>
 <script>
+
+
     function checkrname(){
         var rname=$("#rname").val();
         var reg = /^[\u4e00-\u9fa5\s\.]+$/;
@@ -140,7 +144,14 @@
         $("#checkridcard").html("");
         return true;
     }
-
+   /* function checkpic(){
+        if($("#f").val()==""){
+            $("#checkpic").html("请选择照片")
+            return false;
+        }
+        $("#checkpic").html("")
+        return true;
+    }*/
     $(function () {
         if($("#front_username").val()==""){
             $("#hid").show();

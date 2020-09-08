@@ -14,5 +14,5 @@ public interface ChapterinfoDao extends tk.mybatis.mapper.common.Mapper<Chapteri
             "left join programinfo p\n" +
             "on c.pid=p.pid where c.pid=#{pid}\n" +
             "order by createdate")
-    List<Map<String,Object>> queryChapter(@Param("pid") Integer pid);
+    List<Map<String, Object>> queryChapter(@Param("pid") Integer pid);
 }

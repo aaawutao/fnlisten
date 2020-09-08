@@ -1,0 +1,381 @@
+/*
+.class2{
+  @extend .class1;
+  @include radius;
+  @include shadow(unquote("1px 1px 1px rgba(0,0,0,0.1),1px 1px 1px rgba(0,0,0,0.1)"));
+  @include tranistion;
+  @include linear(unquote("#eee 0%,#ddd 100%"));
+  @include flexbox;
+  @include flex(1);
+  color : $blue;
+  @include opacity(0.2);
+  @include box;
+}
+.btn5{
+  @include shadow(unquote("1px 1px 1px rgba(0,0,0,0.1),1px 1px 1px rgba(0,0,0,0.1)"));
+  @include linear(unquote("#eee 0%,#ddd 100%"));
+  border:1px solid #ccc;
+}*/
+.recharge-info {
+    margin: 35px 0px 25px 0px;
+}
+
+.amount {
+    font-size: 24px;
+    color: #f39c11;
+    font-family: arial;
+}
+
+.recharge-info p {
+    margin-top: -14px;
+    font-size: 14px;
+}
+
+.recharge {
+    font-size: 14px;
+}
+
+.recharge h2 {
+    font-size: 28px;
+    font-weight: normal;
+    margin-bottom: -3px;
+}
+
+.recharge p {
+    margin: 10px 0;
+}
+
+.recharge-option {
+    border: 3px solid #ddd;
+    height: 24px;
+    padding: 14px;
+    margin: 20px 0px -6px 0px;
+    display: inline-block;
+}
+
+.recharge-option li {
+    float: left;
+}
+
+.recharge-option li + li {
+    margin-left: 20px;
+}
+
+.recharge-option label {
+    margin-left: 5px;
+}
+
+.recharge-way {
+    margin-top: 57px;
+}
+
+.recharge-way p {
+    padding-bottom: 10px;
+}
+
+.recharge-way-item {
+    float: left;
+    width: 148px;
+    height: 40px;
+    border: 1px solid #ddd;
+    margin-right: 20px;
+}
+
+.recharge-way-item.active {
+    border: 3px solid #F39C11;
+    background: url("http://localhost:9999/fileclient/staticfile/pay_sprites.png") no-repeat 110px -665px;
+    height: 36px;
+    width: 142px;
+}
+
+.recharge-way-item.active span {
+    margin: -2px 0 0 -2px;
+}
+
+.banks {
+    margin-top: 28px;
+    width: 800px;
+}
+
+.banks input {
+    float: left;
+    margin: 13px 10px 0 0;
+}
+
+.banks li {
+    float: left;
+    margin: 0px 20px 18px 0px;
+    cursor: pointer;
+}
+
+.banks label {
+    width: 136px;
+    height: 36px;
+    border: 1px solid #ddd;
+    float: left;
+    cursor: pointer;
+}
+
+.recharge-way .link {
+    font-size: 24px;
+}
+
+.alipay, .onlinepay, .lazypay {
+    display: block;
+    background: url("http://localhost:9999/fileclient/staticfile/pay_sprites.png") no-repeat 43px -597px;
+    height: 40px;
+}
+
+.onlinepay {
+    background-position: 33px -527px;
+}
+
+.lazypay {
+    background-position: 28px -740px;
+}
+
+.bank1,
+.bank2,
+.bank3,
+.bank4,
+.bank5,
+.bank6,
+.bank7,
+.bank8 {
+    background: url("http://localhost:9999/fileclient/staticfile/pay_sprites.png") no-repeat 16px -1px;
+}
+
+.bank2 {
+    background-position: 16px -59px;
+}
+
+.bank3 {
+    background-position: 16px -119px;
+}
+
+.bank4 {
+    background-position: 16px -181px;
+}
+
+.bank5 {
+    background-position: 16px -251px;
+}
+
+.bank6 {
+    background-position: 16px -317px;
+}
+
+.bank7 {
+    background-position: 16px -389px;
+}
+
+.bank8 {
+    background-position: 16px -459px;
+}
+
+.recharge-way .btn-primary {
+    width: 138px;
+    line-height: 32px;
+    font-size: 16px;
+    margin-bottom: 100px;
+}
+
+.recharge-count {
+    margin: 0px 0px 26px 0;
+    position: relative;
+    margin-top: 5px;
+}
+
+.recharge-count .amount {
+    font-size: 30px;
+    position: relative;
+    top: 2px;
+}
+
+table {
+    width: 100%;
+}
+
+thead {
+    background-color: #ededed;
+}
+
+tbody td {
+    line-height: 32px;
+    padding: 14px 0px;
+    border-bottom: 1px dotted #ccc;
+}
+
+thead td {
+    line-height: 32px;
+}
+
+tbody .amount {
+    font-size: 24px;
+}
+
+.vip-info {
+    border-bottom: 1px solid #ccc;
+    font-size: 14px;
+    padding-bottom: 20px;
+    padding-top: 22px;
+}
+
+.vip-info p {
+    margin-top: -2px;
+}
+
+.vip-w h4 {
+    font-size: 28px;
+    font-weight: normal;
+    margin-bottom: 15px;
+    margin-top: 29px;
+}
+
+.vip-rights {
+    background: #ededed;
+    height: 215px;
+}
+
+.vip-rights li {
+    float: left;
+    width: 245px;
+    margin-top: 45px;
+    margin-left: 39px;
+}
+
+.vip-rights-r {
+    margin-left: 100px;
+}
+
+.vip-rights-r div {
+    font-size: 18px;
+    margin-top: -5px;
+}
+
+.vip-rights-r p {
+    line-height: 18px;
+}
+
+.vip-rights-01 img {
+    margin-right: -10px;
+}
+
+.vip-rights-01, .vip-rights-02 {
+    margin-right: 30px;
+}
+
+.vip-rights-02 img {
+    margin-left: -10px;
+}
+
+.vip-rights-03 img {
+    margin-left: -15px;
+}
+
+.vip-item {
+    border: 1px solid #ccc;
+    float: left;
+    width: 210px;
+    font-size: 14px;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.vip-item + .vip-item {
+    margin-left: 30px;
+}
+
+.icon-recommend {
+    background: url("http://localhost:9999/fileclient/staticfile/pay_sprites.png") no-repeat -48px -670px;
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    right: 6px;
+    top: 6px;
+}
+
+.vip-item-arrow {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 0px;
+    bottom: 0px;
+    background: url("http://localhost:9999/fileclient/staticfile/pay_sprites.png") no-repeat 0px -670px;
+    display: none;
+}
+
+.vip-item.active {
+    border: 3px solid #f39c11;
+    width: 208px;
+}
+
+.vip-item.active .vip-item-arrow {
+    display: block;
+}
+
+.vip-item-r {
+    height: 74px;
+    margin: 2px 0px 2px 80px;
+    border-left: 1px dotted #ddd;
+    padding-left: 15px;
+}
+
+.vip-item.active .vip-item-r {
+    height: 70px;
+}
+
+.vip-item .fl {
+    font-size: 18px;
+    width: 80px;
+    line-height: 78px;
+    text-align: center;
+}
+
+.vip-item.active .fl {
+    line-height: 74px;
+}
+
+.vip-item-r .amount {
+    font-size: 24px;
+}
+
+.vip-item-tips {
+    margin: -7px 0px 20px 0px;
+}
+
+.question-pay {
+    width: 728px;
+    margin-top: -74px;
+    margin-bottom: 50px;
+}
+
+.question-pay p {
+    line-height: 22px;
+}
+
+.recharge-wrapper {
+    padding-left: 10px;
+}
+
+.recharge-wrapper .s-title {
+    margin-left: -10px;
+}
+
+.pl30 {
+    padding-left: 30px;
+}
+
+.pr30 {
+    padding-right: 30px;
+}
+
+.records-empty {
+    color: #8f8f8f;
+    text-align: center;
+    margin-top: 94px;
+}
+
+.records-empty p {
+    margin-top: 10px;
+}

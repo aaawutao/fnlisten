@@ -16,7 +16,7 @@ public class Programinfo {
     private String psource;
     private Integer anchortid;
     private Integer chapterorder;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date pcreatedate;
     private Integer buycount;
     private Integer pstate;

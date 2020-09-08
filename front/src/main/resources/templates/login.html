@@ -9,54 +9,58 @@
     <link rel="stylesheet" th:href="@{'css/loginstyle.css?v=36'}">
 </head>
 <body>
-    <!--登录-->
-    <div class="wrapper login-page container" id="login" >
-        <div class="p-title">登陆懒人听书</div>
-        <div class="login-sub">
-            <p>>注册懒人听书账号！<a href="#" id="registerbtn" class="link">立即注册</a></p>
-            <div class="login-auth">
-                >或使用合作网站登录<br />
-                <!--第三方登录-->
-                <a href="/qqLogin.dosl" class="login-auth-qq"></a>
-            </div>
-        </div>
-
-        <div class="login-w" >
-            <div id="errMsg" class="field-error"></div>
-            <ul class="fieldset">
-                <li>
-                    <label class="field-name">账号：</label>
-                    <div class="field-r">
-                        <input id="frontuserPhone"  type="text"  placeholder="手机号" onblur="checkname()" onfocus="this.className='txt'" />
-                        <p id="checkfrontuserPhone"></p>
-                    </div>
-                </li>
-                <li>
-                    <label class="field-name">密码：</label>
-                    <div class="field-r">
-                        <input id="password" name="password" type="password" placeholder="密码" onblur="checkpwd()" onfocus="this.className='txt'" />
-                        <p id="checkpassword"></p>
-                    </div>
-                </li>
-                <li>
-                    <div class="field-r f14">
-                        <input type="checkbox" id="autoLogin" checked="checked" value="1">
-                        <label for="autologin">下次自动登录</label>
-                    </div>
-                </li>
-                <li>
-                    <div class="field-r"><button type="button" class="ant-btn-primary" onclick="login()">登录</button></div>
-                </li>
-            </ul>
+<!--登录-->
+<div class="wrapper login-page container" id="login">
+    <div class="p-title">登陆懒人听书</div>
+    <div class="login-sub">
+        <p>>注册懒人听书账号！<a href="#" id="registerbtn" class="link">立即注册</a></p>
+        <div class="login-auth">
+            >或使用合作网站登录<br/>
+            <!--第三方登录-->
+            <a href="/qqLogin.dosl" class="login-auth-qq"></a>
         </div>
     </div>
+
+    <div class="login-w">
+        <div id="errMsg" class="field-error"></div>
+        <ul class="fieldset">
+            <li>
+                <label class="field-name">账号：</label>
+                <div class="field-r">
+                    <input id="frontuserPhone" type="text" placeholder="手机号" onblur="checkname()"
+                           onfocus="this.className='txt'"/>
+                    <p id="checkfrontuserPhone"></p>
+                </div>
+            </li>
+            <li>
+                <label class="field-name">密码：</label>
+                <div class="field-r">
+                    <input id="password" name="password" type="password" placeholder="密码" onblur="checkpwd()"
+                           onfocus="this.className='txt'"/>
+                    <p id="checkpassword"></p>
+                </div>
+            </li>
+            <li>
+                <div class="field-r f14">
+                    <input type="checkbox" id="autoLogin" checked="checked" value="1">
+                    <label for="autologin">记住密码</label>
+                </div>
+            </li>
+            <li>
+                <div class="field-r">
+                    <button type="button" class="ant-btn-primary" onclick="login()">登录</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
 
 <div class="wrapper login-page container" id="reg">
     <div class="p-title">注册懒人听书</div>
     <div class="login-sub">
         <p>>登陆懒人听书账号！<a id="logbtn" class="link">立即登陆</a></p>
         <div class="login-auth">
-            >或使用合作网站登录<br />
+            >或使用合作网站登录<br/>
             <!--第三方登录-->
             <a href="/qqLogin.dosl" class="login-auth-qq"></a>
         </div>
@@ -66,14 +70,16 @@
             <li>
                 <label class="field-name">账号：</label>
                 <div class="field-r">
-                    <input id="phone" name="phone" type="text" onblur="checkZH()" onfocus="this.className='txt'" placeholder="手机号" />
+                    <input id="phone" name="phone" type="text" onblur="checkZH()" onfocus="this.className='txt'"
+                           placeholder="手机号"/>
                     <p id="checkphone"></p>
                 </div>
             </li>
             <li>
                 <label class="field-name">密码：</label>
                 <div class="field-r">
-                    <input id="pwd" name="pwd" type="password" onblur="checkPwd()" onfocus="this.className='txt'" placeholder="密码" />
+                    <input id="pwd" name="pwd" type="password" onblur="checkPwd()" onfocus="this.className='txt'"
+                           placeholder="密码"/>
                     <input type="hidden" name="code" id="code">
                     <p id="checkpwd"></p>
                 </div>
@@ -81,14 +87,17 @@
             <li>
                 <label class="field-name">验证码：</label>
                 <div class="field-r">
-                    <input type="text" name="codeResult" id="codeResult" onblur="checkcr()" onfocus="this.className='txt'"
-                           placeholder="验证码" />
+                    <input type="text" name="codeResult" id="codeResult" onblur="checkcr()"
+                           onfocus="this.className='txt'"
+                           placeholder="验证码"/>
                     <span><button type="button" class="ant-btn-primary" onclick="coarse()">获取验证码</button></span>
                     <p id="checkcodeResult"></p>
                 </div>
             </li>
             <li>
-                <div class="field-r"><button type="button" class="ant-btn-primary" onclick="subm()">注册</button></div>
+                <div class="field-r">
+                    <button type="button" class="ant-btn-primary" onclick="subm()">注册</button>
+                </div>
             </li>
         </ul>
     </div>
@@ -132,6 +141,7 @@
         $("#checkpassword").html("");
         return true;
     }
+
     function coarse() {
         if (checkZH()) {
             var phone = $("#phone").val();
@@ -141,7 +151,7 @@
                 data: {
                     "phone": phone
                 },
-                success: function(data) {
+                success: function (data) {
                     $("#code").val(data.codeResult)
                 }
             })
@@ -163,7 +173,7 @@
                         "front_userphone": front_userphone,
                         "front_userpwd": front_userpwd
                     },
-                    success: function(data) {
+                    success: function (data) {
                         console.log("注册成功，跳转登陆页面");
                         $("#reg").hide();
                         $("#login").show();
@@ -174,8 +184,9 @@
             }
         }
     }
-    function checkname(){
-        var phone =$("#frontuserPhone").val();
+
+    function checkname() {
+        var phone = $("#frontuserPhone").val();
         if (phone == "") {
             $("#checkfrontuserPhone").html("请输入手机号！");
             return false;
@@ -184,8 +195,8 @@
         return true;
     }
 
-    function checkpwd(){
-        var pwd=$("#password").val();
+    function checkpwd() {
+        var pwd = $("#password").val();
         if (pwd == "") {
             $("#checkpassword").html("请输入密码！");
             return false;
@@ -193,10 +204,11 @@
         $("#checkpassword").html("");
         return true;
     }
-    function login(){
-        if(checkname() && checkPwd()){
-            var phone =$("#frontuserPhone").val();
-            var pwd=$("#password").val();
+
+    function login() {
+        if (checkname() && checkPwd()) {
+            var phone = $("#frontuserPhone").val();
+            var pwd = $("#password").val();
             $.ajax({
                 type: "post",
                 url: "http://localhost:8082/front/userlogin/login",
@@ -205,17 +217,17 @@
                     "pwd": pwd
                 },
                 success: function (data) {
-                    if(data!=''){
-                        if($("#autoLogin").prop("checked")){
-                            localStorage.setItem("phone",phone);
-                            localStorage.setItem("pwd",pwd);
-                        }else{
+                    if (data != '') {
+                        if ($("#autoLogin").prop("checked")) {
+                            localStorage.setItem("phone", phone);
+                            localStorage.setItem("pwd", pwd);
+                        } else {
                             localStorage.removeItem("phone");
                             localStorage.removeItem("pwd");
                         }
                         $("#errMsg").html("");
                         window.parent.location.reload();
-                    }else{
+                    } else {
                         $("#errMsg").html("用户和密码错误");
                     }
                 }
@@ -223,15 +235,16 @@
         }
 
     }
+
     //页面加载事件
     $(function () {
         //设置
 
-        var flag=[[${flag}]];
-        if(flag==0){
+        var flag = [[${flag}]];
+        if (flag == 0) {
             $("#reg").hide();
             $("#login").show();
-        }else{
+        } else {
             $("#login").hide();
             $("#reg").show();
         }
@@ -255,6 +268,7 @@
         color: red;
         font-size: 12px;
     }
+
     .ant-btn-primary {
         color: #fff;
         background-color: #1890ff;

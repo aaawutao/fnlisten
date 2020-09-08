@@ -14,11 +14,11 @@ public class ChapterinfoService {
     @Resource
     ChapterinfoDao chapterinfoDao;
 
-    public List<Map<String,Object>> queryChapter(Integer pid){
-        return  chapterinfoDao.queryChapter(pid);
+    public List<Map<String, Object>> queryChapter(Integer pid) {
+        return chapterinfoDao.queryChapter(pid);
     }
 
-    public Integer add(Chapterinfo chapterinfo){
+    public Integer add(Chapterinfo chapterinfo) {
         return chapterinfoDao.insert(chapterinfo);
     }
 

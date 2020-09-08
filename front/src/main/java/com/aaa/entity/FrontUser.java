@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 
-@Table(name="front_user")
+@Table(name = "front_user")
 public class FrontUser {
 
     @Id
@@ -17,15 +17,15 @@ public class FrontUser {
     private String front_userphone;
     private String front_userpwd;
     private Integer front_userstate;//用户状态 0.正常 1.禁用.2 vip
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-   /* @DateTimeFormat(pattern = "yyyy-mm-dd")*/
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    /* @DateTimeFormat(pattern = "yyyy-mm-dd")*/
     private Date front_usercreatedate;//用户创建时间
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date front_uservipoutdata;//用户vip过期时间(可以null),创建定时任务(如果当前时间大于过期时间,修改状态)
     private Integer front_userflag;//角色标识1.听客 2.个人主播,3机构
     private Integer flag;
     private String front_userqqflag;//qq登录信息标识
-    private String front_usermoney;//用户虚拟币(默认0)
+    private Integer front_usermoney;//用户虚拟币(默认0)
     private Double front_userwd; //用户提现金额
 
     public Integer getFront_userid() {
@@ -116,11 +116,11 @@ public class FrontUser {
         this.front_userqqflag = front_userqqflag;
     }
 
-    public String getFront_usermoney() {
+    public Integer getFront_usermoney() {
         return front_usermoney;
     }
 
-    public void setFront_usermoney(String front_usermoney) {
+    public void setFront_usermoney(Integer front_usermoney) {
         this.front_usermoney = front_usermoney;
     }
 

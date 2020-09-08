@@ -74,10 +74,10 @@
 </body>
 <script>
     $(document).ready(function () {
-        window.myplay=new jPlayerPlaylist({
+        window.myplay = new jPlayerPlaylist({
                 jPlayer: "#jplayer_N",
                 cssSelectorAncestor: "#jp_container_N"
-            },[],
+            }, [],
             {
                 playlistOptions: {
                     enableRemoveControls: true,
@@ -93,8 +93,8 @@
             });
         jQuery('#example3').beforeAfter_slider(
             {
-                left:1,
-                top:1,
+                left: 1,
+                top: 1,
                 width: 570,
                 height: 264,
                 start_from: 'left',
@@ -105,17 +105,18 @@
             }
         )
     });
+
     //节目选择
-    function getdata(id){
+    function getdata(id) {
         $.ajax({
-            type:"post",
-            url:"chapter/querypid",
-            data:{pid:id},
-            success:(data)=>{
+            type: "post",
+            url: "chapter/querypid",
+            data: {pid: id},
+            success: (data) => {
                 //清空数据
                 window.myplay.setPlaylist([]);
                 //添加数据
-                for(var i=0;i<data.length;i++){
+                for (var i = 0; i < data.length; i++) {
                     window.myplay.add({
                         title: data[i].title,
                         artist: data[i].artist,
@@ -129,13 +130,14 @@
             }
         });
     }
+
     //对章节进行设置
-    function  setOne(k){
+    function setOne(k) {
         //对内容做转换
-        k=k.substring(1,k.length-1);
+        k = k.substring(1, k.length - 1);
         var arr = k.split(",");
         var obj = {};
-        for(var i = 0; i < arr.length; i++) {
+        for (var i = 0; i < arr.length; i++) {
             var arr2 = arr[i].split("=");
             obj[arr2[0].trim()] = arr2[1].trim();
         }
@@ -150,6 +152,7 @@
         //播放
         window.myplay.play(-1);
     }
+
     //暂停
     function pause() {
         window.myplay.pause();

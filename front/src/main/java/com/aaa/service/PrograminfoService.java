@@ -13,12 +13,12 @@ public class PrograminfoService {
     @Resource
     PrograminfoDao programinfoDao;
 
-    public List<Map<String,Object>> query(Integer pid,Integer ptid,Integer anchortid,Integer num){
-        return programinfoDao.query(pid,ptid,anchortid,num);
+    public List<Map<String, Object>> query(Integer pid, Integer ptid, Integer anchortid, Integer num) {
+        return programinfoDao.query(pid, ptid, anchortid, num);
     }
 
     //添加
-    public Integer add(Programinfo programinfo){
+    public Integer add(Programinfo programinfo) {
         return programinfoDao.insert(programinfo);
     }
 }

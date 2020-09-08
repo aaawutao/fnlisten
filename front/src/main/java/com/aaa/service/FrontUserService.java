@@ -12,12 +12,14 @@ public class FrontUserService {
 
     @Resource
     FrontuserDao frontuserDao;
+
     //注册
-    public int addFrontuser(FrontUser frontuser){
+    public int addFrontuser(FrontUser frontuser) {
         return frontuserDao.insert(frontuser);
     }
+
     //登录
-    public Map<String, Object> login(String phone, String pwd){
-        return frontuserDao.login(phone,pwd);
+    public Map<String, Object> login(String phone, String pwd) {
+        return frontuserDao.login(phone, pwd);
     }
 }

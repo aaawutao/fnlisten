@@ -2,7 +2,7 @@ $(document).ready(function () {
     new jPlayerPlaylist({
             jPlayer: "#jplayer_N",
             cssSelectorAncestor: "#jp_container_N"
-        },[],
+        }, [],
         {
             playlistOptions: {
                 enableRemoveControls: true,

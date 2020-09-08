@@ -21,23 +21,29 @@
         <div class="b-banner">
             <div class="b-silder">
                 <ul class="slides">
-                    <li class="hide"><a ><img src="http://localhost:9999/fileclient/staticfile/95dirpq3mksej1ui2rsvmghb7161rki3_720x333.jpeg"
-                                                                   alt="" /></a></li>
-                    <li class="hide"><a ><img src="http://localhost:9999/fileclient/staticfile/fjfu4yzuvvoj9vwlswvr7hz6soid7zzd_720x333.jpeg"
-                                                                alt="" /></a></li>
-                    <li class="hide"><a ><img src="http://localhost:9999/fileclient/staticfile/u2jsd6ds46ioc4l9tb0dn0c2qkw5to9n_720x333.jpeg" alt="" /></a></li>
+                    <li class="hide"><a><img
+                            src="http://localhost:9999/fileclient/staticfile/95dirpq3mksej1ui2rsvmghb7161rki3_720x333.jpeg"
+                            alt=""/></a></li>
+                    <li class="hide"><a><img
+                            src="http://localhost:9999/fileclient/staticfile/fjfu4yzuvvoj9vwlswvr7hz6soid7zzd_720x333.jpeg"
+                            alt=""/></a></li>
+                    <li class="hide"><a><img
+                            src="http://localhost:9999/fileclient/staticfile/u2jsd6ds46ioc4l9tb0dn0c2qkw5to9n_720x333.jpeg"
+                            alt=""/></a></li>
                 </ul>
             </div>
             <div class="b-recommend container">
-                <div class="s-title"><span class="f16">小编推荐/</span><a >更多</a></div>
+                <div class="s-title"><span class="f16">小编推荐/</span><a>更多</a></div>
                 <ul class="clearfix">
                     <li class="book-item" th:each="it:${tuijian}">
                         <div class="book-item-photo pr">
-                            <a href="javascript:;" th:onclick="'plays('+${it.pid}+')'"  ><img  th:src="${it.get('poster')}"><span
+                            <a href="javascript:;" th:onclick="'plays('+${it.pid}+')'"><img
+                                    th:src="${it.get('poster')}"><span
                                     class="play-w"><i class="icon-play"></i></span></a>
                         </div>
                         <div class="book-item-r">
-                            <a href="javascript:;" th:onclick="|showxq(${it.pid},${it.anchortid})|" class="book-item-name" th:text="${it.pname}"></a>
+                            <a href="javascript:;" th:onclick="|showxq(${it.pid},${it.anchortid})|"
+                               class="book-item-name" th:text="${it.pname}"></a>
                             <div class="book-item-star">
                                 <i class="icon-star-s"></i>
                                 <i class="icon-star-s"></i>
@@ -60,14 +66,15 @@
     <div class="h-column-r">
         <div class="b-book-hot container">
             <div class="b-book-hot-t">
-                <div class="s-title"><a class="s-more" >更多</a><span class="f16">热播书籍</span></div>
+                <div class="s-title"><a class="s-more">更多</a><span class="f16">热播书籍</span></div>
             </div>
             <div class="ranking-ol p15">
                 <ol>
                     <li th:each="it:${remeng}">
                         <div class="fl"><i class="icon-n-01"></i></div>
                         <div class="ranking-ol-r">
-                            <a class="f14" href="javascript:;" th:onclick="|showxq(${it.pid},${it.anchortid})|" th:text="${it.pname}"></a>
+                            <a class="f14" href="javascript:;" th:onclick="|showxq(${it.pid},${it.anchortid})|"
+                               th:text="${it.pname}"></a>
                             <div><a th:text="${it?.petname}"></a>
                                 <span class="weaken">播</span></div>
                         </div>
@@ -83,16 +90,17 @@
     <div class="h-column-l container">
         <div class="h-new-book b-book-recommend">
             <div class="h-title">
-                <i class="icon-h-07"></i><span class="h-title-text">有声小说/</span><a  class="h-title-more">更多</a>
+                <i class="icon-h-07"></i><span class="h-title-text">有声小说/</span><a class="h-title-more">更多</a>
             </div>
             <ul class="clearfix">
                 <li class="book-item" th:each="it:${yousheng}">
                     <div class="book-item-photo pr">
-                        <a th:onclick="'plays('+${it.pid}+')'"><img  th:src="${it.get('poster')}"><span
+                        <a th:onclick="'plays('+${it.pid}+')'"><img th:src="${it.get('poster')}"><span
                                 class="play-w"><i class="icon-play"></i></span><span class="category-b">小说</span></a>
                     </div>
                     <div class="book-item-name">
-                        <a href="javascript:;" th:onclick="|showxq(${it.pid},${it.anchortid})|"  th:text="${it.pname}"></a>
+                        <a href="javascript:;" th:onclick="|showxq(${it.pid},${it.anchortid})|"
+                           th:text="${it.pname}"></a>
                     </div>
                     <div class="nowrap">
                         <a class="g-user" th:text="${it.petname}">凤舞云飞 <span class="weaken">主播</span></a>
@@ -106,13 +114,13 @@
             <div class="h-title"><span class="h-title-text">小说主播推荐</span></div>
             <ul>
                 <li th:each="it:${anchors}">
-                    <div class="fl"><a  class="g-user"><img th:src="${it.get('backstage_photo')}"
-                                                            class="round photo-s50" alt="" /></a></div>
+                    <div class="fl"><a class="g-user"><img th:src="${it.get('backstage_photo')}"
+                                                           class="round photo-s50" alt=""/></a></div>
                     <div class="photo-s50-r">
                         <div class="nowrap f14">
                             <a class="btn-follow fr" data-userid="79939500"><i class="icon-plus"></i>关注</a>
-                            <a  class="blink g-user" th:text="${it.get('petname')}"></a></div>
-                        <p class="nowrap" th:text="${it.get('backstage_js')}"> </p>
+                            <a class="blink g-user" th:text="${it.get('petname')}"></a></div>
+                        <p class="nowrap" th:text="${it.get('backstage_js')}"></p>
                     </div>
                     <div class="clear"></div>
                 </li>
@@ -125,7 +133,7 @@
 </body>
 
 <script>
-    $(function() {
+    $(function () {
         $('.b-silder').flexslider({
             animation: "slide",
             directionNav: false,
@@ -135,11 +143,13 @@
             startAt: 0
         });
     });
+
     function plays(id) {
         window.parent.getdata(id);
     }
-    function showxq(id,aid){
-        window.parent.eidtsrc(id,aid);
+
+    function showxq(id, aid) {
+        window.parent.eidtsrc(id, aid);
     }
 </script>
 </html>

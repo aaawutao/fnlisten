@@ -34,9 +34,11 @@
                     <a class="d-p " href='javascript:;' th:onclick="allplay([[${programinfo.pid}]])"></a>
                     <div class="fr">
                         <a class="d-download"><i class="icon-d-download"></i>下载</a>
-                        <a class="d-collection" id="addCollection" entityId="5237" entityType="3"><i class="icon-d-collection"></i><span
+                        <a class="d-collection" id="addCollection" entityId="5237" entityType="3"><i
+                                class="icon-d-collection"></i><span
                                 id="collectionShow">收藏</span></a>
-                        <a class="d-praise" id="addLike" entityId="5237" entityType="4" srcUserId="0"><i class="icon-d-praise"></i><span
+                        <a class="d-praise" id="addLike" entityId="5237" entityType="4" srcUserId="0"><i
+                                class="icon-d-praise"></i><span
                                 id="likeShow">赞</span></a>
                     </div>
                 </div>
@@ -54,9 +56,9 @@
                 <span>书籍章节</span>
             </div>
             <!--章节信息-->
-          <ul id="pul" th:each="item:${chapterinfos}" style="padding: 0px 10px;">
+            <ul id="pul" th:each="item:${chapterinfos}" style="padding: 0px 10px;">
                 <li th:mytest="${item}">
-                   <a  class="jp-play-me m-r-sm pull-left">
+                    <a class="jp-play-me m-r-sm pull-left">
                         <i class="icon-control-play text"></i>
                         <i class="icon-control-pause text-active"></i>
                     </a>
@@ -72,17 +74,18 @@
     <div class="column-r">
         <div class="container">
             <section class="sub-book">
-                <div class="s-title"><span class="f16">他还演播了/</span><a >更多</a></div>
+                <div class="s-title"><span class="f16">他还演播了/</span><a>更多</a></div>
                 <ul th:each="it:${pros}">
                     <li class="book-item">
                         <div class="fl book-item-photo pr">
                             <a href='javascript:;' th:onclick="allplay([[${it.pid}]])">
-                                <img th:src="${it.poster}"  />
+                                <img th:src="${it.poster}"/>
                                 <span class="play-w"><i class="icon-play-s"></i></span>
                             </a>
                         </div>
                         <div class="book-item-r">
-                            <a href='javascript:;' th:onclick="showxq([[${it.pid}]],[[${it.anchortid}]])" class="book-item-name" th:text="${it.pname}"></a>
+                            <a href='javascript:;' th:onclick="showxq([[${it.pid}]],[[${it.anchortid}]])"
+                               class="book-item-name" th:text="${it.pname}"></a>
                             <div class="nowrap weaken">类型：<em th:text="${it.ptname}"></em></div>
                             <div class="nowrap weaken">主播：<em th:text="${it.petname}"></em></div>
                         </div>
@@ -98,12 +101,13 @@
 
 <script type="text/javascript">
     //全部播放
-    function allplay(id){
+    function allplay(id) {
         window.parent.getdata(id);
     }
+
     //显示详情
-    function showxq(id,aid){
-        window.parent.eidtsrc(id,aid);
+    function showxq(id, aid) {
+        window.parent.eidtsrc(id, aid);
     }
 
     $(document).ready(function () {
@@ -124,8 +128,8 @@
                 var k = $(this).parent("li")[0].getAttribute("mytest");
                 //添加
                 console.info(k.poster);
-               //此方法返回一个函数改变src   $('a.cover1').html('<img src="' + latest[k].poster );
-               // $(".musicbar").addClass("animate").index();
+                //此方法返回一个函数改变src   $('a.cover1').html('<img src="' + latest[k].poster );
+                // $(".musicbar").addClass("animate").index();
                 //往播放列表中追加音频
                 window.parent.setOne(k);
             }

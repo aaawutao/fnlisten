@@ -26,18 +26,19 @@ public class ChapterinfoControl {
 
     @Resource
     ChapterinfoService chapterinfoService;
-    FileRule fileRule=new FileRule();
+    FileRule fileRule = new FileRule();
+
     //获取章节
     @RequestMapping("querypid")
     @ResponseBody
-    public List<Map<String,Object>> queryid(ModelMap map, @RequestParam("pid") Integer pid){
+    public List<Map<String, Object>> queryid(ModelMap map, @RequestParam("pid") Integer pid) {
         return chapterinfoService.queryChapter(pid);
     }
 
     @RequestMapping("add")
     @ResponseBody
-    public Integer add(Chapterinfo chapterinfo,@RequestParam("yingping") MultipartFile yingping,@RequestParam("front_userphone") String phone ,@RequestParam("flag") String flag) throws IOException {
-        String url=fileRule.fileupload(staticurl,yingping,phone,flag);
+    public Integer add(Chapterinfo chapterinfo, @RequestParam("yingping") MultipartFile yingping, @RequestParam("front_userphone") String phone, @RequestParam("flag") String flag) throws IOException {
+        String url = fileRule.fileupload(staticurl, yingping, phone, flag);
         chapterinfo.setSrc(url);
         chapterinfo.setCreatedate(new Date());
         return chapterinfoService.add(chapterinfo);

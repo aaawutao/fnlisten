@@ -26,33 +26,38 @@ public class UserloginController {
 
     @Resource
     FrontUserService frontUserService;
+
     @RequestMapping("phoneCheck")
-    public Map<String,Object> phoneCheck(String phone){
+    public Map<String, Object> phoneCheck(String phone) {
         Map<String, Object> map = AddSmsSign.contextLoads(phone);
         return map;
     }
+
     //注册账号
     @RequestMapping("addFrontuser")
-    public int addFrontuser(FrontUser frontuser){
+    public int addFrontuser(FrontUser frontuser) {
         frontuser.setFront_usercreatedate(new Date());
         frontuser.setFront_userstate(0);
         frontuser.setFront_userflag(1);
         frontuser.setFlag(1);
+        frontuser.setFront_usermoney(0);
+        frontuser.setFront_userwd(0D);
         return frontUserService.addFrontuser(frontuser);
     }
 
     @RequestMapping("login")
-    public Integer login(@RequestParam("phone") String phone, @RequestParam("pwd") String pwd, HttpServletRequest request,HttpSession session){
+    public Integer login(@RequestParam("phone") String phone, @RequestParam("pwd") String pwd, HttpServletRequest request, HttpSession session) {
         request.getSession(true);
-        Map<String,Object> user=frontUserService.login(phone,pwd);
-        if(user!=null){
-            session.setAttribute("user",user);
+        Map<String, Object> user = frontUserService.login(phone, pwd);
+        if (user != null) {
+            session.setAttribute("user", user);
             return 1;
         }
         return 0;
     }
+
     @RequestMapping("logout")
-    public Integer logout(HttpSession session, SessionStatus sessionStatus){
+    public Integer logout(HttpSession session, SessionStatus sessionStatus) {
         session.invalidate();
         sessionStatus.setComplete();
         return 1;

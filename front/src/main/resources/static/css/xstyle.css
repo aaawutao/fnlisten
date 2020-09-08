@@ -19,45 +19,56 @@
 }*/
 /*关注动态*/
 .grid {
-    border-bottom: 1px solid #e3e3e3; }
+    border-bottom: 1px solid #e3e3e3;
+}
 
 .grid aside {
-    width: 235px; }
+    width: 235px;
+}
 
 .grid aside section {
     margin-left: 20px;
-    margin-right: 20px; }
+    margin-right: 20px;
+}
 
 .grid .column-l {
     width: 654px;
-    padding-right: 20px; }
+    padding-right: 20px;
+}
 
 .grid .column-r {
     width: 270px;
-    float: left; }
+    float: left;
+}
 
 .grid article {
-    margin-left: 234px; }
+    margin-left: 234px;
+}
 
 .login-lead {
-    margin-bottom: 32px; }
+    margin-bottom: 32px;
+}
 
 .login-lead span {
     font-size: 26px;
-    line-height: 24px; }
+    line-height: 24px;
+}
 
 .login-lead .btn-special {
-    margin-left: 7px; }
+    margin-left: 7px;
+}
 
 .modify-photo:hover {
     overflow: hidden;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -o-border-radius: 50%;
-    border-radius: 50%; }
+    border-radius: 50%;
+}
 
 .modify-photo:hover .icon-vip-m {
-    display: none; }
+    display: none;
+}
 
 .modify-photo span {
     position: absolute;
@@ -68,100 +79,124 @@
     background: url("../../images/category_filter.png");
     width: 100%;
     color: white !important;
-    display: none; }
+    display: none;
+}
 
 .modify-photo img {
     height: 83px;
-    width: 83px; }
+    width: 83px;
+}
 
 .modify-photo:hover span {
-    display: block; }
+    display: block;
+}
 
 .user-link-item {
     float: left;
     text-align: center;
     border-left: 1px dotted #ccc;
-    width: 77px; }
+    width: 77px;
+}
 
 .user-link-item a {
     text-decoration: none !important;
     display: block;
     margin: -7px 0px -2px 0px;
-    color: #878787; }
+    color: #878787;
+}
 
 .user-link-item span {
     font-size: 16px;
     font-weight: bold;
-    color: #1f1f1f; }
+    color: #1f1f1f;
+}
 
 .user-link-item:first-child {
-    border-left: 0px; }
+    border-left: 0px;
+}
 
 .user-info {
-    margin: 20px 0px 18px 20px; }
+    margin: 20px 0px 18px 20px;
+}
 
 .user-info li {
-    float: left; }
+    float: left;
+}
 
 .user-info .photo-m-r {
-    padding-top: 5px; }
+    padding-top: 5px;
+}
 
 .user-account {
-    margin-top: 3px; }
+    margin-top: 3px;
+}
 
 .user-account a {
-    margin: 0px 2px; }
+    margin: 0px 2px;
+}
 
 .user-links {
-    margin-bottom: 39px; }
+    margin-bottom: 39px;
+}
 
 .login-lead {
     margin-top: 18px;
-    line-height: 18px; }
+    line-height: 18px;
+}
 
 .login-lead .btn-primary,
 .login-lead .btn-special {
     width: 40px;
     line-height: 30px;
-    color: white !important; }
+    color: white !important;
+}
 
 .login-lead div {
-    margin-top: 10px; }
+    margin-top: 10px;
+}
 
 .personal-menu {
-    margin-bottom: 30px; }
+    margin-bottom: 30px;
+}
 
 .personal-menu h4 {
     font-size: 14px;
     color: #878787;
     font-weight: normal;
-    margin: 8px 0; }
+    margin: 8px 0;
+}
 
 .personal-menu ul.separated {
     padding-bottom: 14px;
-    border-bottom: 1px dotted #ccc; }
+    border-bottom: 1px dotted #ccc;
+}
 
 .personal-menu li a {
     display: block;
     line-height: 38px;
     font-size: 12px;
-    text-decoration: none !important; }
+    text-decoration: none !important;
+}
 
 .personal-menu li.active a {
     background: url("../../images/main.png") no-repeat -6px -153px;
-    color: white !important; }
+    color: white !important;
+}
 
 .personal-menu li.active span {
-    color: white !important; }
+    color: white !important;
+}
 
 .personal-menu i {
-    margin: -2px 8px 0px 15px; }
+    margin: -2px 8px 0px 15px;
+}
 
 .sns-control {
     height: 47px;
     border-bottom: 1px solid #ddd;
     margin-top: 16px;
-    margin-bottom: 15px; }
+    margin-bottom: 15px;
+}
 
 .sns-control-item {
     float: left;
@@ -173,24 +208,29 @@
     text-align: center;
     text-decoration: none !important;
     margin-right: 20px;
-    position: relative; }
+    position: relative;
+}
 
 .sns-control-item.active {
-    border-bottom-color: #fc6520; }
+    border-bottom-color: #fc6520;
+}
 
 .sns-control-r {
     float: right;
     border: 1px solid #ddd;
     margin-top: 14px;
     padding: 0px 8px;
-    text-decoration: none !important; }
+    text-decoration: none !important;
+}
 
 .feed-w .btn-load-more {
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+}
 
 .feed-category {
     margin-bottom: -5px;
-    margin-top: 20px; }
+    margin-top: 20px;
+}
 
 .feed-category a {
     margin-right: 12px;
@@ -199,11 +239,13 @@
     float: left;
     text-decoration: none !important;
     margin-bottom: 5px;
-    white-space: nowrap; }
+    white-space: nowrap;
+}
 
 .feed-category a.active {
     background: #fc6520;
-    color: white !important; }
+    color: white !important;
+}
 
 .notify-remind {
     -webkit-border-radius: 10px;
@@ -218,91 +260,113 @@
     display: inline-block;
     position: relative;
     top: -10px;
-    left: -5px; }
+    left: -5px;
+}
 
 .sns-sub .btn-follow i {
-    display: none; }
+    display: none;
+}
 
 .sns-sub .btn-follow {
     width: auto;
     line-height: 16px;
-    padding: 0px 6px; }
+    padding: 0px 6px;
+}
 
 .sub-users {
     margin-top: 34px;
     margin-bottom: 36px;
-    padding: 0px 15px; }
+    padding: 0px 15px;
+}
 
 .sub-users .s-link {
     color: #878787;
-    margin-top: 2px; }
+    margin-top: 2px;
+}
 
 .sub-users ul {
     margin-top: -3px;
     padding-bottom: 5px;
-    border-bottom: 1px dotted #ccc; }
+    border-bottom: 1px dotted #ccc;
+}
 
 .sub-users li {
-    padding: 13px 0px; }
+    padding: 13px 0px;
+}
 
 .sub-users li .btn-follow {
-    display: none; }
+    display: none;
+}
 
 .sub-users li:hover .btn-follow {
-    display: block; }
+    display: block;
+}
 
 .sub-users .photo-s50-r {
     margin-left: 60px;
-    margin-top: -2px; }
+    margin-top: -2px;
+}
 
 .sub-users .g-user {
     display: inline-block;
-    max-width: 110px; }
+    max-width: 110px;
+}
 
 /*主播推荐*/
 .r-aside {
     width: 196px;
-    float: left; }
+    float: left;
+}
 
 .r-article {
     margin-left: 196px;
-    padding-left: 20px; }
+    padding-left: 20px;
+}
 
 .anchor-item-more {
     display: block;
     line-height: 42px;
-    text-align: center; }
+    text-align: center;
+}
 
 .aside-menu {
     padding: 15px 0px;
     font-size: 14px;
-    border-bottom: 1px dotted #ccc; }
+    border-bottom: 1px dotted #ccc;
+}
 
 .aside-menu li a {
     display: block;
     line-height: 38px;
-    padding-left: 18px; }
+    padding-left: 18px;
+}
 
 .aside-menu li a:hover {
-    background: #ededed; }
+    background: #ededed;
+}
 
 .aside-menu li {
-    margin: 0px 16px; }
+    margin: 0px 16px;
+}
 
 .aside-menu li.active a {
     background: url("../../images/main.png") no-repeat -36px -153px;
     color: white !important;
-    text-decoration: none !important; }
+    text-decoration: none !important;
+}
 
 .aside-anchor-link {
-    padding: 22px 12px; }
+    padding: 22px 12px;
+}
 
 .aside-anchor-link a {
     display: block;
-    text-align: center; }
+    text-align: center;
+}
 
 .aside-anchor-link a:first-child {
-    margin-bottom: 18px; }
+    margin-bottom: 18px;
+}
 
 .anchor-item {
     float: left;
@@ -311,45 +375,56 @@
     border-width: 0px 1px 1px 0px;
     width: 328px;
     margin: 0px -1px -1px 0;
-    display: inline; }
+    display: inline;
+}
 
 .anchor-item.br {
-    border-right: 0px; }
+    border-right: 0px;
+}
 
 .anchor-item-inner {
-    padding: 15px; }
+    padding: 15px;
+}
 
 .anchor-item-r {
     margin-left: 90px;
     margin-bottom: 10px;
-    height: 80px; }
+    height: 80px;
+}
 
 .anchor-item-r .btn-follow {
-    margin-top: 6px; }
+    margin-top: 6px;
+}
 
 .anchor-item-name {
     margin-top: 2px;
-    font-size: 14px; }
+    font-size: 14px;
+}
 
 .anchor-item p {
     height: 63px;
-    overflow: hidden; }
+    overflow: hidden;
+}
 
 .anthor-item-a {
-    margin-top: 10px; }
+    margin-top: 10px;
+}
 
 /*专辑推荐*/
 .album-title h2 {
     font-size: 30px;
     font-weight: normal;
-    line-height: 30px; }
+    line-height: 30px;
+}
 
 .album-title {
     padding: 33px 15px 44px 15px;
-    background: url("../../images/recommend_text.png") no-repeat 138px 27px; }
+    background: url("../../images/recommend_text.png") no-repeat 138px 27px;
+}
 
 .album-list {
-    width: 1000px; }
+    width: 1000px;
+}
 
 .album-row-line {
     border-top: 1px dotted #ccc;
@@ -359,24 +434,29 @@
     margin: 0px;
     font-size: 0px;
     line-height: 0px;
-    height: 0px; }
+    height: 0px;
+}
 
 .album-list {
-    padding-bottom: 9px; }
+    padding-bottom: 9px;
+}
 
 .album-item {
     float: left;
     width: 116px;
     padding: 24px 30px 22px 20px;
-    height: 214px; }
+    height: 214px;
+}
 
 .album-item-photo {
     display: block;
-    margin-bottom: 7px; }
+    margin-bottom: 7px;
+}
 
 .album-item img {
     height: 116px;
-    width: 116px; }
+    width: 116px;
+}
 
 .album-item-name {
     display: block;
@@ -384,36 +464,44 @@
     max-height: 39px;
     line-height: 20px;
     margin: 4px 0 7px;
-    overflow: hidden; }
+    overflow: hidden;
+}
 
 .album-item p {
-    line-height: 20px; }
+    line-height: 20px;
+}
 
 .album-item p span {
-    margin-left: 5px; }
+    margin-left: 5px;
+}
 
 .album-filter {
     border: 1px solid #ddd;
-    float: left; }
+    float: left;
+}
 
 .album-filter .split {
     float: left;
-    margin: 1px 0px 0px 0px; }
+    margin: 1px 0px 0px 0px;
+}
 
 .album-filter-w {
     height: 27px;
-    padding: 20px 0px 0px 20px; }
+    padding: 20px 0px 0px 20px;
+}
 
 .album-filter a {
     width: 78px;
     float: left;
     text-align: center;
     line-height: 24px;
-    text-decoration: none !important; }
+    text-decoration: none !important;
+}
 
 .sns-category {
     margin-top: 10px;
-    padding-bottom: 5px; }
+    padding-bottom: 5px;
+}
 
 .sns-category li a {
     font-size: 14px;
@@ -421,40 +509,49 @@
     display: block;
     line-height: 38px;
     text-decoration: none !important;
-    text-indent: 18px; }
+    text-indent: 18px;
+}
 
 .sns-category li a:hover {
-    background: #ededed; }
+    background: #ededed;
+}
 
 .sns-category h4 {
     color: #fc6520;
     padding: 22px 0px 16px 34px;
     font-weight: normal;
-    line-height: 12px; }
+    line-height: 12px;
+}
 
 .sns-category .icon-collapse {
     float: right;
-    margin: 11px 7px; }
+    margin: 11px 7px;
+}
 
 .sns-category li.active a {
     background: url("../../images/main.png") no-repeat -36px -152px;
     color: white !important;
-    border-color: #fff; }
+    border-color: #fff;
+}
 
 .sns-category li.active .icon-collapse {
-    display: none; }
+    display: none;
+}
 
 .category-filter {
     padding: 30px 22px 0px 22px;
-    min-height: 76px; }
+    min-height: 76px;
+}
 
 .category-filter span {
     font-size: 30px;
     line-height: 30px;
-    float: left; }
+    float: left;
+}
 
 .category-filter div {
-    margin: 8px 0px 11px 142px; }
+    margin: 8px 0px 11px 142px;
+}
 
 .category-filter a {
     margin-right: 18px;
@@ -462,23 +559,28 @@
     padding: 2px 1px;
     line-height: 15px;
     margin-bottom: 6px;
-    display: inline-block; }
+    display: inline-block;
+}
 
 .category-filter a.active {
     background-color: #fc6520;
-    color: white !important; }
+    color: white !important;
+}
 
 .praise-w {
-    margin-top: -10px; }
+    margin-top: -10px;
+}
 
 .praise-item {
     border-bottom: 1px dotted #ccc;
-    padding: 22px 0px; }
+    padding: 22px 0px;
+}
 
 .praise-item .photo-m-r {
     margin-left: 95px;
     padding-top: 2px;
-    height: 80px; }
+    height: 80px;
+}
 
 .btn-listen, .collection-w .btn-collection {
     background: #FBDFB2;
@@ -487,95 +589,118 @@
     line-height: 26px;
     text-align: center;
     text-decoration: none !important;
-    margin-top: -2px; }
+    margin-top: -2px;
+}
 
 .praise-item .btn-listen {
-    float: right; }
+    float: right;
+}
 
 .collection-item .album-f-item-grid {
-    margin: 3px 0; }
+    margin: 3px 0;
+}
 
 .collection-item .photo-m-r {
     padding-top: 2px;
-    margin-left: 95px; }
+    margin-left: 95px;
+}
 
 .collection-item {
     padding: 22px 0px 18px 0px;
-    border-bottom: 1px dotted #ccc; }
+    border-bottom: 1px dotted #ccc;
+}
 
 .collection-item:first-child {
-    margin-top: -10px; }
+    margin-top: -10px;
+}
 
 .collection-item .btn-collection {
     background: #E0E0E0;
-    float: right; }
+    float: right;
+}
 
 .collection-item .btn-collection:hover {
     background: #5B9CD8;
-    color: white !important; }
+    color: white !important;
+}
 
 .collection-audio .photo-m-r {
-    margin-top: -4px; }
+    margin-top: -4px;
+}
 
 .collection-book .photo-m {
     width: 70px;
-    height: 104px; }
+    height: 104px;
+}
 
 .collection-book .photo-m-r {
     margin-left: 85px;
-    padding-top: 0; }
+    padding-top: 0;
+}
 
 .collection-book .collection-item {
-    padding: 22px 0; }
+    padding: 22px 0;
+}
 
 .collection-book .album-f-item-grid {
     margin-top: 0px;
-    margin-bottom: 12px; }
+    margin-bottom: 12px;
+}
 
 /*消息中心*/
 .notify-item {
     position: relative;
     padding: 20px 0px;
-    border-bottom: 1px dotted #ccc; }
+    border-bottom: 1px dotted #ccc;
+}
 
 .notify-item-photo {
     position: absolute;
     left: 0px;
     top: 20px;
-    border: 3px solid #fff; }
+    border: 3px solid #fff;
+}
 
 .notify-item-r {
-    padding-left: 65px; }
+    padding-left: 65px;
+}
 
 .notify-item p {
     background: #EDEDED;
     font-size: 14px;
     padding: 4px 4px 4px 65px;
     line-height: 20px;
-    margin: 6px 0 10px 0; }
+    margin: 6px 0 10px 0;
+}
 
 .notify-item-e {
-    margin: 5px 0px; }
+    margin: 5px 0px;
+}
 
 .notify-item-e textarea {
     margin: 0px;
-    width: 514px; }
+    width: 514px;
+}
 
 .notify-item-e .weaken {
     position: absolute;
     right: 10px;
-    bottom: 5px; }
+    bottom: 5px;
+}
 
 .notify-item-e .btn-special {
     width: 70px;
     line-height: 28px;
-    margin: 10px 0px 0px 0px; }
+    margin: 10px 0px 0px 0px;
+}
 
 .notify-follow .blink {
-    display: none; }
+    display: none;
+}
 
 .notify-follow li:hover .blink {
-    display: inline; }
+    display: inline;
+}
 
 .notify-news {
     color: #ff4d4d;
@@ -589,49 +714,62 @@
     border-radius: 3px;
     font-size: 10px;
     line-height: 13px;
-    margin-top: 4px; }
+    margin-top: 4px;
+}
 
 .notify-follow .notify-news {
     float: none;
-    margin-left: 10px; }
+    margin-left: 10px;
+}
 
 .notify-follow .photo-s50-r .g-user {
-    margin-right: 10px; }
+    margin-right: 10px;
+}
 
 .nl-record-e {
-    margin: 26px 0px 66px 0px; }
+    margin: 26px 0px 66px 0px;
+}
 
 .nl-record-e textarea {
     margin: 0px;
-    width: 643px; }
+    width: 643px;
+}
 
 .nl-record-e .btn-special {
     width: 84px;
     line-height: 28px;
-    margin: 0px; }
+    margin: 0px;
+}
 
 .nl-record-e .tr {
-    margin-top: 7px; }
+    margin-top: 7px;
+}
 
 .nl-record-e .weaken {
     line-height: 34px;
-    margin-right: 20px; }
+    margin-right: 20px;
+}
 
 .nl-record-title {
     border-bottom: 1px dotted #ccc;
-    line-height: 35px; }
+    line-height: 35px;
+}
 
 .comments-album {
     opacity: 0.6;
-    filter: alpha(opacity=60); }
+    filter: alpha(opacity=60);
+}
 
 .praise-time {
-    margin-top: 10px; }
+    margin-top: 10px;
+}
 
 .user-introduction {
     width: 504px;
     line-height: 18px;
-    margin: 3px 0 14px 0; }
+    margin: 3px 0 14px 0;
+}
 
 .anchor-item-more.g-ajax-loader {
-    background: none; }
+    background: none;
+}

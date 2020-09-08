@@ -16,9 +16,9 @@ public class AnchorinfoController {
 
     @ResponseBody
     @RequestMapping("addanchor")
-    public int addanchor( Integer front_userid,String petname){
+    public int addanchor(Integer front_userid, String petname) {
         System.out.println(front_userid);
         System.out.println(petname);
-        return  anchorinfoService.addanchor(front_userid,petname);
+        return anchorinfoService.addanchor(front_userid, petname);
     }
 }

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>vip充值</title>
+    <iframe th:replace="css.html"></iframe>
+    <link rel="stylesheet" th:href="${'css/recharge.css?v=38'}"/>
+</head>
+<body>
+<div th:text="${chongzhi}"></div>
+<section class="settings-main" style="padding-left:50px;padding-right:50px">
+    <!-- <div th:text="${chongzhi}"></div>-->
+    <section class="vip-info">
+        <div class="f16">帐号：<em th:text="${session?.user.get('front_username')}"></em></div>
+        <p class="weaken cutoffDate">
+            你还不是会员,成为会员后获得更多的听书享受.
+        </p>
+    </section>
+    <section class="vip-w">
+        <h4>会员权益</h4>
+        <div class="vip-rights">
+            <ul>
+                <li class="vip-rights-01">
+                    <div class="fl"><img src="https://assets.lrts.me/yyting/images/pay/01.png" alt=""/></div>
+                    <div class="vip-rights-r">
+                        <div>免广告</div>
+                        <p>客户端免广告后可以节省广告流量，页面显得更清爽整洁。</p>
+                    </div>
+                </li>
+                <li class="vip-rights-02">
+                    <div class="fl"><img src="https://assets.lrts.me/yyting/images/pay/02.png" alt=""/></div>
+                    <div class="vip-rights-r">
+                        <div>无限下载</div>
+                        <p>会员可以不受普通用户每天只能下载100章的限制，可以无限下载。</p>
+                    </div>
+                </li>
+                <li class="vip-rights-03">
+                    <div class="fl"><img src="https://assets.lrts.me/yyting/images/pay/03.png" alt=""/></div>
+                    <div class="vip-rights-r">
+                        <div>其他权益</div>
+                        <p>更多包括更好的收听质量，更多的优质收听内容敬请期待。</p>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <h4>
+            开通VIP会员</h4>
+        <div>
+            <p class="f14 vip-item-tips">选择开通会员时长</p>
+            <ul class="clearfix">
+                <li class="vip-item active tagSelected" th:each="it:${chongzhi}">
+                    <div class="fl">
+                        <input type="radio" name="radio" th:value="${it.tsid}" th:tsmoney="${it.tsmoney}"/>
+                        <em th:text="${it.tscustom}"></em>
+                    </div>
+                    <div class="vip-item-r">
+                        <span class="amount" th:text="${it.tsmoney}"></span>元
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="recharge">
+        <div class="recharge-way">
+            <p>选择支付方式：</p>
+            <div class="clearfix">
+                <a class="recharge-way-item active alipayRecharege"><span class="alipay"></span></a>
+            </div>
+            <div class="recharge-count">应付金额：<span class="amount payable-coin" id="money">148</span><span
+                    class="coinType">元</span></div>
+            <form action="payment/pay" method="post">
+                <input type="hidden" name="front_userid" th:value="${session?.user.get('front_userid')}"/>
+                <input type="hidden" name="tsid" id="tsid" value="">
+                <input type="hidden" name="WIDtotal_amount" id="tsr"/>
+                <button class="btn-primary" type="submit">立即支付</button>
+            </form>
+        </div>
+    </section>
+</section>
+</body>
+<script th:inline="javascript">
+    $(function () {
+        //设置默认值
+        $("[type='radio']")[0].checked = true;
+        $("#tsid").val([[${chongzhi[0].tsid}]]);
+        $("#tsr").val([[${chongzhi[0].tsmoney}]]);
+        $("#money").html([[${chongzhi[0].tsmoney}]]);
+        $("[type='radio']").change(function () {
+            $("#money").html($(this).attr("tsmoney"));
+            $("#tsid").val($(this).attr("value"));
+            $("#tsr").val($(this).attr("tsmoney"));
+        })
+    })
+</script>
+</html>

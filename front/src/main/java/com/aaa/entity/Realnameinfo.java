@@ -10,7 +10,7 @@ public class Realnameinfo {
     private String rname;
     private String ridcard;
     private String ridcardpositivepic;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date certifiesdate;
     private Integer front_userid;
 

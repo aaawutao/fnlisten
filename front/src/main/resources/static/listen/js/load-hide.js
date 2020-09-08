@@ -1,5 +1,5 @@
-  $(document).ready(function () {
-      setTimeout(function () {
-          $("#grid").hide();
-      }, 2000);
-  });
+$(document).ready(function () {
+    setTimeout(function () {
+        $("#grid").hide();
+    }, 2000);
+});

@@ -12,7 +12,7 @@ public class Chapterinfo {
     private String artist;
     private String mp3;
     private Integer state;
-    private  String virtualcurrency;
+    private String virtualcurrency;
     private Date createdate;
     private Integer pid;
 
@@ -31,7 +31,6 @@ public class Chapterinfo {
     public void setTitle(String title) {
         this.title = title;
     }
-
 
 
     public String getSrc() {

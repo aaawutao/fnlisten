@@ -12,7 +12,7 @@ public class ProgramtypeinfoService {
     @Resource
     ProgramtypeinfoDao programtypeinfoDao;
 
-    public List<Programtypeinfo> show(){
+    public List<Programtypeinfo> show() {
         return programtypeinfoDao.selectAll();
     }
- }
+}

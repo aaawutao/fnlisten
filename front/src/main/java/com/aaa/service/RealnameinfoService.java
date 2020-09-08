@@ -12,12 +12,12 @@ public class RealnameinfoService {
     @Resource
     RealnameinfoDao realnameinfoDao;
 
-    public int addrealnameinfo(Realnameinfo realnameinfo){
-        return  realnameinfoDao.insert(realnameinfo);
+    public int addrealnameinfo(Realnameinfo realnameinfo) {
+        return realnameinfoDao.insert(realnameinfo);
     }
 
     //修改用户的状态
-    public int updatefrontflag(Integer front_userid){
-        return  realnameinfoDao.updatefrontflag(front_userid);
+    public int updatefrontflag(Integer front_userid) {
+        return realnameinfoDao.updatefrontflag(front_userid);
     }
 }

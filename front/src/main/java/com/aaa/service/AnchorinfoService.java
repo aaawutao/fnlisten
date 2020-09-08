@@ -12,12 +12,12 @@ public class AnchorinfoService {
     @Resource
     AnchorinfoDao anchorinfoDao;
 
-    public List<Map<String,Object>> query(Integer actype,Integer num){
-        return anchorinfoDao.query(actype,num);
+    public List<Map<String, Object>> query(Integer actype, Integer num) {
+        return anchorinfoDao.query(actype, num);
     }
 
-    public int addanchor( Integer front_userid,String petname){
-        return  anchorinfoDao.addanchor(front_userid,petname);
+    public int addanchor(Integer front_userid, String petname) {
+        return anchorinfoDao.addanchor(front_userid, petname);
     }
 
 }

@@ -266,7 +266,8 @@
         advance: function advance(time, deltaTime) {
             while (this._idleSpringIndices.length > 0) {
                 this._idleSpringIndices.pop();
-            } for (var i = 0, len = this._activeSprings.length; i < len; i++) {
+            }
+            for (var i = 0, len = this._activeSprings.length; i < len; i++) {
                 var spring = this._activeSprings[i];
                 if (spring.systemShouldAdvance()) {
                     spring.advance(time / 1000.0, deltaTime / 1000.0);
@@ -792,7 +793,8 @@
     // **PhysicsState** consists of a position and velocity. A Spring uses
     // this internally to keep track of its current and prior position and
     // velocity values.
-    var PhysicsState = function PhysicsState() { };
+    var PhysicsState = function PhysicsState() {
+    };
 
     util.extend(PhysicsState.prototype, {
         position: 0,
@@ -862,7 +864,8 @@
 
         // this.run is NOOP'd here to allow control from the outside using
         // this.step.
-        this.run = function () { };
+        this.run = function () {
+        };
 
         // Perform one step toward resolving the SpringSystem.
         this.step = function (timestep) {
@@ -979,7 +982,7 @@
 
     SpringConfig.DEFAULT_ORIGAMI_SPRING_CONFIG = SpringConfig.fromOrigamiTensionAndFriction(40, 7);
 
-    util.extend(SpringConfig.prototype, { friction: 0, tension: 0 });
+    util.extend(SpringConfig.prototype, {friction: 0, tension: 0});
 
     // Here are a couple of function to convert colors between hex codes and RGB
     // component values. These are handy when performing color
@@ -1112,9 +1115,29 @@
  * Create a regular polygon and provide api to compute inscribed child.
  */
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () {
+    function defineProperties(target, props) {
+        for (var i = 0; i < props.length; i++) {
+            var descriptor = props[i];
+            descriptor.enumerable = descriptor.enumerable || false;
+            descriptor.configurable = true;
+            if ("value" in descriptor) descriptor.writable = true;
+            Object.defineProperty(target, descriptor.key, descriptor);
+        }
+    }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    return function (Constructor, protoProps, staticProps) {
+        if (protoProps) defineProperties(Constructor.prototype, protoProps);
+        if (staticProps) defineProperties(Constructor, staticProps);
+        return Constructor;
+    };
+}();
+
+function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+    }
+}
 
 var Polygon = function () {
     function Polygon() {
@@ -1160,7 +1183,7 @@ var Polygon = function () {
                 var x = -this._radius * Math.sin(i * 2 * Math.PI / this._sides);
                 var y = this._radius * Math.cos(i * 2 * Math.PI / this._sides);
 
-                points.push({ x: x, y: y });
+                points.push({x: x, y: y});
 
                 i++;
             }
@@ -1354,9 +1377,29 @@ var Polygon = function () {
  * inscribed children, provide init and complete methods to control spinner.
  */
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () {
+    function defineProperties(target, props) {
+        for (var i = 0; i < props.length; i++) {
+            var descriptor = props[i];
+            descriptor.enumerable = descriptor.enumerable || false;
+            descriptor.configurable = true;
+            if ("value" in descriptor) descriptor.writable = true;
+            Object.defineProperty(target, descriptor.key, descriptor);
+        }
+    }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    return function (Constructor, protoProps, staticProps) {
+        if (protoProps) defineProperties(Constructor.prototype, protoProps);
+        if (staticProps) defineProperties(Constructor, staticProps);
+        return Constructor;
+    };
+}();
+
+function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+    }
+}
 
 var Spinner = function () {
     function Spinner(params) {
@@ -1691,7 +1734,7 @@ var demo = {
             })
 
 
-                ();
+            ();
         }
     },
     render: function render() {

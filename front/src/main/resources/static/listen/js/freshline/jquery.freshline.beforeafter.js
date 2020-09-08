@@ -210,7 +210,8 @@
                 width: c.width,
                 overflow: "hidden"
             });
-            if (c.ie) {} else {
+            if (c.ie) {
+            } else {
                 j.animate({
                     width: c.width + "px"
                 }, 0).delay(500)
@@ -227,7 +228,8 @@
                 width: "0px",
                 overflow: "hidden"
             });
-            if (c.ie) {} else {
+            if (c.ie) {
+            } else {
                 j.animate({
                     width: "0px",
                     overflow: "hidden"
@@ -699,6 +701,7 @@
         });
         b.data("ba_images", c)
     }
+
     a.fn.extend({
         beforeAfter_slider: function (b) {
             var g = {

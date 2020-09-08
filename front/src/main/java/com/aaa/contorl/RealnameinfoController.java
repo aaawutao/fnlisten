@@ -30,7 +30,7 @@ public class RealnameinfoController {
     RealnameinfoService realnameinfoService;
 
 
-    //身份证认证
+    //图片认证
     @RequestMapping("addrealnameinfo")
     @ResponseBody
     public int addrealnameinfo(@RequestParam("ridcardpositivepic") MultipartFile ridcardpositivepic
@@ -44,8 +44,8 @@ public class RealnameinfoController {
             e.printStackTrace();
         }
         System.out.println(imgageurl);
-        //把图片路径改为base64格式
         String toBase64 = PersonalApprove.NetImageToBase64(imgageurl);
+        //认证返回结果
         JSONObject approve = PersonalApprove.Approve(toBase64);
         //根据code值判断是否认证成功
         Integer code = (Integer) approve.get("code");

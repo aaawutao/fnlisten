@@ -16,12 +16,15 @@
         </div>
         <div data-v-0ca0411d="" class="right">
             <!---->
-            <div data-v-0ca0411d="" class="search"><input data-v-0ca0411d="" placeholder="搜索节目专辑" type="text" autocomplete="off"
-                                                          spellcheck="false" class="search-text"> <button data-v-0ca0411d="" type="button" class="search-btn lrts-gradient ivu-btn ivu-btn-default">
-                <!----> <i class="ivu-icon iconfont iconicon_search"></i> <span>
+            <div data-v-0ca0411d="" class="search"><input data-v-0ca0411d="" placeholder="搜索节目专辑" type="text"
+                                                          autocomplete="off"
+                                                          spellcheck="false" class="search-text">
+                <button data-v-0ca0411d="" type="button" class="search-btn lrts-gradient ivu-btn ivu-btn-default">
+                    <!----> <i class="ivu-icon iconfont iconicon_search"></i> <span>
 								搜索
 							</span>
-           </button></div>
+                </button>
+            </div>
             <!--<button data-v-12a22b5c="" type="button" class="search-btn lrts-gradient ivu-btn ivu-btn-default"
                                                            data-v-0ca0411d=""></button>-->
         </div>
@@ -31,8 +34,8 @@
         <div data-v-fd656e4e="" class="bar">
             <div data-v-fd656e4e="" class="type-list">
                 <div data-v-fd656e4e="" class="active"><span data-v-fd656e4e="">全部(0)</span></div>
-<!--               <div data-v-fd656e4e="" class=""><span data-v-fd656e4e="">连载中(0)</span></div>
-                <div data-v-fd656e4e="" class=""><span data-v-fd656e4e="">已完结(0)</span></div>-->
+                <!--               <div data-v-fd656e4e="" class=""><span data-v-fd656e4e="">连载中(0)</span></div>
+                                <div data-v-fd656e4e="" class=""><span data-v-fd656e4e="">已完结(0)</span></div>-->
             </div>
 
         </div>
@@ -41,37 +44,41 @@
         <div data-v-22a044ac="" class="ivu-spin ivu-spin-default ivu-spin-fix ivu-spin-show-text">
             <div class="ivu-spin-main"><span class="ivu-spin-dot"></span>
                 <div class="ivu-spin-text">
-                    <div data-v-22a044ac="" class="loader"><svg data-v-22a044ac="" viewBox="25 25 50 50" class="circular">
-                        <circle data-v-22a044ac="" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10" class="path"></circle>
-                    </svg></div>
+                    <div data-v-22a044ac="" class="loader">
+                        <svg data-v-22a044ac="" viewBox="25 25 50 50" class="circular">
+                            <circle data-v-22a044ac="" cx="50" cy="50" r="20" fill="none" stroke-width="5"
+                                    stroke-miterlimit="10" class="path"></circle>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div data-v-12a22b5c="" >
-       <!-- <div data-v-fd6d554a="" data-v-12a22b5c="" class="no-status" >
-           <img data-v-fd6d554a=""
-                 src="//assets.lrts.me/fed-lrts-studio/img/0bfff61.svg" alt="">
-            <p data-v-fd6d554a="" >暂时没有任何节目，去创建您的第一个节目吧~</p>
-        </div>-->
+    <div data-v-12a22b5c="">
+        <!-- <div data-v-fd6d554a="" data-v-12a22b5c="" class="no-status" >
+            <img data-v-fd6d554a=""
+                  src="//assets.lrts.me/fed-lrts-studio/img/0bfff61.svg" alt="">
+             <p data-v-fd6d554a="" >暂时没有任何节目，去创建您的第一个节目吧~</p>
+         </div>-->
         <ul class="books">
             <li th:each="it:${program}" class="album-f-item">
-                <div class="f1" >
-                    <a >
-                        <img width="120" height="140"  th:src="${it.get('poster')}"  class="photo-l">
+                <div class="f1">
+                    <a>
+                        <img width="120" height="140" th:src="${it.get('poster')}" class="photo-l">
                     </a>
                 </div>
                 <div class="f2">
-                            <h3   th:text="${it.get('pname')}"></h3>
-                            <span><em class="weaken">主播：</em><a class="g-user-shutdown" th:text="${it.get('petname')}"></a></span>
-                            <span ><em class="weaken">状态：</em>
+                    <h3 th:text="${it.get('pname')}"></h3>
+                    <span><em class="weaken">主播：</em><a class="g-user-shutdown"
+                                                        th:text="${it.get('petname')}"></a></span>
+                    <span><em class="weaken">状态：</em>
                                 <em th:switch="${it.pstate}">
                                     <em th:case="0">连载</em>
                                     <em th:case="1">完本</em>
                                 </em>
                             </span>
-                            <span ><em class="weaken">类型：</em><em th:text="${it.get('ptname')}"></em></span>
-                    <p class="weaken"th:text="${it.get('pintroduction')}" ></p>
+                    <span><em class="weaken">类型：</em><em th:text="${it.get('ptname')}"></em></span>
+                    <p class="weaken" th:text="${it.get('pintroduction')}"></p>
 
                 </div>
             </li>
@@ -81,13 +88,14 @@
 </div>
 </body>
 <style>
-    ul.books li{
+    ul.books li {
         overflow: auto;
-        border-bottom:2px dashed #000
+        border-bottom: 2px dashed #000
     }
-    .f1,.f2{
+
+    .f1, .f2 {
         float: left;
-        padding:20px;
+        padding: 20px;
     }
 </style>
 </html>

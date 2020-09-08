@@ -10,19 +10,20 @@ function GetRequest() {
     var iconwidth = GetParameter(d, "width=");
     var iconheight = GetParameter(d, "height=");
     var type = GetParameter(d, "type=");
-    var retstr = { "id": theRequest, "width": iconwidth, "height": iconheight, "type": type };
+    var retstr = {"id": theRequest, "width": iconwidth, "height": iconheight, "type": type};
     return retstr;
 }
+
 function GetParameter(url, parameter) {
     var indexStart = url.indexOf(parameter) + parameter.length;
     var indexEnd = url.indexOf("&", indexStart);
     if (indexEnd > 0) {
         return url.substring(indexStart, indexEnd);
-    }
-    else {
+    } else {
         return url.substring(indexStart);
     }
 }
+
 var webprefix = "https://szcert.ebs.org.cn/"
 var iconImageURL = "https://szcert.ebs.org.cn/Images/govIcon.gif";
 var niconImageURL = "https://szcert.ebs.org.cn/Images/newGovIcon.gif";
