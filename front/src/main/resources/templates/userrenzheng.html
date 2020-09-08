@@ -68,13 +68,14 @@
                     <label class="ivu-form-item-label" style="width: 140px;">证件正面</label>
                     <div class="ivu-form-item-content" style="margin-left: 140px;">
                         <div data-v-c4b17aae="" data-v-e7ce8334="">
-                            <input type="file" id="f"  name="ridcardpositivepic" class="upload_btn ivu-btn ivu-btn-default" ></input>
-                            <span data-v-e7ce8334="" data-v-c4b17aae="" class="tip">格式支持PNG、BMP、JPG或GIF，照片少于5M</span>
+                            <input type="file" id="chooseImage"   name="ridcardpositivepic" class="upload_btn ivu-btn ivu-btn-default" ></input>
+                            <span data-v-e7ce8334="" data-v-c4b17aae="" class="tip">格式支持PNG、JPG或JPEG，照片少于5M</span>
                             <p id="checkpic"></p>
                             <div data-v-c4b17aae="" class="upload_wrap">
                                 <div data-v-c4b17aae="" class="upload_area">
                                     <div data-v-c4b17aae="" class="real real_hover">
-                                        <img id="im" src="" style="width: 100%;height: 100%;" />
+                                       <!-- <img id="cropedBigImg" src="" style="width: 100%;height: 100%;" />-->
+                                        <img id="cropedBigImg" style="width: 100%;height: 100%;" value='custom'  data-address='' title="自定义背景"/>
                                     </div>
                                 </div>
                             </div>
@@ -110,8 +111,6 @@
 </body>
 <script th:src="@{'/js/jquery.min.js?v=36'}"></script>
 <script>
-
-
     function checkrname(){
         var rname=$("#rname").val();
         var reg = /^[\u4e00-\u9fa5\s\.]+$/;
@@ -141,14 +140,7 @@
         $("#checkridcard").html("");
         return true;
     }
-    function checkpic(){
-        if($("[name='ridcardpositivepic']").val()==""){
-            $("#checkpic").html("请选择照片")
-            return false;
-        }
-        $("#checkpic").html("")
-        return true;
-    }
+
     $(function () {
         if($("#front_username").val()==""){
             $("#hid").show();
@@ -157,43 +149,60 @@
             $("#hid").hide();
             $("#fm").show();
         }
-
+       $("#chooseImage").on('change',function () {
+           //获取到input的value，里面是文件的路径
+            var filePath=$(this).val();
+            var fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase();
+            if( !fileFormat.match(/.png|.jpg|.jpeg/) ) {
+                $("#checkpic").html("上传错误,文件格式必须为：png/jpg/jpeg'");
+                return;
+            }else{
+                $("#checkpic").html("");
+            }
+            var src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
+            $('#cropedBigImg').attr('src',src);
+        })
         $("#btn").click(function () {
-           if(checkrname() && checkridcard() ){
-               var formdata=new FormData($("#fm")[0]);
-               $.ajax({
-                   type:"post",
-                   url:"realnameinfo/addrealnameinfo",
-                   data:formdata,
-                   processData: false, // 告诉jQuery不要去处理发送的数据
-                   contentType: false,
-                   success:function (data) {
-                       if(data==1){
-                           //修改用户为个人主播
-                           var front_userid=$("#front_userid").val();
-                           $.ajax({type:"post", url:"realnameinfo/updatefrontflag", data:{"front_userid":front_userid}, success:function (data) {
-                                   console.log("修改用户状态"+data)
-                                   if(data==1){
-                                       var front_userid = $("#front_userid").val();
-                                       var front_username = $("#front_username").val();
-                                       $.ajax({
-                                           type:"post",
-                                           url:"anchorinfo/addanchor",
-                                           data:{"front_userid":front_userid,"petname":front_username},
-                                           success:function (data) {
-                                              if(data==1){
-                                                  alert("成功")
+           if(checkrname() && checkridcard()){
+              var fileInput = $('#chooseImage').get(0).files[0];
+              if(fileInput){
+                  var formdata=new FormData($("#fm")[0]);
+                  $.ajax({
+                      type:"post",
+                      url:"realnameinfo/addrealnameinfo",
+                      data:formdata,
+                      processData: false, // 告诉jQuery不要去处理发送的数据
+                      contentType: false,
+                      success:function (data) {
+                          if(data==1){
+                              //修改用户为个人主播
+                              var front_userid=$("#front_userid").val();
+                              $.ajax({type:"post", url:"realnameinfo/updatefrontflag", data:{"front_userid":front_userid}, success:function (data) {
+                                      console.log("修改用户状态"+data)
+                                      if(data==1){
+                                          var front_userid = $("#front_userid").val();
+                                          var front_username = $("#front_username").val();
+                                          $.ajax({
+                                              type:"post",
+                                              url:"anchorinfo/addanchor",
+                                              data:{"front_userid":front_userid,"petname":front_username},
+                                              success:function (data) {
+                                                  if(data==1){
+                                                      alert("成功")
+                                                  }
                                               }
-                                           }
-                                       })
-                                   }
-                               }
-                           })
-                       }else{
-                           alert("失败")
-                       }
-                   }
-               })
+                                          })
+                                      }
+                                  }
+                              })
+                          }else{
+                              alert("失败")
+                          }
+                      }
+                  })
+              }else{
+                  $("#checkpic").html("请选择身份证照片");
+              }
            }
         })
     })
