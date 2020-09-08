@@ -25,6 +25,7 @@ public class TopupinfoService {
     }
 
     public Integer add(Topupinfo topupinfo) {
+        System.out.println(topupinfo);
         return topupinfoDao.insert(topupinfo);
     }
 
@@ -32,7 +33,6 @@ public class TopupinfoService {
     public Integer editState(String tpid, String paymentid) {
         return topupinfoDao.editState(tpid, paymentid);
     }
-
     //修改成功之后的调用方法
     public void panduan(String tpid) {
         Map<String, Object> map = topupinfoDao.show(tpid, null, null).get(0);
@@ -55,7 +55,7 @@ public class TopupinfoService {
             FrontUser f2 = new FrontUser();
             f2.setFront_userid(frontUser.getFront_userid());
             f2.setFront_usermoney(zo);
-            frontuserDao.updateByPrimaryKey(f2);
+
         }
     }
 

@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.UpdateProvider;
 import tk.mybatis.mapper.common.Mapper;
-
 import java.util.List;
 import java.util.Map;
 
@@ -28,29 +27,27 @@ public interface FrontuserDao extends Mapper<FrontUser> {
 
 
     //修改
-   /* @UpdateProvider(type = FrontUser.class, method = "updateSql")
-    Integer update(FrontUser frontUser);
+    @UpdateProvider(type = FrontuserSql.class, method = "updateSql")
+    Integer updates( FrontUser frontUser);
 
     class FrontuserSql {
-
-        public String updateSql(FrontUser frontUser) {
-            StringBuffer sql = new StringBuffer("update front_user set ");
-            if (frontUser.getFront_username() != null) {
-                sql.append("front_username=#{front_username},");
+            public String updateSql( FrontUser frontUser) {
+                StringBuffer sql = new StringBuffer("update front_user set ");
+                if (frontUser.getFront_username() != null) {
+                    sql.append("front_username=#{front_username},");
+                }
+                if (frontUser.getFront_userpic() != null) {
+                    sql.append("front_userpic=#{front_userpic},");
+                }
+                if (frontUser.getFront_userpwd() != null) {
+                    sql.append("front_userpwd=#{front_userpwd},");
+                }
+                //去掉最后一个逗号
+                sql.deleteCharAt(sql.length() - 1);
+                sql.append(" where front_userid=#{front_userid}");
+                return sql.toString();
             }
-            if (frontUser.getFront_userpic() != null) {
-                sql.append("front_userpic=#[front_userpic},");
-            }
-            if (frontUser.getFront_userpwd() != null) {
-                sql.append("front_userpwd=#{front_userpwd},");
-            }
-
-            //去掉最后一个逗号
-            sql.deleteCharAt(sql.length() - 1);
-            sql.append(" where front_userid=#{front_userid}");
-            return sql.toString();
-        }
-    }*/
+    }
 
 
 }

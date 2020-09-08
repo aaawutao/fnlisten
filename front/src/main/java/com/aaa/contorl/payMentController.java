@@ -51,9 +51,11 @@ public class payMentController {
         //前台用户编号
         String front_userid = request.getParameter("front_userid");
         //充值类型
-        String tsid = request.getParameter(("tsid"));
+        String tsid = request.getParameter("tsid");
         //添加
         Topupinfo topupinfo = new Topupinfo();
+        //商品编号
+        topupinfo.setTpid(out_trade_no);
         topupinfo.setFront_userid(Integer.parseInt(front_userid));
         topupinfo.setTsid(Integer.parseInt(tsid));
         topupinfo.setState(0);
@@ -61,6 +63,7 @@ public class payMentController {
         topupinfo.setTopupdate(new Date());
         topupinfo.setTsr(Double.valueOf(total_amount));
         topupinfoService.add(topupinfo);
+
         // 该笔订单允许的最晚付款时间，逾期将关闭交易。取值范围：1m～15d。m-分钟，h-小时，d-天，1c-当天（1c-当天的情况下，无论交易何时创建，都在0点关闭）。 该参数数值不接受小数点， 如 1.5h，可转换为 90m。
         String timeout_express = "1c";
         alipayRequest.setBizContent("{\"out_trade_no\":\"" + out_trade_no + "\","
@@ -105,7 +108,7 @@ public class payMentController {
 
             //支付宝交易号
             String trade_no = new String(request.getParameter("trade_no").getBytes("ISO-8859-1"), "UTF-8");
-
+            System.out.println(trade_no);
             //修改状态,设置支付宝交易号
             topupinfoService.editState(out_trade_no, trade_no);
 

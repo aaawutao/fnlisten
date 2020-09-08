@@ -13,7 +13,7 @@ import java.util.Map;
 @Mapper
 public interface TopupinfoDao extends tk.mybatis.mapper.common.Mapper<Topupinfo> {
     @Select("update topupinfo \n" +
-            "set state=1,paymentid=#{parymentid} where tpid=#{tpid}")
+            "set state=1,paymentid=#{paymentid} where tpid=#{tpid}")
     public Integer editState(@Param("tpid") String tpid, @Param("paymentid") String paymentid);
 
     @SelectProvider(type = TopupinfoSql.class, method = "showSql")
