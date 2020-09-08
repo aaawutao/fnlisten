@@ -44,7 +44,7 @@ public class RealnameinfoController {
             e.printStackTrace();
         }
         System.out.println(imgageurl);
-        //把图片路径改为base64
+        //把图片路径改为base64格式
         String toBase64 = PersonalApprove.NetImageToBase64(imgageurl);
         JSONObject approve = PersonalApprove.Approve(toBase64);
         //根据code值判断是否认证成功
