@@ -28,7 +28,7 @@ public class PersonalApprove {
         //根据API的要求，定义相对应的Content-Type
         headers.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
         Map<String, String> querys = new HashMap<String, String>();
-       Map<String, String> bodys = new HashMap<String, String>();
+        Map<String, String> bodys = new HashMap<String, String>();
 
         bodys.put("image", image);
         bodys.put("side", "front");
@@ -82,7 +82,6 @@ public class PersonalApprove {
         final ByteArrayOutputStream data = new ByteArrayOutputStream();
         String    strNetImageToBase64 = null;
         try {
-            // 创建URL
             URL url = new URL(netImagePath);
             final byte[] by = new byte[1024];
             // 创建链接

@@ -86,9 +86,6 @@
                         <button data-v-e7ce8334="" id="btn" type="button" class="submit lr_btn_solid ivu-btn ivu-btn-default">
                             <span>提 交</span></button>
                     </div>
-
-                    <!--<button data-v-e7ce8334="" id="test" type="button" class="submit lr_btn_solid ivu-btn ivu-btn-default">
-                        <span>测试</span></button>-->
                 </div>
 
               <!--  <div data-v-e7ce8334="" class="ivu-form-item ivu-form-item-required">
@@ -160,19 +157,6 @@
             $("#hid").hide();
             $("#fm").show();
         }
-        $("#test").click(function () {
-            var front_userid = $("#front_userid").val();
-            var front_username = $("#front_username").val();
-            $.ajax({
-                type:"post",
-                url:"anchorinfo/addanchor",
-                data:{"front_userid":front_userid,"petname":front_username},
-                success:function (data) {
-                    console.log(data);
-                }
-            })
-        })
-
 
         $("#btn").click(function () {
            if(checkrname() && checkridcard() ){
