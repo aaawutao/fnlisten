@@ -111,8 +111,6 @@
 </body>
 <script th:src="@{'/js/jquery.min.js?v=36'}"></script>
 <script>
-
-
     function checkrname(){
         var rname=$("#rname").val();
         var reg = /^[\u4e00-\u9fa5\s\.]+$/;
@@ -145,13 +143,29 @@
 
     $(function () {
         //ajax查询用户信息是否存在名字，如果不存在昵称则提示未完善个人信息，隐藏表单
-        if($("#front_username").val()==""){
+        var front_userid = $("#front_userid").val();
+        $.ajax({
+            type:"post",
+            url:"frontuser/queryByuserId",
+            data:{"front_userid":front_userid},
+            success:function (data) {
+                console.log(data.front_username);
+                if(data.front_username==undefined){
+                    $("#hid").show();
+                    $("#fm").hide();
+                }else if(data.front_username!=undefined ){
+                    $("#hid").hide();
+                    $("#fm").show();
+                }
+            }
+        })
+        /*if($("#front_username").val()==""){
             $("#hid").show();
             $("#fm").hide();
         }else if($("#front_username").val()!="" ){
             $("#hid").hide();
             $("#fm").show();
-        }
+        }*/
        $("#chooseImage").on('change',function () {
            //获取到input的value，里面是文件的路径
             var filePath=$(this).val();
