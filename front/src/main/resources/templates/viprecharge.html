@@ -12,6 +12,7 @@
     <!-- <div th:text="${chongzhi}"></div>-->
     <section class="vip-info">
         <div class="f16">帐号：<em th:text="${session?.user.get('front_username')}"></em></div>
+        <div th:text="${session?.user}"></div>
         <p class="weaken cutoffDate">
             你还不是会员,成为会员后获得更多的听书享受.
         </p>

@@ -2,10 +2,7 @@ package com.aaa.dao;
 
 import com.aaa.entity.FrontUser;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.annotations.*;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
@@ -25,8 +22,8 @@ public interface FrontuserDao extends Mapper<FrontUser> {
             "left join anchorinfo a\n" +
             "on a.actype=1 and a.bfid=fu.front_userid where fu.front_userphone=#{phone} and fu.front_userpwd=#{pwd} ")
     Map<String, Object> login(@Param("phone") String phone, @Param("pwd") String pwd);
-
-
+    @Update("update front_user set front_uservipoutdata = null where front_userid=#{front_userid}")
+    Integer updateDate(@Param("front_userid") Integer front_userid);
     //修改
     @UpdateProvider(type = FrontuserSql.class, method = "updateSql")
     Integer updates( FrontUser frontUser);

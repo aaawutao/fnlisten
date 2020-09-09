@@ -58,6 +58,18 @@ public class UserloginController {
         sessionStatus.setComplete();
         return 1;
     }
+  /*  @RequestMapping("jishi")
+    @ResponseBody
+    public Integer jishi(@RequestParam("id") Integer id,@RequestParam("phone") String phone, @RequestParam("pwd") String pwd,HttpSession session){
+        //设置过期时间为Null
+        frontUserService.updateDate(id);
+        //frontUserService.login(phone, pwd)
+        *//*session.getAttribute("user").
+        session.setAttribute("user",frontUserService.login(phone, pwd));*//*
+        return 1;
+    }*/
+
+
 //    @RequestMapping("userquery")
 //    @ResponseBody
 //    public String userQuery(Model model,Integer front_userid){
@@ -65,4 +77,5 @@ public class UserloginController {
 //        model.addAttribute("front_userid",front_userid);
 //        return "userquery";
 //    }
+
 }

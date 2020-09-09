@@ -33,4 +33,8 @@ public class FrontUserService {
     public Integer getxunibi(Integer front_userid){
         return frontuserDao.selectByPrimaryKey(front_userid).getFront_usermoney();
     }
+
+    public Integer updateDate(Integer front_userid){
+        return frontuserDao.updateDate(front_userid);
+    }
 }

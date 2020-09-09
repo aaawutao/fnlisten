@@ -7,7 +7,7 @@
 
 <body>
 
-
+<div id="play_info">0</div>
 <div id="jp_container_N">
     <div class="jp-type-playlist">
         <div id="jplayer_N" class="jp-jplayer hide"></div>
@@ -76,9 +76,18 @@
     $(document).ready(function () {
         window.myplay = new jPlayerPlaylist({
                 jPlayer: "#jplayer_N",
-                cssSelectorAncestor: "#jp_container_N"
+                cssSelectorAncestor: "#jp_container_N",
             }, [],
             {
+                ready:function(){
+                    alert("左边");
+                },
+                playing:function(lp,ppr,ppa,pt,tt){
+                  alert("播放中");
+                },
+                timeupdate:function (e){
+                    alert(e.mp3);
+                },
                 playlistOptions: {
                     enableRemoveControls: true,
                     autoPlay: false
@@ -89,7 +98,7 @@
                 autoBlur: false,
                 smoothPlayBar: true,
                 keyEnabled: true,
-                audioFullScreen: false
+                audioFullScreen: false,
             });
         jQuery('#example3').beforeAfter_slider(
             {
@@ -105,7 +114,6 @@
             }
         )
     });
-
     //节目选择
     function getdata(id) {
         $.ajax({
@@ -155,7 +163,8 @@
 
     //暂停
     function pause() {
-        window.myplay.pause();
+        window.myplay.pause()
     }
+
 </script>
 </html>
