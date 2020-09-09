@@ -7,6 +7,7 @@ import com.aaa.entity.Topupinfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -34,11 +35,9 @@ public class TopupinfoService {
         return topupinfoDao.editState(tpid, paymentid);
     }
     //修改成功之后的调用方法
-    public void panduan(String tpid) {
+    public void panduan(String tpid, HttpSession session) {
         Map<String, Object> map = topupinfoDao.show(tpid, null, null).get(0);
-
         FrontUser frontUser = frontuserDao.selectByPrimaryKey(map.get("front_userid"));
-        System.out.println(map);
         if (map.get("tstype").toString().equals("0")) {
             //虚拟币充值
             //用户当前的虚拟币做添加
@@ -67,6 +66,8 @@ public class TopupinfoService {
             f3.setFront_userstate(2);
             frontuserDao.updates(f3);
         }
+        //当支付成功之后修改session
+        session.setAttribute("user",frontuserDao.login(frontUser.getFront_userphone(),frontUser.getFront_userpwd()));
     }
 
 

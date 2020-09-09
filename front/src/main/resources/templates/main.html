@@ -46,7 +46,6 @@
 										class="icon-logout"></i><span class="f12">退出登录</span></a>
 							</div>
 						</li>
-
 					</ul>
 				</div>
 			</div>
@@ -110,13 +109,15 @@
 <!--播放器-->
 <footer class="footer bg-success dker" style="position: fixed;bottom:0">
 	<iframe th:replace="play.html" frameborder="0" name="play" id="play"></iframe>
-</footer>
-</body>
+			</footer>
+			</body>
+<script th:src="@{'/xtip/js/xtiper.min.js'}"></script>
 <script type="text/javascript" th:inline="javascript">
 
 	document.body.onbeforeunload = function (event) {
 		if (window.parent.myplay.playlist.length != 0) {
 			localStorage.setItem("playlist", JSON.stringify(window.parent.myplay.playlist));
+
 		}
 	};
 	//根据ID获取iframe对象
@@ -140,16 +141,17 @@
 					title: list[i].title,
 					artist: list[i].artist,
 					mp3: list[i].mp3,
-					poster: list[i].poster
+					poster: list[i].poster,
+					state:list[i].state,
+					virtualcurrency:list[i].virtualcurrency,
+					pid:list[i].pid,
+					ctid:list[i].ctid
 				})
-			}
-			;
+			};
 			$(".poster-img").attr("src", list[0].poster);
-			window.myplay.play(0);
 			localStorage.removeItem("playlist");
 		}
 	});
-
 	//充值虚拟币路径
 	function chongzhi() {
 		$("#iframe_a").attr("src", "/front/recharges");
@@ -210,8 +212,35 @@
 			url: "http://localhost:8082/front/userlogin/logout",
 			success: (data) => {
 			window.location.reload();
-	}
+		}
 	})
+	}
+	//页面//页面加载时创建计时任务
+	let p_timer=window.setInterval(function(){mywork();},2000);
+	function mywork(){
+		let user=[[${session?.user}]];
+		if(user!=null){
+			if(user['front_uservipoutdata'] !==undefined){
+				date1=new Date(user['front_uservipoutdata']).getTime();
+				date2=new Date().getTime();
+				if(date2>date1){
+					//清除计时器
+					window.clearInterval(p_timer);
+					xtip.msg('你的vip时间已经到期,8秒后页面将会刷新', {type: 'w', pos: 't',times:8});
+					setTimeout(function(){
+						$.ajax({
+							type: "post",
+							url: "http://localhost:8082/front/userlogin/jishi",
+							data:{id:user['front_userid'],phone:user['front_userphone'],pwd:user['front_userpwd']},
+							success: (data) => {
+								window.location.reload();
+							}
+						})
+					}, 8000);
+
+				}
+			}
+		}
 	}
 </script>
 </html>

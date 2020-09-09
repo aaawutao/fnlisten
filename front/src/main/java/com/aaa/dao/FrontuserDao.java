@@ -55,7 +55,6 @@ public interface FrontuserDao extends Mapper<FrontUser> {
                 //去掉最后一个逗号
                 sql.deleteCharAt(sql.length() - 1);
                 sql.append(" where front_userid=#{front_userid}");
-                System.out.println(sql);
                 return sql.toString();
             }
     }

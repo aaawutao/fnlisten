@@ -7,15 +7,10 @@
     <link rel="stylesheet" th:href="${'css/recharge.css?v=38'}"/>
 </head>
 <body>
-<div th:text="${chongzhi}"></div>
 <section class="settings-main" style="padding-left:50px;padding-right:50px">
     <!-- <div th:text="${chongzhi}"></div>-->
     <section class="vip-info">
         <div class="f16">帐号：<em th:text="${session?.user.get('front_username')}"></em></div>
-        <div th:text="${session?.user}"></div>
-        <p class="weaken cutoffDate">
-            你还不是会员,成为会员后获得更多的听书享受.
-        </p>
     </section>
     <section class="vip-w">
         <h4>会员权益</h4>

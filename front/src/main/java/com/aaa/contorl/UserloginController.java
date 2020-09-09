@@ -6,6 +6,7 @@ import com.aaa.util.AddSmsSign;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -58,16 +59,14 @@ public class UserloginController {
         sessionStatus.setComplete();
         return 1;
     }
-  /*  @RequestMapping("jishi")
+    @RequestMapping("jishi")
     @ResponseBody
     public Integer jishi(@RequestParam("id") Integer id,@RequestParam("phone") String phone, @RequestParam("pwd") String pwd,HttpSession session){
         //设置过期时间为Null
-        frontUserService.updateDate(id);
-        //frontUserService.login(phone, pwd)
-        *//*session.getAttribute("user").
-        session.setAttribute("user",frontUserService.login(phone, pwd));*//*
-        return 1;
-    }*/
+         frontUserService.updateDate(id);
+         session.setAttribute("user",frontUserService.login(phone, pwd));
+         return 1;
+    }
 
 
 //    @RequestMapping("userquery")

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{'xtip/css/xtiper.css'}">
 </head>
 
 <body>
-
-<div id="play_info">0</div>
+<div id="play_info"></div>
 <div id="jp_container_N">
     <div class="jp-type-playlist">
         <div id="jplayer_N" class="jp-jplayer hide"></div>
@@ -72,21 +72,50 @@
     </div>
 </div>
 </body>
-<script>
+
+<script th:src="@{'/xtip/js/xtiper.min.js'}"></script>
+<script th:inline="javascript">
     $(document).ready(function () {
+        window.dqplay=false;
         window.myplay = new jPlayerPlaylist({
                 jPlayer: "#jplayer_N",
                 cssSelectorAncestor: "#jp_container_N",
             }, [],
             {
-                ready:function(){
-                    alert("左边");
-                },
-                playing:function(lp,ppr,ppa,pt,tt){
-                  alert("播放中");
-                },
                 timeupdate:function (e){
-                    alert(e.mp3);
+                        if(e.jPlayer.status.currentTime>15){
+                            //付费
+                            if(e.jPlayer.status.media.state=="1"){
+                                let user=[[${session?.user}]];
+                                if(user!=null){
+                                    //判断用户是否是会员
+                                    if(user['front_userstate']!=2){
+                                        //判断当前用户是否购买
+                                        if(!window.dqplay){
+                                            $.ajax({
+                                                type: "post",
+                                                url: "buy/check",
+                                                data: {userid:user['front_userid'],pid:e.jPlayer.status.media.pid,ctid:e.jPlayer.status.media.ctid},
+                                                success: (data) => {
+                                                    if(!data){
+                                                        window.myplay.pause();
+                                                        xtip.msg('请购买章节,或充值vip', {type: 'w', pos: 't'});
+                                                    }else{
+                                                        window.dqplay=true;
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    }
+                                }else{
+                                    window.myplay.pause();
+                                    xtip.msg('当前章节为付费章节,请登录', {type: 'w', pos: 't'});
+                                }
+                            }
+                        }
+                },
+                ended: function() {
+                    window.dqplay=false;
                 },
                 playlistOptions: {
                     enableRemoveControls: true,
@@ -129,7 +158,11 @@
                         title: data[i].title,
                         artist: data[i].artist,
                         mp3: data[i].mp3,
-                        poster: data[i].poster
+                        poster: data[i].poster,
+                        state:data[i].state,
+                        virtualcurrency:data[i].virtualcurrency,
+                        pid:data[i].pid,
+                        ctid:data[i].ctid
                     })
                 }
                 //cookie获取节目章节索引默认0 播放
@@ -155,7 +188,11 @@
             title: obj["title"],
             artist: obj["artist"],
             mp3: obj["mp3"],
-            poster: obj["poster"]
+            poster: obj["poster"],
+            state:obj['state'],
+            virtualcurrency:obj['virtualcurrency'],
+            pid:obj['pid'],
+            ctid:obj['ctid']
         });
         //播放
         window.myplay.play(-1);

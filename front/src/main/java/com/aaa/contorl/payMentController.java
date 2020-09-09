@@ -111,11 +111,8 @@ public class payMentController {
             //修改状态,设置支付宝交易号
             topupinfoService.editState(out_trade_no, trade_no);
             //判断支付类型
-            topupinfoService.panduan(out_trade_no);
-
-
+            topupinfoService.panduan(out_trade_no,request.getSession());
         } else {//验证失败
-
             System.out.println("失败");
         }
         return "redirect:/main";
