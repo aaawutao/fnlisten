@@ -105,19 +105,56 @@
 		<div class="clear"></div>
 	</div>
 </header>
+<!--主要-->
 <iframe th:src="context" name="iframe_a" id="iframe_a" width="100%" height="0px" frameborder="0"></iframe>
 <!--播放器-->
 <footer class="footer bg-success dker" style="position: fixed;bottom:0">
 	<iframe th:replace="play.html" frameborder="0" name="play" id="play"></iframe>
-			</footer>
-			</body>
+</footer>
+<div id="tip_content2">
+	<!--<div >
+		 <table >
+		 	<tr>
+				 <td>
+					 <div>用户余额:<span id="xunibimoney"></span></div>
+				 </td>
+			 </tr>
+			 <tr>
+				 <td>
+					 <div>节目信息:<span id="pname"></span></div>
+				 </td>
+			 </tr>
+			 <tr>
+				 <td>
+					 <div>所选章节:<span id="cname"></span></div>
+				 </td>
+			 </tr>
+			 <tr>
+			 	<td>
+			 		<div>所需懒人币:<span id="xunibi"></span></div>
+			 	</td>
+			 </tr>
+			 <tr>
+				 <td>
+					 <form action="javascript:zhifu()" method="post"  id="zhifufm">
+					 	<input type="hidden" name="zhifumoney" id="zhifumoney" />
+						 <input type="hidden" name="userid" id="userid"/>
+						 <input type="hidden" name="pid" id="pid"/>
+						 <input type="hidden" name="ctid"  id="ctid"/>
+						 <input type="submit" value="购买"/>
+					 </form>
+				 </td>
+			 </tr>
+		 </table>
+    </div>-->
+</div>
+</body>
 <script th:src="@{'/xtip/js/xtiper.min.js'}"></script>
 <script type="text/javascript" th:inline="javascript">
 
 	document.body.onbeforeunload = function (event) {
 		if (window.parent.myplay.playlist.length != 0) {
 			localStorage.setItem("playlist", JSON.stringify(window.parent.myplay.playlist));
-
 		}
 	};
 	//根据ID获取iframe对象
@@ -243,5 +280,76 @@
 			}
 		}
 	}
+
+	function xtip_open2()
+	{
+		xtip.open({
+			type: 'noready',
+			content: '#tip_content2',
+			title: '节目购买',
+			width: '320px',
+			height: '400px',
+			lock: true
+		});
+	}
+
+	//支付
+	function xunibishow(userid,pid,ctid,programename,xunibimoney,cname){
+		xtip_open2();
+		$("#userid").val(userid);
+        $("#pid").val(pid);
+        $("#ctid").val(ctid);
+        $("#pname").html(programename);
+        if(ctid==0){
+        	$("#cname").html("全本");
+		}else{
+			$("#cname").html(cname);
+		}
+        $("#xunibi").html(xunibimoney);
+        $("#zhifumoney").val(xunibimoney);
+        //获取当前用户所拥有的懒人币
+		$.ajax({
+			type: "post",
+			url: "frontuser/getxunibi",
+			data: {front_userid: userid},
+			success: (data) => {
+				$("#xunibimoney").html(data);
+			}
+		});
+	}
+	function zhifu(){
+		let usermoney=Number($("#xunibimoney").html());
+		let zhifumoney=Number( $("#xunibi").html());
+		if(usermoney>zhifumoney){
+			xtip.msg('可以充值', {type: 'w', pos: 't'});
+			$.ajax({
+				type: "post",
+				url: "",
+				data:$("#zhifufm").serialize(),
+				success: (data) => {
+					if(data==1){
+						xtip.msg('购买成功,可永久收听', {type: 'w', pos: 't'});
+					}
+				}
+			});
+			//用户
+			//购买节目
+			//购买章节
+			//花费虚拟币
+			//==人民币
+			//==主播的原有收益
+			//被购买用户(主播,机构)原有提现金额
+			//平台抽成
+			//被购买用户(主播,机构)现有提现金额=原有+分红
+			//购买时间
+
+
+
+		}else{
+			xtip.msg('你的虚拟币不足请充值', {type: 'w', pos: 't'});
+		}
+	};
+
+
 </script>
 </html>

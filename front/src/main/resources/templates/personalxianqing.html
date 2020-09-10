@@ -26773,8 +26773,10 @@
                     <div data-v-b39d6196="" class="content">
                         <div data-v-b39d6196="" class="menu">
                             <div data-v-54b80aad="" data-v-b39d6196="" class="menu-bar">
-
-                                <div data-v-25f32cc8="" data-v-54b80aad="" class="release" >
+                                <!--
+                                th:if="${session?.user?.front_userflag}!=1"
+                                -->
+                                <div data-v-25f32cc8="" data-v-54b80aad="" class="release" th:if="${session?.user?.front_userflag}!=1">
                                     <div data-v-25f32cc8="" class="ivu-poptip">
                                         <div class="ivu-poptip-rel"><a data-v-25f32cc8="" href="javascript:;" th:onclick="qiehuan('createprogram')" class="problem"><button
                                                 data-v-25f32cc8="" type="button" class="ivu-btn ivu-btn-default ivu-btn-circle lr_btn btn">

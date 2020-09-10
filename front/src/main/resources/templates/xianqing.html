@@ -6,6 +6,7 @@
     <link rel="stylesheet" th:href="@{'css/styles.css?v=36'}">
     <iframe th:replace="css.html"></iframe>
     <iframe th:replace="listencss.html"></iframe>
+    <link rel="stylesheet" th:href="@{'xtip/css/xtiper.css'}">
 </head>
 <body>
 <div class="wrapper clearfix">
@@ -32,7 +33,10 @@
                     </li>
                 </ul>
                 <ul class="d-grid">
-                    <button class="btn-default" style="width: 120px;height: 30px;display: block;margin-top:15px; " th:onclick="">全本购买</button>
+                    <li><span class="weaken">全本价格：</span><span th:text="${programinfo.get('allprice')}"></span></li>
+                </ul>
+                <ul class="d-grid">
+                    <button class="btn-default" th:onclick="xunibi([[${programinfo.pid}]],0,[[${programinfo.pname}]],[[${programinfo.get('allprice')}]])" type="button" style="width: 120px;height: 30px;display: block;margin-top:15px; "  >全本购买</button>
                 </ul>
                 <div class="d-o d-book-o">
                     <a class="d-p " href='javascript:;' th:onclick="allplay([[${programinfo.pid}]])"></a>
@@ -70,7 +74,10 @@
                         <span th:text="${item.title}"></span>/作者:<span th:text="${item.artist}"></span>
                     -->
                     <a  th:text="${item.title}"></a>
-                    <time>更新时间:<em th:text="${item.createdate}"></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em th:onclick="" th:if="${item.state}==1"><font color="#008b8b">章节购买</font></em></time>
+                    <!--
+                        th:onclick="|xunibi(${session?.user.get('front_userid')},${programinfo.pid},${item.ctid},${programinfo.pname},${item.title})|"
+                    -->
+                    <time>更新时间:<em th:text="${item.createdate}"></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>价格:<em th:text="${item.get('virtualcurrency')}"></em></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em  th:if="${item.state}==1" th:onclick="xunibi([[${programinfo.pid}]],[[${item.ctid}]],[[${programinfo.pname}]],[[${item.get('virtualcurrency')}]],[[${item.title}]])" ><font color="#008b8b" >章节购买</font></em></time>
                 </li>
             </ul>
         </section>
@@ -103,7 +110,8 @@
 
 </body>
 
-<script type="text/javascript">
+<script th:src="@{'/xtip/js/xtiper.min.js'}"></script>
+<script  th:inline="javascript">
     //全部播放
     function allplay(id) {
         window.parent.getdata(id);
@@ -137,9 +145,14 @@
             }
         });
     });
-    //支付
-    function xunibi(){
-
+    //支付模块
+    function xunibi(pid,ctid,programname,xunibimoney,cname){
+        let user=[[${session?.user}]];
+        if(user!=null){
+           window.parent.xunibishow(user['front_userid'],pid,ctid,programname,xunibimoney,cname);
+        }else{
+            xtip.msg('请登录', {type: 'w', pos: 't'});
+        }
     }
 </script>
 </html>
