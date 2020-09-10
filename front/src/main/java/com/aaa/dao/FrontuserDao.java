@@ -22,6 +22,10 @@ public interface FrontuserDao extends Mapper<FrontUser> {
             "left join anchorinfo a\n" +
             "on a.actype=1 and a.bfid=fu.front_userid where fu.front_userphone=#{phone} and fu.front_userpwd=#{pwd} ")
     Map<String, Object> login(@Param("phone") String phone, @Param("pwd") String pwd);
+
+
+
+
     @Update("update front_user set front_uservipoutdata = null where front_userid=#{front_userid}")
     Integer updateDate(@Param("front_userid") Integer front_userid);
     //修改
@@ -56,13 +60,9 @@ public interface FrontuserDao extends Mapper<FrontUser> {
                 //去掉最后一个逗号
                 sql.deleteCharAt(sql.length() - 1);
                 sql.append(" where front_userid=#{front_userid}");
-                System.out.println(sql);
                 return sql.toString();
             }
     }
-
-
-
     //查询出个人信息
     @Select("select * from front_user where front_userid=#{front_userid}")
     FrontUser queryByuserId(Integer front_userid);

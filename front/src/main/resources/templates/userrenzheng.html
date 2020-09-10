@@ -6,10 +6,12 @@
 
 </head>
 <body>
+
 <div th:if="${session?.user?.get('front_userflag')}!=1">
     认证成功的信息
 </div>
-<div style="" th:if="${session?.user?.get('front_userflag')}==1">
+
+<div style="" id="renzheng" th:if="${session?.user?.get('front_userflag')}==1">
     <div data-v-997dad96="" class="tip notAuth" id="hid" >
         <i data-v-997dad96="" class="preIcon ivu-icon iconfont iconicon_mistake_tips" style="font-size: 14px;"></i>
         <p  data-v-997dad96="" class="warn-msg">
@@ -205,7 +207,8 @@
                                               data:{"front_userid":front_userid,"petname":front_username},
                                               success:function (data) {
                                                   if(data==1){
-                                                      alert("成功")
+                                                      parent.mgs("认证成功");
+                                                      location.reload();
                                                   }
                                               }
                                           })
@@ -213,7 +216,7 @@
                                   }
                               })
                           }else{
-                              alert("失败")
+                              parent.mgs("认证失败");
                           }
                       }
                   })

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 @Controller
 @RequestMapping("anchorinfo")
@@ -16,9 +18,13 @@ public class AnchorinfoController {
 
     @ResponseBody
     @RequestMapping("addanchor")
-    public int addanchor(Integer front_userid, String petname) {
+    public int addanchor(Integer front_userid, String petname, HttpSession session) {
         System.out.println(front_userid);
         System.out.println(petname);
+        Map user=(Map)session.getAttribute("user");
+        //覆盖
+        user.put("front_userflag",2);
+        session.setAttribute("user",user);
         return anchorinfoService.addanchor(front_userid, petname);
     }
 }

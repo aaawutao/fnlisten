@@ -33,7 +33,7 @@
         <!---->
         <div data-v-fd656e4e="" class="bar">
             <div data-v-fd656e4e="" class="type-list">
-                <div data-v-fd656e4e="" class="active"><span data-v-fd656e4e="">全部(0)</span></div>
+                <div data-v-fd656e4e="" class="active"><span data-v-fd656e4e="">全部</span></div>
                 <!--               <div data-v-fd656e4e="" class=""><span data-v-fd656e4e="">连载中(0)</span></div>
                                 <div data-v-fd656e4e="" class=""><span data-v-fd656e4e="">已完结(0)</span></div>-->
             </div>
@@ -63,7 +63,7 @@
         <ul class="books">
             <li th:each="it:${program}" class="album-f-item">
                 <div class="f1">
-                    <a>
+                    <a th:onclick="|showpro(${it.pid},${it.anchortid})|">
                         <img width="120" height="140" th:src="${it.get('poster')}" class="photo-l">
                     </a>
                 </div>
@@ -98,4 +98,9 @@
         padding: 20px;
     }
 </style>
+<script>
+    function showpro(id,aid) {
+        window.parent.eidtsrc(id, aid);
+    }
+</script>
 </html>

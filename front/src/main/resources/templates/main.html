@@ -137,7 +137,7 @@
 			 <tr>
 				 <td>
 					 <form   id="zhifufm">
-					 	<input type="hidden" name="usermoney" id="usermoney/>
+					 	<input type="hidden" name="usermoney" id="usermoney"/>
 					 	<input type="hidden" name="zhifumoney" id="zhifumoney" />
 						 <input type="hidden" name="userid" id="userid"/>
 						 <input type="hidden" name="pid" id="pid"/>
@@ -284,7 +284,7 @@
 	function xtip_open2()
 	{
 		 xtip.open({
-			 id:"zhi",
+			 tid:"zhi",
 			type: 'noready',
 			content: '#tip_content2',
 			title: '节目购买',
@@ -296,6 +296,7 @@
 
 	//支付
 	function xunibishow(userid,pid,ctid,programename,xunibimoney,cname){
+
 		xtip_open2();
 		$("#userid").val(userid);
         $("#pid").val(pid);
@@ -308,6 +309,7 @@
 		}
         $("#xunibi").html(xunibimoney);
         $("#zhifumoney").val(xunibimoney);
+
         //获取当前用户所拥有的懒人币
 		$.ajax({
 			type: "post",
@@ -329,8 +331,8 @@
 				data:$("#zhifufm").serialize(),
 				success: (data) => {
 					if(data==1){
-						xtip.msg('购买成功,可永久收听', {type: 'w', pos: 't'});
 						xtip.closeAll();
+						xtip.msg('购买成功,可永久收听', {type: 'w', pos: 't'});
 					}else{
 						xtip.msg('购买失败', {type: 'w', pos: 't'});
 					}
