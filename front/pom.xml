@@ -45,12 +45,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--orace的驱动包-->
-        <dependency>
-            <groupId>aaa</groupId>
-            <artifactId>ojdbc6</artifactId>
-            <version>6</version>
-        </dependency>
+
         <!--导入mysql驱动包-->
         <dependency>
             <groupId>mysql</groupId>
