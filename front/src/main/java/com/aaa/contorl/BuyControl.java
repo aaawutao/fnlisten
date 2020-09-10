@@ -20,5 +20,12 @@ public class BuyControl {
         return buyService.buycheck(userid,pid,ctid);
     }
 
+    @RequestMapping("add")
+    @ResponseBody
+    public Integer add(Integer userid,Integer pid,Integer ctid,Integer zhifumoney){
+        return buyService.buyprogram(userid,pid,ctid,zhifumoney);
+    }
+
+
 
 }

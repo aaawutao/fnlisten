@@ -47,7 +47,8 @@ public interface FrontuserDao extends Mapper<FrontUser> {
                     sql.append("front_uservipoutdata=#{front_uservipoutdata},");
                 }
                 if(frontUser.getFront_usermoney()!=null){
-                    sql.append("front_usermoney=#{front_usermoney},");
+                        //front_usermoney
+                    sql.append("front_usermoney=(front_usermoney - #{front_usermoney}),");
                 }
                 if(frontUser.getFront_userwd()!=null){
                     sql.append("front_userwd=#{front_userwd},");
@@ -55,6 +56,7 @@ public interface FrontuserDao extends Mapper<FrontUser> {
                 //去掉最后一个逗号
                 sql.deleteCharAt(sql.length() - 1);
                 sql.append(" where front_userid=#{front_userid}");
+                System.out.println(sql);
                 return sql.toString();
             }
     }

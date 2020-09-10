@@ -17,7 +17,6 @@ public class ChapterinfoService {
     public List<Map<String, Object>> queryChapter(Integer pid) {
         return chapterinfoDao.queryChapter(pid);
     }
-
     public Integer add(Chapterinfo chapterinfo) {
         return chapterinfoDao.insert(chapterinfo);
     }

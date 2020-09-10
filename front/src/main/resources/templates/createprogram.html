@@ -218,7 +218,7 @@
             success: (data) => {
                 if (data == 1) {
                     //刷新页面重新获取数据
-                    xtip.msg('节目录入成功', {icon: 's', type: 'w', pos: 't'});
+                    parent.mgs("节目录入成功");
                     location.reload();
                 }
             }
@@ -235,7 +235,7 @@
             contentType: false, // 告诉jQuery不要去设置Content-Type请求头
             success: (data) => {
                 if (data == 1) {
-                    xtip.msg('章节添加成功请在详情页面查看', {icon: 's', type: 'w', pos: 't'});
+                    parent.mgs("章节添加成功请在详情页面查看");
                     //清空元素
                     $("#yfm")[0].reset();
                 }

@@ -136,12 +136,12 @@
 			 </tr>
 			 <tr>
 				 <td>
-					 <form action="javascript:zhifu()" method="post"  id="zhifufm">
+					 <form   id="zhifufm">
 					 	<input type="hidden" name="zhifumoney" id="zhifumoney" />
 						 <input type="hidden" name="userid" id="userid"/>
 						 <input type="hidden" name="pid" id="pid"/>
 						 <input type="hidden" name="ctid"  id="ctid"/>
-						 <input type="submit" value="购买"/>
+						 <input type="button" onclick="zhifu()" value="购买"/>
 					 </form>
 				 </td>
 			 </tr>
@@ -164,7 +164,7 @@
 		ifr.style.height = 0 + 'px';
 		var iDoc = ifr.contentDocument || ifr.contentWindow.document;
 		var height = iDoc.documentElement.clientHeight || iDoc.body.clientHeight;
-		ifr.style.height = (height + 95) + 'px';
+		ifr.style.height = (height + 100) + 'px';
 	};
 	$(function () {
 		//页面
@@ -282,7 +282,8 @@
 
 	function xtip_open2()
 	{
-		xtip.open({
+		 xtip.open({
+			 id:"zhi",
 			type: 'noready',
 			content: '#tip_content2',
 			title: '节目购买',
@@ -320,32 +321,27 @@
 		let usermoney=Number($("#xunibimoney").html());
 		let zhifumoney=Number( $("#xunibi").html());
 		if(usermoney>zhifumoney){
-			xtip.msg('可以充值', {type: 'w', pos: 't'});
 			$.ajax({
 				type: "post",
-				url: "",
+				url: "http://localhost:8082/front/buy/add",
 				data:$("#zhifufm").serialize(),
 				success: (data) => {
 					if(data==1){
 						xtip.msg('购买成功,可永久收听', {type: 'w', pos: 't'});
+						xtip.closeAll();
+					}else{
+						xtip.msg('购买失败', {type: 'w', pos: 't'});
 					}
 				}
 			});
-			//用户
-			//购买节目
-			//购买章节
-			//花费虚拟币
-			//==人民币
-			//==主播的原有收益
-			//被购买用户(主播,机构)原有提现金额
-			//平台抽成
-			//被购买用户(主播,机构)现有提现金额=原有+分红
-			//购买时间
+
 		}else{
 			xtip.msg('你的虚拟币不足,请充值', {type: 'w', pos: 't'});
 		}
 	}
-
-
+	//定义消息提示
+	function mgs(context){
+		xtip.msg(context, {type: 'w', pos: 't'});
+	}
 </script>
 </html>

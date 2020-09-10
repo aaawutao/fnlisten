@@ -36,7 +36,7 @@
                     <li><span class="weaken">全本价格：</span><span th:text="${programinfo.get('allprice')}"></span></li>
                 </ul>
                 <ul class="d-grid">
-                    <button class="btn-default" th:onclick="xunibi([[${programinfo.pid}]],0,[[${programinfo.pname}]],[[${programinfo.get('allprice')}]])" type="button" style="width: 120px;height: 30px;display: block;margin-top:15px; "  >全本购买</button>
+                    <button class="btn-default" th:onclick="xunibi([[${programinfo.pid}]],0,[[${programinfo.pname}]],[[${programinfo.get('allprice')}]])" type="button" style="width: 120px;height: 30px;display: block;"  >全本购买</button>
                 </ul>
                 <div class="d-o d-book-o">
                     <a class="d-p " href='javascript:;' th:onclick="allplay([[${programinfo.pid}]])"></a>
@@ -105,9 +105,8 @@
             </section>
         </div>
     </div>
-
 </div>
-
+<div style="height: 50px"></div>
 </body>
 
 <script th:src="@{'/xtip/js/xtiper.min.js'}"></script>
@@ -151,7 +150,7 @@
         if(user!=null){
            window.parent.xunibishow(user['front_userid'],pid,ctid,programname,xunibimoney,cname);
         }else{
-            xtip.msg('请登录', {type: 'w', pos: 't'});
+            parent.mgs("请登录");
         }
     }
 </script>
