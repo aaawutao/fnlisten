@@ -27,7 +27,7 @@ public class AddSmsSign {
      */
    public static Map<String,Object> contextLoads(String phone) {
 
-       DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI4GGeC4wRX8ZqFQL6gxtF", "iduG0BwLfs8tbP5HNutdDxnkjSvzNJ");
+       DefaultProfile profile = DefaultProfile.getProfile("cn-zhangzhou", "LTAI4GGeC4wRX8ZqFQL6gxtF", "iduG0BwLfs8tbP5HNutdDxnkjSvzNJ");
        IAcsClient client = new DefaultAcsClient(profile);
        //构建请求
        CommonRequest request = new CommonRequest();

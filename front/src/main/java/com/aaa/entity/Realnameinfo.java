@@ -2,9 +2,11 @@ package com.aaa.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.persistence.Id;
 import java.util.Date;
 
 public class Realnameinfo {
+    @Id
     private Integer rid;
     private String rtype;
     private String rname;

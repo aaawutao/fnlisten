@@ -45,9 +45,13 @@ public class UserloginController {
     @RequestMapping("login")
     public Integer login(@RequestParam("phone") String phone, @RequestParam("pwd") String pwd, HttpServletRequest request, HttpSession session) {
         request.getSession(true);
+        System.out.println(phone);
         Map<String, Object> user = frontUserService.login(phone, pwd);
+        System.out.println(user);
         if (user != null) {
+            System.out.println(11);
             session.setAttribute("user", user);
+            System.out.println(22);
             return 1;
         }
         return 0;

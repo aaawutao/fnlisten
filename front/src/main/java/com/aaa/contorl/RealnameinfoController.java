@@ -49,8 +49,9 @@ public class RealnameinfoController {
         JSONObject approve = PersonalApprove.Approve(toBase64);
         //根据code值判断是否认证成功
         Integer code = (Integer) approve.get("code");
-        if (code == 200) {
+        if (code == 200 ) {
             JSONObject data = (JSONObject) approve.get("data");
+            System.out.println(data);
             String idcard = data.get("idcard").toString();
             String name = data.get("name").toString();
             if (idcard.equals(ridcard) && name.equals(rname)) {
