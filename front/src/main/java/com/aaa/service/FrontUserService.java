@@ -37,4 +37,13 @@ public class FrontUserService {
     public Integer updateDate(Integer front_userid){
         return frontuserDao.updateDate(front_userid);
     }
+
+    public int  updatefront_user( String front_username, String front_userpic,Integer front_userid){
+        return  frontuserDao.updatefront_user(front_username,front_userpic,front_userid);
+    }
+
+    public  int  updatePassword( String front_userpwd,Integer front_userid){
+        return frontuserDao.updatePassword(front_userpwd,front_userid);
+    }
+
 }

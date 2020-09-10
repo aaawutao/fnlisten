@@ -68,4 +68,13 @@ public interface FrontuserDao extends Mapper<FrontUser> {
     @Select("select * from front_user where front_userid=#{front_userid}")
     FrontUser queryByuserId(Integer front_userid);
 
+    //修改个人信息
+    @Update("update front_user set front_username=#{front_username},front_userpic=#{front_userpic} " +
+            " where front_userid=#{front_userid}")
+    int  updatefront_user(@Param("front_username") String front_username,@Param("front_userpic") String front_userpic,@Param("front_userid") Integer front_userid);
+
+
+    //修改密码
+    @Update("update front_user set front_userpwd=#{front_userpwd} where front_userid=#{front_userid}")
+    int  updatePassword(@Param("front_userpwd") String front_userpwd,@Param("front_userid") Integer front_userid);
 }

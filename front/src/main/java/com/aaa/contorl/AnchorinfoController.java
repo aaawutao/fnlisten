@@ -27,4 +27,6 @@ public class AnchorinfoController {
         session.setAttribute("user",user);
         return anchorinfoService.addanchor(front_userid, petname);
     }
+
+
 }

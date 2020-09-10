@@ -20,4 +20,8 @@ public class AnchorinfoService {
         return anchorinfoDao.addanchor(front_userid, petname);
     }
 
+    public  int updatepetname(String petname, Integer bfid){
+        return  anchorinfoDao.updatePetname(petname,bfid);
+    }
+
 }

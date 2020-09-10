@@ -1,16 +1,18 @@
 package com.aaa.dao;
 
 import com.aaa.entity.Anchorinfo;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.*;
 
 import java.util.Map;
 import java.util.List;
 
 @Mapper
 public interface AnchorinfoDao extends tk.mybatis.mapper.common.Mapper<Anchorinfo> {
+
+
+    @Update("update anchorinfo set petname=#{petname} where bfid=#{bfid}")
+    int updatePetname(@Param("petname") String petname,@Param("bfid") Integer bfid);
+
 
 
     @Insert("insert into anchorinfo (actype,bfid,petname) values (1,#{front_userid},#{petname})")

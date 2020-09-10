@@ -28,21 +28,47 @@
         </div>
     </div>
 
-    <div id="query" style="display: none">
-        <form>
+    <div id="query" style="display: none" align="center">
+        <form id="fm"  enctype="multipart/form-data">
+            <input type="hidden"  name="front_userid" th:value="${session?.user?.get('front_userid')}" />
             <img id="cropedBigImg" src="" style="width: 100px;height: 100px" class="img-rounded">
             <div class="form-group">
                 <label for="chooseImage">头像</label>
-                <input type="file" id="chooseImage">
+                <input type="file" name="front_userpic" id="chooseImage">
             </div>
             <div class="form-group">
                 <label for="exampleInputName">昵称</label>
                 <input type="text" id="exampleInputName" name="front_username"  onblur="checkusername()" class="form-control" style="width: 190px"  >
                 <p id="checkusername"></p>
             </div>
-            <button type="submit" class="btn btn-primary">保存</button>
-            <button id="resultfrom" class="btn btn-warning">取消</button>
+           <input type="hidden" name="flag" id="flag">
         </form>
+        <button type="button" id="save" class="btn btn-primary">保存</button>
+        <button id="resultfrom"  class="btn btn-warning">取消</button>
+    </div>
+
+  <div id="querypwd"   style="display: none" align="center">
+      <form id="form">
+         <div class="form-group">
+              <label for="pwd">旧密码</label>
+             <input type="hidden"  id="ddpwd">
+              <input type="password" class="form-control" onblur="checkoldpwd()" style="width: 190px"  id="pwd" placeholder="旧密码">
+              <p id="checkoldpwd"></p>
+          </div>
+           <div class="form-group">
+               <label for="newpwd">新密码</label>
+               <input type="password" class="form-control"  onblur="checknewpwd()" style="width: 190px" id="newpwd" placeholder="新密码">
+               <p id="checknewpwd"></p>
+           </div>
+            <div class="form-group">
+                <label for="affirmpwd">确认密码</label>
+                <input type="password" class="form-control" onblur="checkaffirmpwd()" style="width: 190px"  id="affirmpwd" placeholder="确认密码">
+                <p id="checkresultpwd"></p>
+            </div>`
+
+      </form>
+      <button type="button" id="savepwd" class="btn btn-primary">修改</button>
+      <button type="button" id="resultpwd"  class="btn btn-warning">取消</button>
     </div>
 
 
@@ -78,15 +104,37 @@
            </div>
            <div data-v-8b689e88="" class="info">
                <div data-v-8b689e88="" class="label">
-                   实名认证
+                   账号创建时间
                </div>
                <div data-v-8b689e88="" class="value">
-                   <span id="front_userflag"></span>
-               </div>
-               <div id="fuserflag" data-v-8b689e88="" class="operation">
-                   <span data-v-8b689e88="" class="can_edit">查看认证信息</span>
+                   <span id="front_usercreatedate"></span>
                </div>
            </div>
+           <div data-v-8b689e88="" class="info">
+               <div data-v-8b689e88="" class="label">
+                   懒币
+               </div>
+               <div data-v-8b689e88="" class="value">
+                   <span id="front_usermoney"></span>
+               </div>
+           </div>
+
+           <div data-v-8b689e88="" class="info">
+               <div data-v-8b689e88="" class="label">
+                   会员到期时间
+               </div>
+               <div data-v-8b689e88="" class="value">
+                   <span id="front_uservipoutdata"></span>
+               </div>
+           </div>
+           <div data-v-8b689e88="" class="info">
+           <div data-v-8b689e88="" class="label">
+               实名认证
+           </div>
+           <div data-v-8b689e88="" class="value">
+               <span id="front_userflag"></span>
+           </div>
+       </div>
            <div data-v-8b689e88="" class="info">
                <div data-v-8b689e88="" class="label">
                    设置密码
@@ -97,7 +145,8 @@
                <div>
                </div>
            </div>
-           <button id="btn" onclick="uploadfrom()" class="btn btn-primary">修改个人信息</button>
+           <button id="btn" onclick="uploadfrom()" class="btn btn-primary">完善信息</button>
+           <button id="updatepwd" class="btn btn-primary">修改密码</button>
        </div>
 
 
@@ -107,9 +156,48 @@
 
 <script th:src="@{'/js/jquery.min.js?v=36'}"></script>
 
-
-
 <script>
+    function checkoldpwd() {
+        var pwd = $("#pwd").val();
+        if(pwd==""){
+            $("#checkoldpwd").html("请输入旧密码")
+            return false;
+        }
+        if($("#ddpwd").val()!=pwd){
+            $("#checkoldpwd").html("密码错误")
+            return false;
+        }
+        $("#checkoldpwd").html("")
+        return true;
+    }
+    function checknewpwd() {
+        var newpwd = $("#newpwd").val();
+        if(newpwd==""){
+            $("#checknewpwd").html("请输入新密码")
+            return false;
+        }
+        if(newpwd== $("#pwd").val()){
+            $("#checknewpwd").html("新密码不能与旧密码一致")
+            return false;
+        }
+        $("#checknewpwd").html("")
+
+        return true;
+
+    }
+    function checkaffirmpwd() {
+        var checkaffirmpwd = $("#affirmpwd").val();
+        if(checkaffirmpwd==""){
+            $("#checkresultpwd").html("请确认密码");
+            return false;
+        }
+        if($("#newpwd").val()!=checkaffirmpwd){
+            $("#checkresultpwd").html("两次密码不一致");
+            return false;
+        }
+        $("#checkresultpwd").html("");
+        return true;
+    }
 
     //校验姓名
     function checkusername(){
@@ -121,11 +209,10 @@
         $("#checkusername").html("");
         return true;
     }
+    //打开修改页面
     function uploadfrom(){
         $("#show").hide();
         $("#query").show();
-        var userid = $("#front_userid").val();
-
     }
     $(function() {
         var userid = $("#front_userid").val();
@@ -136,12 +223,21 @@
                 "front_userid": userid
             },
             success: function(data) {
+                console.log(data);
                 $("#front_username").html(data.front_username);
                 $("#exampleInputName").val(data.front_username);
                 $("#front_userphone").html(data.front_userphone);
                 $("#front_userpic").attr("src", data.front_userpic);
                 $("#cropedBigImg").attr("src", data.front_userpic);
-
+                $("#flag").attr("value",data.flag);
+                $("#front_usercreatedate").html(data.front_usercreatedate);
+                $("#front_usermoney").html(data.front_usermoney);
+                $("#ddpwd").attr("value",data.front_userpwd );
+                if(data.front_uservipoutdata!=null){
+                    $("#front_uservipoutdata").html(data.front_uservipoutdata);
+                }else{
+                    $("#front_uservipoutdata").html("会员未开通");
+                }
                 if (data.front_userflag == 2) {
                     $("#front_userflag").html("已认证");
                     $("#fuserflag").show();
@@ -167,6 +263,66 @@
             var src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
             $('#cropedBigImg').attr('src',src);
         })
+        $("#save").on('click',function () {
+            var formdata=new FormData($("#fm")[0]);
+            var phone = $("#front_userphone").html();
+            formdata.append("phone",phone)
+           if( formdata.getAll("front_userpic")==""){
+               formdata.append("front_userpic",$("#cropedBigImg").attr("src"));
+           }
+            console.log(formdata.getAll("front_userpic"));
+            $.ajax({
+                type:"post",
+                url:"frontuser/updatefrontuser",
+                data:formdata,
+                processData: false, // 告诉jQuery不要去处理发送的数据
+                contentType: false,
+                success:function (data) {
+                   if(data==1){
+                       window.location.href = window.location.href;
+                   }
+                }
+            })
+        })
+        //展开修改密码页面
+        $("#updatepwd").on('click',function () {
+            $("#querypwd").show();
+            $("#show").hide();
+        })
+
+        //关闭页面
+        $("#resultfrom").on('click',function () {
+            $("#show").show();
+            $("#query").hide();
+        })
+        //关闭修改密码页面重置数据
+        $("#resultpwd").on('click',function () {
+            $("#querypwd").hide();
+             $("#affirmpwd").val("");
+            $("#newpwd").val("");
+            $("#pwd").val("");
+            $("#checknewpwd").html("")
+            $("#checkoldpwd").html("")
+            $("#checkresultpwd").html("");
+            $("#show").show();
+        })
+        //修改密码
+        $("#savepwd").on('click',function () {
+            if(checkoldpwd() && checknewpwd() && checkaffirmpwd() ){
+                var pwd = $("#newpwd").val();
+                $.ajax({
+                    type: "post",
+                    url: "frontuser/updatepassword",
+                    data: {"front_userid": userid,"front_userpwd":pwd},
+                    success:function (data) {
+                        if(data==1){
+                            window.parent.logout();
+                        }
+                    }
+                })
+            }
+
+        })
     })
 
 </script>
@@ -175,5 +331,20 @@
         color: red;
         font-size: 12px;
     }
+    #btn{
+        margin-left: 50px;
+        margin-right: 30px;
+    }
+
+    #chooseImage{
+        margin-left: 70px;
+    }
+    #save{
+        margin-right:30px;
+    }
+    #savepwd{
+        margin-right: 30px;
+    }
+
 </style>
 </html>
