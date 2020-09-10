@@ -29,6 +29,12 @@
         input{
             color:blueviolet;
         }
+		body{
+			color: currentColor;
+		}
+		table{
+			font-size: x-large;
+		}
     </style>
 </head>
 <body onbeforeunload="changeload()">
@@ -162,7 +168,8 @@
 						 <input type="hidden" name="userid" id="userid"/>
 						 <input type="hidden" name="pid" id="pid"/>
 						 <input type="hidden" name="ctid"  id="ctid"/>
-						 <input type="button" onclick="zhifu()" value="购买"/>
+
+						 <button type="button" onclick="zhifu()" class="btn btn-primary">购买</button>
 					 </form>
 				 </td>
 			 </tr>
