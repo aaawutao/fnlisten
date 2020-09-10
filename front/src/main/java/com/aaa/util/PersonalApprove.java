@@ -21,7 +21,7 @@ public class PersonalApprove {
         String host = "https://yixi.market.alicloudapi.com";
         String path = "/ocr/idcardocr";
         String method = "POST";
-        String appcode = "370aa4fee0cd44f9bf1590516b0e8f5e";
+        String appcode = "5010c948124f496f99bb49470b7a807d";
         Map<String, String> headers = new HashMap<String, String>();
         //最后在header中的格式(中间是英文空格)为Authorization:APPCODE 83359fd73fe94948385f570e3c139105
         headers.put("Authorization", "APPCODE " + appcode);

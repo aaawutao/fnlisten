@@ -137,6 +137,7 @@
 			 <tr>
 				 <td>
 					 <form   id="zhifufm">
+					 	<input type="hidden" name="usermoney" id="usermoney/>
 					 	<input type="hidden" name="zhifumoney" id="zhifumoney" />
 						 <input type="hidden" name="userid" id="userid"/>
 						 <input type="hidden" name="pid" id="pid"/>
@@ -314,6 +315,7 @@
 			data: {front_userid: userid},
 			success: (data) => {
 				$("#xunibimoney").html(data);
+				$("#usermoney").val(data);
 			}
 		});
 	}

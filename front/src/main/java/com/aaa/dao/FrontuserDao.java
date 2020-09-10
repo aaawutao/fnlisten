@@ -48,7 +48,7 @@ public interface FrontuserDao extends Mapper<FrontUser> {
                 }
                 if(frontUser.getFront_usermoney()!=null){
                         //front_usermoney
-                    sql.append("front_usermoney=(front_usermoney - #{front_usermoney}),");
+                    sql.append("front_usermoney=#{front_usermoney},");
                 }
                 if(frontUser.getFront_userwd()!=null){
                     sql.append("front_userwd=#{front_userwd},");

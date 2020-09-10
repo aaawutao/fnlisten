@@ -22,8 +22,8 @@ public class BuyControl {
 
     @RequestMapping("add")
     @ResponseBody
-    public Integer add(Integer userid,Integer pid,Integer ctid,Integer zhifumoney){
-        return buyService.buyprogram(userid,pid,ctid,zhifumoney);
+    public Integer add(Integer userid,Integer pid,Integer ctid,Integer zhifumoney,Integer usermoney){
+        return buyService.buyprogram(userid,pid,ctid,zhifumoney,usermoney);
     }
 
 

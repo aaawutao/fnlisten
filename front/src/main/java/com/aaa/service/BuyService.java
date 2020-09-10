@@ -37,7 +37,7 @@ public class BuyService {
         return false;
     }
 
-    public Integer buyprogram(Integer userid,Integer pid,Integer ctid,Integer zhifumoney){
+    public Integer buyprogram(Integer userid,Integer pid,Integer ctid,Integer zhifumoney,Integer usermoney){
         try {
             Buy buy=new Buy();
             buy.setPurchaser(userid);
@@ -54,13 +54,12 @@ public class BuyService {
             //用户所拥有的虚拟币做修改 -支付懒人币
             FrontUser frontUser=new FrontUser();
             frontUser.setFront_userid(userid);
-            frontUser.setFront_usermoney(zhifumoney);
+            //支付金额     zhifumoney
+            frontUser.setFront_usermoney(usermoney-zhifumoney);
             //用户虚拟币做修改
-            Integer res=frontuserDao.updates(frontUser);
-            System.out.println("虚拟币修改"+res);
+             frontuserDao.updates(frontUser);
             //购买力修改
-            res=programinfoDao.updateBuycount(pid);
-            System.out.println("购买力修改"+res);
+            programinfoDao.updateBuycount(pid);
             //使用节目编号找到主播
             Map<String,Object> map=programinfoDao.query(pid,null,null,null).get(0);
             System.out.println(map);
