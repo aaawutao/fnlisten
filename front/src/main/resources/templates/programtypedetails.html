@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+<base href="<%=basePath %>"/>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -13,112 +15,43 @@
             <li><a>小编推荐</a></li>
             <li><a>新书推荐</a></li>
         </ol>
-        <div class="sns-category">
+        <div class="sns-category">.
             <ol>
-                <li class="active">
-                    <a><i class="icon-collapse"></i>儿童</a>
-                </li>
-                <li>
-                    <a><i class="icon-collapse"></i>人文</a>
-                </li>
-                <li>
-                    <a><i class="icon-collapse"></i>有声小说</a>
-                </li>
-                <li>
-                    <a><i class="icon-collapse"></i>财经</a>
-                </li>
-                <li>
-                    <a><i class="icon-collapse"></i>曲艺戏曲</a>
-                </li>
-                <li>
-                    <a><i class="icon-collapse"></i>文学</a>
-                </li>
-                <li>
-                    <a><i class="icon-collapse"></i>相声评书</a>
-                </li>
-                <li>
-                    <a><i class="icon-collapse"></i>健康</a>
-                </li>
-                <li>
-                    <a><i class="icon-collapse"></i>生活</a>
-                </li>
-                <li>
-                    <a><i class="icon-collapse"></i>成功</a>
-                </li>
-                <li>
-                    <a><i class="icon-collapse"></i>历史</a>
-                </li>
-                <li>
-                    <a><i class="icon-collapse"></i>精品课</a>
+                <li th:each="it:${list}">
+                    <a class="category-item" th:text="${it.ptname}"  th:onclick="|typequery(${it.ptid})|">
+                    </a>
                 </li>
             </ol>
         </div>
     </div>
-    <div class="r-article">
+    <div class="r-article" >
+        <div id="program"></div>
         <div class="container">
             <!--循环显示的内容-->
             <section>
-                <div class="album-row-line"></div>
                 <div class="album-filter-w">
-							<span class="album-filter">
-								<a class="link">推荐</a><span class="split">|</span>
-								<a>最新</a><span class="split">|</span>
-								<a>最热</a>
-							</span>
-                </div>
+                             <span class="album-filter">
+                                 <a class="link" onclick="test()">推荐</a><span class="split">|</span>
+                                 <a>最新</a><span class="split">|</span>
+                                 <a>最热</a>
+                             </span>
+                 </div>
                 <div class="category-book">
                     <ul class="clearfix">
-                        <li class="book-item">
+                        <li class="book-item"  th:each="it:${programinfos.list}">
                             <div class="book-item-photo pr">
-                                <a href="/book/27469056"><img alt="爸爸送给青春期儿子的私房书-杨建秋-演播者T"
-                                                              src="https://bookpic.lrts.me/v0efpb9wjgqgsbya7fvq7q3oycdp1nja.jpeg"><span
-                                        class="play-w"><i class="icon-play"></i></span></a>
+                                <a href="">
+                                    <img th:src="${it.get('poster')}" ><span  class="play-w">
+                                    <i class="icon-play"></i></span></a>
                             </div>
                             <div class="book-item-r">
-                                <a href="/book/27469056" class="book-item-name">爸爸送给青春期儿子的私房书</a>
+                                <a href="" class="book-item-name"  th:text="${it.get('pname')}"></a>
                                 <div class="book-item-info">
-                                    <span class="weaken">原著：</span><a class="author">杨建秋</a><span
-                                        class="split"></span><span class="weaken">主播：</span><a
-                                        href="/user/650126042" class="g-user-shutdown">演播者T</a>
+                                    <span class="weaken">主播：</span><a
+                                        href="" class="g-user-shutdown" th:text="${it.get('petname')}"></a>
                                 </div>
-                                <div class="book-item-star">
-
-                                    <i class="icon-star-s"></i>
-                                    <i class="icon-star-s"></i>
-                                    <i class="icon-star-s"></i>
-                                    <i class="icon-star-s"></i>
-                                    <i class="icon-star-s"></i>
-
-                                </div>
-                                <p class="book-item-desc weaken">
-                                    给孩子正确的引导，结合案例展开阐述，通俗易懂，简练实用，具有极强的可操作性，排解男孩子青春期的诸多困扰，对广大家长教子成才有所帮助。 </p>
+                                <p class="book-item-desc weaken" th:text="${it.get('pintroduction')}"></p>
                                 <a showType="3" entityId="27469056" entityType="3" class="btn-collection addCollection">收藏</a>
-                            </div>
-                        </li>
-                        <li class="book-item">
-                            <div class="book-item-photo pr">
-                                <a href="/book/29441"><img alt="数学就是这么有趣：人体离不开数学-纸上魔方-蜗牛"
-                                                           src="https://bookpic.lrts.me/91a25319cacc4794a8cacadd1e6eb46d.jpg"><span
-                                        class="play-w"><i class="icon-play"></i></span></a>
-                            </div>
-                            <div class="book-item-r">
-                                <a href="/book/29441" class="book-item-name">数学就是这么有趣：人体离不开数学</a>
-                                <div class="book-item-info">
-                                    <span class="weaken">原著：</span><a class="author">纸上魔方</a><span class="split"></span><span
-                                        class="weaken">主播：</span><a
-                                        href="/user/60267619" class="g-user-shutdown">蜗牛</a>
-                                </div>
-                                <div class="book-item-star">
-                                    <i class="icon-star-s"></i>
-                                    <i class="icon-star-s"></i>
-                                    <i class="icon-star-s"></i>
-                                    <i class="icon-star-s"></i>
-                                    <i class="icon-star-s"></i>
-                                </div>
-                                <p class="book-item-desc weaken">
-                                    用生动活泼的文字、以及贴近生话的例子为孩子全面讲解数学基本知识，告别枯燥、抽象和深奥，让孩子爱上数学。 </p>
-                                <a showType="3" entityId="29441" entityType="3"
-                                   class="btn-collection addCollection">收藏</a>
                             </div>
                         </li>
                     </ul>
@@ -128,14 +61,27 @@
         <!--分页-->
         <div class="pager">
             <div class="pagination">
-                <span class="current">1</span>
-                <a href="/book/category/6/recommend/2/20">2</a>
-                <a href="/book/category/6/recommend/3/20">3</a>
-                <a href="/book/category/6/recommend/4/20">4</a>
-                <a href="/book/category/6/recommend/2/20" class="next" rel="next">下一页</a>
+                <a href="programtypedetails?page=1">首页</a>
+                <a th:href="|programtypedetails?page=${programinfos.prePage}|">上一页</a>
+                <a th:href="|programtypedetails?page=${programinfos.nextPage}|">下一页</a>
+                <a th:href="|programtypedetails?page=${programinfos.pages}|">尾页</a>
             </div>
         </div>
     </div>
 </div>
 </body>
+<script th:src="@{'/js/jquery.min.js?v=36'}"></script>
+<script>
+function typequery(ptid) {
+    $.ajax({
+        type:"post",
+        url:"programtype/queryBytype",
+        data:{"ptid":ptid},
+        success:function (data) {
+            console.log(data);
+            $("#program").html(data);
+        }
+    })
+}
+</script>
 </html>
