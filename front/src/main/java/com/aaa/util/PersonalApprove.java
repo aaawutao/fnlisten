@@ -31,7 +31,7 @@ public class PersonalApprove {
         Map<String, String> bodys = new HashMap<String, String>();
 
         bodys.put("image", image);
-        bodys.put("side", "frot");
+        bodys.put("side", "front");
         try {
             HttpResponse response = HttpUtils.doPost(host, path, method, headers, querys, bodys);
             //获取response的body

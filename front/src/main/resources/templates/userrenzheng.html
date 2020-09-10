@@ -179,49 +179,48 @@
             var src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
             $('#cropedBigImg').attr('src',src);
         })
-
         $("#btn").click(function () {
-            if(checkrname() && checkridcard()){
-                var fileInput = $('#chooseImage').get(0).files[0];
-                if(fileInput){
-                    var formdata=new FormData($("#fm")[0]);
-                    $.ajax({
-                        type:"post",
-                        url:"realnameinfo/addrealnameinfo",
-                        data:formdata,
-                        processData: false, // 告诉jQuery不要去处理发送的数据
-                        contentType: false,
-                        success:function (data) {
-                            if(data==1){
-                                //修改用户为个人主播
-                                var front_userid=$("#front_userid").val();
-                                $.ajax({type:"post", url:"realnameinfo/updatefrontflag", data:{"front_userid":front_userid}, success:function (data) {
-                                        console.log("修改用户状态"+data)
-                                        if(data==1){
-                                            var front_userid = $("#front_userid").val();
-                                            var front_username = $("#front_username").val();
-                                            $.ajax({
-                                                type:"post",
-                                                url:"anchorinfo/addanchor",
-                                                data:{"front_userid":front_userid,"petname":front_username},
-                                                success:function (data) {
-                                                    if(data==1){
-                                                        alert("认证成功")
-                                                    }
-                                                }
-                                            })
-                                        }
-                                    }
-                                })
-                            }else{
-                                alert("认证失败")
-                            }
-                        }
-                    })
-                }else{
-                    $("#checkpic").html("请选择身份证照片");
-                }
-            }
+           if(checkrname() && checkridcard()){
+              var fileInput = $('#chooseImage').get(0).files[0];
+              if(fileInput){
+                  var formdata=new FormData($("#fm")[0]);
+                  $.ajax({
+                      type:"post",
+                      url:"realnameinfo/addrealnameinfo",
+                      data:formdata,
+                      processData: false, // 告诉jQuery不要去处理发送的数据
+                      contentType: false,
+                      success:function (data) {
+                          if(data==1){
+                              //修改用户为个人主播
+                              var front_userid=$("#front_userid").val();
+                              $.ajax({type:"post", url:"realnameinfo/updatefrontflag", data:{"front_userid":front_userid}, success:function (data) {
+                                      console.log("修改用户状态"+data)
+                                      if(data==1){
+                                          var front_userid = $("#front_userid").val();
+                                          var front_username = $("#front_username").val();
+                                          $.ajax({
+                                              type:"post",
+                                              url:"anchorinfo/addanchor",
+                                              data:{"front_userid":front_userid,"petname":front_username},
+                                              success:function (data) {
+                                                  if(data==1){
+                                                      alert("成功")
+                                                  }
+                                              }
+                                          })
+                                      }
+                                  }
+                              })
+                          }else{
+                              alert("失败")
+                          }
+                      }
+                  })
+              }else{
+                  $("#checkpic").html("请选择身份证照片");
+              }
+           }
         })
     })
 </script>

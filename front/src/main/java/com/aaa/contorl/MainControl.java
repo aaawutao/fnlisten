@@ -2,9 +2,7 @@ package com.aaa.contorl;
 
 import com.aaa.dao.PrograminfoDao;
 import com.aaa.entity.Programinfo;
-import com.aaa.entity.Programtypeinfo;
 import com.aaa.service.*;
-import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -14,8 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 public class MainControl {
@@ -31,7 +27,6 @@ public class MainControl {
 
     @Resource
     TopupsetinfoService topupsetinfoService;
-
 
     //主页
     @RequestMapping("/main")
@@ -62,15 +57,9 @@ public class MainControl {
 
     //显示所有节目
     @RequestMapping("/programtypedetails")
-    public String programtypedetails(Model model, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue ="8") Integer size) {
-        List<Programtypeinfo> show = programtypeinfoService.show();
-        PageInfo<List<Map<String, Object>>> listPageInfo = programinfoService.queryAll(page, size);
-        model.addAttribute("list",show);
-        model.addAttribute("programinfos",listPageInfo);
+    public String programtypedetails() {
         return "programtypedetails.html";
     }
-
-
 
 
     //详情

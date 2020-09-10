@@ -72,7 +72,9 @@
     </div>
 </div>
 </body>
-<script>
+
+<script th:src="@{'/xtip/js/xtiper.min.js'}"></script>
+<script th:inline="javascript">
     $(document).ready(function () {
         window.dqplay=false;
         window.myplay = new jPlayerPlaylist({
