@@ -87,6 +87,14 @@ public class RealnameinfoController {
 
 
 
-
+    //查询认证后的信息
+    @ResponseBody
+    @RequestMapping("queryByfront_userid")
+    public  Realnameinfo queryByfront_userid(Integer front_userid){
+        System.out.println(front_userid);
+        Realnameinfo realnameinfo = realnameinfoService.queryByfront_userid(front_userid);
+        System.out.println(realnameinfo);
+        return  realnameinfo;
+    }
 
 }

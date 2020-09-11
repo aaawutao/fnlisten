@@ -9,7 +9,56 @@
 <body>
 
 <div th:if="${session?.user?.get('front_userflag')}!=1">
-    认证成功的信息
+    <div style="">
+        <div data-v-997dad96="" class="tip authed">
+            <i data-v-997dad96="" class="preIcon ivu-icon iconfont iconicon_submit_successfully_large" style="font-size: 14px;"></i>
+            <p data-v-997dad96="" class="warn-msg" id="front">
+                您已完成实名认证，可以正常发布作品
+            </p>
+        </div>
+        <div data-v-75f3c714="" class="detail">
+            <div data-v-75f3c714="" class="person">
+                <div data-v-75f3c714="" class="title">
+                    <div data-v-75f3c714="">
+                        <h3 data-v-75f3c714="" class="person_title">
+                            个人认证信息
+                        </h3> <span data-v-a1edb30a="" data-v-75f3c714="" class="status" style="color: rgb(51, 51, 51);">已认证</span>
+                    </div>
+                </div>
+                <div data-v-75f3c714="" class="info">
+                    <div data-v-75f3c714="" class="item">
+                        <input type="hidden" id="userid" name="userid" th:value="${session?.user?.get('front_userid')}"/>
+                        <input type="hidden" id="front_userflag" name="front_userflag" th:value="${session?.user?.get('front_userflag')}"/>
+                        <div data-v-75f3c714="" class="label">
+                            姓名
+                        </div>
+                        <div data-v-75f3c714="" class="text">
+                            <span id="name"></span>
+                        </div>
+                    </div>
+                    <div data-v-75f3c714="" class="item">
+                        <div data-v-75f3c714="" class="label">
+                            证件类型
+                        </div>
+                        <div data-v-75f3c714="" class="text">
+                            二代身份证
+                        </div>
+                    </div>
+                    <div data-v-75f3c714="" class="item">
+                        <div data-v-75f3c714="" class="label">
+                            证件号码
+                        </div>
+                        <div data-v-75f3c714="" class="text">
+                            <span id="idcard"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
 </div>
 
 <div style="" id="renzheng" th:if="${session?.user?.get('front_userflag')}==1">
@@ -131,15 +180,29 @@
     }
 
     $(function () {
+        //查询是否已经实名认证
+        var flag = $("#front_userflag").val();
+       if(flag=="2"){
+           var userid = $("#userid").val();
+           $.ajax({
+               type:"post",
+               url:"realnameinfo/queryByfront_userid",
+               data:{"front_userid":userid},
+               success:function (data) {
+                   var ridcard = data.ridcard;
+                   var strcard=ridcard.replace(/^(.{1})(?:\d+)(.{1})$/,"$1***************$2");
+                   $("#name").html(data.rname);
+                   $("#idcard").html(strcard);
+               }
+           })
+       }
 
-        //ajax查询用户信息是否存在名字，如果不存在昵称则提示未完善个人信息，隐藏表单
         var front_userid = $("#front_userid").val();
         $.ajax({
             type:"post",
             url:"frontuser/queryByuserId",
             data:{"front_userid":front_userid},
             success:function (data) {
-                console.log(data.front_username);
                 if(data.front_username==undefined){
                     $("#hid").show();
                     $("#fm").hide();
@@ -163,6 +226,8 @@
             var src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
             $('#cropedBigImg').attr('src',src);
         })
+
+
         //上传混合表单
         $("#btn").click(function () {
            if(checkrname() && checkridcard()){
@@ -216,11 +281,16 @@
               }
            }
         })
+
     })
 </script>
 <style>
     div p {
         color: red;
+        font-size: 12px;
+    }
+    #front{
+        color: black;
         font-size: 12px;
     }
 </style>

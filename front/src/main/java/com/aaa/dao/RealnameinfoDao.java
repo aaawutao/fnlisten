@@ -16,4 +16,6 @@ public interface RealnameinfoDao extends Mapper<Realnameinfo> {
     @Select("select count(rid) from realnameinfo where ridcard=#{ridcard}")
     int queryByridcard(String ridcard);
 
+    @Select("select rid,rtype,rname,ridcard from realnameinfo where front_userid=#{front_userid}")
+    Realnameinfo queryByfront_userid(Integer front_userid);
 }

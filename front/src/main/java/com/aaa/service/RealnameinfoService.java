@@ -25,4 +25,9 @@ public class RealnameinfoService {
     public int queryByridcard(String ridcard){
         return realnameinfoDao.queryByridcard(ridcard);
     }
+
+
+    public  Realnameinfo queryByfront_userid(Integer front_userid){
+        return  realnameinfoDao.queryByfront_userid(front_userid);
+    }
 }
