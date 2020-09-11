@@ -12,6 +12,16 @@ import java.util.Map;
 
 @Mapper
 public interface TopupinfoDao extends tk.mybatis.mapper.common.Mapper<Topupinfo> {
+
+    //查询用户充值记录
+    @Select("select * from topupinfo ti \n" +
+            "left join topupsetinfo tif \n" +
+            "on ti.tsid=tif.tsid \n" +
+            "where front_userid=#{front_userid}\n" +
+            "order by topupdate desc")
+    List<Map<String,Object>> queryByuserRecord(Integer front_userid);
+
+
     @Select("update topupinfo \n" +
             "set state=1,paymentid=#{paymentid} where tpid=#{tpid}")
     public Integer editState(@Param("tpid") String tpid, @Param("paymentid") String paymentid);

@@ -55,7 +55,6 @@
 					<ul>
 						<li>
 							<a class="g-user-i" id="myhomecover">
-								<!--th:src="${session?.user?.front_userpic}"-->
 								<img src="http://localhost:9999/fileclient/staticfile/default_user_head.png"/>
 							</a>
 							<div class="g-top-menu-l">
@@ -64,7 +63,7 @@
 								<a href="javascript:;" th:onclick="vipchongzhi()">成为VIP会员</a>
 								<a href="javascript:;" th:onclick="chongzhi()">账户充值</a>
 								<a href="javascript:;" th:onclick="record()">用户购买记录</a>
-								<a href="javascript:;" th:onclick="record2()">用户充值记录</a>
+								<a href="javascript:;"  th:onclick="record2(1)">用户充值记录</a>
 								<a class="g-top-logout" href="javascript:;" th:onclick="logout()"><i
 										class="icon-logout"></i><span class="f12">退出登录</span></a>
 							</div>
@@ -218,9 +217,13 @@
 	function record(){
 		$("#iframe_a").attr("src", "/front/recoadshow");
 	}
-	function record2() {
-		$("#iframe_a").attr("src", "/front/recoadshow02");
+
+
+	function record2(page) {
+		$("#iframe_a").attr("src", "/front/recoadshow02?page="+page);
 	}
+
+
 	//充值虚拟币路径
 	function chongzhi() {
 		$("#iframe_a").attr("src", "/front/recharges");

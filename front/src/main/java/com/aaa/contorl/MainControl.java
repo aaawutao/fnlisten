@@ -32,6 +32,9 @@ public class MainControl {
     @Resource
     TopupsetinfoService topupsetinfoService;
 
+    //充值记录
+    @Resource
+    TopupinfoService topupinfoService;
 
     //主页
     @RequestMapping("/main")
@@ -116,8 +119,15 @@ public class MainControl {
     public String recoadshow(){
         return "recoadshow.html";
     }
+    //查询用户充值记录
     @RequestMapping("recoadshow02")
-    public String recoadshow02(){
+    public String recoadshow02(ModelMap model,
+              @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue ="8") Integer size
+            ,HttpSession session){
+        Map<String,Object> user = (Map<String, Object>) session.getAttribute("user");
+        Integer front_userid = (Integer) user.get("front_userid");
+        PageInfo<List<Map<String, Object>>> listPageInfo = topupinfoService.queryByuserRecord(page, size, front_userid);
+        model.addAttribute("list",listPageInfo);
         return "recoadshow02.html";
     }
 

@@ -4,6 +4,8 @@ import com.aaa.dao.FrontuserDao;
 import com.aaa.dao.TopupinfoDao;
 import com.aaa.entity.FrontUser;
 import com.aaa.entity.Topupinfo;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -70,9 +72,6 @@ public class TopupinfoService {
         session.setAttribute("user",frontuserDao.login(frontUser.getFront_userphone(),frontUser.getFront_userpwd()));
     }
 
-
-
-
     //判断时间做处理
     public Date setDate(String tianshu,Date userDate){
         Calendar cal = Calendar.getInstance();
@@ -94,4 +93,12 @@ public class TopupinfoService {
         return cal.getTime();
     }
 
+
+    //查询用户充值记录
+   public  PageInfo<List<Map<String, Object>>> queryByuserRecord(Integer page,Integer size,Integer front_userid) {
+       PageHelper.startPage(page, size);
+       List<Map<String, Object>> list = topupinfoDao.queryByuserRecord(front_userid);
+       PageInfo<List<Map<String, Object>>> pageInfo = new PageInfo(list);
+       return pageInfo;
+   }
 }

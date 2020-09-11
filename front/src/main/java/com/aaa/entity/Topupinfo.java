@@ -10,9 +10,10 @@ public class Topupinfo {
     private Date topupdate;
     private Integer tsid;
     private String topupway;
+    private Integer state;
     private Double tsr;
     private String paymentid;
-    private Integer state;
+
 
     public Integer getState() {
         return state;

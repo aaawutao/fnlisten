@@ -1,10 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
 </head>
 <body>
-    用户充值页面
+   <div  style="width: 80%;margin-left: 14%" >
+       <table class="table table-hover">
+           <thead>
+           <tr>
+               <th>服务类型</th>
+               <th>支付方式</th>
+               <th>支付额度</th>
+               <th>充值时间</th>
+           </tr>
+           </thead>
+           <tbody>
+           <tr th:each="it:${list.list}">
+               <td th:text="${it.get('tstype')}==0?'懒人币':'会员'"></td>
+               <td th:text="${it.get('topupway')}"></td>
+               <td th:text="${it.get('tsr')}"></td>
+               <td th:text="${it.get('topupdate')}"></td>
+           </tr>
+           </tbody>
+       </table>
+       <div class="pager" style="margin-right: 50px">
+           <div class="pagination">
+               <!--<a th:onclick="r1(1)">首页</a>
+               <a th:onclick="r1([[${list.prePage}]])">上一页</a>
+               <a th:onclick="r1([[${list.nextPage}]])">下一页</a>
+               <a th:onclick="r1([[${list.pages}]])">尾页</a>-->
+               <button id="sye" th:onclick="r1(1)"  class="btn btn-primary">首页</button>
+               <button id="sy" th:onclick="r1([[${list.prePage}]])"  class="btn btn-primary">上一页</button>
+               <button id="xy" th:onclick="r1([[${list.nextPage}]])"  class="btn btn-primary">下一页</button>
+               <button th:onclick="r1([[${list.pages}]])"  class="btn btn-primary">尾页</button>
+           </div>
+       </div>
+   </div>
+
 </body>
+<script>
+    function r1(page) {
+        parent.record2(page);
+    }
+</script>
+<style>
+    #sye{
+        margin-right: 40px;
+    }
+    #sy{
+        margin-right: 40px;
+    }
+    #xy{
+        margin-right: 40px;
+    }
+</style>
 </html>
