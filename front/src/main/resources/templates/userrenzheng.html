@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
+    <link rel="stylesheet" th:href="@{'xtip/css/xtiper.css'}">
 </head>
 <body>
 
@@ -19,6 +20,8 @@
         </p>
     </div>
     <div data-v-e7ce8334="" class="edit-auth">
+
+
         <form data-v-e7ce8334="" autocomplete="off" class="ivu-form ivu-form-label-right" id="fm"  enctype="multipart/form-data">
             <div data-v-e7ce8334="" class="person">
                 <div data-v-e7ce8334="" class="title">
@@ -87,32 +90,16 @@
                         <button data-v-e7ce8334="" id="btn" type="button" class="submit lr_btn_solid ivu-btn ivu-btn-default">
                             <span>提 交</span></button>
                     </div>
-
-                    <!--<button data-v-e7ce8334="" id="test" type="button" class="submit lr_btn_solid ivu-btn ivu-btn-default">
-                        <span>测试</span></button>-->
                 </div>
-              <!--  <div data-v-e7ce8334="" class="ivu-form-item ivu-form-item-required">
-                    <label class="ivu-form-item-label" style="width: 140px;">证件反面</label>
-                    <div class="ivu-form-item-content" style="margin-left: 140px;">
-                        <div data-v-c4b17aae="" data-v-e7ce8334="">
-                            <input type="file" id="fs" class="upload_btn ivu-btn ivu-btn-default"></input>
-                            <span data-v-e7ce8334="" data-v-c4b17aae="" class="tip">格式支持PNG、BMP、JPG或GIF，照片少于5M</span>
-                            <div data-v-c4b17aae="" class="upload_wrap">
-                                <div data-v-c4b17aae="" class="upload_area">
-                                    <div data-v-c4b17aae="" class="real real_hover">
-                                        <img id="ims" src="" style="width: 100%;height: 100%;" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
+
         </form>
     </div>
 </div>
 </body>
 <script th:src="@{'/js/jquery.min.js?v=36'}"></script>
+<script th:src="@{'/xtip/js/xtiper.min.js'}"></script>
 <script>
+
     function checkrname(){
         var rname=$("#rname").val();
         var reg = /^[\u4e00-\u9fa5\s\.]+$/;
@@ -144,6 +131,7 @@
     }
 
     $(function () {
+
         //ajax查询用户信息是否存在名字，如果不存在昵称则提示未完善个人信息，隐藏表单
         var front_userid = $("#front_userid").val();
         $.ajax({
@@ -178,6 +166,7 @@
         //上传混合表单
         $("#btn").click(function () {
            if(checkrname() && checkridcard()){
+               parent.openxpit();
               var fileInput = $('#chooseImage').get(0).files[0];
               if(fileInput){
                   var formdata=new FormData($("#fm")[0]);
@@ -193,7 +182,6 @@
                               $.ajax({type:"post",
                                   url:"realnameinfo/updatefrontflag",
                                   data:{"front_userid":front_userid}, success:function (data) {
-                                      console.log("修改用户状态"+data)
                                       if(data==1){
                                           var front_userid = $("#front_userid").val();
                                           var front_username = $("#front_username").val();
@@ -204,6 +192,8 @@
                                               success:function (data) {
                                                   if(data==1){
                                                       parent.mgs("认证成功");
+                                                      parent.closexpit();
+                                                      //xtip.close(loadid);
                                                       location.reload();
                                                   }
                                               }
@@ -213,8 +203,10 @@
                               })
                           }
                           else if(data==2){
+                              parent.closexpit();
                               parent.mgs("该身份证已被认证");
                           }else {
+                              parent.closexpit();
                               parent.mgs("认证失败");
                           }
                       }

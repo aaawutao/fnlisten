@@ -382,5 +382,12 @@
 	function mgs(context){
 		xtip.msg(context, {type: 'w', pos: 't'});
 	}
+
+	function openxpit() {
+		window.loadid = xtip.load();
+	}
+	function closexpit() {
+		xtip.close(window.loadid);
+	}
 </script>
 </html>
