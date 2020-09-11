@@ -18,7 +18,7 @@
         <div class="sns-category">.
             <ol>
                 <li th:each="it:${list}">
-                    <a class="category-item" th:text="${it.ptname}"  th:onclick="|typequery(${it.ptid})|">
+                    <a class="category-item" th:text="${it.ptname}"  th:onclick="|typequery([[${it.ptid}]],null)|">
                     </a>
                 </li>
             </ol>
@@ -31,7 +31,7 @@
             <section>
                 <div class="album-filter-w">
                              <span class="album-filter">
-                                 <a class="link" onclick="test()">推荐</a><span class="split">|</span>
+                                 <a class="link" >推荐</a><span class="split">|</span>
                                  <a>最新</a><span class="split">|</span>
                                  <a>最热</a>
                              </span>
@@ -40,12 +40,12 @@
                     <ul class="clearfix">
                         <li class="book-item"  th:each="it:${programinfos.list}">
                             <div class="book-item-photo pr">
-                                <a href="">
+                                <a th:onclick="plays([[${it.pid}]])">
                                     <img th:src="${it.get('poster')}" ><span  class="play-w">
                                     <i class="icon-play"></i></span></a>
                             </div>
                             <div class="book-item-r">
-                                <a href="" class="book-item-name"  th:text="${it.get('pname')}"></a>
+                                <a th:onclick="|showxq(${it.pid},${it.anchortid})|" class="book-item-name"  th:text="${it.get('pname')}"></a>
                                 <div class="book-item-info">
                                     <span class="weaken">主播：</span><a
                                         href="" class="g-user-shutdown" th:text="${it.get('petname')}"></a>
@@ -61,10 +61,10 @@
         <!--分页-->
         <div class="pager">
             <div class="pagination">
-                <a href="programtypedetails?page=1">首页</a>
-                <a th:href="|programtypedetails?page=${programinfos.prePage}|">上一页</a>
-                <a th:href="|programtypedetails?page=${programinfos.nextPage}|">下一页</a>
-                <a th:href="|programtypedetails?page=${programinfos.pages}|">尾页</a>
+                <a th:onclick="|typequery([[${ptid}]],1)|">首页</a>
+                <a th:onclick="|typequery([[${ptid}]],${programinfos.prePage})|">上一页</a>
+                <a th:onclick="|typequery([[${ptid}]],${programinfos.nextPage})|">下一页</a>
+                <a th:onclick="|typequery([[${ptid}]],${programinfos.pages})|">尾页</a>
             </div>
         </div>
     </div>
@@ -72,16 +72,18 @@
 </body>
 <script th:src="@{'/js/jquery.min.js?v=36'}"></script>
 <script>
-    function typequery(ptid) {
-        $.ajax({
-            type:"post",
-            url:"programtype/queryBytype",
-            data:{"ptid":ptid},
-            success:function (data) {
-                console.log(data);
-                $("#program").html(data);
-            }
-        })
+    function typequery(ptid,page) {
+       window.parent.eidtprogram(ptid,page);
     }
+
+
+    function plays(id) {
+        window.parent.getdata(id);
+    }
+
+    function showxq(id, aid) {
+        window.parent.eidtsrc(id, aid);
+    }
+
 </script>
 </html>

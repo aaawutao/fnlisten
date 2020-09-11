@@ -14,7 +14,7 @@
             <div class="category-title">书籍分类</div>
             <ol>
                 <li th:each="it:${programtype}">
-                    <a class="category-item" th:text="${it.ptname}">儿童<i class="icon-collapse"></i></a>
+                    <a class="category-item" th:text="${it.ptname}" th:onclick="prodetails([[${it.ptid}]])"><i class="icon-collapse"></i></a>
                 </li>
             </ol>
         </div>
@@ -22,13 +22,13 @@
             <div class="b-silder">
                 <ul class="slides">
                     <li class="hide"><a><img
-                            src="http://localhost:9999/fileclient/staticfile/1/18338978835/photo/a3.jpg"
+                            src="http://localhost:9999/fileclient/staticfile/95dirpq3mksej1ui2rsvmghb7161rki3_720x333.jpeg"
                             alt=""/></a></li>
                     <li class="hide"><a><img
-                            src="http://localhost:9999/fileclient/staticfile/1/18338978835/photo/a2.jpg"
+                            src="http://localhost:9999/fileclient/staticfile/fjfu4yzuvvoj9vwlswvr7hz6soid7zzd_720x333.jpeg"
                             alt=""/></a></li>
                     <li class="hide"><a><img
-                            src="http://localhost:9999/fileclient/staticfile/1/18338978835/photo/a1.jpg"
+                            src="http://localhost:9999/fileclient/staticfile/u2jsd6ds46ioc4l9tb0dn0c2qkw5to9n_720x333.jpeg"
                             alt=""/></a></li>
                 </ul>
             </div>
@@ -150,6 +150,9 @@
 
     function showxq(id, aid) {
         window.parent.eidtsrc(id, aid);
+    }
+    function prodetails(ptid) {
+        window.parent.eidtprogram(ptid,null);
     }
 </script>
 </html>

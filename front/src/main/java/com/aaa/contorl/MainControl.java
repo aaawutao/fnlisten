@@ -62,15 +62,14 @@ public class MainControl {
 
     //显示所有节目
     @RequestMapping("/programtypedetails")
-    public String programtypedetails(Model model, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue ="8") Integer size) {
+    public String programtypedetails(ModelMap model,@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue ="8") Integer size, @RequestParam(defaultValue ="1")Integer ptid) {
         List<Programtypeinfo> show = programtypeinfoService.show();
-        PageInfo<List<Map<String, Object>>> listPageInfo = programinfoService.queryAll(page, size);
         model.addAttribute("list",show);
+        PageInfo<List<Map<String, Object>>> listPageInfo = programinfoService.queryAll(page, size,ptid);
         model.addAttribute("programinfos",listPageInfo);
+        model.addAttribute("ptid",ptid);
         return "programtypedetails.html";
     }
-
-
 
 
     //详情
@@ -119,13 +118,10 @@ public class MainControl {
         }
         return "personalxianqing.html";
     }
-
     //账号详情
     @RequestMapping("/userdetails")
     public String userdatails(HttpSession session) {
         Object user = session.getAttribute("user");
-        System.out.println("22222222222");
-        System.out.println("1111111111111111111111111111111111"+user);
         return "userdetails.html";
     }
 

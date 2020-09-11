@@ -77,7 +77,7 @@
                     <!--
                         th:onclick="|xunibi(${session?.user.get('front_userid')},${programinfo.pid},${item.ctid},${programinfo.pname},${item.title})|"
                     -->
-                    <time>更新时间:<em th:text="${item.createdate}"></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>价格:<em th:text="${item.get('virtualcurrency')}"></em></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em  th:if="${item.state}==1" th:onclick="xunibi([[${programinfo.pid}]],[[${item.ctid}]],[[${programinfo.pname}]],[[${item.get('virtualcurrency')}]],[[${item.title}]])" ><font color="#008b8b" >章节购买</font></em></time>
+                    <time>更新时间:<em th:text="${item.createdate}"></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em th:if="${item.state}==1" >价格:<em th:text="${item.get('virtualcurrency')}"></em></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em  th:if="${item.state}==1" th:onclick="xunibi([[${programinfo.pid}]],[[${item.ctid}]],[[${programinfo.pname}]],[[${item.get('virtualcurrency')}]],[[${item.title}]])" ><font color="#008b8b" >章节购买</font></em></time>
                 </li>
             </ul>
         </section>

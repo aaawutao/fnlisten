@@ -24,10 +24,12 @@ public class PrograminfoService {
         return programinfoDao.insert(programinfo);
     }
     //查询所有数据
-    public  PageInfo<List<Map<String, Object>>> queryAll(Integer page,Integer size){
+    public  PageInfo<List<Map<String, Object>>> queryAll(Integer page,Integer size,Integer ptid){
         PageHelper.startPage(page,size);
-        List<Map<String, Object>> list = programinfoDao.queryAll();
+        //List<Map<String, Object>> list = programinfoDao.queryAll();
+        List<Map<String,Object>> list=programinfoDao.query(null,ptid,null,null);
         PageInfo<List<Map<String, Object>>> pageInfo = new PageInfo(list);
+
         return pageInfo;
     }
 
