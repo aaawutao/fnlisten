@@ -108,50 +108,18 @@ public class MainControl {
             //当前主播的节目
             modelMap.addAttribute("program", programinfoService.query(null, null, acid, null));
         }
-        System.out.println(session.getAttribute("user"));
-        //充值查询,用户id做查询
-        if(name.equals("recoadshow02")){
-
-        }
-        if(name.equals("recoadshow")){
-
-        }
         return "personalxianqing.html";
     }
-    //充值记录
-   /* @RequestMapping("/recoadshow")
-    public String record(){
+
+    //用户的购买记录
+    @RequestMapping("recoadshow")
+    public String recoadshow(){
         return "recoadshow.html";
     }
-   @RequestMapping("/recoadshow02")
-    public String record2(){
+    @RequestMapping("recoadshow02")
+    public String recoadshow02(){
         return "recoadshow02.html";
     }
 
-
-    //账号详情
-    @RequestMapping("/userdetails")
-    public String userdatails(HttpSession session) {
-        return "userdetails.html";
-    }
-
-    //认证详情
-    @RequestMapping("/userrenzheng")
-    public String renzheng() {
-        return "userrenzheng.html";
-    }
-
-    //节目详情
-    @RequestMapping("/showinformation")
-    public String showinformation() {
-        return "personalxianqing.html";
-    }
-
-    //创建节目
-    @RequestMapping("/createprogram")
-    public String createprogram() {
-        return "createprogram.html";
-    }
-*/
 
 }
