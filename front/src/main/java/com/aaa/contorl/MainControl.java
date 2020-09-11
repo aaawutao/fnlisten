@@ -45,11 +45,6 @@ public class MainControl {
         modelMap.addAttribute("flag", flag);
         return "login.html";
     }
-    //充值记录
-    @RequestMapping("/recordinfo")
-    public String record(){
-        return "record.html";
-    }
     //虚拟币充值
     @RequestMapping("/xunibirecharge")
     public String recharge(ModelMap modelMap) {
@@ -100,7 +95,7 @@ public class MainControl {
     }
     //用户详情
     @RequestMapping("/gerenxianqing")
-    public String gerenxianqing(ModelMap modelMap, @RequestParam("name") String name, @RequestParam("acid") Integer acid) {
+    public String gerenxianqing(ModelMap modelMap, @RequestParam("name") String name, @RequestParam("acid") Integer acid,HttpSession session) {
         modelMap.addAttribute("name", name);
         //如果是创建节目把类型传过期
         if (name.equals("createprogram")) {
@@ -113,12 +108,30 @@ public class MainControl {
             //当前主播的节目
             modelMap.addAttribute("program", programinfoService.query(null, null, acid, null));
         }
+        System.out.println(session.getAttribute("user"));
+        //充值查询,用户id做查询
+        if(name.equals("recoadshow02")){
+
+        }
+        if(name.equals("recoadshow")){
+
+        }
         return "personalxianqing.html";
     }
+    //充值记录
+   /* @RequestMapping("/recoadshow")
+    public String record(){
+        return "recoadshow.html";
+    }
+   @RequestMapping("/recoadshow02")
+    public String record2(){
+        return "recoadshow02.html";
+    }
+
+
     //账号详情
     @RequestMapping("/userdetails")
     public String userdatails(HttpSession session) {
-        Object user = session.getAttribute("user");
         return "userdetails.html";
     }
 
@@ -139,6 +152,6 @@ public class MainControl {
     public String createprogram() {
         return "createprogram.html";
     }
-
+*/
 
 }

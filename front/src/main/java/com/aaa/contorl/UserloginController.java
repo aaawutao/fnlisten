@@ -71,8 +71,6 @@ public class UserloginController {
          session.setAttribute("user",frontUserService.login(phone, pwd));
          return 1;
     }
-
-
 //    @RequestMapping("userquery")
 //    @ResponseBody
 //    public String userQuery(Model model,Integer front_userid){

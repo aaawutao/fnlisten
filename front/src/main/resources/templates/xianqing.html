@@ -76,7 +76,7 @@
                     <!--
                         th:onclick="|xunibi(${session?.user.get('front_userid')},${programinfo.pid},${item.ctid},${programinfo.pname},${item.title})|"
                     -->
-                    <time>更新时间:<em th:text="${item.createdate}"></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em th:if="${item.state}==1" >价格:<em th:text="${item.get('virtualcurrency')}"></em></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em  th:if="${item.state}==1" th:onclick="xunibi([[${programinfo.pid}]],[[${item.ctid}]],[[${programinfo.pname}]],[[${item.get('virtualcurrency')}]],[[${item.title}]],[[${item.mp3}]])" ><font color="#008b8b" >章节购买</font>||</em><em th:onclick="xiazhan([[${programinfo.pid}]],[[${item.ctid}]],[[${item.mp3}]])"><font color="#008b8b" >章节下载</font></em></time>
+                    <time>更新时间:<em th:text="${item.createdate}"></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em th:if="${item.state}==1" >价格:<em th:text="${item.get('virtualcurrency')}"></em></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em  th:if="${item.state}==1" th:onclick="xunibi([[${programinfo.pid}]],[[${item.ctid}]],[[${programinfo.pname}]],[[${item.get('virtualcurrency')}]],[[${item.title}]],[[${item.mp3}]])" ><font color="#008b8b" >章节购买</font>||</em><em th:onclick="xiazhan([[${programinfo.pid}]],[[${item.ctid}]],[[${item.mp3}]],[[${item.state}]])"><font color="#008b8b" >章节下载</font></em></time>
                 </li>
             </ul>
         </section>
@@ -149,32 +149,40 @@
         }
     }
     //下载
-    function xiazhan(pid,ctid,url){
+    function xiazhan(pid,ctid,url,state){
         let user=[[${session?.user}]];
         if(user==null){
             parent.mgs("请登录");
             return;
         }
         //是否是会员
-        if(user['front_userstate']!=2){
-            //判断是否购买
-            $.ajax({
-                type: "post",
-                url: "buy/check",
-                data: {userid:user['front_userid'],pid:pid,ctid:ctid},
-                success: (data) => {
-                    if(!data){
-                        parent.mgs("请购买章节,或充值vip");
-                    }else{
-                        //全本下载
-                        window.location="http://localhost:8082/front/download?url="+url;
+        //state=1付费
+        if(state==1){
+            if(user['front_userstate']!=2){
+                //判断是否购买
+                $.ajax({
+                    type: "post",
+                    url: "buy/check",
+                    data: {userid:user['front_userid'],pid:pid,ctid:ctid},
+                    success: (data) => {
+                        if(!data){
+                            parent.mgs("请购买章节,或充值vip");
+                        }else{
+                            //章节下载
+                            window.location="http://localhost:8082/front/download?url="+url;
+                        }
                     }
-                }
-            });
+                });
+            }else{
+                //章节下载
+                window.location="http://localhost:8082/front/download?url="+url;
+            }
         }else{
+            //免费
             window.location="http://localhost:8082/front/download?url="+url;
         }
     }
+
 
 
 </script>

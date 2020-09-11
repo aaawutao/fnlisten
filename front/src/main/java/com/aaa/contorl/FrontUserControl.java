@@ -60,15 +60,12 @@ public class FrontUserControl {
         }*/
         int updatefront_user = frontUserService.updatefront_user(front_username, fileupload, front_userid);
         return 1;
-
     }
-
     @RequestMapping("updatepassword")
     @ResponseBody
     public  int  updatePassword( String front_userpwd,Integer front_userid){
         return frontUserService.updatePassword(front_userpwd,front_userid);
     }
-
     //手机号唯一校验
     @RequestMapping("queryByphone")
     @ResponseBody
@@ -77,4 +74,7 @@ public class FrontUserControl {
         System.out.println(frontUserService.queryByphone(front_userphone));
         return  frontUserService.queryByphone(front_userphone);
     }
+
+
+
 }
