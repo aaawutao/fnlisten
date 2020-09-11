@@ -112,7 +112,7 @@
                                        th:value="${session?.user?.get('front_userphone')}"/>
                                 <input type="hidden" name="flag" th:value="${session?.user?.get('flag')}">
                                 <input type="hidden" name="anchortid" th:value="${session?.user?.get('acid')}"/>
-                                <input th:value="${session.user.get('petname')}" readonly type="text" placeholder="请输入"
+                                <input id="ptname2" readonly type="text" placeholder="请输入"
                                        class="ivu-input ivu-input-lr40"/>
                             </div>
                         </div>
@@ -173,7 +173,7 @@
                     <div data-v-cb2fe0aa="" class="ivu-select ivu-select-single ivu-select-large" style="width: 368px;">
                         <div tabindex="0" class="ivu-select-selection">
                             <!--主播名称-->
-                            <input type="hidden" th:value="${session.user.get('petname')}" name="artist"/>
+                            <input type="text"  id="ptname1" name="artist"/>
                             <input type="hidden" name="front_userphone"
                                    th:value="${session?.user?.get('front_userphone')}"/>
                             <input type="hidden" name="flag" th:value="${session?.user?.get('flag')}">
@@ -206,7 +206,7 @@
 
 <script th:src="@{'/xtip/js/xtiper.min.js'}"></script>
 
-<script>
+<script th:inline="javascript">
     //提交
     function sbt() {
         let formdata = new FormData($("#fm")[0]);
@@ -239,6 +239,7 @@
                     parent.mgs("章节添加成功请在详情页面查看");
                     //清空元素
                     $("#yfm")[0].reset();
+                    $("#ptname1").val($("#ptname2").val());
                 }
             }
         });
@@ -278,11 +279,17 @@
             $("#setmoney select").val(0);
         }
     }
-
     $(function () {
         $("#program").hide();
         $("#setmoney").hide();
+       $.ajax({
+            type: "post",
+            url: "frontuser/queryname",
+            success: (data) => {
+                $("#ptname2").val(data);
+                $("#ptname1").val(data);
+            }
+        })
     })
-
 </script>
 </html>

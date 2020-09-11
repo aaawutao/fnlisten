@@ -217,7 +217,7 @@
            //获取到input的value，里面是文件的路径
             var filePath=$(this).val();
             var fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase();
-            if( !fileFormat.match(/.png|.jpg|.jpeg/) ) {
+            if( !fileFormat.match(/.png|.jpg|.jpeg|.gif/) ) {
                 $("#checkpic").html("上传错误,文件格式必须为：png/jpg/jpeg'");
                 return;
             }else{
@@ -225,9 +225,7 @@
             }
             var src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
             $('#cropedBigImg').attr('src',src);
-        })
-
-
+        });
         //上传混合表单
         $("#btn").click(function () {
            if(checkrname() && checkridcard()){

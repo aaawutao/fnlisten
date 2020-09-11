@@ -1,6 +1,7 @@
 package com.aaa.service;
 
 import com.aaa.dao.AnchorinfoDao;
+import com.aaa.entity.Anchorinfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,7 +16,6 @@ public class AnchorinfoService {
     public List<Map<String, Object>> query(Integer actype, Integer num) {
         return anchorinfoDao.query(actype, num);
     }
-
 
     public int addanchor(Integer front_userid, String petname) {
         return anchorinfoDao.addanchor(front_userid,petname);

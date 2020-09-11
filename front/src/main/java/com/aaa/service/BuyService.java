@@ -28,10 +28,12 @@ public class BuyService {
     public boolean buycheck(Integer userid,Integer pid,Integer ctid){
         Buy qbbuy=buyDao.query(userid,pid,0);
         if(qbbuy!=null){
+            System.out.println("全本购买");
             return  true;
         }
         Buy zjbuy=buyDao.query(userid,pid,ctid);
         if(zjbuy!=null){
+            System.out.println("有购买当前章节");
             return true;
         }
         return false;

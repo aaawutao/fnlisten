@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 @Controller
 @RequestMapping("frontuser")
@@ -29,5 +31,12 @@ public class FrontUserController {
     @RequestMapping("updates")
     public Integer updateDate(Integer front_userid){
         return frontUserService.updateDate(front_userid);
+    }
+
+    @RequestMapping("queryname")
+    @ResponseBody
+    public String queryname(HttpSession session){
+        Map map=(Map)session.getAttribute("user");
+        return frontUserService.queryByuserId(Integer.parseInt(map.get("front_userid").toString())).getFront_username();
     }
 }

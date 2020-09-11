@@ -1,5 +1,6 @@
 package com.aaa.contorl;
 
+import com.aaa.entity.FrontUser;
 import com.aaa.service.AnchorinfoService;
 import com.aaa.service.FrontUserService;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,7 @@ public class AnchorinfoController {
         Integer res=anchorinfoService.addanchor(front_userid, petname);
         Map user=(Map)session.getAttribute("user");
         user=frontUserService.login(user.get("front_userphone").toString(),user.get("front_userpwd").toString());
+        System.out.println(user);
         session.setAttribute("user",user);
         return res;
     }
