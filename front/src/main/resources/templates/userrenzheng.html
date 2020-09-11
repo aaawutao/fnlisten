@@ -161,13 +161,7 @@
                 }
             }
         })
-        /*if($("#front_username").val()==""){
-            $("#hid").show();
-            $("#fm").hide();
-        }else if($("#front_username").val()!="" ){
-            $("#hid").hide();
-            $("#fm").show();
-        }*/
+        //获取图片
        $("#chooseImage").on('change',function () {
            //获取到input的value，里面是文件的路径
             var filePath=$(this).val();
@@ -181,6 +175,7 @@
             var src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
             $('#cropedBigImg').attr('src',src);
         })
+        //上传混合表单
         $("#btn").click(function () {
            if(checkrname() && checkridcard()){
               var fileInput = $('#chooseImage').get(0).files[0];
@@ -194,9 +189,10 @@
                       contentType: false,
                       success:function (data) {
                           if(data==1){
-                              //修改用户为个人主播
                               var front_userid=$("#front_userid").val();
-                              $.ajax({type:"post", url:"realnameinfo/updatefrontflag", data:{"front_userid":front_userid}, success:function (data) {
+                              $.ajax({type:"post",
+                                  url:"realnameinfo/updatefrontflag",
+                                  data:{"front_userid":front_userid}, success:function (data) {
                                       console.log("修改用户状态"+data)
                                       if(data==1){
                                           var front_userid = $("#front_userid").val();
@@ -215,7 +211,10 @@
                                       }
                                   }
                               })
-                          }else{
+                          }
+                          else if(data==2){
+                              parent.mgs("该身份证已被认证");
+                          }else {
                               parent.mgs("认证失败");
                           }
                       }

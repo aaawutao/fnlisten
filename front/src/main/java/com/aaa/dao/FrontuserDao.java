@@ -77,4 +77,8 @@ public interface FrontuserDao extends Mapper<FrontUser> {
     //修改密码
     @Update("update front_user set front_userpwd=#{front_userpwd} where front_userid=#{front_userid}")
     int  updatePassword(@Param("front_userpwd") String front_userpwd,@Param("front_userid") Integer front_userid);
+
+    //手机号唯一校验
+    @Select("select count(front_userid) from front_user where front_userphone=#{front_userphone}")
+    int queryByphone(String front_userphone);
 }

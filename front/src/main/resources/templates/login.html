@@ -35,7 +35,7 @@
             <li>
                 <label class="field-name">密码：</label>
                 <div class="field-r">
-                    <input id="password" name="password" type="password" placeholder="密码" onblur="checkpwd()"
+                    <input id="password" name="password" type="password" placeholder="密码" onblur="checkloginPwd()"
                            onfocus="this.className='txt'"/>
                     <p id="checkpassword"></p>
                 </div>
@@ -78,7 +78,7 @@
             <li>
                 <label class="field-name">密码：</label>
                 <div class="field-r">
-                    <input id="pwd" name="pwd" type="password" onblur="checkPwd()" onfocus="this.className='txt'"
+                    <input id="pwd" name="resultpwd" type="password" onblur="checkresultpwd()" onfocus="this.className='txt'"
                            placeholder="密码"/>
                     <input type="hidden" name="code" id="code">
                     <p id="checkpwd"></p>
@@ -90,7 +90,10 @@
                     <input type="text" name="codeResult" id="codeResult" onblur="checkcr()"
                            onfocus="this.className='txt'"
                            placeholder="验证码"/>
-                    <span><button type="button" class="ant-btn-primary" onclick="coarse()">获取验证码</button></span>
+                    <span>
+                        <input type="button" value="获取验证码" class="ant-btn-primary" id="codedis" onclick="coarse(this)">
+                   <!--     <button type="button" class="ant-btn-primary" id="codedis" onclick="coarse(this)">获取验证码</button>
+                   --> </span>
                     <p id="checkcodeResult"></p>
                 </div>
             </li>
@@ -107,9 +110,20 @@
 <script th:src="@{'/js/jquery.min.js?v=36'}"></script>
 <script type="text/javascript" th:inline="javascript">
 
-
     function checkZH() {
         var phone = $("#phone").val();
+        $.ajax({
+            type: "post",
+            url: "frontuser/queryByphone",
+            data: {"front_userphone": phone},
+            success:function (data) {
+                if (data==1){
+                    $("#checkphone").html("手机号已存在！");
+                    $("#codedis").prop("disabled","disabled");
+                    return false;
+                }
+            }
+        })
         if (phone == "") {
             $("#checkphone").html("请输入手机号！");
             return false;
@@ -119,8 +133,11 @@
             return false;
         }
         $("#checkphone").html("");
+        $("#codedis").prop("disabled","");
         return true;
     }
+
+
 
     function checkcr() {
         var codeResult = $("#codeResult").val();
@@ -132,17 +149,28 @@
         return true;
     }
 
-    function checkPwd() {
-        var pwd = $("#password").val();
-        if (pwd == "") {
-            $("#checkpassword").html("请输入密码");
-            return false;
-        }
-        $("#checkpassword").html("");
-        return true;
-    }
 
-    function coarse() {
+
+    var countdown=80;
+    function ddd(val) {
+        if(countdown==0){
+            //val.removeAttribute("disabled");
+            $("#codedis").prop("disabled","disabled");
+            val.value="获取验证码";
+            countdown = 80;
+            return false;
+        }else{
+            $("#codedis").prop("disabled","");
+            val.value="重新发送(" + countdown + ")";
+            countdown--;
+        }
+        setTimeout(function() {   //设置一个定时器，每秒刷新一次
+            ddd(val);
+        },1000);
+
+    }
+    //获取验证码
+    function coarse(val) {
         if (checkZH()) {
             var phone = $("#phone").val();
             $.ajax({
@@ -152,16 +180,26 @@
                     "phone": phone
                 },
                 success: function (data) {
-                    $("#code").val(data.codeResult)
+                    $("#code").val(data.codeResult);
+                    ddd(val);
                 }
             })
         }
     }
 
+    function checkresultpwd() {
+        var pwd = $("#pwd").val();
+        if (pwd == "") {
+            $("#checkpwd").html("请输入密码！");
+            return false;
+        }
+        $("#checkpwd").html("");
+        return true;
+    }
+
     function subm() {
         var code = $("#code").val();
-
-        if (checkZH() && checkcr() && checkPwd) {
+        if (checkZH() &&  checkresultpwd() && checkcr()) {
             var coderesult = $("#codeResult").val();
             if (code == coderesult) {
                 var front_userphone = $("#phone").val();
@@ -195,18 +233,17 @@
         return true;
     }
 
-    function checkpwd() {
+    function checkloginPwd() {
         var pwd = $("#password").val();
         if (pwd == "") {
-            $("#checkpassword").html("请输入密码！");
+            $("#checkpassword").html("请输入密码");
             return false;
         }
         $("#checkpassword").html("");
         return true;
     }
-
     function login() {
-        if (checkname() && checkPwd()) {
+        if (checkname() && checkloginPwd()) {
             var phone = $("#frontuserPhone").val();
             var pwd = $("#password").val();
             $.ajax({

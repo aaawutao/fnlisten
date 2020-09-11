@@ -55,22 +55,28 @@ public class RealnameinfoController {
             System.out.println(data);
             String idcard = data.get("idcard").toString();
             String name = data.get("name").toString();
-            if (idcard.equals(ridcard) && name.equals(rname)) {
-                Realnameinfo realnameinfo = new Realnameinfo();
-                realnameinfo.setRidcard(idcard);
-                realnameinfo.setRname(name);
-                realnameinfo.setCertifiesdate(new Date());
-                realnameinfo.setRidcardpositivepic(imgageurl);
-                realnameinfo.setRtype("二代身份证");
-                Integer userid= Integer.valueOf(front_userid);
-                realnameinfo.setFront_userid(userid);
-                System.out.println("添加实体类："+realnameinfo);
-                int addrealnameinfo = realnameinfoService.addrealnameinfo(realnameinfo);
-                return addrealnameinfo;
+            int queryByridcard = realnameinfoService.queryByridcard(idcard);
+            if(queryByridcard==0){
+                if (idcard.equals(ridcard) && name.equals(rname)) {
+                    Realnameinfo realnameinfo = new Realnameinfo();
+                    realnameinfo.setRidcard(idcard);
+                    realnameinfo.setRname(name);
+                    realnameinfo.setCertifiesdate(new Date());
+                    realnameinfo.setRidcardpositivepic(imgageurl);
+                    realnameinfo.setRtype("二代身份证");
+                    Integer userid= Integer.valueOf(front_userid);
+                    realnameinfo.setFront_userid(userid);
+                    //System.out.println("添加实体类："+realnameinfo);
+                    int addrealnameinfo = realnameinfoService.addrealnameinfo(realnameinfo);
+                    return addrealnameinfo;
+                }
+            }else{
+                System.out.println("该身份证已经认证");
+                return 2;
             }
+
         }
         return 0;
-
     }
     @ResponseBody
     @RequestMapping("updatefrontflag")

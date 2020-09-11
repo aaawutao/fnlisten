@@ -16,12 +16,17 @@ public class AnchorinfoService {
         return anchorinfoDao.query(actype, num);
     }
 
+
     public int addanchor(Integer front_userid, String petname) {
-        return anchorinfoDao.addanchor(front_userid, petname);
+        return anchorinfoDao.addanchor(front_userid,petname);
     }
 
     public  int updatepetname(String petname, Integer bfid){
         return  anchorinfoDao.updatePetname(petname,bfid);
+    }
+
+    public  int queryBybfid(Integer bifd){
+        return  anchorinfoDao.queryBybfid(bifd);
     }
 
 }

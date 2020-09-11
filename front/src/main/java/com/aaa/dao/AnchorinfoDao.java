@@ -9,13 +9,15 @@ import java.util.List;
 @Mapper
 public interface AnchorinfoDao extends tk.mybatis.mapper.common.Mapper<Anchorinfo> {
 
+    //查询是否存在主播
+    @Select("select count(bfid) from anchorinfo where bfid=#{bifd};")
+    int queryBybfid(Integer bifd);
 
     @Update("update anchorinfo set petname=#{petname} where bfid=#{bfid}")
     int updatePetname(@Param("petname") String petname,@Param("bfid") Integer bfid);
 
 
-
-    @Insert("insert into anchorinfo (actype,bfid,petname) values (1,#{front_userid},#{petname})")
+    @Insert("insert into anchorinfo (actype,bfid,petname) values(1,#{front_userid},#{petname})")
     int addanchor(@Param("front_userid") Integer front_userid, @Param("petname") String petname);
 
     //显示

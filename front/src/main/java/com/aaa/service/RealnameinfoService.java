@@ -20,4 +20,9 @@ public class RealnameinfoService {
     public int updatefrontflag(Integer front_userid) {
         return realnameinfoDao.updatefrontflag(front_userid);
     }
+
+    //查询是否已经认证了
+    public int queryByridcard(String ridcard){
+        return realnameinfoDao.queryByridcard(ridcard);
+    }
 }

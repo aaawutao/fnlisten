@@ -38,25 +38,41 @@ public class FrontUserControl {
     @RequestMapping("updatefrontuser")
     @ResponseBody
     public int  updatefront_user(@RequestParam("front_userpic") MultipartFile front_userpic,
-                                 String front_username, Integer front_userid,String phone,String flag){
+                                 String front_username, Integer front_userid,String phone,String flag,Integer front_userflag){
+
         String fileupload="";
         try {
              fileupload = fileRule.fileupload(staticurl, front_userpic, phone, flag);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        int updatepetname = anchorinfoService.updatepetname(front_username, front_userid);
-        int updatefront_user = frontUserService.updatefront_user(front_username, fileupload, front_userid);
-        if(updatepetname==1 && updatefront_user==1){
-            return 1;
-        }else {
-            return 0;
+        if(front_userflag==2){
+            int updatepetname = anchorinfoService.updatepetname(front_username, front_userid);
         }
+       /* int queryBybfid = anchorinfoService.queryBybfid(front_userid);
+        if(queryBybfid==0){
+            int addanchor = anchorinfoService.addanchor(front_userid, front_username);
+        }else {
+            int updatepetname = anchorinfoService.updatepetname(front_username, front_userid);
+        }*/
+
+        int updatefront_user = frontUserService.updatefront_user(front_username, fileupload, front_userid);
+        return 1;
+
     }
 
     @RequestMapping("updatepassword")
     @ResponseBody
     public  int  updatePassword( String front_userpwd,Integer front_userid){
         return frontUserService.updatePassword(front_userpwd,front_userid);
+    }
+
+    //手机号唯一校验
+    @RequestMapping("queryByphone")
+    @ResponseBody
+    public int queryByphone(String front_userphone){
+        System.out.println(front_userphone);
+        System.out.println(frontUserService.queryByphone(front_userphone));
+        return  frontUserService.queryByphone(front_userphone);
     }
 }

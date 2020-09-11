@@ -38,6 +38,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputName">昵称</label>
+                <input type="hidden"  name="front_userflag" th:value="${session?.user?.get('front_userflag')}" />
                 <input type="text" id="exampleInputName" name="front_username"  onblur="checkusername()" class="form-control" style="width: 190px"  >
                 <p id="checkusername"></p>
             </div>
@@ -280,7 +281,6 @@
             if( formdata.getAll("front_userpic")==""){
                 formdata.append("front_userpic",$("#cropedBigImg").attr("src"));
             }
-            console.log(formdata.getAll("front_userpic"));
             $.ajax({
                 type:"post",
                 url:"frontuser/updatefrontuser",
@@ -288,6 +288,7 @@
                 processData: false, // 告诉jQuery不要去处理发送的数据
                 contentType: false,
                 success:function (data) {
+                    console.log(data);
                     if(data==1){
                         window.location.href = window.location.href;
                     }

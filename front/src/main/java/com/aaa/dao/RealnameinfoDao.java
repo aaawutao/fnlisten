@@ -1,6 +1,7 @@
 package com.aaa.dao;
 
 import com.aaa.entity.Realnameinfo;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import tk.mybatis.mapper.common.Mapper;
 
@@ -10,5 +11,9 @@ public interface RealnameinfoDao extends Mapper<Realnameinfo> {
 
     @Update("update front_user  set front_userflag=2 where front_userid=#{front_userid}")
     int updatefrontflag(Integer front_userid);
+
+    //查询是否已经认证了
+    @Select("select count(rid) from realnameinfo where ridcard=#{ridcard}")
+    int queryByridcard(String ridcard);
 
 }

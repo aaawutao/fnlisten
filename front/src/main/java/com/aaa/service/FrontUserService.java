@@ -46,4 +46,8 @@ public class FrontUserService {
         return frontuserDao.updatePassword(front_userpwd,front_userid);
     }
 
+    //手机号唯一校验
+    public int queryByphone(String front_userphone){
+        return  frontuserDao.queryByphone(front_userphone);
+    }
 }
