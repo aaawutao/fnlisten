@@ -41,7 +41,6 @@
                 <div class="d-o d-book-o">
                     <a class="d-p " href='javascript:;' th:onclick="allplay([[${programinfo.pid}]])"></a>
                     <div class="fr">
-                        <a class="d-download"><i class="icon-d-download"></i>下载</a>
                         <a class="d-collection" id="addCollection" entityId="5237" entityType="3"><i
                                 class="icon-d-collection"></i><span
                                 id="collectionShow">收藏</span></a>
@@ -77,7 +76,7 @@
                     <!--
                         th:onclick="|xunibi(${session?.user.get('front_userid')},${programinfo.pid},${item.ctid},${programinfo.pname},${item.title})|"
                     -->
-                    <time>更新时间:<em th:text="${item.createdate}"></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em th:if="${item.state}==1" >价格:<em th:text="${item.get('virtualcurrency')}"></em></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em  th:if="${item.state}==1" th:onclick="xunibi([[${programinfo.pid}]],[[${item.ctid}]],[[${programinfo.pname}]],[[${item.get('virtualcurrency')}]],[[${item.title}]])" ><font color="#008b8b" >章节购买</font></em></time>
+                    <time>更新时间:<em th:text="${item.createdate}"></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em th:if="${item.state}==1" >价格:<em th:text="${item.get('virtualcurrency')}"></em></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em  th:if="${item.state}==1" th:onclick="xunibi([[${programinfo.pid}]],[[${item.ctid}]],[[${programinfo.pname}]],[[${item.get('virtualcurrency')}]],[[${item.title}]],[[${item.mp3}]])" ><font color="#008b8b" >章节购买</font>||</em><em th:onclick="xiazhan([[${programinfo.pid}]],[[${item.ctid}]],[[${item.mp3}]])"><font color="#008b8b" >章节下载</font></em></time>
                 </li>
             </ul>
         </section>
@@ -135,10 +134,6 @@
             } else {
                 //播放列表里面设置章节
                 var k = $(this).parent("li")[0].getAttribute("mytest");
-                //添加
-                console.info(k.poster);
-                //此方法返回一个函数改变src   $('a.cover1').html('<img src="' + latest[k].poster );
-                // $(".musicbar").addClass("animate").index();
                 //往播放列表中追加音频
                 window.parent.setOne(k);
             }
@@ -153,5 +148,34 @@
             parent.mgs("请登录");
         }
     }
+    //下载
+    function xiazhan(pid,ctid,url){
+        let user=[[${session?.user}]];
+        if(user==null){
+            parent.mgs("请登录");
+            return;
+        }
+        //是否是会员
+        if(user['front_userstate']!=2){
+            //判断是否购买
+            $.ajax({
+                type: "post",
+                url: "buy/check",
+                data: {userid:user['front_userid'],pid:pid,ctid:ctid},
+                success: (data) => {
+                    if(!data){
+                        parent.mgs("请购买章节,或充值vip");
+                    }else{
+                        //全本下载
+                        window.location="http://localhost:8082/front/download?url="+url;
+                    }
+                }
+            });
+        }else{
+            window.location="http://localhost:8082/front/download?url="+url;
+        }
+    }
+
+
 </script>
 </html>

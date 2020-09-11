@@ -79,7 +79,6 @@ public class MainControl {
         modelMap.addAttribute("programinfo", programinfoService.query(pid, null, null, null).get(0));
         //主播节目
         modelMap.addAttribute("pros", programinfoService.query(null, null, anchortid, 6));
-        ;
         //章节
         modelMap.addAttribute("chapterinfos", chapterinfoService.queryChapter(pid));
         return "xianqing.html";
@@ -100,7 +99,6 @@ public class MainControl {
         modelMap.addAttribute("anchors", anchorinfoService.query(0, 4));
         return "context.html";
     }
-
     //用户详情
     @RequestMapping("/gerenxianqing")
     public String gerenxianqing(ModelMap modelMap, @RequestParam("name") String name, @RequestParam("acid") Integer acid) {
