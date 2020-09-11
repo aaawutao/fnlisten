@@ -45,21 +45,23 @@ public class MainControl {
         modelMap.addAttribute("flag", flag);
         return "login.html";
     }
-
+    //充值记录
+    @RequestMapping("/recordinfo")
+    public String record(){
+        return "record.html";
+    }
     //虚拟币充值
     @RequestMapping("/xunibirecharge")
     public String recharge(ModelMap modelMap) {
         modelMap.addAttribute("chongzhi", topupsetinfoService.query(0));
         return "xunibirecharge.html";
     }
-
     //vip充值
     @RequestMapping("/viprecharge")
     public String viprecharge(ModelMap modelMap) {
         modelMap.addAttribute("chongzhi", topupsetinfoService.query(1));
         return "viprecharge.html";
     }
-
     //显示所有节目
     @RequestMapping("/programtypedetails")
     public String programtypedetails(ModelMap model,@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue ="8") Integer size, @RequestParam(defaultValue ="1")Integer ptid) {
@@ -70,8 +72,6 @@ public class MainControl {
         model.addAttribute("ptid",ptid);
         return "programtypedetails.html";
     }
-
-
     //详情
     @RequestMapping("/xianqing")
     public String xinqing(@RequestParam("anchortid") Integer anchortid, @RequestParam("pid") Integer pid, ModelMap modelMap) {
