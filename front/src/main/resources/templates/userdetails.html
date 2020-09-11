@@ -35,6 +35,7 @@
             <div class="form-group">
                 <label for="chooseImage">头像</label>
                 <input type="file" name="front_userpic" id="chooseImage">
+                <input type="hidden" name="front_photosrc" id="fpts"/>
             </div>
             <div class="form-group">
                 <label for="exampleInputName">昵称</label>
@@ -193,7 +194,6 @@
         $("#checknewpwd").html("")
 
         return true;
-
     }
     function checkaffirmpwd() {
         var checkaffirmpwd = $("#affirmpwd").val();
@@ -244,6 +244,8 @@
                 $("#front_usermoney").html(data.front_usermoney);
                 $("#ddpwd").attr("value",data.front_userpwd );
                 $("#front_userwd").html(data.front_userwd);
+                //图片旧路径
+                $("#fpts").val(data.front_userpic);
                 if(data.front_uservipoutdata!=null){
                     $("#front_uservipoutdata").html(data.front_uservipoutdata);
                 }else{
@@ -265,22 +267,25 @@
             //获取到input的value，里面是文件的路径
             var filePath=$(this).val();
             var fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase();
-            if( !fileFormat.match(/.png|.jpg|.jpeg/) ) {
-                $("#checkpic").html("上传错误,文件格式必须为：png/jpg/jpeg'");
+            if( !fileFormat.match(/.png|.jpg|.jpeg|.gif/) ) {
+                $("#checkpic").html("上传错误,文件格式必须为：png/jpg/jpeg/gif'");
                 return;
             }else{
                 $("#checkpic").html("");
             }
             var src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
             $('#cropedBigImg').attr('src',src);
-        })
+        });
+
         $("#save").on('click',function () {
             var formdata=new FormData($("#fm")[0]);
             var phone = $("#front_userphone").html();
-            formdata.append("phone",phone)
-            if( formdata.getAll("front_userpic")==""){
+            formdata.append("phone",phone);
+            //console.info(formdata.getAll("front_userpic"));
+            if(formdata.getAll("front_userpic")!="" ){
                 formdata.append("front_userpic",$("#cropedBigImg").attr("src"));
             }
+
             $.ajax({
                 type:"post",
                 url:"frontuser/updatefrontuser",
@@ -312,8 +317,8 @@
             $("#affirmpwd").val("");
             $("#newpwd").val("");
             $("#pwd").val("");
-            $("#checknewpwd").html("")
-            $("#checkoldpwd").html("")
+            $("#checknewpwd").html("");
+            $("#checkoldpwd").html("");
             $("#checkresultpwd").html("");
             $("#show").show();
         })
@@ -332,7 +337,6 @@
                     }
                 })
             }
-
         })
     })
 

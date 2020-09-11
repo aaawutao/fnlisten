@@ -38,11 +38,14 @@ public class FrontUserControl {
     @RequestMapping("updatefrontuser")
     @ResponseBody
     public int  updatefront_user(@RequestParam("front_userpic") MultipartFile front_userpic,
-                                 String front_username, Integer front_userid,String phone,String flag,Integer front_userflag){
-
+                                 String front_username, Integer front_userid,String phone,String flag,Integer front_userflag,String front_photosrc){
         String fileupload="";
         try {
-             fileupload = fileRule.fileupload(staticurl, front_userpic, phone, flag);
+            if(front_userpic.getOriginalFilename().equals("") || front_userpic.getOriginalFilename()==null){
+                fileupload=front_photosrc;
+            }else{
+                fileupload = fileRule.fileupload(staticurl, front_userpic, phone, flag);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,7 +58,6 @@ public class FrontUserControl {
         }else {
             int updatepetname = anchorinfoService.updatepetname(front_username, front_userid);
         }*/
-
         int updatefront_user = frontUserService.updatefront_user(front_username, fileupload, front_userid);
         return 1;
 

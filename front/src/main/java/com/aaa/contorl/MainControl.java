@@ -83,7 +83,6 @@ public class MainControl {
         modelMap.addAttribute("chapterinfos", chapterinfoService.queryChapter(pid));
         return "xianqing.html";
     }
-
     //内容
     @RequestMapping("/context")
     public String context(ModelMap modelMap) {

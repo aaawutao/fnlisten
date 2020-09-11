@@ -38,8 +38,4 @@ public class PrograminfoControl {
         programinfo.setPstatus(0);
         return programinfoService.add(programinfo);
     }
-
-
-
-
 }
