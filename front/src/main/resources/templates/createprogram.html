@@ -15,10 +15,10 @@
     <div data-v-32f781fc="" class="type">
         <div data-v-32f781fc="" class="left">
             <div data-v-32f781fc="" class="item active">
-                <p data-v-32f781fc="" class="title"><span th:onclick="hidden1()">上传节目声音</span></p>
+                <p class="title"><span th:onclick="hidden1()">上传节目声音</span></p>
             </div>
             <div data-v-32f781fc="" class="item">
-                <p data-v-32f781fc="" class="title"><span th:onclick="hidden2()">创建节目专辑</span></p>
+                <p class="title"><span th:onclick="hidden2()">创建节目专辑</span></p>
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
                             <p data-v-46b96043="" class="text">
                                 上传封面
                             </p>
-                            <input type="file" name="photo" id="f">
+                            <input type="file" name="photo" id="f" accept="image/gif,image/jpeg,image/jpg,image/png" th:onchange="checkphoto()">
                         </div>
                         <div data-v-46b96043="" class="refer">
                             <p data-v-46b96043="">参考尺寸：600×600</p>
@@ -74,7 +74,7 @@
                                  style="width: 170px; margin-right: 20px;">
                                 <div tabindex="0" class="ivu-select-selection"><input type="hidden">
                                     <!--节目分类-->
-                                    <select style="width: 100%;height: 100%;" name="ptid">
+                                    <select style="width: 100%;height: 100%;" name="ptid" th:onchange="checkselect(this)">
                                         <option value="">请选择</option>
                                         <option th:each="it:${programtype}" th:value="${it.ptid}"
                                                 th:text="${it.ptname}"></option>
@@ -93,9 +93,8 @@
                                 <div tabindex="0" class="ivu-select-selection"><input type="hidden">
                                     <!--节目来源-->
                                     <select style="width: 100%;height: 100%;" name="psource">
-                                        <option>请选择</option>
-                                        <option>原创</option>
-                                        <option>采集</option>
+                                        <option value="原创">原创</option>
+                                        <option value="采集">采集</option>
                                     </select>
                                 </div>
 
@@ -131,7 +130,7 @@
                 <div data-v-cb2fe0aa="" class="select">
                     <div data-v-cb2fe0aa="" class="ivu-select ivu-select-single ivu-select-large" style="width: 368px;">
                         <div tabindex="0" class="ivu-select-selection"><input type="hidden">
-                            <select style="width: 100%; height:100%;" name="pid">
+                            <select style="width: 100%; height:100%;" name="pid" th:onchange="checkselect(this)">
                                 <option value="">请选择节目</option>
                                 <option th:each="it:${program}" th:value="${it.pid}" th:text="${it.pname}"></option>
                             </select>
@@ -154,7 +153,7 @@
                     <div data-v-cb2fe0aa="" class="select">
                         <div data-v-cb2fe0aa="" class="ivu-select ivu-select-single ivu-select-large"
                              style="width: 368px;">
-                            <div tabindex="0" class="ivu-select-selection">
+                            <div tabindex="0" class="ivu-select-selection" >
 
                                 <select style="width: 100%;height: 100%;" name="virtualcurrency">
                                     <option value="0">0</option>
@@ -173,7 +172,7 @@
                     <div data-v-cb2fe0aa="" class="ivu-select ivu-select-single ivu-select-large" style="width: 368px;">
                         <div tabindex="0" class="ivu-select-selection">
                             <!--主播名称-->
-                            <input type="text"  id="ptname1" name="artist"/>
+                            <input type="hidden"  id="ptname1" name="artist"/>
                             <input type="hidden" name="front_userphone"
                                    th:value="${session?.user?.get('front_userphone')}"/>
                             <input type="hidden" name="flag" th:value="${session?.user?.get('flag')}">
@@ -185,7 +184,7 @@
                 <div data-v-cb2fe0aa="" class="select">
                     <div data-v-cb2fe0aa="" class="ivu-select ivu-select-single ivu-select-large" style="width: 368px;">
                         <div tabindex="0" class="ivu-select-selection">
-                            <input type="file" style="width: 100%;height: 100%;" name="yingping">
+                            <input type="file" style="width: 100%;height: 100%;" th:onchange="checkvodie()"  name="yingping" id="yp" accept="audio/*">
                         </div>
                     </div>
                 </div>
@@ -207,42 +206,93 @@
 <script th:src="@{'/xtip/js/xtiper.min.js'}"></script>
 
 <script th:inline="javascript">
+    //下拉框做校验
+    function checkselect(obj){
+        if($(obj).val()==""){
+            parent.mgs("请选择");
+            return false;
+        }
+    }
+    //校验图片
+    function checkphoto(){
+        var fileInput = $("#f");
+        if(!fileInput.get(0).files[0]){
+            parent.mgs("文件不能为空");
+            return false;
+        }
+        let extStart = fileInput.val().lastIndexOf(".");
+        let ext = fileInput.val().substring(extStart, fileInput.val().length).toUpperCase();
+        //image/gif,image/jpeg,image/jpg,image/png">
+        if(ext!=".GIF" && ext!=".JPEG" && ext!=".JPG" && ext!=".PNG"){
+            parent.mgs("图片文件只能.gif,.jpeg,.jpg,.png格式");
+            return false;
+        }
+        return true;
+    }
+    //校验音频
+    function checkvodie() {
+        var fileInput = $("#yp");
+        if(!fileInput.get(0).files[0]){
+            parent.mgs("文件音频不能为空");
+            return false;
+        }
+        let extStart = fileInput.val().lastIndexOf(".");
+        let ext = fileInput.val().substring(extStart, fileInput.val().length).toUpperCase();
+        if(ext!=".MP3"){
+            parent.mgs("文件音频文件只能是mp3格式");
+            return false;
+        }
+        return true;
+    }
     //提交
     function sbt() {
-        let formdata = new FormData($("#fm")[0]);
-        $.ajax({
-            type: "post",
-            url: "programinfo/add",
-            data: formdata,
-            processData: false, // 告诉jQuery不要去处理发送的数据
-            contentType: false, // 告诉jQuery不要去设置Content-Type请求头
-            success: (data) => {
-                if (data == 1) {
-                    //刷新页面重新获取数据
-                    parent.mgs("节目录入成功");
-                    parent.personal('createprogram');
+        if($("[name='ptid']").val()==""){
+            parent.mgs("请选择节目类型");
+            return;
+        }
+        if(checkphoto()){
+            let formdata = new FormData($("#fm")[0]);
+            $.ajax({
+                type: "post",
+                url: "programinfo/add",
+                data: formdata,
+                processData: false, // 告诉jQuery不要去处理发送的数据
+                contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+                success: (data) => {
+                    if (data == 1) {
+                        //刷新页面重新获取数据
+                        parent.mgs("节目录入成功");
+                        parent.personal('createprogram');
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     function sbt2() {
-        let formdata = new FormData($("#yfm")[0]);
-        $.ajax({
-            type: "post",
-            url: "chapter/add",
-            data: formdata,
-            processData: false, // 告诉jQuery不要去处理发送的数据
-            contentType: false, // 告诉jQuery不要去设置Content-Type请求头
-            success: (data) => {
-                if (data == 1) {
-                    parent.mgs("章节添加成功请在详情页面查看");
-                    //清空元素
-                    $("#yfm")[0].reset();
-                    $("#ptname1").val($("#ptname2").val());
+        if($("[name='pid']").val()==""){
+            parent.mgs("请选择节目");
+            return;
+        }
+        if(checkvodie()){
+            let formdata = new FormData($("#yfm")[0]);
+            $.ajax({
+                type: "post",
+                url: "chapter/add",
+                data: formdata,
+                processData: false, // 告诉jQuery不要去处理发送的数据
+                contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+                success: (data) => {
+                    if (data == 1) {
+                        parent.mgs("章节添加成功请在详情页面查看");
+                        //清空元素
+                        $("#yfm")[0].reset();
+                        $("#ptname1").val($("#ptname2").val());
+                    }
                 }
-            }
-        });
+            });
+        }
+
     }
 
     //图片切换
@@ -254,16 +304,15 @@
     };
     $("#f").change(function () {
         var imgfFile = $("#f").prop("files")[0];
-        if (!regexImageFiler.test(imgfFile.type)) {
+        /*if (!regexImageFiler.test(imgfFile.type)) {
             xtip.msg('选择有效的图片', {type: 'w', pos: 't'});
-        }
+        }*/
         imgReaderl.readAsDataURL(imgfFile);
     });
 
     function hidden2() {
         $("#program").show();
         $("#yingping").hide();
-
     }
 
     function hidden1() {

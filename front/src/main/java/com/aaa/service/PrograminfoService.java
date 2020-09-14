@@ -35,12 +35,23 @@ public class PrograminfoService {
 
     //按类型查询
     public PageInfo<List<Map<String, Object>>> queryBytype(Integer page,Integer size,Integer pid, Integer ptid, Integer anchortid, Integer num) {
-
         PageHelper.startPage(page,size);
         List<Map<String, Object>> query = programinfoDao.query(pid, ptid, anchortid, num);
         PageInfo<List<Map<String, Object>>> pageInfo = new PageInfo(query);
         return pageInfo;
     }
+
+    //模糊搜索
+    public List<Map<String, Object>> soquery(String pname,Integer acid,Integer front_userid){
+        return programinfoDao.queryName(pname,acid,front_userid);
+    }
+
+
+    //我的购买节目
+    public List<Map<String,Object>> myprogram(Integer userid){
+        return programinfoDao.myprogram(userid);
+    }
+
 
 
 }

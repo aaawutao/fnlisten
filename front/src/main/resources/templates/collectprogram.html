@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>我的收藏</title>
+    <iframe th:replace="css.html"></iframe>
+    <link rel="stylesheet" th:href="${'css/collectstyle.css?v=38'}">
+    <style>
+    </style>
+</head>
+<body>
+<section class="wrapper grid">
+    <article class="clearfix" style="margin-left:0px;">
+        <div class="column-l" style="min-height: 1061px;width: 870px;">
+            <div class="s-title" style="margin-top:34px"><span class="f16">收藏节目</span></div>
+            <div class="collection-w">
+                <div class="collection-book">
+                    <ul>
+                        <li class="collection-item" th:each="it:${program}">
+                           <div class="fl pr">
+                                <a href="javascript:;" th:onclick="'soplay('+${it.pid}+')'">
+                                    <img class="photo-m" th:src="${it.get('poster')}">
+                                </a>
+                            </div>
+                            <div class="photo-m-r">
+                                <a class="f16" href="javascript:;" th:onclick="|xiangqings(${it.pid},${it.anchortid})|"
+                                    th:text="${it.pname}"></a>
+                                <div class="album-f-item-grid">
+                                    <div>
+                                        <a class="btn-collection  d-collection-a" th:onclick="delcolection([[${it.pid}]])">取消收藏</a>
+                                       <span><em class="weaken">主播：</em><a target="_blank" th:text="${it?.petname}"></a></span>
+                                       <span><em class="weaken">类型：</em><em th:text="${it.get('ptname')}"></em></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="column-r sns-sub" style="min-height: 1061px;">
+            <section class="sub-users">
+                <div class="s-title"><span class="f16">关注主播</span></div>
+                <ul>
+                    <li>
+                        <div class="fl">
+                            <a class="g-user-shutdown" href="/user/618976144"><img class="photo-s50 round" alt="cv吞舟" src="https://headpic.lrts.me/618976144_20200731160132uc.jpg?imageMogr/v2/auto-orient/thumbnail/180x180&amp;sign=4b748a6fd8e520a08d58c2acef2fc8fc&amp;t=5f6af274"></a>
+                        </div>
+                        <div class="photo-s50-r">
+                            <a class="g-user-shutdown blink nowrap" href="/user/618976144">cv吞舟</a>
+                            <p class="nowrap">热爱读书，喜爱声音</p>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </article>
+</section>
+</body>
+<script  th:inline="javascript">
+    //取消收藏
+    function delcolection(pid) {
+        let userid = [[${session?.user.get('front_userid')}]]
+        $.ajax({
+            type: "post",
+            url: "collection/del",
+            data: {front_userid: userid, pid: pid},
+            success: (data) => {
+                if (data  !=0) {
+                    parent.mgs("取消收藏成功");
+                    parent.collectprogram();
+                }
+            }
+        });
+    }
+    //全部播放
+    function soplay(pid) {
+        window.parent.getdata(pid);
+    }
+    //显示详情
+    function xiangqings(pid,acid){
+        window.parent.eidtsrc(pid, acid);
+    }
+
+</script>
+</html>

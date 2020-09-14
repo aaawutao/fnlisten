@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>图片搜索</title>
+    <iframe th:replace="css.html"></iframe>
+</head>
+<body>
+<div class="wrapper clearfix">
+    <div class="column-l container" style="width:100%">
+        <div class="search-result">
+            <ul>
+                <li class="book-item" th:each="it:${program}">
+                    <div class="book-item-photo pr">
+                        <a href="javascript:;" th:onclick="'soplay('+${it.pid}+')'"><img
+                                th:src="${it.get('poster')}"><span
+                                class="play-w"><i class="icon-play"></i></span></a>
+                    </div>
+                    <div class="book-item-r">
+                        <a href="javascript:;" th:onclick="|xiangqings(${it.pid},${it.anchortid})|"
+                           class="book-item-name" th:text="${it.pname}"></a>
+                        <div class="book-item-star">
+                            <i class="icon-star-s"></i>
+                            <i class="icon-star-s"></i>
+                            <i class="icon-star-s"></i>
+                            <i class="icon-star-s"></i>
+                            <i class="icon-star-s"></i>
+                        </div>
+                        <div class="book-item-info">
+                                <span class="weaken"><span class="split"></span><span class="weaken">主播：</span>
+                                    <a class="g-user" th:text="${it?.petname}"></a><br>
+                        </div>
+                        <p class="book-item-desc weaken" th:text="${it?.pintroduction}"></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+    function soplay(pid) {
+        window.parent.getdata(pid);
+    }
+    function xiangqings(pid,acid){
+        window.parent.eidtsrc(pid, acid);
+    }
+</script>
+</html>

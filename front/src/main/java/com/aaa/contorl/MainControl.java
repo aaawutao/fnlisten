@@ -35,6 +35,9 @@ public class MainControl {
     //充值记录
     @Resource
     TopupinfoService topupinfoService;
+    //购买记录
+    @Resource
+    BuyService buyService;
 
     //主页
     @RequestMapping("/main")
@@ -102,21 +105,27 @@ public class MainControl {
         modelMap.addAttribute("name", name);
         //如果是创建节目把类型传过期
         if (name.equals("createprogram")) {
+            System.out.println("主播编号:"+acid);
             modelMap.addAttribute("programtype", programtypeinfoService.show());
-            if (acid != 0) {
-                modelMap.addAttribute("program", programinfoService.query(null, null, acid, null));
-            }
-        }
-        if (name.equals("showinformation") && acid != 0) {
-            //当前主播的节目
             modelMap.addAttribute("program", programinfoService.query(null, null, acid, null));
+        }else if(name.equalsIgnoreCase("showinformation")){
+           if(acid!=null){
+               modelMap.addAttribute("program", programinfoService.query(null, null, acid, null));
+           }
         }
         return "personalxianqing.html";
     }
 
     //用户的购买记录
     @RequestMapping("recoadshow")
-    public String recoadshow(){
+    public String recoadshow(ModelMap model,
+                             @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue ="8") Integer size
+            ,HttpSession session){
+        Map<String,Object> user = (Map<String, Object>) session.getAttribute("user");
+        Integer front_userid = (Integer) user.get("front_userid");
+        PageInfo<List<Map<String, Object>>> listPageInfo = buyService.show(page,size,front_userid);
+        model.addAttribute("list",listPageInfo);
+
         return "recoadshow.html";
     }
     //查询用户充值记录
@@ -131,5 +140,28 @@ public class MainControl {
         return "recoadshow02.html";
     }
 
+    //搜索节目
+    @RequestMapping("search")
+    public String search(ModelMap model,String name){
+        model.addAttribute("program",programinfoService.soquery(name,null,null));
+        return "searchdetails.html";
+    }
+    //我的收藏
+    @RequestMapping("collectprogram")
+    public String collectprogram(ModelMap model,HttpSession session){
+        Map<String,Object> user = (Map<String, Object>) session.getAttribute("user");
+        Integer front_userid = (Integer) user.get("front_userid");
+        model.addAttribute("program",programinfoService.soquery(null,null,front_userid));
+
+        return "collectprogram.html";
+    }
+    //我的购买记录
+    @RequestMapping("myprogram")
+    public String myprogram(ModelMap model,HttpSession session){
+        Map<String,Object> user = (Map<String, Object>) session.getAttribute("user");
+        Integer front_userid = (Integer) user.get("front_userid");
+        model.addAttribute("program",programinfoService.myprogram(front_userid));
+        return "myprogram.html";
+    }
 
 }

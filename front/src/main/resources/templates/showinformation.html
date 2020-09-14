@@ -55,35 +55,29 @@
         </div>
     </div>
     <div data-v-12a22b5c="">
-        <!-- <div data-v-fd6d554a="" data-v-12a22b5c="" class="no-status" >
-            <img data-v-fd6d554a=""
-                  src="//assets.lrts.me/fed-lrts-studio/img/0bfff61.svg" alt="">
-             <p data-v-fd6d554a="" >暂时没有任何节目，去创建您的第一个节目吧~</p>
-         </div>-->
-        <ul class="books">
+
+        <ul class="books" th:if="${not #strings.isEmpty(program)}">
             <li th:each="it:${program}" class="album-f-item">
                 <div class="f1">
-                    <a th:onclick="|showpro(${it.pid},${it.anchortid})|">
-                        <img width="120" height="140" th:src="${it.get('poster')}" class="photo-l">
+                    <a th:onclick="|showpro(${it?.pid},${it?.anchortid})|">
+                        <img width="120" height="140" th:src="${it?.get('poster')}" class="photo-l">
                     </a>
                 </div>
                 <div class="f2">
-                    <h3 th:text="${it.get('pname')}"></h3>
+                    <h3 th:text="${it?.get('pname')}"></h3>
                     <span><em class="weaken">主播：</em><a class="g-user-shutdown"
-                                                        th:text="${it.get('petname')}"></a></span>
+                                                        th:text="${it?.get('petname')}"></a></span>
                     <span><em class="weaken">状态：</em>
-                                <em th:switch="${it.pstate}">
+                                <em th:switch="${it?.pstate}">
                                     <em th:case="0">连载</em>
                                     <em th:case="1">完本</em>
                                 </em>
                             </span>
-                    <span><em class="weaken">类型：</em><em th:text="${it.get('ptname')}"></em></span>
-                    <p class="weaken" th:text="${it.get('pintroduction')}"></p>
-
+                    <span><em class="weaken">类型：</em><em th:text="${it?.get('ptname')}"></em></span>
+                    <p class="weaken" th:text="${it?.get('pintroduction')}"></p>
                 </div>
             </li>
         </ul>
-
     </div>
 </div>
 </body>

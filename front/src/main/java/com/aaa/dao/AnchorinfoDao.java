@@ -16,6 +16,8 @@ public interface AnchorinfoDao extends tk.mybatis.mapper.common.Mapper<Anchorinf
     @Update("update anchorinfo set petname=#{petname} where bfid=#{bfid}")
     int updatePetname(@Param("petname") String petname,@Param("bfid") Integer bfid);
 
+    @Select("select acid from anchorinfo where actype=1 and bfid=#{userid}")
+    Integer queryactid(@Param("userid") Integer userid);
 
     @Insert("insert into anchorinfo (actype,bfid,petname) values(1,#{front_userid},#{petname})")
     int addanchor(@Param("front_userid") Integer front_userid, @Param("petname") String petname);

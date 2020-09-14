@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class TopupsetinfoService {
@@ -27,5 +28,13 @@ public class TopupsetinfoService {
     //修改
     public int update(Topupsetinfo topupsetinfo){
         return topupsetinfoDao.updateByPrimaryKey(topupsetinfo);
+    }
+
+    //查询消费记录
+    public List<Map<String,Object>> selecttopset(){
+
+        List<Map<String, Object>> selecttopset = topupsetinfoDao.selecttopset();
+        return selecttopset;
+
     }
 }

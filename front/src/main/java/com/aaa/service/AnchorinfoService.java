@@ -12,7 +12,6 @@ import java.util.List;
 public class AnchorinfoService {
     @Resource
     AnchorinfoDao anchorinfoDao;
-
     public List<Map<String, Object>> query(Integer actype, Integer num) {
         return anchorinfoDao.query(actype, num);
     }
@@ -29,4 +28,9 @@ public class AnchorinfoService {
         return  anchorinfoDao.queryBybfid(bifd);
     }
 
+
+    //查询前台的主播编号
+    public Integer queryactid(Integer userid){
+        return anchorinfoDao.queryactid(userid);
+    }
 }

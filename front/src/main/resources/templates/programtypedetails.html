@@ -11,10 +11,6 @@
 <body>
 <div class="wrapper clearfix">
     <div class="container r-aside">
-        <ol class="aside-menu">
-            <li><a>小编推荐</a></li>
-            <li><a>新书推荐</a></li>
-        </ol>
         <div class="sns-category">.
             <ol>
                 <li th:each="it:${list}">
@@ -31,9 +27,7 @@
             <section>
                 <div class="album-filter-w">
                              <span class="album-filter">
-                                 <a class="link" >推荐</a><span class="split">|</span>
-                                 <a>最新</a><span class="split">|</span>
-                                 <a>最热</a>
+                                 <a class="link" >推荐</a>
                              </span>
                 </div>
                 <div class="category-book">
@@ -51,7 +45,7 @@
                                         href="" class="g-user-shutdown" th:text="${it.get('petname')}"></a>
                                 </div>
                                 <p class="book-item-desc weaken" th:text="${it.get('pintroduction')}"></p>
-                                <a showType="3" entityId="27469056" entityType="3" class="btn-collection addCollection">收藏</a>
+                                <button class="btn-collection"  th:onclick="addcols([[${it.pid}]])">收藏</button>
                             </div>
                         </li>
                     </ul>
@@ -71,12 +65,28 @@
 </div>
 </body>
 <script th:src="@{'/js/jquery.min.js?v=36'}"></script>
-<script>
+<script th:inline="javascript" >
+    function addcols(pid){
+        let user=[[${session?.user}]];
+        if(user==null){
+            parent.mgs("请登录");
+            return;
+        }else{
+            $.ajax({
+                type: "post",
+                url: "collection/add",
+                data:{front_userid:user['front_userid'],pid:pid},
+                success:(data)=>{
+                    if(data==1) {
+                        parent.mgs("收藏成功");
+                    }
+                }
+            });
+        }
+    }
     function typequery(ptid,page) {
        window.parent.eidtprogram(ptid,page);
     }
-
-
     function plays(id) {
         window.parent.getdata(id);
     }

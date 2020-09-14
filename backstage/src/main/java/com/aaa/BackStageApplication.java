@@ -8,5 +8,4 @@ public class BackStageApplication {
     public static void main(String[] args) {
         SpringApplication.run(BackStageApplication.class, args);
     }
-
 }

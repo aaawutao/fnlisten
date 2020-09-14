@@ -14,11 +14,11 @@
     <div class="p-title">登陆懒人听书</div>
     <div class="login-sub">
         <p>>注册懒人听书账号！<a href="#" id="registerbtn" class="link">立即注册</a></p>
-        <div class="login-auth">
+        <!--<div class="login-auth">
             >或使用合作网站登录<br/>
-            <!--第三方登录-->
+            &lt;!&ndash;第三方登录&ndash;&gt;
             <a href="/qqLogin.dosl" class="login-auth-qq"></a>
-        </div>
+        </div>-->
     </div>
 
     <div class="login-w">
@@ -59,11 +59,11 @@
     <div class="p-title">注册懒人听书</div>
     <div class="login-sub">
         <p>>登陆懒人听书账号！<a id="logbtn" class="link">立即登陆</a></p>
-        <div class="login-auth">
+       <!-- <div class="login-auth">
             >或使用合作网站登录<br/>
-            <!--第三方登录-->
+            &lt;!&ndash;第三方登录&ndash;&gt;
             <a href="/qqLogin.dosl" class="login-auth-qq"></a>
-        </div>
+        </div>-->
     </div>
     <div class="login-w">
         <ul class="fieldset">
@@ -78,7 +78,8 @@
             <li>
                 <label class="field-name">密码：</label>
                 <div class="field-r">
-                    <input id="pwd" name="resultpwd" type="password" onblur="checkresultpwd()" onfocus="this.className='txt'"
+                    <input id="pwd" name="resultpwd" type="password" onblur="checkresultpwd()"
+                           onfocus="this.className='txt'"
                            placeholder="密码"/>
                     <input type="hidden" name="code" id="code">
                     <p id="checkpwd"></p>
@@ -92,8 +93,8 @@
                            placeholder="验证码"/>
                     <span>
                         <input type="button" value="获取验证码" class="ant-btn-primary" id="codedis" onclick="coarse(this)">
-                   <!--     <button type="button" class="ant-btn-primary" id="codedis" onclick="coarse(this)">获取验证码</button>
-                   --> </span>
+                        <!--     <button type="button" class="ant-btn-primary" id="codedis" onclick="coarse(this)">获取验证码</button>
+                        --> </span>
                     <p id="checkcodeResult"></p>
                 </div>
             </li>
@@ -116,10 +117,10 @@
             type: "post",
             url: "frontuser/queryByphone",
             data: {"front_userphone": phone},
-            success:function (data) {
-                if (data==1){
+            success: function (data) {
+                if (data == 1) {
                     $("#checkphone").html("手机号已存在！");
-                    $("#codedis").prop("disabled","disabled");
+                    $("#codedis").prop("disabled", "disabled");
                     return false;
                 }
             }
@@ -133,10 +134,9 @@
             return false;
         }
         $("#checkphone").html("");
-        $("#codedis").prop("disabled","");
+        $("#codedis").prop("disabled", "");
         return true;
     }
-
 
 
     function checkcr() {
@@ -150,25 +150,26 @@
     }
 
 
+    var countdown = 80;
 
-    var countdown=80;
     function ddd(val) {
-        if(countdown==0){
+        if (countdown == 0) {
             //val.removeAttribute("disabled");
-            $("#codedis").prop("disabled","disabled");
-            val.value="获取验证码";
+            $("#codedis").prop("disabled", "disabled");
+            val.value = "获取验证码";
             countdown = 80;
             return false;
-        }else{
-            $("#codedis").prop("disabled","");
-            val.value="重新发送(" + countdown + ")";
+        } else {
+            $("#codedis").prop("disabled", "");
+            val.value = "重新发送(" + countdown + ")";
             countdown--;
         }
-        setTimeout(function() {   //设置一个定时器，每秒刷新一次
+        setTimeout(function () {   //设置一个定时器，每秒刷新一次
             ddd(val);
-        },1000);
+        }, 1000);
 
     }
+
     //获取验证码
     function coarse(val) {
         if (checkZH()) {
@@ -199,7 +200,7 @@
 
     function subm() {
         var code = $("#code").val();
-        if (checkZH() &&  checkresultpwd() && checkcr()) {
+        if (checkZH() && checkresultpwd() && checkcr()) {
             var coderesult = $("#codeResult").val();
             if (code == coderesult) {
                 var front_userphone = $("#phone").val();
@@ -242,6 +243,7 @@
         $("#checkpassword").html("");
         return true;
     }
+
     function login() {
         if (checkname() && checkloginPwd()) {
             var phone = $("#frontuserPhone").val();

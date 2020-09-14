@@ -5,12 +5,15 @@ import com.aaa.dao.FrontuserDao;
 import com.aaa.dao.PrograminfoDao;
 import com.aaa.entity.Buy;
 import com.aaa.entity.FrontUser;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 
@@ -97,7 +100,12 @@ public class BuyService {
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             return 0;
         }
+    }
 
-
+    public PageInfo show(Integer page, Integer size, Integer userid){
+        PageHelper.startPage(page, size);
+        List<Map<String,Object>> list=buyDao.show(userid);
+        PageInfo<List<Map<String, Object>>> pageInfo = new PageInfo(list);
+        return pageInfo;
     }
 }

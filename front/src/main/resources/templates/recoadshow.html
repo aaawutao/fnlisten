@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -11,7 +11,48 @@
 
 </head>
 <body>
-    购买节目详情显示
-
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>购买节目</th>
+        <th>购买章节</th>
+        <th>花费懒人币</th>
+        <th>购买时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="it:${list.list}">
+        <td th:text="${it.get('pname')}"></td>
+        <td th:text="${it.get('title')}"></td>
+        <td th:text="${it.get('purchaservc')}"></td>
+        <td th:text="${it.get('buydate')}"></td>
+    </tr>
+    </tbody>
+</table>
+<div class="pager" style="margin-right: 50px">
+    <div class="pagination">
+        <button id="sye" th:onclick="r1(1)"  class="btn btn-primary">首页</button>
+        <button id="sy" th:onclick="r1([[${list.prePage}]])"  class="btn btn-primary">上一页</button>
+        <button id="xy" th:onclick="r1([[${list.nextPage}]])"  class="btn btn-primary">下一页</button>
+        <button th:onclick="r1([[${list.pages}]])"  class="btn btn-primary">尾页</button>
+    </div>
+</div>
+</div>
 </body>
+<script>
+    function r1(page) {
+        parent.record(page);
+    }
+</script>
+<style>
+    #sye{
+        margin-right: 40px;
+    }
+    #sy{
+        margin-right: 40px;
+    }
+    #xy{
+        margin-right: 40px;
+    }
+</style>
 </html>

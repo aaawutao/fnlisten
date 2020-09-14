@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @Controller
@@ -33,5 +34,15 @@ public class TopupsetinfoController {
     @ResponseBody
     public int update(@RequestBody Topupsetinfo topupsetinfo){
         return topupsetinfoService.update(topupsetinfo);
+    }
+
+
+    //查询消费记录
+    @RequestMapping("selecttopset")
+    @ResponseBody
+    public List<Map<String, Object>> selecttopset(){
+        System.out.println();
+        System.out.println(topupsetinfoService.selecttopset());
+        return topupsetinfoService.selecttopset();
     }
 }

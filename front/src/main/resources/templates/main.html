@@ -59,10 +59,11 @@
 							</a>
 							<div class="g-top-menu-l">
 								<a id="myhome" href="javascript:;" th:onclick="personal('userdetails')">我的个人主页</a>
-								<a id="mycollection" href="javascript:;">我的收藏</a>
+								<a id="mycollection" href="javascript:;" th:onclick="collectprogram()" >我的收藏</a>
 								<a href="javascript:;" th:onclick="vipchongzhi()">成为VIP会员</a>
 								<a href="javascript:;" th:onclick="chongzhi()">账户充值</a>
-								<a href="javascript:;" th:onclick="record()">用户购买记录</a>
+								<a href="javascript:;" th:onclick="myprogram()">购买节目</a>
+								<a href="javascript:;" th:onclick="record(1)">用户购买记录</a>
 								<a href="javascript:;"  th:onclick="record2(1)">用户充值记录</a>
 								<a class="g-top-logout" href="javascript:;" th:onclick="logout()"><i
 										class="icon-logout"></i><span class="f12">退出登录</span></a>
@@ -84,22 +85,9 @@
 		<div class="g-main-m">
 			<div class="g-search">
 				<div class="g-search-b clearfix">
-					<input type="text" placeholder="搜索书籍、节目、主播" maxlength="20" value=""/><a class="g-search-icon"><i
-						class="icon-search"></i></a>
+					<input type="text" id="sos" placeholder="搜索节目" maxlength="20" value="" />
+					<a  th:onclick="searchs()">搜索</a>
 				</div>
-				<div class="g-search-l g-auto-hide">
-					<ul>
-						<li class="active"><i class="icon-s-book"></i>搜索"<span></span>"相关的书籍</li>
-						<li><i class="icon-s-album"></i>搜索"<span></span>"相关的节目</li>
-						<li><i class="icon-s-user"></i>搜索"<span></span>"相关的主播</li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="fl">
-				<a class="g-ranking-icon">榜单</a>
-				<span class="split">|</span>
-				<a class="g-category-icon">分类</a>
 			</div>
 		</div>
 		<div class="g-main-r">
@@ -117,12 +105,13 @@
 	</div>
 	<div class="g-nav-c">
 		<ol class="wrapper g-nav-c-active">
-			<li class="active"><a href="javascript:;" th:onclick="srcmain()">书籍推荐</a><span class="arrow-top"></span>
+			<li >
+				<a href="javascript:;" th:onclick="srcmain()">书籍推荐</a>
 			</li>
-			<li><a href="javascript:;" th:onclick="eidtprogram(1,null)">分类书籍</a><span class="arrow-top"></span></li>
-			<li><a href="javascript:;">懒人出品</a><span class="arrow-top"></span></li>
-			<li><a href="javascript:;">书籍专题</a><span class="arrow-top"></span></li>
-			<li><a href="javascript:;">收听榜单</a><span class="arrow-top"></span></li>
+			<li><a href="javascript:;" th:onclick="eidtprogram(1,null)">分类书籍</a></li>
+			<li><a href="javascript:;">懒人出品</a></li>
+			<li><a href="javascript:;">书籍专题</a></li>
+			<li><a href="javascript:;">收听榜单</a></li>
 		</ol>
 		<div class="clear"></div>
 	</div>
@@ -213,22 +202,36 @@
 			localStorage.removeItem("playlist");
 		}
 	});
-	//充值记录页面
-	function record(){
-		$("#iframe_a").attr("src", "/front/recoadshow");
+	//我的收藏
+	function collectprogram(){
+		$("#iframe_a").attr("src", "/front/collectprogram");
+	}
+	//购买节目
+	function myprogram(){
+		$("#iframe_a").attr("src", "/front/myprogram");
+	}
+	//节目查询
+	function searchs(){
+		let so=$("#sos").val();
+		if(so==""){
+			this.mgs("搜索框内容不能为空");
+			return;
+		}
+		//search
+		$("#iframe_a").attr("src", "/front/search?name="+so);
 	}
 
-
+	//充值记录页面
+	function record(page){
+		$("#iframe_a").attr("src", "/front/recoadshow?page="+page);
+	}
 	function record2(page) {
 		$("#iframe_a").attr("src", "/front/recoadshow02?page="+page);
 	}
-
-
 	//充值虚拟币路径
 	function chongzhi() {
 		$("#iframe_a").attr("src", "/front/recharges");
 	}
-
 	//充值vip路径
 	function vipchongzhi() {
 		$("#iframe_a").attr("src", "/front/viprecharge");
@@ -270,10 +273,23 @@
 
 	//用户详情
 	function personal(name) {
-		//主播编号 &anchortid="+anchortid
 		let acid = [[${session?.user?.get('acid')}]];
 		if (acid == null) {
-			acid = 0;
+			let userid=[[${session?.user?.get('front_userid')}]];
+			//主播编号
+			$.ajax({
+				type: "post",
+				url: "anchorinfo/queryactid",
+				data:{userid:userid},
+				async : false,
+				success:(data)=>{
+					if(data==null){
+						acid=0;
+					}else{
+						acid=data;
+					}
+				}
+			});
 		}
 		$("#iframe_a").attr("src", "/front/gerenxianqing?name=" + name + "&acid=" + acid);
 	}
@@ -392,5 +408,6 @@
 	function closexpit() {
 		xtip.close(window.loadid);
 	}
+
 </script>
 </html>

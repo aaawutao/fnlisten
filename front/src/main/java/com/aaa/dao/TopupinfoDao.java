@@ -17,7 +17,7 @@ public interface TopupinfoDao extends tk.mybatis.mapper.common.Mapper<Topupinfo>
     @Select("select * from topupinfo ti \n" +
             "left join topupsetinfo tif \n" +
             "on ti.tsid=tif.tsid \n" +
-            "where front_userid=#{front_userid}\n" +
+            "where state=1 and front_userid=#{front_userid}\n" +
             "order by topupdate desc")
     List<Map<String,Object>> queryByuserRecord(Integer front_userid);
 

@@ -23,12 +23,21 @@ public class AnchorinfoController {
     @ResponseBody
     @RequestMapping("addanchor")
     public int addanchor(Integer front_userid, String petname, HttpSession session) {
+        Map user=(Map)session.getAttribute("user");
+        if(petname.equals("")){
+            petname=frontUserService.queryByuserId(Integer.parseInt(user.get("front_userid").toString())).getFront_username();
+        }
         //添加主播编号
         Integer res=anchorinfoService.addanchor(front_userid, petname);
-        Map user=(Map)session.getAttribute("user");
         user=frontUserService.login(user.get("front_userphone").toString(),user.get("front_userpwd").toString());
-        System.out.println(user);
         session.setAttribute("user",user);
         return res;
+    }
+
+    @ResponseBody
+    @RequestMapping("queryactid")
+    public Integer queryactid(Integer userid){
+        System.out.println(anchorinfoService.queryactid(userid));
+        return anchorinfoService.queryactid(userid);
     }
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>购买节目</title>
+    <iframe th:replace="css.html"></iframe>
+    <link rel="stylesheet" th:href="${'css/collectstyle.css?v=38'}">
+    <style>
+    </style>
+</head>
+<body>
+<section class="wrapper grid">
+    <article class="clearfix" style="margin-left:0px;">
+        <div class="column-l" style="min-height: 1061px;width: 100%;padding:30px;">
+            <div class="s-title" style="margin-top:34px"><span class="f16">购买节目</span></div>
+            <div class="collection-w">
+                <div class="collection-book">
+                    <ul>
+                        <li class="collection-item" th:each="it:${program}">
+                            <div class="fl pr">
+                                <a href="javascript:;" th:onclick="'soplay('+${it.pid}+')'">
+                                    <img class="photo-m" th:src="${it.get('poster')}">
+                                </a>
+                            </div>
+                            <div class="photo-m-r">
+                                <a class="f16" href="javascript:;" th:onclick="|xiangqings(${it.pid},${it.anchortid})|"
+                                   th:text="${it.pname}"></a>
+                                <div class="album-f-item-grid">
+                                    <div>
+                                        <span><em class="weaken">主播：</em><a target="_blank" th:text="${it?.petname}"></a></span>
+                                        <span><em class="weaken">类型：</em><em th:text="${it.get('ptname')}"></em></span>
+                                        <span><em class="weaken">节目介绍:</em><em th:text="${it.get('pintroduction')}"></em></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+</body>
+<script  th:inline="javascript">
+
+    //全部播放
+    function soplay(pid) {
+        window.parent.getdata(pid);
+    }
+    //显示详情
+    function xiangqings(pid,acid){
+        window.parent.eidtsrc(pid, acid);
+    }
+
+</script>
+</html>

@@ -75,13 +75,12 @@ public class payMentController {
         String result = alipayClient.pageExecute(alipayRequest).getBody();
         return result;
     }
-
     /**
      * @Description: 支付宝异步 通知页面
      */
-    @RequestMapping(value = "alipayNotifyNotice")
+    @RequestMapping("alipayNotifyNotice")
     public String alipayNotifyNotice(HttpServletRequest request, HttpServletRequest response) throws Exception {
-
+        System.out.println("进入当前方法");
         //获取支付宝POST过来反馈信息
         Map<String, String> params = new HashMap<String, String>();
         Map<String, String[]> requestParams = request.getParameterMap();
